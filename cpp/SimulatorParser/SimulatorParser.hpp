@@ -12,12 +12,15 @@ int size = 22;
 class SimulatorParser {
 private:
 
+	int temp_int = 0; // Para fazermos operações temporárias
+
 	/**
 	 * @brief Utilizará uma lógica específica para printar os caracteres. Não há qualquer tipo de verificação.
 	 * @param buffer Ponteiro para buffer de mensagem.
 	 * @param length Comprimento de Leitura.
 	 * @return Será printado na tela os caracteres correspondentes, no estilo C, usando printf.
 	 */
+	inline
 	void
 	imprimir(
 		const unsigned char* buffer,
@@ -30,19 +33,30 @@ private:
 	 * @param pattern Sequência de caracteres que será verificada.	
 	 * @return True se for a mesma sequência, False, caso contrário.
 	 */
+	inline
 	bool
 	bytescmp(
 		const unsigned char* buffer,
 		const char* pattern
 	) const { return std::equal(buffer, buffer + strlen(pattern), pattern); }
 
+	/**
+	 * @brief
+	 * @details
+	 */
+	int
+	get_next_tag(
+		const unsigned char* buffer
+	){
 
+
+	}
 
 public:
 
 	/**
 	 * @brief Realizará o parsing das informações recebidas.
-	 * @param buffer Ponteiro para buffer da mensagem.
+	 * @param buffer Ponteiro para buffer da mensagem original.
 	 * @param size Comprimento total do buffer. 
 	 */
 	void
@@ -51,7 +65,6 @@ public:
 		int size
 	){
 
-		int idx = 0; // Para percorremos o buffer
 		
 	}
 };
