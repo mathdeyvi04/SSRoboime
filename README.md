@@ -6,12 +6,21 @@ para a categoria do **Simulation Soccer**.
 Utilizaremos como muleta o repositório da equipe [FCPortugal](https://github.com/m-abr/FCPCodebase) e 
 pouco a pouco construiremos o nosso. Observe que este é o ponta pé inicial para anos de pesquisa e avanço.
 
-- Considerações
-	- Apesar de C++ ser eficiente, não existe a concepção de IA sem Python, então o melhor mundo é o equilíbrio de ambos.
-	- Utilizando como muleta o código externo, obteremos quais argumentos estão sendo passados para as funções e criaremos
-	nossa própria função.
+# Ideias
 
+### Devemos construir um equilíbrio entre Python e C+
 
+Assim obteremos a perfomance do baixo nível e a legibilidade do alto. Exemplos demonstrativos da capacidade da interoperabilidade:
 
+- [Aplicação](https://github.com/oKermorgant/cpp_python_integration) simples e rápida.
+- [Aplicação](https://yanto.fi/2022/09/benchmark-of-python-c-bindings) mais aprofundada e complexa.
 
+Tendo isso em mente, utilizaremos a ferramenta [nanobind](https://github.com/wjakob/nanobind) para garantir essa interação.
+Caso haja qualquer dificuldade, usaremos [pybind11](https://github.com/pybind/pybind11) para saná-la.
 
+### Partir do mínimo possível
+
+É fato que existem pontos especialmente complexos, entretanto, devemos utilizar a muleta e caminhar até que
+possamos correr.
+
+Seguindo a Wiki do Simspark, forçaremos nosso caminho desde a base.
