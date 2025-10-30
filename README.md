@@ -3,14 +3,13 @@
 Neste repositório, marcharemos no progresso de produzir um código proprietário da RoboIME 
 para a categoria do **Simulation Soccer**.
 
-Utilizaremos como muleta o repositório da equipe [FCPortugal](https://github.com/m-abr/FCPCodebase) e 
-pouco a pouco construiremos o nosso. Observe que este é o ponta pé inicial para anos de pesquisa e avanço.
+Utilizaremos como muleta o repositório da equipe [FCPortugal](https://github.com/m-abr/FCPCodebase) e pouco a pouco construiremos o nosso. Observe que este é o pontapé inicial para anos de pesquisa e avanço.
 
 # Ideias
 
-### Devemos construir um equilíbrio entre Python e C+
+### Devemos construir um equilíbrio entre Python e C++
 
-Assim obteremos a perfomance do baixo nível e a legibilidade do alto. Exemplos demonstrativos da capacidade da interoperabilidade:
+Assim obteremos a desempenho do baixo nível e a legibilidade do alto. Exemplos demonstrativos da capacidade da interoperabilidade:
 
 - [Aplicação](https://github.com/oKermorgant/cpp_python_integration) simples e rápida.
 - [Aplicação](https://yanto.fi/2022/09/benchmark-of-python-c-bindings) mais aprofundada e complexa.
@@ -23,4 +22,15 @@ Caso haja qualquer dificuldade, usaremos [pybind11](https://github.com/pybind/py
 É fato que existem pontos especialmente complexos, entretanto, devemos utilizar a muleta e caminhar até que
 possamos correr.
 
-Seguindo a Wiki do Simspark, forçaremos nosso caminho desde a base.
+Seguindo a [Wiki](https://gitlab.com/robocup-sim/SimSpark/-/wikis/home) do Simspark, forçaremos nosso caminho desde a base.
+
+### Organização
+
+Diferente do que é feito no repositório muleta, vamos centralizar o gerenciamento de execuções e compilações pelo
+Makefile.
+
+Assim, permitiremos um booting comum à qualquer máquina linux, sendo necessário apenas dependências mínimas
+como `make`, `python` e `g++`.
+
+Para o booting, basta escrever no terminal: `make init`.
+

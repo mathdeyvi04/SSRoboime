@@ -32,7 +32,6 @@
 int main(){
 
 	SimulatorParser ex;
-
 	ex.parsing(
 		exemplo_de_mensagem,
 		size
