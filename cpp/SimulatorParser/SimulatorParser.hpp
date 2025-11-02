@@ -28,19 +28,20 @@ unsigned char exemplo_de_mensagem[] = {
     0x20, 0x28, 0x46, 0x31, 0x52, 0x20, 0x28, 0x70, 0x6F, 0x6C, 0x20, 0x33, 0x30, 0x2E, 0x31, 0x39,
     0x20, 0x2D, 0x33, 0x30, 0x2E, 0x33, 0x33, 0x20, 0x2D, 0x32, 0x2E, 0x30, 0x30, 0x29, 0x29, 0x20,
 };
-int size = 12;
+int size = sizeof(exemplo_de_mensagem) / sizeof(unsigned char);
 
 /**
- * 
+ * @class SimulatorParser
+ * @brief Responsável por interpretar as informações dadas pelo simulador.
  */
 class SimulatorParser {
 private:
 	int size = 0; ///> Para mantermos informação do comprimento total do buffer
 	int idx = 0; ///> Para mantermos informação de onde estamos no buffer, sem fazer alterações no ponteiro.
 	int temp_int = 0; ///> Para fazermos operações temporárias
-	int temp_start_flag = 0; ///> Para marcamos início de uma flag
-	int temp_end_flag = 0; ///> Para marcamos o final de uma flag
-
+	int temp_start_flag = 0; ///> Para marcamos início de uma flag, temporário
+	int temp_end_flag = 0; ///> Para marcamos o final de uma flag, temporário
+	
 	/**
 	 * @brief Utilizará uma lógica específica para printar os caracteres. Não há qualquer tipo de verificação.
 	 * @param buffer Ponteiro para buffer de mensagem.
@@ -82,25 +83,23 @@ private:
 		const unsigned char* buffer
 	){
 		this->temp_int = 1;
-		printf("\nPrimeiro elemento do buffer: '%c'", buffer[this->temp_int - 1]);
 		while( buffer[this->temp_int - 1] != '(' ){ this->temp_int++; if((this->temp_int - 1) > this->size){ return -1;}}
 
 		// Redefinimos os valores
 		this->temp_start_flag = this->temp_int;
-		printf("\nPrimeiro elemento da flag: '%c'", buffer[this->temp_start_flag]);
 		while( buffer[this->temp_int + 1] != ' ' ){ this->temp_int++; if((this->temp_int + 1) > this->size){ return -1;}}
 		this->temp_end_flag = this->temp_int;
-		printf("\nÚltimo elemento da flag: '%c'", buffer[this->temp_end_flag]);
 
 		return this->temp_int + 2; // Pulamos para o caractere à frente do ' '
 	}
+
+	
 
 public:
 
 	/**
 	 * @brief Realizará o parsing das informações recebidas.
 	 * @param buffer Ponteiro para buffer da mensagem original.
-	 * @param size Comprimento total do buffer. 
 	 */
 	void
 	parsing(
@@ -120,7 +119,8 @@ public:
 
 			printf("\nidx = %d \t start = %d \t end = %d\n", this->idx, this->temp_start_flag, this->temp_end_flag);
 			imprimir(buffer + this->idx + this->temp_start_flag, this->temp_end_flag - this->temp_start_flag + 1);
-			this->idx += this->temp_int;
+			this->idx += this->temp_int; // Pulamos para ver a próxima flag
+
 		}
 	}
 };

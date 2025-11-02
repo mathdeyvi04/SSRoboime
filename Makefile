@@ -1,4 +1,3 @@
-
 # Dependências do Ambiente Virtual
 VENV_DIR := venv
 PYTHON := ./venv/bin/python3
@@ -23,20 +22,7 @@ install:
 		echo ">>> Nenhum requirements.txt encontrado."; \
 	fi
 
-.PHONY: add
-add:
-	@if [ -z "$(pkg)" ]; then \
-		echo "Uso: make add pkg=<nome_do_pacote>"; \
-	else \
-		echo ">>> Instalando pacote: $(pkg)"; \
-		$(PIP) install $(pkg); \
-		echo "$(pkg)" >> $(REQ_FILE); \
-	fi
 
 .PHONY: run
 run:
-	# Aqui devemos colocar a lógica de execução
-
-
-
 

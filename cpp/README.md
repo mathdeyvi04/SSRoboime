@@ -6,7 +6,7 @@ Para padronizarmos o conteúdo dessas pastas, faremos o seguinte:
 
 | Arquivos Obrigatórios | Responsabilidades                           |
 |:----------------------|:--------------------------------------------|
-| Makefile              | Automatizará casos de compilação            |
+| Makefile              | Automatizará compilação individual          |
 | debug.cc              | Proverá ferramentas de teste                |
 | module_main.cpp       | Fornecerá a interoperabilidade com o Python |
 

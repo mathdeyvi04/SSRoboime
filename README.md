@@ -22,7 +22,7 @@ Caso haja qualquer dificuldade, usaremos [pybind11](https://github.com/pybind/py
 É fato que existem pontos especialmente complexos, entretanto, devemos utilizar a muleta e caminhar até que
 possamos correr.
 
-Seguindo a [Wiki](https://gitlab.com/robocup-sim/SimSpark/-/wikis/home) do Simspark, forçaremos nosso caminho desde a base.
+Seguindo a [Wiki](https://gitlab.com/robocup-sim/SimSpark/-/wikis/home) do Simspark, dentre outras possibilidades, forçaremos nosso caminho desde a base.
 
 ### Organização
 
@@ -32,5 +32,5 @@ Makefile.
 Assim, permitiremos um booting comum à qualquer máquina linux, sendo necessário apenas dependências mínimas
 como `make`, `python` e `g++`.
 
-Para o booting, basta escrever no terminal: `make init`.
+Para o booting inicial, basta escrever no terminal: `make init`.
 
