@@ -22,7 +22,19 @@ install:
 		echo ">>> Nenhum requirements.txt encontrado."; \
 	fi
 
+.PHONY: docs
+docs:
+	@echo ">>> Criando documentação..."
+	@doxygen Doxyfile
+	@$(MAKE) -C docs/latex
+	@mv docs/latex/refman.pdf Documentation.pdf
 
-.PHONY: run
-run:
-
+.PHONY: build
+build:
+	@echo ">>> Buildando aplicação..."
+	# Vamos preencher conforme necessidade
+	@pyinstaller \
+				--onefile $(SRC) \
+				--name $(NOME)
+	@mv dist/$(NOME) ./$(NOME)
+	@rm -rf build dist $(NOME).spec

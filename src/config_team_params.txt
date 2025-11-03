@@ -1,0 +1,9 @@
+IP Server,localhost
+Agent Port,3100
+Monitor Port,3200
+Team Name,RoboIME
+Uniform Number,1
+Robot Type,1
+Penalty Shootout,0
+MagmaFatProxy,0
+Debug Mode,1

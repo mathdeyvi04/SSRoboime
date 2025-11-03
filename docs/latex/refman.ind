@@ -1,0 +1,21 @@
+\begin{theindex}
+
+  \item {\_\_init\_\_}
+    \subitem {Booting.Booting}, \hyperpage{9}
+
+  \indexspace
+
+  \item {Booting}, \hyperpage{7}
+  \item {Booting.Booting}, \hyperpage{9}
+    \subitem {\_\_init\_\_}, \hyperpage{9}
+
+  \indexspace
+
+  \item {run\_player}, \hyperpage{7}
+
+  \indexspace
+
+  \item {src/Booting/Booting.py}, \hyperpage{11}
+  \item {src/run\_player.py}, \hyperpage{12}
+
+\end{theindex}

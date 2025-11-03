@@ -33,4 +33,3 @@ Assim, permitiremos um booting comum à qualquer máquina linux, sendo necessár
 como `make`, `python` e `g++`.
 
 Para o booting inicial, basta escrever no terminal: `make init`.
-
