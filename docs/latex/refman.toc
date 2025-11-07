@@ -1,22 +1,82 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
 \contentsline {chapter}{\numberline {1}Namespace Index}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Namespace List}{1}{section.1.1}%
-\contentsline {chapter}{\numberline {2}Class Index}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Class List}{3}{section.2.1}%
-\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}%
-\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}%
-\contentsline {chapter}{\numberline {4}Namespace Documentation}{7}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Booting Namespace Reference}{7}{section.4.1}%
-\contentsline {section}{\numberline {4.2}run\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}player Namespace Reference}{7}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Class Documentation}{9}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Booting.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Booting Class Reference}{9}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Detailed Description}{9}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Constructor \& Destructor Documentation}{9}{subsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.2.1}\_\_init\_\_()}{9}{subsubsection.5.1.2.1}%
-\contentsline {chapter}{\numberline {6}File Documentation}{11}{chapter.6}%
-\contentsline {section}{\numberline {6.1}src/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Booting/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Booting.py File Reference}{11}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{11}{subsection.6.1.1}%
-\contentsline {section}{\numberline {6.2}Booting.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}py}{11}{section.6.2}%
-\contentsline {section}{\numberline {6.3}src/run\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}player.py File Reference}{12}{section.6.3}%
-\contentsline {section}{\numberline {6.4}run\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}player.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}py}{12}{section.6.4}%
-\contentsline {chapter}{Index}{13}{section*.7}%
+\contentsline {chapter}{\numberline {2}Hierarchical Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class Hierarchy}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Class Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Class List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}File Index}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}File List}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {5}Namespace Documentation}{9}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Agent Namespace Reference}{9}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Agent\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Penalty Namespace Reference}{9}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Base\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Agent Namespace Reference}{9}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Booting Namespace Reference}{9}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Printing Namespace Reference}{9}{section.5.5}%
+\contentsline {section}{\numberline {5.6}run\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}player Namespace Reference}{10}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Variable Documentation}{10}{subsection.5.6.1}%
+\contentsline {subsubsection}{\numberline {5.6.1.1}boot}{10}{subsubsection.5.6.1.1}%
+\contentsline {subsubsection}{\numberline {5.6.1.2}if\_debug\_mode}{10}{subsubsection.5.6.1.2}%
+\contentsline {subsubsection}{\numberline {5.6.1.3}player}{10}{subsubsection.5.6.1.3}%
+\contentsline {section}{\numberline {5.7}Server\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comm Namespace Reference}{10}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Class Documentation}{11}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Agent.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Agent Class Reference}{11}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{12}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Constructor \& Destructor Documentation}{12}{subsection.6.1.2}%
+\contentsline {subsubsection}{\numberline {6.1.2.1}\_\_init\_\_()}{12}{subsubsection.6.1.2.1}%
+\contentsline {section}{\numberline {6.2}Base\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Agent.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Base\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Agent Class Reference}{13}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{14}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Constructor \& Destructor Documentation}{14}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}\_\_init\_\_()}{14}{subsubsection.6.2.2.1}%
+\contentsline {subsection}{\numberline {6.2.3}Member Data Documentation}{15}{subsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.3.1}scom}{15}{subsubsection.6.2.3.1}%
+\contentsline {section}{\numberline {6.3}Booting.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Booting Class Reference}{15}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{16}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Constructor \& Destructor Documentation}{16}{subsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.2.1}\_\_init\_\_()}{16}{subsubsection.6.3.2.1}%
+\contentsline {subsection}{\numberline {6.3.3}Member Function Documentation}{16}{subsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.3.1}cpp\_builder()}{16}{subsubsection.6.3.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.3.2}get\_team\_params()}{16}{subsubsection.6.3.3.2}%
+\contentsline {subsection}{\numberline {6.3.4}Member Data Documentation}{17}{subsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.4.1}options}{17}{subsubsection.6.3.4.1}%
+\contentsline {section}{\numberline {6.4}Printing.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Printing Class Reference}{17}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{17}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Member Function Documentation}{17}{subsection.6.4.2}%
+\contentsline {subsubsection}{\numberline {6.4.2.1}print\_message()}{17}{subsubsection.6.4.2.1}%
+\contentsline {subsection}{\numberline {6.4.3}Member Data Documentation}{18}{subsection.6.4.3}%
+\contentsline {subsubsection}{\numberline {6.4.3.1}IF\_IN\_DEBUG}{18}{subsubsection.6.4.3.1}%
+\contentsline {subsubsection}{\numberline {6.4.3.2}TABLE\_COLORS}{18}{subsubsection.6.4.3.2}%
+\contentsline {section}{\numberline {6.5}Server\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comm.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Server\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comm Class Reference}{19}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{19}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Constructor \& Destructor Documentation}{20}{subsection.6.5.2}%
+\contentsline {subsubsection}{\numberline {6.5.2.1}\_\_init\_\_()}{20}{subsubsection.6.5.2.1}%
+\contentsline {subsection}{\numberline {6.5.3}Member Function Documentation}{20}{subsection.6.5.3}%
+\contentsline {subsubsection}{\numberline {6.5.3.1}receive()}{20}{subsubsection.6.5.3.1}%
+\contentsline {subsubsection}{\numberline {6.5.3.2}send\_immediate()}{20}{subsubsection.6.5.3.2}%
+\contentsline {subsection}{\numberline {6.5.4}Member Data Documentation}{20}{subsection.6.5.4}%
+\contentsline {subsubsection}{\numberline {6.5.4.1}BUFFER}{20}{subsubsection.6.5.4.1}%
+\contentsline {subsubsection}{\numberline {6.5.4.2}BUFFER\_SIZE}{20}{subsubsection.6.5.4.2}%
+\contentsline {subsubsection}{\numberline {6.5.4.3}num}{21}{subsubsection.6.5.4.3}%
+\contentsline {subsubsection}{\numberline {6.5.4.4}socket}{21}{subsubsection.6.5.4.4}%
+\contentsline {chapter}{\numberline {7}File Documentation}{23}{chapter.7}%
+\contentsline {section}{\numberline {7.1}src/agent/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Agent.py File Reference}{23}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Detailed Description}{23}{subsection.7.1.1}%
+\contentsline {section}{\numberline {7.2}Agent.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}py}{23}{section.7.2}%
+\contentsline {section}{\numberline {7.3}src/agent/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Agent\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Penalty.py File Reference}{24}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Detailed Description}{24}{subsection.7.3.1}%
+\contentsline {section}{\numberline {7.4}Agent\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Penalty.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}py}{24}{section.7.4}%
+\contentsline {section}{\numberline {7.5}src/agent/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Base\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Agent.py File Reference}{24}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Detailed Description}{24}{subsection.7.5.1}%
+\contentsline {section}{\numberline {7.6}Base\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Agent.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}py}{25}{section.7.6}%
+\contentsline {section}{\numberline {7.7}src/communication/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Server\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comm.py File Reference}{25}{section.7.7}%
+\contentsline {subsection}{\numberline {7.7.1}Detailed Description}{25}{subsection.7.7.1}%
+\contentsline {section}{\numberline {7.8}Server\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Comm.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}py}{26}{section.7.8}%
+\contentsline {section}{\numberline {7.9}src/run\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}player.py File Reference}{27}{section.7.9}%
+\contentsline {section}{\numberline {7.10}run\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}player.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}py}{27}{section.7.10}%
+\contentsline {section}{\numberline {7.11}src/term/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Booting.py File Reference}{28}{section.7.11}%
+\contentsline {subsection}{\numberline {7.11.1}Detailed Description}{28}{subsection.7.11.1}%
+\contentsline {section}{\numberline {7.12}Booting.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}py}{28}{section.7.12}%
+\contentsline {section}{\numberline {7.13}src/term/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Printing.py File Reference}{29}{section.7.13}%
+\contentsline {subsection}{\numberline {7.13.1}Detailed Description}{29}{subsection.7.13.1}%
+\contentsline {section}{\numberline {7.14}Printing.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}py}{30}{section.7.14}%
+\contentsline {chapter}{Index}{31}{section*.37}%

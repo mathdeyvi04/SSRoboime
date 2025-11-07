@@ -75,6 +75,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classBooting_1_1Booting-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Booting.Booting Class Reference</div></div>
 </div><!--header-->
@@ -87,19 +89,37 @@ Collaboration diagram for Booting.Booting:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBooting_1_1Booting__coll__graph.png" border="0" usemap="#aBooting_8Booting_coll__map" alt="Collaboration graph"/></div>
 <map name="aBooting_8Booting_coll__map" id="aBooting_8Booting_coll__map">
-<area shape="rect" title="Responsável por inicializar todas as necessidades de execução do time." alt="" coords="5,5,124,71"/>
+<area shape="rect" title="Responsável por inicializar todas as necessidades de execução do time." alt="" coords="5,5,143,125"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9bb5465bfdbe93b09608623901baeed9" id="r_a9bb5465bfdbe93b09608623901baeed9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBooting_1_1Booting.html#a9bb5465bfdbe93b09608623901baeed9">__init__</a> (self)</td></tr>
+<tr class="memdesc:a9bb5465bfdbe93b09608623901baeed9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Responsável por chamar as inicializações mínimas.  <br /></td></tr>
 <tr class="separator:a9bb5465bfdbe93b09608623901baeed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a280873b90927dea4e0b5b1d0ed33b56c" id="r_a280873b90927dea4e0b5b1d0ed33b56c"><td class="memItemLeft" align="right" valign="top">list[list[str]]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBooting_1_1Booting.html#a280873b90927dea4e0b5b1d0ed33b56c">get_team_params</a> ()</td></tr>
+<tr class="memdesc:a280873b90927dea4e0b5b1d0ed33b56c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica existência de arquivo de parâmetros de time, caso não exista, usará o default.  <br /></td></tr>
+<tr class="separator:a280873b90927dea4e0b5b1d0ed33b56c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e9e1d39368b25afb62206e8b4a897ac" id="r_a1e9e1d39368b25afb62206e8b4a897ac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBooting_1_1Booting.html#a1e9e1d39368b25afb62206e8b4a897ac">cpp_builder</a> (self)</td></tr>
+<tr class="memdesc:a1e9e1d39368b25afb62206e8b4a897ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Responsável por buildar os arquivos .cpp presentes na pasta cpp.  <br /></td></tr>
+<tr class="separator:a1e9e1d39368b25afb62206e8b4a897ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aca4bc452e914225c33db9cabe797e611" id="r_aca4bc452e914225c33db9cabe797e611"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBooting_1_1Booting.html#aca4bc452e914225c33db9cabe797e611">options</a></td></tr>
+<tr class="separator:aca4bc452e914225c33db9cabe797e611"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Responsável por inicializar todas as necessidades de execução do time. </p>
+<p>Assume as seguintes responsabilidades:</p><ul>
+<li>Estabelece um arquivo de configurações default caso já não exista um. </li>
+</ul>
 
-<p class="definition">Definition at line <a class="el" href="Booting_8py_source.html#l00006">6</a> of file <a class="el" href="Booting_8py_source.html">Booting.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Booting_8py_source.html#l00009">9</a> of file <a class="el" href="Booting_8py_source.html">Booting.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9bb5465bfdbe93b09608623901baeed9" name="a9bb5465bfdbe93b09608623901baeed9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9bb5465bfdbe93b09608623901baeed9">&#9670;&#160;</a></span>__init__()</h2>
@@ -117,12 +137,93 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Booting_8py_source.html#l00013">13</a> of file <a class="el" href="Booting_8py_source.html">Booting.py</a>.</p>
+<p>Responsável por chamar as inicializações mínimas. </p>
+
+<p class="definition">Definition at line <a class="el" href="Booting_8py_source.html#l00017">17</a> of file <a class="el" href="Booting_8py_source.html">Booting.py</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1e9e1d39368b25afb62206e8b4a897ac" name="a1e9e1d39368b25afb62206e8b4a897ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e9e1d39368b25afb62206e8b4a897ac">&#9670;&#160;</a></span>cpp_builder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Booting.Booting.cpp_builder </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Responsável por buildar os arquivos .cpp presentes na pasta cpp. </p>
+<dl class="section return"><dt>Returns</dt><dd>Funcionalidades C++ em condições de interoperabilidade. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Booting_8py_source.html#l00074">74</a> of file <a class="el" href="Booting_8py_source.html">Booting.py</a>.</p>
+
+</div>
+</div>
+<a id="a280873b90927dea4e0b5b1d0ed33b56c" name="a280873b90927dea4e0b5b1d0ed33b56c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a280873b90927dea4e0b5b1d0ed33b56c">&#9670;&#160;</a></span>get_team_params()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> list[list[str]] Booting.Booting.get_team_params </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verifica existência de arquivo de parâmetros de time, caso não exista, usará o default. </p>
+<p>Faremos em tupla para permitir uso mínimo de memória. </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Booting_8py_source.html#l00032">32</a> of file <a class="el" href="Booting_8py_source.html">Booting.py</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aca4bc452e914225c33db9cabe797e611" name="aca4bc452e914225c33db9cabe797e611"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca4bc452e914225c33db9cabe797e611">&#9670;&#160;</a></span>options</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Booting.Booting.options</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Booting_8py_source.html#l00022">22</a> of file <a class="el" href="Booting_8py_source.html">Booting.py</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/Booting/<a class="el" href="Booting_8py_source.html">Booting.py</a></li>
+<li>src/term/<a class="el" href="Booting_8py_source.html">Booting.py</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

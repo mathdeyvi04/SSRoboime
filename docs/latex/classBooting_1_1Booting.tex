@@ -11,20 +11,37 @@ Collaboration diagram for Booting.\+Booting\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=169pt]{classBooting_1_1Booting__coll__graph}
+\includegraphics[width=183pt]{classBooting_1_1Booting__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classBooting_1_1Booting_a9bb5465bfdbe93b09608623901baeed9}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\begin{DoxyCompactList}\small\item\em Responsável por chamar as inicializações mínimas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]} \mbox{\hyperlink{classBooting_1_1Booting_a280873b90927dea4e0b5b1d0ed33b56c}{get\+\_\+team\+\_\+params}} ()
+\begin{DoxyCompactList}\small\item\em Verifica existência de arquivo de parâmetros de time, caso não exista, usará o default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBooting_1_1Booting_a1e9e1d39368b25afb62206e8b4a897ac}{cpp\+\_\+builder}} (self)
+\begin{DoxyCompactList}\small\item\em Responsável por buildar os arquivos .cpp presentes na pasta cpp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBooting_1_1Booting_aca4bc452e914225c33db9cabe797e611}{options}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Responsável por inicializar todas as necessidades de execução do time. 
 
-Definition at line \mbox{\hyperlink{Booting_8py_source_l00006}{6}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+Assume as seguintes responsabilidades\+:
+\begin{DoxyItemize}
+\item Estabelece um arquivo de configurações default caso já não exista um. 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00009}{9}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
 
 
 
@@ -37,10 +54,64 @@ Definition at line \mbox{\hyperlink{Booting_8py_source_l00006}{6}} of file \mbox
 
 
 
-Definition at line \mbox{\hyperlink{Booting_8py_source_l00013}{13}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+Responsável por chamar as inicializações mínimas. 
+
+
+
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00017}{17}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBooting_1_1Booting_a1e9e1d39368b25afb62206e8b4a897ac}\label{classBooting_1_1Booting_a1e9e1d39368b25afb62206e8b4a897ac} 
+\index{Booting.Booting@{Booting.Booting}!cpp\_builder@{cpp\_builder}}
+\index{cpp\_builder@{cpp\_builder}!Booting.Booting@{Booting.Booting}}
+\doxysubsubsection{\texorpdfstring{cpp\_builder()}{cpp\_builder()}}
+{\footnotesize\ttfamily Booting.\+Booting.\+cpp\+\_\+builder (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Responsável por buildar os arquivos .cpp presentes na pasta cpp. 
+
+\begin{DoxyReturn}{Returns}
+Funcionalidades C++ em condições de interoperabilidade. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00074}{74}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+
+\Hypertarget{classBooting_1_1Booting_a280873b90927dea4e0b5b1d0ed33b56c}\label{classBooting_1_1Booting_a280873b90927dea4e0b5b1d0ed33b56c} 
+\index{Booting.Booting@{Booting.Booting}!get\_team\_params@{get\_team\_params}}
+\index{get\_team\_params@{get\_team\_params}!Booting.Booting@{Booting.Booting}}
+\doxysubsubsection{\texorpdfstring{get\_team\_params()}{get\_team\_params()}}
+{\footnotesize\ttfamily  list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]} Booting.\+Booting.\+get\+\_\+team\+\_\+params (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Verifica existência de arquivo de parâmetros de time, caso não exista, usará o default. 
+
+Faremos em tupla para permitir uso mínimo de memória. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00032}{32}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classBooting_1_1Booting_aca4bc452e914225c33db9cabe797e611}\label{classBooting_1_1Booting_aca4bc452e914225c33db9cabe797e611} 
+\index{Booting.Booting@{Booting.Booting}!options@{options}}
+\index{options@{options}!Booting.Booting@{Booting.Booting}}
+\doxysubsubsection{\texorpdfstring{options}{options}}
+{\footnotesize\ttfamily Booting.\+Booting.\+options}
+
+
+
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00022}{22}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Booting/\mbox{\hyperlink{Booting_8py}{Booting.\+py}}\end{DoxyCompactItemize}
+src/term/\mbox{\hyperlink{Booting_8py}{Booting.\+py}}\end{DoxyCompactItemize}

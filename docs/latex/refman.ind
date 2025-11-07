@@ -1,21 +1,113 @@
 \begin{theindex}
 
   \item {\_\_init\_\_}
-    \subitem {Booting.Booting}, \hyperpage{9}
+    \subitem {Agent.Agent}, \hyperpage{12}
+    \subitem {BaseAgent.BaseAgent}, \hyperpage{14}
+    \subitem {Booting.Booting}, \hyperpage{16}
+    \subitem {ServerComm.ServerComm}, \hyperpage{20}
 
   \indexspace
 
-  \item {Booting}, \hyperpage{7}
-  \item {Booting.Booting}, \hyperpage{9}
-    \subitem {\_\_init\_\_}, \hyperpage{9}
+  \item {Agent}, \hyperpage{9}
+  \item {Agent.Agent}, \hyperpage{11}
+    \subitem {\_\_init\_\_}, \hyperpage{12}
+  \item {AgentPenalty}, \hyperpage{9}
 
   \indexspace
 
-  \item {run\_player}, \hyperpage{7}
+  \item {BaseAgent}, \hyperpage{9}
+  \item {BaseAgent.BaseAgent}, \hyperpage{13}
+    \subitem {\_\_init\_\_}, \hyperpage{14}
+    \subitem {scom}, \hyperpage{15}
+  \item {boot}
+    \subitem {run\_player}, \hyperpage{10}
+  \item {Booting}, \hyperpage{9}
+  \item {Booting.Booting}, \hyperpage{15}
+    \subitem {\_\_init\_\_}, \hyperpage{16}
+    \subitem {cpp\_builder}, \hyperpage{16}
+    \subitem {get\_team\_params}, \hyperpage{16}
+    \subitem {options}, \hyperpage{17}
+  \item {BUFFER}
+    \subitem {ServerComm.ServerComm}, \hyperpage{20}
+  \item {BUFFER\_SIZE}
+    \subitem {ServerComm.ServerComm}, \hyperpage{20}
 
   \indexspace
 
-  \item {src/Booting/Booting.py}, \hyperpage{11}
-  \item {src/run\_player.py}, \hyperpage{12}
+  \item {cpp\_builder}
+    \subitem {Booting.Booting}, \hyperpage{16}
+
+  \indexspace
+
+  \item {get\_team\_params}
+    \subitem {Booting.Booting}, \hyperpage{16}
+
+  \indexspace
+
+  \item {if\_debug\_mode}
+    \subitem {run\_player}, \hyperpage{10}
+  \item {IF\_IN\_DEBUG}
+    \subitem {Printing.Printing}, \hyperpage{18}
+
+  \indexspace
+
+  \item {num}
+    \subitem {ServerComm.ServerComm}, \hyperpage{20}
+
+  \indexspace
+
+  \item {options}
+    \subitem {Booting.Booting}, \hyperpage{17}
+
+  \indexspace
+
+  \item {player}
+    \subitem {run\_player}, \hyperpage{10}
+  \item {print\_message}
+    \subitem {Printing.Printing}, \hyperpage{17}
+  \item {Printing}, \hyperpage{9}
+  \item {Printing.Printing}, \hyperpage{17}
+    \subitem {IF\_IN\_DEBUG}, \hyperpage{18}
+    \subitem {print\_message}, \hyperpage{17}
+    \subitem {TABLE\_COLORS}, \hyperpage{18}
+
+  \indexspace
+
+  \item {receive}
+    \subitem {ServerComm.ServerComm}, \hyperpage{20}
+  \item {run\_player}, \hyperpage{10}
+    \subitem {boot}, \hyperpage{10}
+    \subitem {if\_debug\_mode}, \hyperpage{10}
+    \subitem {player}, \hyperpage{10}
+
+  \indexspace
+
+  \item {scom}
+    \subitem {BaseAgent.BaseAgent}, \hyperpage{15}
+  \item {send\_immediate}
+    \subitem {ServerComm.ServerComm}, \hyperpage{20}
+  \item {ServerComm}, \hyperpage{10}
+  \item {ServerComm.ServerComm}, \hyperpage{19}
+    \subitem {\_\_init\_\_}, \hyperpage{20}
+    \subitem {BUFFER}, \hyperpage{20}
+    \subitem {BUFFER\_SIZE}, \hyperpage{20}
+    \subitem {num}, \hyperpage{20}
+    \subitem {receive}, \hyperpage{20}
+    \subitem {send\_immediate}, \hyperpage{20}
+    \subitem {socket}, \hyperpage{21}
+  \item {socket}
+    \subitem {ServerComm.ServerComm}, \hyperpage{21}
+  \item {src/agent/Agent.py}, \hyperpage{23}
+  \item {src/agent/AgentPenalty.py}, \hyperpage{24}
+  \item {src/agent/BaseAgent.py}, \hyperpage{24, 25}
+  \item {src/communication/ServerComm.py}, \hyperpage{25, 26}
+  \item {src/run\_player.py}, \hyperpage{27}
+  \item {src/term/Booting.py}, \hyperpage{28}
+  \item {src/term/Printing.py}, \hyperpage{29, 30}
+
+  \indexspace
+
+  \item {TABLE\_COLORS}
+    \subitem {Printing.Printing}, \hyperpage{18}
 
 \end{theindex}

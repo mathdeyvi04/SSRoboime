@@ -1,0 +1,140 @@
+\doxysection{Server\+Comm.\+Server\+Comm Class Reference}
+\hypertarget{classServerComm_1_1ServerComm}{}\label{classServerComm_1_1ServerComm}\index{ServerComm.ServerComm@{ServerComm.ServerComm}}
+
+
+Responsável pela comunicação com servidor.  
+
+
+
+
+Collaboration diagram for Server\+Comm.\+Server\+Comm\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classServerComm_1_1ServerComm__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classServerComm_1_1ServerComm_ae5dd90a5e0a3a22849c0984338c3145c}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]} creation\+\_\+options)
+\begin{DoxyCompactList}\small\item\em Construtor da classe, inicializando buffers e a conexão de cada agente com servidor. \end{DoxyCompactList}\item 
+None \mbox{\hyperlink{classServerComm_1_1ServerComm_a1b9474476d8ee333cb18da1fd0fc0d5e}{send\+\_\+immediate}} (self, bytes message)
+\begin{DoxyCompactList}\small\item\em Envia uma mensagem instantânea ao servidor, verificando se a conexão continua ativa. \end{DoxyCompactList}\item 
+None \mbox{\hyperlink{classServerComm_1_1ServerComm_a7f0a7e6253dddebe1a09f2da60b1bf93}{receive}} (self)
+\begin{DoxyCompactList}\small\item\em Receberá informações diretamente do servidor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classServerComm_1_1ServerComm_a97d2c1585ac4063ef4eadb507cbc5543}{BUFFER\+\_\+\+SIZE}}
+\item 
+\mbox{\hyperlink{classServerComm_1_1ServerComm_a372c3ac974f09e2c044e647b81b07e40}{BUFFER}}
+\item 
+\mbox{\hyperlink{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26}{socket}}
+\item 
+\mbox{\hyperlink{classServerComm_1_1ServerComm_aa1e25522281cdc809143858da6323491}{num}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Responsável pela comunicação com servidor. 
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00010}{10}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classServerComm_1_1ServerComm_ae5dd90a5e0a3a22849c0984338c3145c}\label{classServerComm_1_1ServerComm_ae5dd90a5e0a3a22849c0984338c3145c} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]}}]{creation\+\_\+options }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe, inicializando buffers e a conexão de cada agente com servidor. 
+
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00015}{15}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classServerComm_1_1ServerComm_a7f0a7e6253dddebe1a09f2da60b1bf93}\label{classServerComm_1_1ServerComm_a7f0a7e6253dddebe1a09f2da60b1bf93} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!receive@{receive}}
+\index{receive@{receive}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{receive()}{receive()}}
+{\footnotesize\ttfamily  None Server\+Comm.\+Server\+Comm.\+receive (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Receberá informações diretamente do servidor. 
+
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00077}{77}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+\Hypertarget{classServerComm_1_1ServerComm_a1b9474476d8ee333cb18da1fd0fc0d5e}\label{classServerComm_1_1ServerComm_a1b9474476d8ee333cb18da1fd0fc0d5e} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!send\_immediate@{send\_immediate}}
+\index{send\_immediate@{send\_immediate}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{send\_immediate()}{send\_immediate()}}
+{\footnotesize\ttfamily  None Server\+Comm.\+Server\+Comm.\+send\+\_\+immediate (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{bytes}]{message }\end{DoxyParamCaption})}
+
+
+
+Envia uma mensagem instantânea ao servidor, verificando se a conexão continua ativa. 
+
+Coloca-\/se na frente uma informação de tamanho da mensagem dentro de 4 bytes. 
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00063}{63}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classServerComm_1_1ServerComm_a372c3ac974f09e2c044e647b81b07e40}\label{classServerComm_1_1ServerComm_a372c3ac974f09e2c044e647b81b07e40} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!BUFFER@{BUFFER}}
+\index{BUFFER@{BUFFER}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{BUFFER}{BUFFER}}
+{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+BUFFER}
+
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00022}{22}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+\Hypertarget{classServerComm_1_1ServerComm_a97d2c1585ac4063ef4eadb507cbc5543}\label{classServerComm_1_1ServerComm_a97d2c1585ac4063ef4eadb507cbc5543} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!BUFFER\_SIZE@{BUFFER\_SIZE}}
+\index{BUFFER\_SIZE@{BUFFER\_SIZE}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+BUFFER\+\_\+\+SIZE}
+
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00021}{21}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+\Hypertarget{classServerComm_1_1ServerComm_aa1e25522281cdc809143858da6323491}\label{classServerComm_1_1ServerComm_aa1e25522281cdc809143858da6323491} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!num@{num}}
+\index{num@{num}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{num}{num}}
+{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+num}
+
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00029}{29}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+\Hypertarget{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26}\label{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!socket@{socket}}
+\index{socket@{socket}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{socket}{socket}}
+{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+socket}
+
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00023}{23}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/communication/\mbox{\hyperlink{ServerComm_8py}{Server\+Comm.\+py}}\end{DoxyCompactItemize}

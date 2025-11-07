@@ -1,0 +1,102 @@
+\doxysection{Printing.\+Printing Class Reference}
+\hypertarget{classPrinting_1_1Printing}{}\label{classPrinting_1_1Printing}\index{Printing.Printing@{Printing.Printing}}
+
+
+Responsável pela comunicação usuário -\/ terminal.  
+
+
+
+
+Collaboration diagram for Printing.\+Printing\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{classPrinting_1_1Printing__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+None \mbox{\hyperlink{classPrinting_1_1Printing_a3692966025b767f48741d95e8f02b37c}{print\+\_\+message}} (str message, str role=None)
+\begin{DoxyCompactList}\small\item\em Apresentará uma mensagem estilizada de forma específica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classPrinting_1_1Printing_a3e57cd52a596e066d9f0ba1ce9c03f39}{IF\+\_\+\+IN\+\_\+\+DEBUG}} = False
+\item 
+dict \mbox{\hyperlink{classPrinting_1_1Printing_ad999cc214dbf7c5c684da952fc0818cd}{TABLE\+\_\+\+COLORS}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Responsável pela comunicação usuário -\/ terminal. 
+
+Definition at line \mbox{\hyperlink{Printing_8py_source_l00006}{6}} of file \mbox{\hyperlink{Printing_8py_source}{Printing.\+py}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPrinting_1_1Printing_a3692966025b767f48741d95e8f02b37c}\label{classPrinting_1_1Printing_a3692966025b767f48741d95e8f02b37c} 
+\index{Printing.Printing@{Printing.Printing}!print\_message@{print\_message}}
+\index{print\_message@{print\_message}!Printing.Printing@{Printing.Printing}}
+\doxysubsubsection{\texorpdfstring{print\_message()}{print\_message()}}
+{\footnotesize\ttfamily  None Printing.\+Printing.\+print\+\_\+message (\begin{DoxyParamCaption}\item[{str}]{message,  }\item[{str}]{role = {\ttfamily None} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Apresentará uma mensagem estilizada de forma específica. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Mensagem a ser apresentada \\
+\hline
+{\em role} & String indicando qual o motivo da mensagem\\
+\hline
+\end{DoxyParams}
+Há uma quantidade específica de roles possíveis\+:
+\begin{DoxyItemize}
+\item info
+\item warning
+\item error Caso nenhuma dessas seja inserida, há a possibilidade de inserir o comando ASCII de uma vez. 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{Printing_8py_source_l00018}{18}} of file \mbox{\hyperlink{Printing_8py_source}{Printing.\+py}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classPrinting_1_1Printing_a3e57cd52a596e066d9f0ba1ce9c03f39}\label{classPrinting_1_1Printing_a3e57cd52a596e066d9f0ba1ce9c03f39} 
+\index{Printing.Printing@{Printing.Printing}!IF\_IN\_DEBUG@{IF\_IN\_DEBUG}}
+\index{IF\_IN\_DEBUG@{IF\_IN\_DEBUG}!Printing.Printing@{Printing.Printing}}
+\doxysubsubsection{\texorpdfstring{IF\_IN\_DEBUG}{IF\_IN\_DEBUG}}
+{\footnotesize\ttfamily bool Printing.\+Printing.\+IF\+\_\+\+IN\+\_\+\+DEBUG = False\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{Printing_8py_source_l00010}{10}} of file \mbox{\hyperlink{Printing_8py_source}{Printing.\+py}}.
+
+\Hypertarget{classPrinting_1_1Printing_ad999cc214dbf7c5c684da952fc0818cd}\label{classPrinting_1_1Printing_ad999cc214dbf7c5c684da952fc0818cd} 
+\index{Printing.Printing@{Printing.Printing}!TABLE\_COLORS@{TABLE\_COLORS}}
+\index{TABLE\_COLORS@{TABLE\_COLORS}!Printing.Printing@{Printing.Printing}}
+\doxysubsubsection{\texorpdfstring{TABLE\_COLORS}{TABLE\_COLORS}}
+{\footnotesize\ttfamily dict Printing.\+Printing.\+TABLE\+\_\+\+COLORS\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}info"{}}:\ \textcolor{stringliteral}{"{}\(\backslash\)033[1;36m"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}warning"{}}:\ \textcolor{stringliteral}{"{}\(\backslash\)033[1;33m"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}error"{}}:\ \textcolor{stringliteral}{"{}\(\backslash\)033[1;31m"{}}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{Printing_8py_source_l00011}{11}} of file \mbox{\hyperlink{Printing_8py_source}{Printing.\+py}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/term/\mbox{\hyperlink{Printing_8py}{Printing.\+py}}\end{DoxyCompactItemize}

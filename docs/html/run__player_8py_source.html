@@ -81,7 +81,15 @@ $(document).ready(function() { init_codefold(0); });
   <div class="headertitle"><div class="title">run_player.py</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="run__player_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="namespacerun__player.html">    1</a></span> </div>
+<a href="run__player_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="namespacerun__player.html">    1</a></span><span class="keyword">from</span> term.Booting <span class="keyword">import</span> Booting</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">from</span> agent.Agent <span class="keyword">import</span> Agent</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="namespacerun__player.html#a62720235efdd11d187c3781338cdff28">    4</a></span>boot = <a class="code hl_namespace" href="namespaceBooting.html">Booting</a>()</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="namespacerun__player.html#a5513f09b126bbbd52906891cffb6c7db">    5</a></span>if_debug_mode = boot.options[-1][1] == <span class="stringliteral">&#39;1&#39;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="namespacerun__player.html#a088364a9433d925ddd2fe40722221bce">    7</a></span>player = <a class="code hl_namespace" href="namespaceAgent.html">Agent</a>(boot.options)</div>
+<div class="ttc" id="anamespaceAgent_html"><div class="ttname"><a href="namespaceAgent.html">Agent</a></div><div class="ttdef"><b>Definition</b> <a href="Agent_8py_source.html#l00001">Agent.py:1</a></div></div>
+<div class="ttc" id="anamespaceBooting_html"><div class="ttname"><a href="namespaceBooting.html">Booting</a></div><div class="ttdef"><b>Definition</b> <a href="Booting_8py_source.html#l00001">Booting.py:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
