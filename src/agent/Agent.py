@@ -14,8 +14,15 @@ class Agent(BaseAgent):
         @param creation_options Lista de Parâmetros de Criação de Agente
         @details
         Parâmetros presentes em `creation_options`:
-            -
-            -
+            - IP Server
+            - Porta de Agente
+            - Porta de Monitor
+            - Nome do time
+            - Número de Uniforme
+            - Tipo de Robô
+            - Tiro livre Penâlti
+            - Proxy
+            - Modo de Debug
         """
 
         super().__init__(creation_options)

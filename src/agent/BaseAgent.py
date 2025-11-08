@@ -4,6 +4,7 @@
 """
 from abc import ABC, abstractmethod # para conseguirmos criar classes abstratas em Python
 from communication.ServerComm import ServerComm
+from environment.World import World
 
 class BaseAgent(ABC):
     """
@@ -16,7 +17,7 @@ class BaseAgent(ABC):
         classes mínimas para cada agente.
         @param creation_options Lista de Parâmetros de Criação de Agente
         """
-
+        self.world = World(creation_options)
         self.scom = ServerComm(creation_options)
         # Chamaremos os construtores mínimos conforme formos criando-os
 

@@ -29,7 +29,7 @@ class Booting:
             Printing.IF_IN_DEBUG = False
 
     @staticmethod
-    def get_team_params() -> list[list[str]]:
+    def get_team_params() -> list[list[str | int]]:
         """
         @brief Verifica existência de arquivo de parâmetros de time, caso não exista, usará o default.
         @details
@@ -37,30 +37,37 @@ class Booting:
         @return
         """
 
-        if os.path.exists("config_team_params.txt"):
+        if os.path.exists("src/config_team_params.txt"):
             with open(
-                    "config_team_params.txt",
+                    "src/config_team_params.txt",
                     "r"
             ) as file_team_params:
-                return [
+                config_team_params: list[list[str | int]] =  [
                     string_tupla.split(",") for string_tupla in file_team_params.read().split("\n")[:-1]
                 ]
 
+                for idx in range(0, len(config_team_params)):
+                    # Somente o IP Server e Team Name são palavras
+                    if idx not in {0, 3}:
+                        config_team_params[idx][1] = int(config_team_params[idx][1])
+
+
+
         config_team_params = [
             ["IP Server",       "localhost"],
-            ["Agent Port",      "3100"], # Onde nos conectaremos com rcssserver3d
-            ["Monitor Port",    "3200"], # Onde nos conectaremos com Roboviz
+            ["Agent Port",      3100], # Onde nos conectaremos com rcssserver3d
+            ["Monitor Port",    3200], # Onde nos conectaremos com Roboviz
             ["Team Name",       "RoboIME"],
-            ["Uniform Number",  '1'],
-            ["Robot Type",      '1'],
-            ["Penalty Shootout",'0'],
-            ["MagmaFatProxy",   '0'],
-            ["Debug Mode",      '1']
+            ["Uniform Number",  1],
+            ["Robot Type",      1],
+            ["Penalty Shootout", 0],
+            ["MagmaFatProxy",   0],
+            ["Debug Mode",      1]
         ]
 
         # E criamos o arquivo
         with open(
-            "config_team_params.txt",
+            "src/config_team_params.txt",
             "w+"
         ) as file_team_params:
             for doc, value in config_team_params:
