@@ -7,34 +7,50 @@ Responsável pela comunicação com servidor.
 
 
 
-Collaboration diagram for Server\+Comm.\+Server\+Comm\+:
-\nopagebreak
+Collaboration diagram for Server\+Comm.\+Server\+Comm\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=221pt]{classServerComm_1_1ServerComm__coll__graph}
+\includegraphics[width=237pt]{classServerComm_1_1ServerComm__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classServerComm_1_1ServerComm_ae5dd90a5e0a3a22849c0984338c3145c}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]} creation\+\_\+options)
+\mbox{\hyperlink{classServerComm_1_1ServerComm_a7b2c3ac191e82fbad62fc7f46ccd7774}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]} creation\+\_\+options, list other\+\_\+players)
 \begin{DoxyCompactList}\small\item\em Construtor da classe, inicializando buffers e a conexão de cada agente com servidor. \end{DoxyCompactList}\item 
 None \mbox{\hyperlink{classServerComm_1_1ServerComm_a1b9474476d8ee333cb18da1fd0fc0d5e}{send\+\_\+immediate}} (self, bytes message)
 \begin{DoxyCompactList}\small\item\em Envia uma mensagem instantânea ao servidor, verificando se a conexão continua ativa. \end{DoxyCompactList}\item 
 None \mbox{\hyperlink{classServerComm_1_1ServerComm_a7f0a7e6253dddebe1a09f2da60b1bf93}{receive}} (self)
-\begin{DoxyCompactList}\small\item\em Receberá informações diretamente do servidor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Receberá informações diretamente do servidor, fazendo todas as verificações necessárias. \end{DoxyCompactList}\item 
+None \mbox{\hyperlink{classServerComm_1_1ServerComm_af3563dfc76d39e126b055087ac0d4a76}{commit}} (self, bytes message)
+\begin{DoxyCompactList}\small\item\em Responsável por adicionar uma nova mensagem à fila de mensagens. \end{DoxyCompactList}\item 
+None \mbox{\hyperlink{classServerComm_1_1ServerComm_a03acb02f9a555a932ca0c60a68db1c83}{close}} (self)
+\begin{DoxyCompactList}\small\item\em Responsável por fazer o encerramento dos canais de comunicação. \end{DoxyCompactList}\item 
+None \mbox{\hyperlink{classServerComm_1_1ServerComm_aa47f79379bf0c17d022877df51a52aea}{send}} (self)
+\begin{DoxyCompactList}\small\item\em Enviará ao servidor todas as mensagens commitadas. \end{DoxyCompactList}\item 
+None \mbox{\hyperlink{classServerComm_1_1ServerComm_a30794c164c48e9e70d32cee547d819ef}{clear\+\_\+queue}} (self)
+\begin{DoxyCompactList}\small\item\em Limpará a fila de commits. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classServerComm_1_1ServerComm_a54d5fac6275bd90ba504fe6134d3b282}{commit\+\_\+beam}} (self, list vector\+\_\+position2d, float rotation)
+\begin{DoxyCompactList}\small\item\em Comando de beam oficial do agente. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classServerComm_1_1ServerComm_a97d2c1585ac4063ef4eadb507cbc5543}{BUFFER\+\_\+\+SIZE}}
+\mbox{\hyperlink{classServerComm_1_1ServerComm_aa292919f19c8b6856cd03f4300d1fd0e}{buffer\+\_\+size}}
 \item 
-\mbox{\hyperlink{classServerComm_1_1ServerComm_a372c3ac974f09e2c044e647b81b07e40}{BUFFER}}
+\mbox{\hyperlink{classServerComm_1_1ServerComm_a351a1f39cd94cea4fa27bcf10eff8bb2}{buffer}}
 \item 
 \mbox{\hyperlink{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26}{socket}}
 \item 
-\mbox{\hyperlink{classServerComm_1_1ServerComm_aa1e25522281cdc809143858da6323491}{num}}
+\mbox{\hyperlink{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}{message\+\_\+queue}}
+\item 
+\mbox{\hyperlink{classServerComm_1_1ServerComm_a677354d386da70d9ced7355feb458a42}{unum}}
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+None \mbox{\hyperlink{classServerComm_1_1ServerComm_aa0379beec0138bd13f1868446a0a3adc}{\+\_\+\+\_\+receive\+\_\+async}} (self, list other\+\_\+players)
+\begin{DoxyCompactList}\small\item\em Responsável por esperar resposta do servidor de forma assíncrona, sem impedir fluxo de execução. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -45,16 +61,21 @@ Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00010}{10}} of file \
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classServerComm_1_1ServerComm_ae5dd90a5e0a3a22849c0984338c3145c}\label{classServerComm_1_1ServerComm_ae5dd90a5e0a3a22849c0984338c3145c} 
+\Hypertarget{classServerComm_1_1ServerComm_a7b2c3ac191e82fbad62fc7f46ccd7774}\label{classServerComm_1_1ServerComm_a7b2c3ac191e82fbad62fc7f46ccd7774} 
 \index{ServerComm.ServerComm@{ServerComm.ServerComm}!\_\_init\_\_@{\_\_init\_\_}}
 \index{\_\_init\_\_@{\_\_init\_\_}!ServerComm.ServerComm@{ServerComm.ServerComm}}
 \doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]}}]{creation\+\_\+options }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]}}]{creation\+\_\+options,  }\item[{list}]{other\+\_\+players }\end{DoxyParamCaption})}
 
 
 
 Construtor da classe, inicializando buffers e a conexão de cada agente com servidor. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em creation\+\_\+options} & Lista de parâmetros de criação, self ainda não foi incluído na lista. \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00015}{15}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
@@ -62,6 +83,93 @@ Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00015}{15}} of file \
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classServerComm_1_1ServerComm_aa0379beec0138bd13f1868446a0a3adc}\label{classServerComm_1_1ServerComm_aa0379beec0138bd13f1868446a0a3adc} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!\_\_receive\_async@{\_\_receive\_async}}
+\index{\_\_receive\_async@{\_\_receive\_async}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{\_\_receive\_async()}{\_\_receive\_async()}}
+{\footnotesize\ttfamily  None Server\+Comm.\+Server\+Comm.\+\_\+\+\_\+receive\+\_\+async (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{list}]{other\+\_\+players }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Responsável por esperar resposta do servidor de forma assíncrona, sem impedir fluxo de execução. 
+
+Essa função foi criada com o único próposito de impedir que a espera por resposta do servidor interrompa o fluxo de execução. Não deve ser executada posteriormente. 
+\begin{DoxyParams}{Parameters}
+{\em other\+\_\+players} & Lista de jogadores de mesmo time presentes na partida \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00132}{132}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+\Hypertarget{classServerComm_1_1ServerComm_a30794c164c48e9e70d32cee547d819ef}\label{classServerComm_1_1ServerComm_a30794c164c48e9e70d32cee547d819ef} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!clear\_queue@{clear\_queue}}
+\index{clear\_queue@{clear\_queue}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{clear\_queue()}{clear\_queue()}}
+{\footnotesize\ttfamily  None Server\+Comm.\+Server\+Comm.\+clear\+\_\+queue (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Limpará a fila de commits. 
+
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00202}{202}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+\Hypertarget{classServerComm_1_1ServerComm_a03acb02f9a555a932ca0c60a68db1c83}\label{classServerComm_1_1ServerComm_a03acb02f9a555a932ca0c60a68db1c83} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!close@{close}}
+\index{close@{close}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily  None Server\+Comm.\+Server\+Comm.\+close (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Responsável por fazer o encerramento dos canais de comunicação. 
+
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00176}{176}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+\Hypertarget{classServerComm_1_1ServerComm_af3563dfc76d39e126b055087ac0d4a76}\label{classServerComm_1_1ServerComm_af3563dfc76d39e126b055087ac0d4a76} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!commit@{commit}}
+\index{commit@{commit}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}}
+{\footnotesize\ttfamily  None Server\+Comm.\+Server\+Comm.\+commit (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{bytes}]{message }\end{DoxyParamCaption})}
+
+
+
+Responsável por adicionar uma nova mensagem à fila de mensagens. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & String em bytes a ser adicionada à fila \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00168}{168}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+\Hypertarget{classServerComm_1_1ServerComm_a54d5fac6275bd90ba504fe6134d3b282}\label{classServerComm_1_1ServerComm_a54d5fac6275bd90ba504fe6134d3b282} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!commit\_beam@{commit\_beam}}
+\index{commit\_beam@{commit\_beam}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{commit\_beam()}{commit\_beam()}}
+{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+commit\+\_\+beam (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{list}]{vector\+\_\+position2d,  }\item[{float}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Comando de beam oficial do agente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector\+\_\+position2d} & Sequência de dois valores, x e y finais do agente \\
+\hline
+{\em rotation} & Valor de rotação a ser dado ao robô \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00209}{209}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
 \Hypertarget{classServerComm_1_1ServerComm_a7f0a7e6253dddebe1a09f2da60b1bf93}\label{classServerComm_1_1ServerComm_a7f0a7e6253dddebe1a09f2da60b1bf93} 
 \index{ServerComm.ServerComm@{ServerComm.ServerComm}!receive@{receive}}
 \index{receive@{receive}!ServerComm.ServerComm@{ServerComm.ServerComm}}
@@ -70,11 +178,25 @@ Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00015}{15}} of file \
 
 
 
-Receberá informações diretamente do servidor. 
+Receberá informações diretamente do servidor, fazendo todas as verificações necessárias. 
 
 
 
-Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00077}{77}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00083}{83}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+\Hypertarget{classServerComm_1_1ServerComm_aa47f79379bf0c17d022877df51a52aea}\label{classServerComm_1_1ServerComm_aa47f79379bf0c17d022877df51a52aea} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!send@{send}}
+\index{send@{send}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily  None Server\+Comm.\+Server\+Comm.\+send (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Enviará ao servidor todas as mensagens commitadas. 
+
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00183}{183}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
 
 \Hypertarget{classServerComm_1_1ServerComm_a1b9474476d8ee333cb18da1fd0fc0d5e}\label{classServerComm_1_1ServerComm_a1b9474476d8ee333cb18da1fd0fc0d5e} 
 \index{ServerComm.ServerComm@{ServerComm.ServerComm}!send\_immediate@{send\_immediate}}
@@ -86,42 +208,47 @@ Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00077}{77}} of file \
 
 Envia uma mensagem instantânea ao servidor, verificando se a conexão continua ativa. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em message} & String em forma de bytes para ser transmitida\\
+\hline
+\end{DoxyParams}
 Coloca-\/se na frente uma informação de tamanho da mensagem dentro de 4 bytes. 
 
-Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00063}{63}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00068}{68}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
 
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classServerComm_1_1ServerComm_a372c3ac974f09e2c044e647b81b07e40}\label{classServerComm_1_1ServerComm_a372c3ac974f09e2c044e647b81b07e40} 
-\index{ServerComm.ServerComm@{ServerComm.ServerComm}!BUFFER@{BUFFER}}
-\index{BUFFER@{BUFFER}!ServerComm.ServerComm@{ServerComm.ServerComm}}
-\doxysubsubsection{\texorpdfstring{BUFFER}{BUFFER}}
-{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+BUFFER}
+\Hypertarget{classServerComm_1_1ServerComm_a351a1f39cd94cea4fa27bcf10eff8bb2}\label{classServerComm_1_1ServerComm_a351a1f39cd94cea4fa27bcf10eff8bb2} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!buffer@{buffer}}
+\index{buffer@{buffer}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+buffer}
+
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00023}{23}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+\Hypertarget{classServerComm_1_1ServerComm_aa292919f19c8b6856cd03f4300d1fd0e}\label{classServerComm_1_1ServerComm_aa292919f19c8b6856cd03f4300d1fd0e} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!buffer\_size@{buffer\_size}}
+\index{buffer\_size@{buffer\_size}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{buffer\_size}{buffer\_size}}
+{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+buffer\+\_\+size}
 
 
 
 Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00022}{22}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
 
-\Hypertarget{classServerComm_1_1ServerComm_a97d2c1585ac4063ef4eadb507cbc5543}\label{classServerComm_1_1ServerComm_a97d2c1585ac4063ef4eadb507cbc5543} 
-\index{ServerComm.ServerComm@{ServerComm.ServerComm}!BUFFER\_SIZE@{BUFFER\_SIZE}}
-\index{BUFFER\_SIZE@{BUFFER\_SIZE}!ServerComm.ServerComm@{ServerComm.ServerComm}}
-\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE}{BUFFER\_SIZE}}
-{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+BUFFER\+\_\+\+SIZE}
+\Hypertarget{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}\label{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!message\_queue@{message\_queue}}
+\index{message\_queue@{message\_queue}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{message\_queue}{message\_queue}}
+{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+message\+\_\+queue}
 
 
 
-Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00021}{21}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
-
-\Hypertarget{classServerComm_1_1ServerComm_aa1e25522281cdc809143858da6323491}\label{classServerComm_1_1ServerComm_aa1e25522281cdc809143858da6323491} 
-\index{ServerComm.ServerComm@{ServerComm.ServerComm}!num@{num}}
-\index{num@{num}!ServerComm.ServerComm@{ServerComm.ServerComm}}
-\doxysubsubsection{\texorpdfstring{num}{num}}
-{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+num}
-
-
-
-Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00029}{29}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00031}{31}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
 
 \Hypertarget{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26}\label{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26} 
 \index{ServerComm.ServerComm@{ServerComm.ServerComm}!socket@{socket}}
@@ -131,7 +258,17 @@ Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00029}{29}} of file \
 
 
 
-Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00023}{23}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00024}{24}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
+
+\Hypertarget{classServerComm_1_1ServerComm_a677354d386da70d9ced7355feb458a42}\label{classServerComm_1_1ServerComm_a677354d386da70d9ced7355feb458a42} 
+\index{ServerComm.ServerComm@{ServerComm.ServerComm}!unum@{unum}}
+\index{unum@{unum}!ServerComm.ServerComm@{ServerComm.ServerComm}}
+\doxysubsubsection{\texorpdfstring{unum}{unum}}
+{\footnotesize\ttfamily Server\+Comm.\+Server\+Comm.\+unum}
+
+
+
+Definition at line \mbox{\hyperlink{ServerComm_8py_source_l00032}{32}} of file \mbox{\hyperlink{ServerComm_8py_source}{Server\+Comm.\+py}}.
 
 
 

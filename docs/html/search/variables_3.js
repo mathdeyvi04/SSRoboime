@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['options_0',['options',['../classBooting_1_1Booting.html#aca4bc452e914225c33db9cabe797e611',1,'Booting::Booting']]]
+  ['if_5fin_5fdebug_0',['IF_IN_DEBUG',['../classPrinting_1_1Printing.html#a3e57cd52a596e066d9f0ba1ce9c03f39',1,'Printing::Printing']]]
 ];

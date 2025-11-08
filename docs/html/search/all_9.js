@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['receive_0',['receive',['../classServerComm_1_1ServerComm.html#a7f0a7e6253dddebe1a09f2da60b1bf93',1,'ServerComm::ServerComm']]],
-  ['run_5fplayer_1',['run_player',['../namespacerun__player.html',1,'']]],
-  ['run_5fplayer_2epy_2',['run_player.py',['../run__player_8py.html',1,'']]]
+  ['player_0',['player',['../namespacerun__player.html#a088364a9433d925ddd2fe40722221bce',1,'run_player']]],
+  ['players_1',['players',['../namespacerun__full__team.html#a3091250a934ba10b81fbb9898d14ad2a',1,'run_full_team']]],
+  ['print_5fmessage_2',['print_message',['../classPrinting_1_1Printing.html#a3692966025b767f48741d95e8f02b37c',1,'Printing::Printing']]],
+  ['printing_3',['printing',['../classPrinting_1_1Printing.html',1,'Printing.Printing'],['../namespacePrinting.html',1,'Printing']]],
+  ['printing_2epy_4',['Printing.py',['../Printing_8py.html',1,'']]]
 ];

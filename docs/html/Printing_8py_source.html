@@ -91,7 +91,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="stringliteral">    @brief Responsável pela comunicação usuário - terminal</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classPrinting_1_1Printing.html#a3e57cd52a596e066d9f0ba1ce9c03f39">   10</a></span>    IF_IN_DEBUG = <span class="keyword">False</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classPrinting_1_1Printing.html#a3e57cd52a596e066d9f0ba1ce9c03f39">   10</a></span>    IF_IN_DEBUG = <span class="keyword">True</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classPrinting_1_1Printing.html#ad999cc214dbf7c5c684da952fc0818cd">   11</a></span>    TABLE_COLORS = {</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="stringliteral">&quot;info&quot;</span>: <span class="stringliteral">&quot;\033[1;36m&quot;</span>,</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="stringliteral">&quot;warning&quot;</span>: <span class="stringliteral">&quot;\033[1;33m&quot;</span>,</div>
@@ -131,7 +131,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                <span class="keywordflow">return</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        print(message, end=<span class="stringliteral">&quot;&quot;</span>, flush=<span class="keyword">True</span>)</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        print(<span class="stringliteral">&quot;\033[0m&quot;</span>, flush=<span class="keyword">True</span>)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        print(<span class="stringliteral">&quot;\033[0m&quot;</span>, flush=<span class="keyword">True</span>, end=<span class="stringliteral">&quot;&quot;</span>)</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>

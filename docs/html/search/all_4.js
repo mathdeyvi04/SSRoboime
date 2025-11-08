@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['get_5fteam_5fparams_0',['get_team_params',['../classBooting_1_1Booting.html#a280873b90927dea4e0b5b1d0ed33b56c',1,'Booting::Booting']]]
+  ['flags_5fcorners_5fpos_0',['FLAGS_CORNERS_POS',['../classWorld_1_1World.html#abbe85a293a619fb43a281b8f016f32ac',1,'World::World']]],
+  ['flags_5fposts_5fpos_1',['FLAGS_POSTS_POS',['../classWorld_1_1World.html#abca8865bdfda1bcbe6a6844f00f870c0',1,'World::World']]]
 ];

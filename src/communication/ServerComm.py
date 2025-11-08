@@ -12,23 +12,24 @@ class ServerComm:
     @brief Responsável pela comunicação com servidor.
     """
 
-    def __init__(self, creation_options: list[list[str]]):
+    def __init__(self, creation_options: list[list[str]], other_players: list):
         """
         @brief Construtor da classe, inicializando buffers e a conexão de cada agente com servidor.
+        @param creation_options Lista de parâmetros de criação, self ainda não foi incluído na lista.
         """
 
         # Características da comunicação
-        self.buffer_size = 8192 # Posteriormente, devemos analisar se realmente vale a pena ter um buffer com este comprimento
+        self.buffer_size = 4000 # Posteriormente, devemos analisar se realmente vale a pena ter um buffer com este comprimento
         self.buffer = bytearray(self.buffer_size)
         self.socket = socket.socket(
                                     socket.AF_INET,
                                     socket.SOCK_STREAM # TCP
                                     )
+        self.socket.settimeout(2)
 
         # Características alheias
         self.message_queue = []
         self.unum = creation_options[4][1]
-
 
         # Fazemos a conexão com servidor
         Printing.print_message(f"Tentando conexão do jogador {self.unum}", "info")
@@ -46,21 +47,19 @@ class ServerComm:
                 sleep(1)
                 Printing.print_message(".")
 
-        Printing.print_message("Agente Conectado!", "info")
+        Printing.print_message("\tAgente Conectado!\n", "info")
 
-        robot_type = 1
         # Fazemos o pedido de criação de robô
         self.send_immediate(
-            f"(scene rsg/agent/nao/nao_hetero.rsg {robot_type})".encode()
+            f"(scene rsg/agent/nao/nao_hetero.rsg {creation_options[5][1]})".encode()
         )
-        # Talvez seja necessário implementarmos receive assíncronos para caso tenhamos mais
-        # de um jogador criado por vez
+        self.__receive_async(other_players)
         self.send_immediate(
             f"(init (unum {self.unum}) (teamname {creation_options[3][1]}))".encode()
         )
+        self.__receive_async(other_players)
 
         # Aqui podem ser realizados testes de execução de quaisquer funções do ServerComm
-
 
 
         # self.close()
@@ -79,7 +78,7 @@ class ServerComm:
                             len(message).to_bytes(4, byteorder="big") + message
                             )
         except BrokenPipeError:
-            Printing.print_message("Error: Socket foi fechado por rcssserver3d", "error")
+            Printing.print_message("Error: socket foi fechado por rcssserver3d", "error")
 
     def receive(self) -> None:
         """
@@ -111,8 +110,11 @@ class ServerComm:
                     raise ConnectionResetError
 
             except ConnectionResetError:
-                Printing.print_message("\nError: socket foi fechado pelo rcssserver3d.")
+                Printing.print_message("\nError: socket foi fechado pelo rcssserver3d.", "error")
                 exit()
+
+            except TimeoutError:
+                pass
 
             if len(
                 select( # Monitora sockets/arquivos para I/O
@@ -125,8 +127,43 @@ class ServerComm:
                 break
 
             # Como há algo para ser lido, devemos aplicar o parser
-
         print(self.buffer)
+
+    def __receive_async(self, other_players: list) -> None:
+        """
+        @brief Responsável por esperar resposta do servidor de forma assíncrona, sem impedir fluxo de execução
+        @details
+        Essa função foi criada com o único próposito de impedir que a espera por resposta
+        do servidor interrompa o fluxo de execução. Não deve ser executada posteriormente.
+        @param other_players Lista de jogadores de mesmo time presentes na partida
+        """
+
+
+        # Caso não haja ninguém além dele
+        if not other_players:
+            # Sem isso, um loop infinito existiria
+            return self.receive()
+
+        # Desabilitamos o bloqueio do fluxo de execução por espera de dados no socket
+        self.socket.setblocking(False)
+
+        while True:
+            try:
+                Printing.print_message(".")
+                self.receive()
+                break
+            except BlockingIOError:
+                pass
+
+            # Força que todos estejam em condições
+            for p in other_players:
+                p.scom.send_immediate(b"(syn)")
+
+        # Voltamos ao padrão
+        self.socket.setblocking(True)
+        Printing.print_message(f"Jogador {self.unum} recebeu do servidor assincronamente\n", "info")
+
+        return None
 
     def commit(self, message: bytes) -> None:
         """

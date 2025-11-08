@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['scom_0',['scom',['../classBaseAgent_1_1BaseAgent.html#a144d7d332f26886bc9885bce9c188f79',1,'BaseAgent::BaseAgent']]],
-  ['send_5fimmediate_1',['send_immediate',['../classServerComm_1_1ServerComm.html#a1b9474476d8ee333cb18da1fd0fc0d5e',1,'ServerComm::ServerComm']]],
-  ['servercomm_2',['servercomm',['../classServerComm_1_1ServerComm.html',1,'ServerComm.ServerComm'],['../namespaceServerComm.html',1,'ServerComm']]],
-  ['servercomm_2epy_3',['ServerComm.py',['../ServerComm_8py.html',1,'']]],
-  ['socket_4',['socket',['../classServerComm_1_1ServerComm.html#abe5f06e9acbe9fd206bf21fd24d26c26',1,'ServerComm::ServerComm']]]
+  ['receive_0',['receive',['../classServerComm_1_1ServerComm.html#a7f0a7e6253dddebe1a09f2da60b1bf93',1,'ServerComm::ServerComm']]],
+  ['robot_1',['robot',['../classRobot_1_1Robot.html',1,'Robot.Robot'],['../namespaceRobot.html',1,'Robot'],['../classWorld_1_1World.html#a0bd5688285a3be94b41d481f2379bf38',1,'World.World.robot']]],
+  ['robot_2epy_2',['Robot.py',['../Robot_8py.html',1,'']]],
+  ['run_5ffull_5fteam_3',['run_full_team',['../namespacerun__full__team.html',1,'']]],
+  ['run_5ffull_5fteam_2epy_4',['run_full_team.py',['../run__full__team_8py.html',1,'']]],
+  ['run_5fplayer_5',['run_player',['../namespacerun__player.html',1,'']]],
+  ['run_5fplayer_2epy_6',['run_player.py',['../run__player_8py.html',1,'']]]
 ];

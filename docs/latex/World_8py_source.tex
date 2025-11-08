@@ -1,0 +1,89 @@
+\doxysection{World.\+py}
+\hypertarget{World_8py_source}{}\label{World_8py_source}\index{src/environment/World.py@{src/environment/World.py}}
+\mbox{\hyperlink{World_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00001}\mbox{\hyperlink{namespaceWorld}{00001}}\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00002}00002\ \textcolor{stringliteral}{@file\ World.py}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00003}00003\ \textcolor{stringliteral}{@brief\ Implementação\ da\ Lógica\ de\ interpretação\ do\ Robô\ com\ o\ mundo\ ao\ seu\ redor}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00004}00004\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00006}00006\ \textcolor{keyword}{from}\ environment.Robot\ \textcolor{keyword}{import}\ Robot}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00008}\mbox{\hyperlink{classWorld_1_1World}{00008}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classWorld_1_1World}{World}}:}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00009}00009\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ @brief\ Responsável\ por\ agrupar\ o\ conjunto\ de\ lógicas\ de\ assimilação.}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00013}00013\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00014}\mbox{\hyperlink{classWorld_1_1World_ad9ce58742c49161e88223135317ee50e}{00014}}\ \ \ \ \ STEPTIME\ =\ 0.02\ \ \textcolor{comment}{\#\ Fixed\ step\ time}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00015}\mbox{\hyperlink{classWorld_1_1World_a34100d214258e099967f683f0ac5bffd}{00015}}\ \ \ \ \ STEPTIME\_MS\ =\ 20\ \ \textcolor{comment}{\#\ Fixed\ step\ time\ in\ milliseconds}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00016}\mbox{\hyperlink{classWorld_1_1World_a0e7d1969006a45ce22abc33fd1c3b5e8}{00016}}\ \ \ \ \ VISUALSTEP\ =\ 0.04\ \ \textcolor{comment}{\#\ Fixed\ visual\ step\ time}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00017}\mbox{\hyperlink{classWorld_1_1World_a07aa81311b73e33bd1db1c9cc391bb03}{00017}}\ \ \ \ \ VISUALSTEP\_MS\ =\ 40\ \ \textcolor{comment}{\#\ Fixed\ visual\ step\ time\ in\ milliseconds}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00019}00019\ \ \ \ \ \textcolor{comment}{\#\ Modos\ de\ Jogo\ a\ favor\ do\ nosso\ time}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00020}\mbox{\hyperlink{classWorld_1_1World_a4e318e8a47a34c8f4bf68b64a54e9b4c}{00020}}\ \ \ \ \ M\_OUR\_KICKOFF\ =\ 0}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00021}\mbox{\hyperlink{classWorld_1_1World_a66bc016a1554493557af41b5ad07a2b4}{00021}}\ \ \ \ \ M\_OUR\_KICK\_IN\ =\ 1}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00022}\mbox{\hyperlink{classWorld_1_1World_a7ebc6cf9583772339ed581a6031be243}{00022}}\ \ \ \ \ M\_OUR\_CORNER\_KICK\ =\ 2}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00023}\mbox{\hyperlink{classWorld_1_1World_a5e593e1d64a2bab16c344309cd103446}{00023}}\ \ \ \ \ M\_OUR\_GOAL\_KICK\ =\ 3}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00024}\mbox{\hyperlink{classWorld_1_1World_a23c80b46edb6475c50a3fa827a74e97c}{00024}}\ \ \ \ \ M\_OUR\_FREE\_KICK\ =\ 4}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00025}\mbox{\hyperlink{classWorld_1_1World_a576b600445ea73bb66de74d569685d49}{00025}}\ \ \ \ \ M\_OUR\_PASS\ =\ 5}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00026}\mbox{\hyperlink{classWorld_1_1World_ac8b41557736c5804eb7bd5c5ff284056}{00026}}\ \ \ \ \ M\_OUR\_DIR\_FREE\_KICK\ =\ 6}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00027}\mbox{\hyperlink{classWorld_1_1World_a827cfbda9a1e8ec069b7981c6ad9a1d2}{00027}}\ \ \ \ \ M\_OUR\_GOAL\ =\ 7}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00028}\mbox{\hyperlink{classWorld_1_1World_a6572f9279797fbf7df8fea79c30725ca}{00028}}\ \ \ \ \ M\_OUR\_OFFSIDE\ =\ 8}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00030}00030\ \ \ \ \ \textcolor{comment}{\#\ Modos\ de\ jogo\ a\ favor\ deles}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00031}\mbox{\hyperlink{classWorld_1_1World_a5741046607da55eb0e5f0b0df079c148}{00031}}\ \ \ \ \ M\_THEIR\_KICKOFF\ =\ 9}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00032}\mbox{\hyperlink{classWorld_1_1World_a9a7cc19570773857076490da6eb8c595}{00032}}\ \ \ \ \ M\_THEIR\_KICK\_IN\ =\ 10}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00033}\mbox{\hyperlink{classWorld_1_1World_a93a6bce865cc011d072a17eac5cbc03b}{00033}}\ \ \ \ \ M\_THEIR\_CORNER\_KICK\ =\ 11}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00034}\mbox{\hyperlink{classWorld_1_1World_a98e7761065f57a31bce2ecd95c57c3b3}{00034}}\ \ \ \ \ M\_THEIR\_GOAL\_KICK\ =\ 12}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00035}\mbox{\hyperlink{classWorld_1_1World_a3bdefd17f4a7972fc064d04ea216bee8}{00035}}\ \ \ \ \ M\_THEIR\_FREE\_KICK\ =\ 13}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00036}\mbox{\hyperlink{classWorld_1_1World_a1ea76257fb97beefbe10fa0f28423e01}{00036}}\ \ \ \ \ M\_THEIR\_PASS\ =\ 14}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00037}\mbox{\hyperlink{classWorld_1_1World_a871f2ad189abcd5a8a4acccf99b6ce89}{00037}}\ \ \ \ \ M\_THEIR\_DIR\_FREE\_KICK\ =\ 15}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00038}\mbox{\hyperlink{classWorld_1_1World_adf530b38b4db25e467302c3ee19e6fb9}{00038}}\ \ \ \ \ M\_THEIR\_GOAL\ =\ 16}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00039}\mbox{\hyperlink{classWorld_1_1World_a00115863b615ec1d4b5f7ccabcfbce56}{00039}}\ \ \ \ \ M\_THEIR\_OFFSIDE\ =\ 17}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00041}00041\ \ \ \ \ \textcolor{comment}{\#\ Modos\ de\ jogo\ neutros}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00042}\mbox{\hyperlink{classWorld_1_1World_a5b887d67c9c2030a2786f00789287fa4}{00042}}\ \ \ \ \ M\_BEFORE\_KICKOFF\ =\ 18}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00043}\mbox{\hyperlink{classWorld_1_1World_aa99c098a78f23f55ce26212e900dd487}{00043}}\ \ \ \ \ M\_GAME\_OVER\ =\ 19}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00044}\mbox{\hyperlink{classWorld_1_1World_ac1d60e255ea2791acee6fe9fa2364e60}{00044}}\ \ \ \ \ M\_PLAY\_ON\ =\ 20}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00046}00046\ \ \ \ \ \textcolor{comment}{\#\ Modos\ de\ jogo\ de\ grupo}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00047}\mbox{\hyperlink{classWorld_1_1World_a950f0617fc3dd11048d8aa71a585b8f7}{00047}}\ \ \ \ \ MG\_OUR\_KICK\ =\ 0}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00048}\mbox{\hyperlink{classWorld_1_1World_a38542cc0c4d6fc08cf9b9b78c52ca235}{00048}}\ \ \ \ \ MG\_THEIR\_KICK\ =\ 1}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00049}\mbox{\hyperlink{classWorld_1_1World_abf4bfcd0acb4a1bd34b41f01aac77f22}{00049}}\ \ \ \ \ MG\_ACTIVE\_BEAM\ =\ 2}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00050}\mbox{\hyperlink{classWorld_1_1World_af291889e1fde40d45b5a5fd5add087b9}{00050}}\ \ \ \ \ MG\_PASSIVE\_BEAM\ =\ 3}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00051}\mbox{\hyperlink{classWorld_1_1World_a2661093c8eba8064927338f5ffb5ff89}{00051}}\ \ \ \ \ MG\_OTHER\ =\ 4\ \ \textcolor{comment}{\#\ play\ on,\ game\ over}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00053}00053\ \ \ \ \ \textcolor{comment}{\#\ Posições\ de\ Pontos\ Específicos\ no\ Jogo}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00054}\mbox{\hyperlink{classWorld_1_1World_abbe85a293a619fb43a281b8f016f32ac}{00054}}\ \ \ \ \ FLAGS\_CORNERS\_POS\ =\ ((-\/15,\ -\/10,\ 0),\ (-\/15,\ +10,\ 0),\ (+15,\ -\/10,\ 0),\ (+15,\ +10,\ 0))}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00055}\mbox{\hyperlink{classWorld_1_1World_abca8865bdfda1bcbe6a6844f00f870c0}{00055}}\ \ \ \ \ FLAGS\_POSTS\_POS\ =\ ((-\/15,\ -\/1.05,\ 0.8),\ (-\/15,\ +1.05,\ 0.8),\ (+15,\ -\/1.05,\ 0.8),\ (+15,\ +1.05,\ 0.8))}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00057}\mbox{\hyperlink{classWorld_1_1World_a264a1fb4d9d3ef2f6e487a3aed44ab1a}{00057}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classWorld_1_1World_a264a1fb4d9d3ef2f6e487a3aed44ab1a}{\_\_init\_\_}}(self,\ creation\_options:\ list[list[str]]):}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00059}00059\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Construtor\ de\ Classe\ inicializando\ sensores\ interpretativos}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00060}00060\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Atributos\ Inerentes\ à\ interpretação\ do\ robô\ para\ com\ o\ mundo}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Há\ muitas\ definições\ aqui,\ como\ time\_server,\ time\_game}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Entretanto,\ há\ peças\ importantes}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00068}\mbox{\hyperlink{classWorld_1_1World_a0bd5688285a3be94b41d481f2379bf38}{00068}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classWorld_1_1World_a0bd5688285a3be94b41d481f2379bf38}{robot}}\ =\ \mbox{\hyperlink{namespaceRobot}{Robot}}(}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ creation\_options[4][1],\ \textcolor{comment}{\#\ Uniforme\ do\ Robô}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ creation\_options[5][1]\ \ \textcolor{comment}{\#\ Tipo\ do\ robô}}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{World_8py_source_l00083}00083\ }
+
+\end{DoxyCode}

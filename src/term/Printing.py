@@ -7,7 +7,7 @@ class Printing:
     """
     @brief Responsável pela comunicação usuário - terminal
     """
-    IF_IN_DEBUG = False
+    IF_IN_DEBUG = True
     TABLE_COLORS = {
         "info": "\033[1;36m",
         "warning": "\033[1;33m",
@@ -46,7 +46,7 @@ class Printing:
                 return
 
         print(message, end="", flush=True)
-        print("\033[0m", flush=True)
+        print("\033[0m", flush=True, end="")
 
 
 
