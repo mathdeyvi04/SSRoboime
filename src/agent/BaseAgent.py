@@ -5,6 +5,7 @@
 from abc import ABC, abstractmethod # para conseguirmos criar classes abstratas em Python
 from communication.ServerComm import ServerComm
 from environment.World import World
+from agent.RobotPositionManager import RobotPositionManager
 
 class BaseAgent(ABC):
     """

@@ -14,6 +14,8 @@ class Booting:
         - Estabelece um arquivo de configurações default caso já não exista um.
     """
 
+    CONFIG_PATH = "./config_team_params.txt"
+
     def __init__(self):
         """
         @brief Responsável por chamar as inicializações mínimas.
@@ -37,9 +39,9 @@ class Booting:
         @return
         """
 
-        if os.path.exists("src/config_team_params.txt"):
+        if os.path.exists(Booting.CONFIG_PATH):
             with open(
-                    "src/config_team_params.txt",
+                    Booting.CONFIG_PATH,
                     "r"
             ) as file_team_params:
                 config_team_params: list[list[str | int]] =  [
@@ -67,7 +69,7 @@ class Booting:
 
         # E criamos o arquivo
         with open(
-            "src/config_team_params.txt",
+            Booting.CONFIG_PATH,
             "w+"
         ) as file_team_params:
             for doc, value in config_team_params:
