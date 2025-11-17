@@ -2,10 +2,10 @@
 @file BaseAgent.py
 @brief Implementação da classe de jogador base, que deve ser comum a todos os agentes.
 """
-from abc import ABC, abstractmethod # para conseguirmos criar classes abstratas em Python
+from abc import ABC  # para conseguirmos criar classes abstratas em Python
 from communication.ServerComm import ServerComm
 from environment.World import World
-from agent.RobotPositionManager import RobotPositionManager
+
 
 class BaseAgent(ABC):
     """

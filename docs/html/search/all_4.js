@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['flags_5fcorners_5fpos_0',['FLAGS_CORNERS_POS',['../classWorld_1_1World.html#abbe85a293a619fb43a281b8f016f32ac',1,'World::World']]],
-  ['flags_5fposts_5fpos_1',['FLAGS_POSTS_POS',['../classWorld_1_1World.html#abca8865bdfda1bcbe6a6844f00f870c0',1,'World::World']]]
+  ['destroy_0',['destroy',['../classRobotPositionManager_1_1RobotPositionManager.html#a962ead41ba3a2a3469cd177916c90456',1,'RobotPositionManager::RobotPositionManager']]],
+  ['draw_5fplayer_1',['draw_player',['../classRobotPositionManager_1_1RobotPositionManager.html#a780ee731e5bbe72447301c1d1bc980d7',1,'RobotPositionManager::RobotPositionManager']]]
 ];

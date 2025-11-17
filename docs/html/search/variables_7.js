@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['robot_0',['robot',['../classWorld_1_1World.html#a0bd5688285a3be94b41d481f2379bf38',1,'World::World']]]
+  ['nome_5fde_5fconfig_5fselecionada_0',['nome_de_config_selecionada',['../classRobotPositionManager_1_1RobotPositionManager.html#a83f1aced496776968ac9113a524637df',1,'RobotPositionManager::RobotPositionManager']]]
 ];

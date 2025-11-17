@@ -1,30 +1,4 @@
 var searchData=
 [
-  ['m_5fbefore_5fkickoff_0',['M_BEFORE_KICKOFF',['../classWorld_1_1World.html#a5b887d67c9c2030a2786f00789287fa4',1,'World::World']]],
-  ['m_5fgame_5fover_1',['M_GAME_OVER',['../classWorld_1_1World.html#aa99c098a78f23f55ce26212e900dd487',1,'World::World']]],
-  ['m_5four_5fcorner_5fkick_2',['M_OUR_CORNER_KICK',['../classWorld_1_1World.html#a7ebc6cf9583772339ed581a6031be243',1,'World::World']]],
-  ['m_5four_5fdir_5ffree_5fkick_3',['M_OUR_DIR_FREE_KICK',['../classWorld_1_1World.html#ac8b41557736c5804eb7bd5c5ff284056',1,'World::World']]],
-  ['m_5four_5ffree_5fkick_4',['M_OUR_FREE_KICK',['../classWorld_1_1World.html#a23c80b46edb6475c50a3fa827a74e97c',1,'World::World']]],
-  ['m_5four_5fgoal_5',['M_OUR_GOAL',['../classWorld_1_1World.html#a827cfbda9a1e8ec069b7981c6ad9a1d2',1,'World::World']]],
-  ['m_5four_5fgoal_5fkick_6',['M_OUR_GOAL_KICK',['../classWorld_1_1World.html#a5e593e1d64a2bab16c344309cd103446',1,'World::World']]],
-  ['m_5four_5fkick_5fin_7',['M_OUR_KICK_IN',['../classWorld_1_1World.html#a66bc016a1554493557af41b5ad07a2b4',1,'World::World']]],
-  ['m_5four_5fkickoff_8',['M_OUR_KICKOFF',['../classWorld_1_1World.html#a4e318e8a47a34c8f4bf68b64a54e9b4c',1,'World::World']]],
-  ['m_5four_5foffside_9',['M_OUR_OFFSIDE',['../classWorld_1_1World.html#a6572f9279797fbf7df8fea79c30725ca',1,'World::World']]],
-  ['m_5four_5fpass_10',['M_OUR_PASS',['../classWorld_1_1World.html#a576b600445ea73bb66de74d569685d49',1,'World::World']]],
-  ['m_5fplay_5fon_11',['M_PLAY_ON',['../classWorld_1_1World.html#ac1d60e255ea2791acee6fe9fa2364e60',1,'World::World']]],
-  ['m_5ftheir_5fcorner_5fkick_12',['M_THEIR_CORNER_KICK',['../classWorld_1_1World.html#a93a6bce865cc011d072a17eac5cbc03b',1,'World::World']]],
-  ['m_5ftheir_5fdir_5ffree_5fkick_13',['M_THEIR_DIR_FREE_KICK',['../classWorld_1_1World.html#a871f2ad189abcd5a8a4acccf99b6ce89',1,'World::World']]],
-  ['m_5ftheir_5ffree_5fkick_14',['M_THEIR_FREE_KICK',['../classWorld_1_1World.html#a3bdefd17f4a7972fc064d04ea216bee8',1,'World::World']]],
-  ['m_5ftheir_5fgoal_15',['M_THEIR_GOAL',['../classWorld_1_1World.html#adf530b38b4db25e467302c3ee19e6fb9',1,'World::World']]],
-  ['m_5ftheir_5fgoal_5fkick_16',['M_THEIR_GOAL_KICK',['../classWorld_1_1World.html#a98e7761065f57a31bce2ecd95c57c3b3',1,'World::World']]],
-  ['m_5ftheir_5fkick_5fin_17',['M_THEIR_KICK_IN',['../classWorld_1_1World.html#a9a7cc19570773857076490da6eb8c595',1,'World::World']]],
-  ['m_5ftheir_5fkickoff_18',['M_THEIR_KICKOFF',['../classWorld_1_1World.html#a5741046607da55eb0e5f0b0df079c148',1,'World::World']]],
-  ['m_5ftheir_5foffside_19',['M_THEIR_OFFSIDE',['../classWorld_1_1World.html#a00115863b615ec1d4b5f7ccabcfbce56',1,'World::World']]],
-  ['m_5ftheir_5fpass_20',['M_THEIR_PASS',['../classWorld_1_1World.html#a1ea76257fb97beefbe10fa0f28423e01',1,'World::World']]],
-  ['message_5fqueue_21',['message_queue',['../classServerComm_1_1ServerComm.html#ab978690c610469e0530774af4abc4b34',1,'ServerComm::ServerComm']]],
-  ['mg_5factive_5fbeam_22',['MG_ACTIVE_BEAM',['../classWorld_1_1World.html#abf4bfcd0acb4a1bd34b41f01aac77f22',1,'World::World']]],
-  ['mg_5fother_23',['MG_OTHER',['../classWorld_1_1World.html#a2661093c8eba8064927338f5ffb5ff89',1,'World::World']]],
-  ['mg_5four_5fkick_24',['MG_OUR_KICK',['../classWorld_1_1World.html#a950f0617fc3dd11048d8aa71a585b8f7',1,'World::World']]],
-  ['mg_5fpassive_5fbeam_25',['MG_PASSIVE_BEAM',['../classWorld_1_1World.html#af291889e1fde40d45b5a5fd5add087b9',1,'World::World']]],
-  ['mg_5ftheir_5fkick_26',['MG_THEIR_KICK',['../classWorld_1_1World.html#a38542cc0c4d6fc08cf9b9b78c52ca235',1,'World::World']]]
+  ['if_5fin_5fdebug_0',['IF_IN_DEBUG',['../classPrinting_1_1Printing.html#a3e57cd52a596e066d9f0ba1ce9c03f39',1,'Printing::Printing']]]
 ];

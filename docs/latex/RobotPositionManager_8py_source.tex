@@ -1,0 +1,410 @@
+\doxysection{Robot\+Position\+Manager.\+py}
+\hypertarget{RobotPositionManager_8py_source}{}\label{RobotPositionManager_8py_source}\index{src/utils/RobotPositionManager.py@{src/utils/RobotPositionManager.py}}
+\mbox{\hyperlink{RobotPositionManager_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00001}\mbox{\hyperlink{namespaceRobotPositionManager}{00001}}\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00002}00002\ \textcolor{stringliteral}{@file\ RobotPositionManager.py}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00003}00003\ \textcolor{stringliteral}{@brief\ Implementação\ de\ lógica\ organizadora\ de\ posições\ iniciais\ de\ partida.}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00004}00004\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00005}00005\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00006}00006\ \textcolor{keyword}{import}\ pickle}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00007}00007\ \textcolor{keyword}{import}\ tkinter\ \textcolor{keyword}{as}\ tk}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00008}00008\ \textcolor{keyword}{from}\ tkinter\ \textcolor{keyword}{import}\ ttk,\ simpledialog,\ messagebox}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00010}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager}{00010}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager}{RobotPositionManager}}(tk.Tk):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00011}00011\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ @brief\ Responsável\ por\ permitir\ ao\ usuário\ a\ criação\ de\ diversas\ configurações}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ de\ posições\ iniciais\ de\ partida.}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00014}00014\ \textcolor{stringliteral}{\ \ \ \ @details}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00015}00015\ \textcolor{stringliteral}{\ \ \ \ Focada\ em\ diversão\ e\ customização,\ gerencia\ um\ binário\ que\ é\ a\ representação\ de}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ dicionário\ de\ listas\ que\ contém\ as\ 11\ posições.}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ Por\ ter\ esse\ objetivo,\ não\ faz\ sentido\ que\ haja\ essa\ função\ na\ lógica\ geral\ dos\ agentes.}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00020}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1e054eb629f75a913096f9d217ce684a}{00020}}\ \ \ \ \ CONFIG\_POSITION\_PATH\ =\ \textcolor{stringliteral}{"{}../agent/config\_positions.pkl"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00023}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1b81e407299d8af7f7fd6d7d66457a2b}{00023}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1b81e407299d8af7f7fd6d7d66457a2b}{\_\_init\_\_}}(self):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Construtor\ da\ Classe,\ inicializa\ variáveis\ importantes,\ como\ o\ próprio\ dicionário.}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Iniciamos\ a\ interface}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ super().\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1b81e407299d8af7f7fd6d7d66457a2b}{\_\_init\_\_}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ self.title(\textcolor{stringliteral}{"{}RobotPositionManager"{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ self.geometry(\textcolor{stringliteral}{"{}900x750"{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Configurações\ já\ existentes}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00033}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a87688f830d2a184fe0eac16500bcdc45}{00033}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a87688f830d2a184fe0eac16500bcdc45}{config\_positions}}\ =\ RobotPositionManager.get\_config\_positions()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00034}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a83f1aced496776968ac9113a524637df}{00034}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a83f1aced496776968ac9113a524637df}{nome\_de\_config\_selecionada}}\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ -\/-\/-\/\ Constantes\ do\ Campo\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00037}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a7a10a9a5f824be15c1e8420705e3d092}{00037}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a7a10a9a5f824be15c1e8420705e3d092}{FIELD\_WIDTH}}\ =\ 30}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00038}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a90d9d041a473e443fc0a02da8cbb742c}{00038}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a90d9d041a473e443fc0a02da8cbb742c}{FIELD\_HEIGHT}}\ =\ 20}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00039}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a3405cd217f0096408b44f80a26f206b5}{00039}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a3405cd217f0096408b44f80a26f206b5}{GRID\_SCALE}}\ =\ 25\ \ \textcolor{comment}{\#\ Pixels\ por\ unidade\ de\ campo}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00040}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a603925ccebc0cdd7b3dc444724f36823}{00040}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a603925ccebc0cdd7b3dc444724f36823}{MAX\_JOGADORES}}\ =\ 11}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00041}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a74528c5d057b75ed9daf768cf84544f4}{00041}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a74528c5d057b75ed9daf768cf84544f4}{X\_MIN}}\ =\ -\/self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a7a10a9a5f824be15c1e8420705e3d092}{FIELD\_WIDTH}}\ /\ 2}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00042}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_af0fed2a3317ee5aeb9882278651b10b5}{00042}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_af0fed2a3317ee5aeb9882278651b10b5}{X\_MAX}}\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a7a10a9a5f824be15c1e8420705e3d092}{FIELD\_WIDTH}}\ /\ 2}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00043}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a65524df759b2592775c5e87cc7361212}{00043}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a65524df759b2592775c5e87cc7361212}{Y\_MIN}}\ =\ -\/self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a90d9d041a473e443fc0a02da8cbb742c}{FIELD\_HEIGHT}}\ /\ 2}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00044}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a2ad295faf61e5e540d3069fb3c28d973}{00044}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a2ad295faf61e5e540d3069fb3c28d973}{Y\_MAX}}\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a90d9d041a473e443fc0a02da8cbb742c}{FIELD\_HEIGHT}}\ /\ 2}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Variáveis\ de\ Estado}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00047}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a6f6b413b38e1859004477f9aafd44d06}{00047}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a6f6b413b38e1859004477f9aafd44d06}{posicoes\_atuais}}\ =\ []\ \textcolor{comment}{\#\ Lista\ de\ tuplas\ do\ grid\ atual}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00048}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a8eb697381c4de9bdb42b4e8ba9452f31}{00048}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a8eb697381c4de9bdb42b4e8ba9452f31}{marcadores\_jogadores}}\ =\ []\ \textcolor{comment}{\#\ Lista\ para\ rastrearmos\ nossos\ jogadores}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Apenas\ variáveis\ que\ serão\ utilizadas\ posteriormente}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00051}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{00051}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}\ =\ \textcolor{keywordtype}{None}\ \textcolor{comment}{\#\ Para\ organizarmos\ a\ tabela\ de\ configurações}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00052}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{00052}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00053}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_aa7a1d619ebddb1dfcb0521c81d23b0ec}{00053}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_aa7a1d619ebddb1dfcb0521c81d23b0ec}{canvas\_height}}\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a90d9d041a473e443fc0a02da8cbb742c}{FIELD\_HEIGHT}}\ *\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a3405cd217f0096408b44f80a26f206b5}{GRID\_SCALE}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00054}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a970c231d545bd4face1ae7d7fe526d1f}{00054}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a970c231d545bd4face1ae7d7fe526d1f}{canvas\_width}}\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a7a10a9a5f824be15c1e8420705e3d092}{FIELD\_WIDTH}}\ *\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a3405cd217f0096408b44f80a26f206b5}{GRID\_SCALE}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Disporemos\ as\ informações\ de\ forma\ inteligente}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a5abc2ec08e447eb93542e134ed2bfcc1}{criar\_widgets}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_af8be329626545d01b68af69689436540}{update\_table\_config}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00060}00060\ \ \ \ \ \textcolor{comment}{\#\ -\/-\/\ Métodos\ de\ Ajuda}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00061}00061\ \ \ \ \ \textcolor{preprocessor}{@staticmethod}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00062}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ad41b9ec648f300c603574b9a2884908e}{00062}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ad41b9ec648f300c603574b9a2884908e}{get\_config\_positions}}()\ -\/>\ dict[str,\ list[tuple]]:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Verificará\ existência\ do\ arquivo\ binário\ correspondente\ ao\ dicionário.}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @return\ Caso\ exista,\ o\ retornará\ restaurado.\ Caso\ não,\ retornará\ um\ dicionário\ vazio.}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ os.path.exists(RobotPositionManager.CONFIG\_POSITION\_PATH):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Caso\ exista,\ então\ devemos\ apenas\ restaurar}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(RobotPositionManager.CONFIG\_POSITION\_PATH,\ \textcolor{stringliteral}{"{}rb"{}})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pickle.load(f)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Logo,\ não\ existe}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{\textcolor{stringliteral}{"{}default"{}}:\ [(1,\ 2),\ (2,\ -\/3),\ (5,\ 4),\ (2,\ 2)],\ \textcolor{stringliteral}{"{}default\_1"{}}:\ [(1,\ 2),\ (2,\ 3),\ (5,\ 4),\ (2,\ 2)]\}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00076}00076\ \ \ \ \ \textcolor{preprocessor}{@staticmethod}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00077}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a28bce82d7c30aa8226411d94b792704c}{00077}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a28bce82d7c30aa8226411d94b792704c}{save\_config\_positions}}(dados:\ dict[str,\ list[tuple]])\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00079}00079\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ salvar\ uma\ estrutura\ de\ dados\ em\ arquivo\ binário}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00080}00080\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ dados\ Estrutura\ de\ dados\ a\ ser\ salva}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00081}00081\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ RobotPositionManager.CONFIG\_POSITION\_PATH,}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}wb"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Colocamos\ esse\ comentário\ já\ que\ estava\ dando\ erro\ no\ interpretador\ da\ IDE}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ pickle.dump(dados,\ f)\ \textcolor{comment}{\#\ type:\ ignore}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00090}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac9ec3b519d24c283a5c8856822219c12}{00090}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac9ec3b519d24c283a5c8856822219c12}{\_field\_to\_canvas}}(self,\ fx\_:\ float,\ fy\_:\ float)\ -\/>\ tuple:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ converter\ coordenadas\ do\ campo\ para\ pixels\ no\ canvas}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00093}00093\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ fx\_\ Coordenada\ real\ em\ x}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00094}00094\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ fy\_\ Coordenada\ real\ em\ y}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00095}00095\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @return\ Coordenadas\ corrigidas\ para\ o\ grid}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00096}00096\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ (fx\_\ -\/\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a74528c5d057b75ed9daf768cf84544f4}{X\_MIN}})\ *\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a3405cd217f0096408b44f80a26f206b5}{GRID\_SCALE}},}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ (self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a2ad295faf61e5e540d3069fb3c28d973}{Y\_MAX}}\ -\/\ fy\_)\ *\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a3405cd217f0096408b44f80a26f206b5}{GRID\_SCALE}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00102}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a5fd07c0ad1d60ee76b58d91268e4bcd4}{00102}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a5fd07c0ad1d60ee76b58d91268e4bcd4}{\_canvas\_to\_field}}(self,\ cx:\ int,\ cy:\ int)\ -\/>\ tuple:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Converterá\ o\ pixel\ clicado\ para\ o\ quadrado\ correspondente}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ cx\ Posição\ X\ do\ pixel}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ cy\ Posição\ Y\ do\ pixel}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @return\ tupla\ de\ posições\ reais}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00108}00108\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Converte\ pixel\ X\ para\ coordenada\ de\ campo}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00111}00111\ \ \ \ \ \ \ \ \ fx\_raw\ =\ (cx\ /\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a3405cd217f0096408b44f80a26f206b5}{GRID\_SCALE}})\ +\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a74528c5d057b75ed9daf768cf84544f4}{X\_MIN}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Converte\ pixel\ Y\ para\ coordenada\ de\ campo\ (invertendo\ a\ lógica)}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00114}00114\ \ \ \ \ \ \ \ \ fy\_raw\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a2ad295faf61e5e540d3069fb3c28d973}{Y\_MAX}}\ -\/\ (cy\ /\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a3405cd217f0096408b44f80a26f206b5}{GRID\_SCALE}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Arredonda\ para\ o\ 0.5\ mais\ próximo}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ fx\_rounded\ =\ round(fx\_raw\ *\ 2)\ /\ 2}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00118}00118\ \ \ \ \ \ \ \ \ fy\_rounded\ =\ round(fy\_raw\ *\ 2)\ /\ 2}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Garante\ que\ o\ clique\ (mesmo\ fora)\ se\ encaixe\ nos\ limites}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ max(self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a74528c5d057b75ed9daf768cf84544f4}{X\_MIN}},\ min(self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_af0fed2a3317ee5aeb9882278651b10b5}{X\_MAX}},\ fx\_rounded)),}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ max(self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a65524df759b2592775c5e87cc7361212}{Y\_MIN}},\ min(self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a2ad295faf61e5e540d3069fb3c28d973}{Y\_MAX}},\ fy\_rounded))}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00124}00124\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00126}00126\ \ \ \ \ \textcolor{comment}{\#\ -\/-\/\ Métodos\ de\ Interface}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00127}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a5abc2ec08e447eb93542e134ed2bfcc1}{00127}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a5abc2ec08e447eb93542e134ed2bfcc1}{criar\_widgets}}(self):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00129}00129\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Disporá\ os\ widgets\ da\ interface\ de\ forma\ inteligente,\ provendo\ informações\ úteis.}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00130}00130\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00132}00132\ \ \ \ \ \ \ \ \ upper\_frame\ =\ ttk.Frame(self)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ upper\_frame.pack(side=\textcolor{stringliteral}{"{}top"{}},\ fill=\textcolor{stringliteral}{"{}x"{}},\ padx=10,\ pady=10)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00135}00135\ \ \ \ \ \ \ \ \ config\_frame\ =\ ttk.Frame(upper\_frame)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ config\_frame.pack(side=\textcolor{stringliteral}{"{}left"{}},\ fill=\textcolor{stringliteral}{"{}both"{}},\ expand=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Disporemos\ a\ tabela}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}\ =\ ttk.Treeview(config\_frame,\ columns=(\textcolor{stringliteral}{"{}Nome"{}},\ \textcolor{stringliteral}{"{}Configuração"{}}),\ show=\textcolor{stringliteral}{"{}headings"{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.heading(\textcolor{stringliteral}{"{}Nome"{}},\ text=\textcolor{stringliteral}{"{}Nome"{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00141}00141\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.heading(\textcolor{stringliteral}{"{}Configuração"{}},\ text=\textcolor{stringliteral}{"{}Configuração"{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00142}00142\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.column(\textcolor{stringliteral}{"{}Nome"{}},\ width=50,\ anchor=\textcolor{stringliteral}{"{}center"{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.column(\textcolor{stringliteral}{"{}Configuração"{}},\ width=250)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00145}00145\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.pack(side=\textcolor{stringliteral}{"{}left"{}},\ fill=\textcolor{stringliteral}{"{}both"{}},\ expand=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00146}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_aeb39702bf4fcd12dde1bb681a7493bdd}{00146}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.bind(\textcolor{stringliteral}{"{}<Double-\/1>"{}},\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_aeb39702bf4fcd12dde1bb681a7493bdd}{on\_double\_click\_in\_configs}}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac08e8d99655cdb858867e1febac0b2b3}{on\_double\_click\_in\_configs}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ frame\_botoes\ =\ ttk.Frame(upper\_frame)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00149}00149\ \ \ \ \ \ \ \ \ frame\_botoes.pack(side=\textcolor{stringliteral}{"{}right"{}},\ fill=\textcolor{stringliteral}{"{}y"{}},\ padx=10)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00151}00151\ \ \ \ \ \ \ \ \ ttk.Button(frame\_botoes,\ text=\textcolor{stringliteral}{"{}Nova\ Configuração"{}},\ command=self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a8803cc44f9ea51d5d034f597d135233d}{nova\_config}}).pack(fill=\textcolor{stringliteral}{"{}x"{}},\ pady=2)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00152}00152\ \ \ \ \ \ \ \ \ ttk.Button(frame\_botoes,\ text=\textcolor{stringliteral}{"{}Salvar\ Atual"{}},\ command=self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1e5cf699d8e16774cefadcef3f51b851}{salvar\_config}}).pack(fill=\textcolor{stringliteral}{"{}x"{}},\ pady=2)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ ttk.Button(frame\_botoes,\ text=\textcolor{stringliteral}{"{}Apagar\ Selecionada"{}},\ command=self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a5dccd9d2b74502808068f61c091b97fd}{apagar\_config}}).pack(fill=\textcolor{stringliteral}{"{}x"{}},\ pady=2)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ ttk.Button(frame\_botoes,\ text=\textcolor{stringliteral}{"{}Limpar\ Grade"{}},\ command=\textcolor{keyword}{lambda}:\ (self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a21eb7354bf917c951dcaaee6203e9f0c}{clear\_grid}}(),\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a6f6b413b38e1859004477f9aafd44d06}{posicoes\_atuais}}.clear())).pack(fill=\textcolor{stringliteral}{"{}x"{}},\ pady=10)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ -\/-\/-\/-\/-\/\ Focando\ no\ campo}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ frame\_grid\ =\ ttk.Frame(self)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ frame\_grid.pack(side=\textcolor{stringliteral}{"{}top"{}},\ fill=\textcolor{stringliteral}{"{}both"{}},\ expand=\textcolor{keyword}{True},\ padx=10,\ pady=10)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Canvas\ para\ o\ campo}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00161}00161\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}\ =\ tk.Canvas(}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ frame\_grid,}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ width=self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a970c231d545bd4face1ae7d7fe526d1f}{canvas\_width}},}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ height=self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_aa7a1d619ebddb1dfcb0521c81d23b0ec}{canvas\_height}},}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ bg=\textcolor{stringliteral}{"{}\#42f545"{}}\ \textcolor{comment}{\#\ Verde\ para\ o\ campo}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00166}00166\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00167}00167\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}.pack()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Bind\ do\ clique\ no\ canvas}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00170}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a85fd895cf4e1a8807af0dbc8df186a53}{00170}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}.bind(\textcolor{stringliteral}{"{}<Button-\/1>"{}},\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a85fd895cf4e1a8807af0dbc8df186a53}{click\_on\_grid}}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a9d6861220eaf330d6d260f3592a7781a}{click\_on\_grid}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00172}00172\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a21eb7354bf917c951dcaaee6203e9f0c}{clear\_grid}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00174}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a780ee731e5bbe72447301c1d1bc980d7}{00174}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a780ee731e5bbe72447301c1d1bc980d7}{draw\_player}}(self,\ field\_x,\ field\_y)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00175}00175\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00176}00176\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Desenharemos\ um\ jogador\ na\ posição\ especificada}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00177}00177\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ field\_x\ Posição\ real\ em\ X}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00178}00178\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ field\_y\ Posição\ real\ em\ Y}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00179}00179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Converte\ as\ coordenadas\ do\ campo\ (ex:\ -\/14,\ 0)\ para\ pixels}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00182}00182\ \ \ \ \ \ \ \ \ cx,\ cy\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac9ec3b519d24c283a5c8856822219c12}{\_field\_to\_canvas}}(field\_x,\ field\_y)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00184}00184\ \ \ \ \ \ \ \ \ r\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a3405cd217f0096408b44f80a26f206b5}{GRID\_SCALE}}\ /\ 3}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00186}00186\ \ \ \ \ \ \ \ \ oval\_id\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}.create\_oval(cx\ -\/\ r,\ cy\ -\/\ r,\ cx\ +\ r,\ cy\ +\ r,}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fill=\textcolor{stringliteral}{"{}yellow"{}},\ outline=\textcolor{stringliteral}{"{}black"{}},\ width=2)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00189}00189\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a8eb697381c4de9bdb42b4e8ba9452f31}{marcadores\_jogadores}}.append((oval\_id,\ (field\_x,\ field\_y)))}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00191}00191\ \ \ \ \ \textcolor{comment}{\#\ -\/-\/\ Métodos\ de\ Interação}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00192}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a9d6861220eaf330d6d260f3592a7781a}{00192}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a85fd895cf4e1a8807af0dbc8df186a53}{click\_on\_grid}}(self,\ event:\ tk.Event):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00194}00194\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ identificar\ onde\ o\ usuário\ clicou\ e\ adicionar\ essa\ posição\ na\ lista}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00195}00195\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ event\ Argumento\ default\ do\ bind}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00196}00196\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00198}00198\ \ \ \ \ \ \ \ \ new\_pos\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a5fd07c0ad1d60ee76b58d91268e4bcd4}{\_canvas\_to\_field}}(event.x,\ event.y)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00200}00200\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Verificamos\ se\ clicamos\ em\ cima\ de\ um\ jogador}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ (oval\_id,\ pos)\ \textcolor{keywordflow}{in}\ enumerate(self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a8eb697381c4de9bdb42b4e8ba9452f31}{marcadores\_jogadores}}):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ pos\ ==\ new\_pos:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}.delete(oval\_id)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a8eb697381c4de9bdb42b4e8ba9452f31}{marcadores\_jogadores}}.pop(i)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a6f6b413b38e1859004477f9aafd44d06}{posicoes\_atuais}}.remove(new\_pos)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00208}00208\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Verificamos\ se\ o\ limite\ de\ jogadores\ foi\ atingido}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00209}00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a6f6b413b38e1859004477f9aafd44d06}{posicoes\_atuais}})\ >=\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a603925ccebc0cdd7b3dc444724f36823}{MAX\_JOGADORES}}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ messagebox.showwarning(\textcolor{stringliteral}{"{}Limite\ Atingido"{}},}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}Não\ é\ possível\ adicionar\ mais\ de\ \{self.MAX\_JOGADORES\}\ jogadores.\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Clique\ em\ um\ jogador\ existente\ para\ removê-\/lo."{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00215}00215\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Caso\ nenhuma\ das\ opções\ anteriores,\ adicionamos}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a6f6b413b38e1859004477f9aafd44d06}{posicoes\_atuais}}.append(new\_pos)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a780ee731e5bbe72447301c1d1bc980d7}{draw\_player}}(*new\_pos)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00219}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac08e8d99655cdb858867e1febac0b2b3}{00219}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_aeb39702bf4fcd12dde1bb681a7493bdd}{on\_double\_click\_in\_configs}}(self,\ event:\ tk.Event)\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00221}00221\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ plotar\ a\ configuração\ de\ jogadores\ selecionada}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00222}00222\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ event\ Argumento\ Default\ de\ bind}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00223}00223\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00225}00225\ \ \ \ \ \ \ \ \ item\_selecionado\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.focus()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ item\_selecionado:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00229}00229\ \ \ \ \ \ \ \ \ nome\_config\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.item(item\_selecionado,\ \textcolor{stringliteral}{"{}values"{}})[0]}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ nome\_config\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a87688f830d2a184fe0eac16500bcdc45}{config\_positions}}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a6f6b413b38e1859004477f9aafd44d06}{posicoes\_atuais}}\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a87688f830d2a184fe0eac16500bcdc45}{config\_positions}}[nome\_config][:]}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a21eb7354bf917c951dcaaee6203e9f0c}{clear\_grid}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (fx,\ fy)\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a6f6b413b38e1859004477f9aafd44d06}{posicoes\_atuais}}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a780ee731e5bbe72447301c1d1bc980d7}{draw\_player}}(fx,\ fy)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a83f1aced496776968ac9113a524637df}{nome\_de\_config\_selecionada}}\ =\ nome\_config}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ messagebox.showwarning(\textcolor{stringliteral}{"{}Erro"{}},\ f\textcolor{stringliteral}{"{}Configuração\ '\{nome\_config\}'\ não\ encontrada."{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00239}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1e5cf699d8e16774cefadcef3f51b851}{00239}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1e5cf699d8e16774cefadcef3f51b851}{salvar\_config}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00241}00241\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Salvará\ uma\ configuração\ selecionada}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00242}00242\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00244}00244\ \ \ \ \ \ \ \ \ item\_selecionado\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.focus()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00245}00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ item\_selecionado:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a83f1aced496776968ac9113a524637df}{nome\_de\_config\_selecionada}}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messagebox.showwarning(\textcolor{stringliteral}{"{}Inválido"{}},\ \textcolor{stringliteral}{"{}Não\ há\ selecionado"{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nome\_config\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a83f1aced496776968ac9113a524637df}{nome\_de\_config\_selecionada}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ nome\_config\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.item(item\_selecionado,\ \textcolor{stringliteral}{"{}values"{}})[0]}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ messagebox.askyesno(}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Certeza?"{}},}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}Realmente\ deseja\ salvar\ a\ configuração\ de\ jogadores\ presentes\ na\ grade\ em\ \{nome\_config\}?"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00257}00257\ \ \ \ \ \ \ \ \ ):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Atualizaremos}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a87688f830d2a184fe0eac16500bcdc45}{config\_positions}}[nome\_config]\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a6f6b413b38e1859004477f9aafd44d06}{posicoes\_atuais}}.copy()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_af8be329626545d01b68af69689436540}{update\_table\_config}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ item\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.get\_children():}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.item(item,\ \textcolor{stringliteral}{'values'})[0]\ ==\ nome\_config:\ \ \textcolor{comment}{\#\ [0]\ =\ primeira\ coluna}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.selection\_set(item)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a83f1aced496776968ac9113a524637df}{nome\_de\_config\_selecionada}}\ =\ nome\_config}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00267}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a21eb7354bf917c951dcaaee6203e9f0c}{00267}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a21eb7354bf917c951dcaaee6203e9f0c}{clear\_grid}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00268}00268\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00269}00269\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ limpar\ as\ posições\ e\ a\ grade}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00270}00270\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00272}00272\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}.delete(\textcolor{stringliteral}{"{}all"{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00273}00273\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a8eb697381c4de9bdb42b4e8ba9452f31}{marcadores\_jogadores}}\ =\ []}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Círculo\ central\ (usando\ a\ conversão\ de\ coordenadas)}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00276}00276\ \ \ \ \ \ \ \ \ cx,\ cy\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac9ec3b519d24c283a5c8856822219c12}{\_field\_to\_canvas}}(0,0)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00277}00277\ \ \ \ \ \ \ \ \ r\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a3405cd217f0096408b44f80a26f206b5}{GRID\_SCALE}}\ *\ 4\ \ \textcolor{comment}{\#\ Raio\ de\ 4\ unidades}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00278}00278\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}.create\_oval(cx\ -\/\ r,\ cy\ -\/\ r,\ cx\ +\ r,\ cy\ +\ r,\ outline=\textcolor{stringliteral}{"{}white"{}},\ width=2)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ -\/-\/-\/\ Desenhar\ Linhas\ da\ Grade\ (Quadrados)\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Total\ de\ passos\ de\ 0.5}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00283}00283\ \ \ \ \ \ \ \ \ n\_steps\_x\ =\ int(self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a7a10a9a5f824be15c1e8420705e3d092}{FIELD\_WIDTH}}\ *\ 2)\ +\ 1}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00284}00284\ \ \ \ \ \ \ \ \ n\_steps\_y\ =\ int(self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a90d9d041a473e443fc0a02da8cbb742c}{FIELD\_HEIGHT}}\ *\ 2)\ +\ 1}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00286}00286\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Linhas\ Verticais\ (eixo\ X)}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(n\_steps\_x):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ fx\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a74528c5d057b75ed9daf768cf84544f4}{X\_MIN}}\ +\ (i\ *\ 0.5)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ -\/-\/-\/\ Lógica\ das\ Cores\ (Req.\ 3)\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ cor\ =\ \textcolor{stringliteral}{"{}white"{}}\ \textcolor{keywordflow}{if}\ fx\ ==\ 0\ \textcolor{keywordflow}{else}\ \textcolor{stringliteral}{"{}\#337033"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ largura\ =\ 2\ \textcolor{keywordflow}{if}\ fx\ ==\ 0\ \textcolor{keywordflow}{else}\ 1}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Converte\ a\ coordenada\ X\ para\ pixel}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ cx,\ \_\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac9ec3b519d24c283a5c8856822219c12}{\_field\_to\_canvas}}(fx,\ 0)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Desenha\ a\ linha\ (Req.\ 2\ -\/\ todas\ as\ linhas\ são\ desenhadas)}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}.create\_line(cx,\ 0,\ cx,\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_aa7a1d619ebddb1dfcb0521c81d23b0ec}{canvas\_height}},}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fill=cor,\ width=largura)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00301}00301\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Linhas\ Horizontais\ (eixo\ Y)}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00302}00302\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(n\_steps\_y):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ fy\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a65524df759b2592775c5e87cc7361212}{Y\_MIN}}\ +\ (i\ *\ 0.5)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ -\/-\/-\/\ Lógica\ das\ Cores\ (Req.\ 3)\ -\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ cor\ =\ \textcolor{stringliteral}{"{}white"{}}\ \textcolor{keywordflow}{if}\ fy\ ==\ 0\ \textcolor{keywordflow}{else}\ \textcolor{stringliteral}{"{}\#337033"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ largura\ =\ 2\ \textcolor{keywordflow}{if}\ fy\ ==\ 0\ \textcolor{keywordflow}{else}\ 1}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Converte\ a\ coordenada\ Y\ para\ pixel}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \_,\ cy\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac9ec3b519d24c283a5c8856822219c12}{\_field\_to\_canvas}}(0,\ fy)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Desenha\ a\ linha\ (Req.\ 2)}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}.create\_line(0,\ cy,\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a970c231d545bd4face1ae7d7fe526d1f}{canvas\_width}},\ cy,}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fill=cor,\ width=largura)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Caixas\ do\ Gol\ Esquerda\ (-\/15\ a\ -\/13\ em\ X,\ 3\ a\ -\/3\ em\ Y)}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ coords\_gol\_esq\ =\ (-\/15,\ 3,\ -\/13,\ -\/3)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Caixas\ do\ Gol\ Direita\ (13\ a\ 15\ em\ X,\ 3\ a\ -\/3\ em\ Y)}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ coords\_gol\_dir\ =\ (13,\ 3,\ 15,\ -\/3)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Converte\ e\ desenha\ o\ Gol\ Esquerdo}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ x1,\ y1\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac9ec3b519d24c283a5c8856822219c12}{\_field\_to\_canvas}}(coords\_gol\_esq[0],\ coords\_gol\_esq[1])}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ x2,\ y2\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac9ec3b519d24c283a5c8856822219c12}{\_field\_to\_canvas}}(coords\_gol\_esq[2],\ coords\_gol\_esq[3])}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}.create\_rectangle(x1,\ y1,\ x2,\ y2,\ outline=\textcolor{stringliteral}{"{}white"{}},\ width=3)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Converte\ e\ desenha\ o\ Gol\ Direito}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ x1,\ y1\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac9ec3b519d24c283a5c8856822219c12}{\_field\_to\_canvas}}(coords\_gol\_dir[0],\ coords\_gol\_dir[1])}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ x2,\ y2\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ac9ec3b519d24c283a5c8856822219c12}{\_field\_to\_canvas}}(coords\_gol\_dir[2],\ coords\_gol\_dir[3])}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a4841cc410576070c2d50bf9d21c76d66}{canvas}}.create\_rectangle(x1,\ y1,\ x2,\ y2,\ outline=\textcolor{stringliteral}{"{}white"{}},\ width=3)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00332}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a8803cc44f9ea51d5d034f597d135233d}{00332}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a8803cc44f9ea51d5d034f597d135233d}{nova\_config}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00334}00334\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Prepará\ uma\ nova\ configuração\ para\ ser\ criada}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00335}00335\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00337}00337\ \ \ \ \ \ \ \ \ nome\ =\ simpledialog.askstring(\textcolor{stringliteral}{"{}Nova\ Configuração"{}},\ \textcolor{stringliteral}{"{}Digite\ o\ nome\ desejado:"{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00338}00338\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ nome:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ nome\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a87688f830d2a184fe0eac16500bcdc45}{config\_positions}}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ messagebox.showwarning(\textcolor{stringliteral}{"{}Nome\ Inválido"{}},\ \textcolor{stringliteral}{"{}Já\ há\ uma\ configuração\ com\ este\ nome"{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00345}00345\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Atualizamos\ e\ setamos}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00346}00346\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a87688f830d2a184fe0eac16500bcdc45}{config\_positions}}[nome]\ =\ []}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00347}00347\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_af8be329626545d01b68af69689436540}{update\_table\_config}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00348}00348\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a21eb7354bf917c951dcaaee6203e9f0c}{clear\_grid}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00349}00349\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ item\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.get\_children():}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.item(item,\ \textcolor{stringliteral}{'values'})[0]\ ==\ nome:\ \ \textcolor{comment}{\#\ [0]\ =\ primeira\ coluna}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.selection\_set(item)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a83f1aced496776968ac9113a524637df}{nome\_de\_config\_selecionada}}\ =\ nome}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00355}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a5dccd9d2b74502808068f61c091b97fd}{00355}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a5dccd9d2b74502808068f61c091b97fd}{apagar\_config}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00356}00356\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00357}00357\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Apagará\ uma\ configuração\ selecionada}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00358}00358\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00360}00360\ \ \ \ \ \ \ \ \ item\_selecionado\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.focus()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00361}00361\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ item\_selecionado:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a83f1aced496776968ac9113a524637df}{nome\_de\_config\_selecionada}}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messagebox.showwarning(\textcolor{stringliteral}{"{}Inválido"{}},\ \textcolor{stringliteral}{"{}Não\ há\ nada\ para\ ser\ adicionado"{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nome\_config\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a83f1aced496776968ac9113a524637df}{nome\_de\_config\_selecionada}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00367}00367\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ nome\_config\ =\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.item(item\_selecionado,\ \textcolor{stringliteral}{"{}values"{}})[0]}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00370}00370\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ messagebox.askyesno(\textcolor{stringliteral}{"{}Confirmar"{}},\ f\textcolor{stringliteral}{"{}Tem\ certeza\ que\ deseja\ apagar\ a\ configuração\ '\{nome\_config\}'?"{}}):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ nome\_config\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a87688f830d2a184fe0eac16500bcdc45}{config\_positions}}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a83f1aced496776968ac9113a524637df}{nome\_de\_config\_selecionada}}\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ del\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a87688f830d2a184fe0eac16500bcdc45}{config\_positions}}[nome\_config]}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_af8be329626545d01b68af69689436540}{update\_table\_config}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a21eb7354bf917c951dcaaee6203e9f0c}{clear\_grid}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a6f6b413b38e1859004477f9aafd44d06}{posicoes\_atuais}}.clear()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ messagebox.showinfo(\textcolor{stringliteral}{"{}Apagado"{}},\ f\textcolor{stringliteral}{"{}Configuração\ '\{nome\_config\}'\ foi\ apagada."{}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00379}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_af8be329626545d01b68af69689436540}{00379}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_af8be329626545d01b68af69689436540}{update\_table\_config}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00380}00380\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00381}00381\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ atualizar\ e\ preencher\ tabela\ de\ configurações\ de\ posição}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00382}00382\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00383}00383\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.get\_children():}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.delete(i)}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00385}00385\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00386}00386\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ chave,\ value\ \textcolor{keywordflow}{in}\ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a87688f830d2a184fe0eac16500bcdc45}{config\_positions}}.items():}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_ab7b328d2a568abef6b3a2bbfeca31655}{tv\_configs}}.insert(\textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}end"{}},\ values=(chave,\ value))}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00389}00389\ \ \ \ \ \textcolor{comment}{\#\ -\/-\/\ Métodos\ de\ Overload}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00390}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a962ead41ba3a2a3469cd177916c90456}{00390}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a962ead41ba3a2a3469cd177916c90456}{destroy}}(self):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00391}00391\ \ \ \ \ \ \ \ \ RobotPositionManager.save\_config\_positions(self.\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a87688f830d2a184fe0eac16500bcdc45}{config\_positions}})}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00392}00392\ \ \ \ \ \ \ \ \ super().\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a962ead41ba3a2a3469cd177916c90456}{destroy}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00396}00396\ \textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{'\_\_main\_\_'}:}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00397}\mbox{\hyperlink{namespaceRobotPositionManager_a2b3533e65fd87f1dccf9b8ad08def62e}{00397}}\ \ \ \ \ root\ =\ \mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager}{RobotPositionManager}}()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00398}00398\ \ \ \ \ root.mainloop()}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00404}00404\ }
+
+\end{DoxyCode}

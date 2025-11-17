@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['visualstep_0',['VISUALSTEP',['../classWorld_1_1World.html#a0e7d1969006a45ce22abc33fd1c3b5e8',1,'World::World']]],
-  ['visualstep_5fms_1',['VISUALSTEP_MS',['../classWorld_1_1World.html#a07aa81311b73e33bd1db1c9cc391bb03',1,'World::World']]]
+  ['table_5fcolors_0',['TABLE_COLORS',['../classPrinting_1_1Printing.html#ad999cc214dbf7c5c684da952fc0818cd',1,'Printing::Printing']]],
+  ['tv_5fconfigs_1',['tv_configs',['../classRobotPositionManager_1_1RobotPositionManager.html#ab7b328d2a568abef6b3a2bbfeca31655',1,'RobotPositionManager::RobotPositionManager']]]
 ];

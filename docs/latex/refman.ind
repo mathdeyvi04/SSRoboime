@@ -4,11 +4,19 @@
     \subitem {Agent.Agent}, \hyperpage{14}
     \subitem {BaseAgent.BaseAgent}, \hyperpage{16}
     \subitem {Booting.Booting}, \hyperpage{18}
-    \subitem {Robot.Robot}, \hyperpage{22}
-    \subitem {ServerComm.ServerComm}, \hyperpage{23}
-    \subitem {World.World}, \hyperpage{29}
+    \subitem {Robot.Robot}, \hyperpage{24}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{28}
+    \subitem {ServerComm.ServerComm}, \hyperpage{36}
+    \subitem {World.World}, \hyperpage{42}
   \item {\_\_receive\_async}
-    \subitem {ServerComm.ServerComm}, \hyperpage{24}
+    \subitem {ServerComm.ServerComm}, \hyperpage{36}
+  \item {\_canvas\_to\_field}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{28}
+  \item {\_field\_to\_canvas}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{28}
 
   \indexspace
 
@@ -18,6 +26,9 @@
   \item {AgentPenalty}, \hyperpage{9}
   \item {agents\_in\_the\_match}
     \subitem {BaseAgent.BaseAgent}, \hyperpage{17}
+  \item {apagar\_config}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{29}
 
   \indexspace
 
@@ -29,237 +40,386 @@
     \subitem {world}, \hyperpage{17}
   \item {boot}
     \subitem {run\_full\_team}, \hyperpage{10}
-    \subitem {run\_player}, \hyperpage{10}
+    \subitem {run\_player}, \hyperpage{11}
   \item {Booting}, \hyperpage{9}
   \item {Booting.Booting}, \hyperpage{17}
     \subitem {\_\_init\_\_}, \hyperpage{18}
-    \subitem {cpp\_builder}, \hyperpage{18}
-    \subitem {get\_team\_params}, \hyperpage{18}
+    \subitem {CONFIG\_PATH}, \hyperpage{19}
+    \subitem {cpp\_builder}, \hyperpage{19}
+    \subitem {get\_team\_params}, \hyperpage{19}
     \subitem {options}, \hyperpage{19}
   \item {buffer}
-    \subitem {ServerComm.ServerComm}, \hyperpage{26}
+    \subitem {ServerComm.ServerComm}, \hyperpage{39}
   \item {buffer\_size}
-    \subitem {ServerComm.ServerComm}, \hyperpage{26}
+    \subitem {ServerComm.ServerComm}, \hyperpage{39}
 
   \indexspace
 
+  \item {canvas}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{32}
+  \item {canvas\_height}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{32}
+  \item {canvas\_width}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{32}
+  \item {clear\_grid}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{29}
   \item {clear\_queue}
-    \subitem {ServerComm.ServerComm}, \hyperpage{24}
+    \subitem {ServerComm.ServerComm}, \hyperpage{37}
+  \item {click\_on\_grid}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{29}, \hyperpage{32}
   \item {close}
-    \subitem {ServerComm.ServerComm}, \hyperpage{24}
+    \subitem {ServerComm.ServerComm}, \hyperpage{37}
   \item {commit}
-    \subitem {ServerComm.ServerComm}, \hyperpage{24}
+    \subitem {ServerComm.ServerComm}, \hyperpage{37}
   \item {commit\_beam}
-    \subitem {ServerComm.ServerComm}, \hyperpage{25}
+    \subitem {ServerComm.ServerComm}, \hyperpage{37}
+  \item {CONFIG\_PATH}
+    \subitem {Booting.Booting}, \hyperpage{19}
+  \item {CONFIG\_POSITION\_PATH}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{32}
+  \item {config\_positions}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{32}
+  \item {CONSOLE}
+    \subitem {Printing.Printing}, \hyperpage{22}
   \item {cpp\_builder}
-    \subitem {Booting.Booting}, \hyperpage{18}
+    \subitem {Booting.Booting}, \hyperpage{19}
+  \item {criar\_widgets}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{30}
 
   \indexspace
 
+  \item {destroy}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{30}
+  \item {draw\_player}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{30}
+
+  \indexspace
+
+  \item {FIELD\_HEIGHT}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{33}
+  \item {FIELD\_WIDTH}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{33}
   \item {FLAGS\_CORNERS\_POS}
-    \subitem {World.World}, \hyperpage{29}
+    \subitem {World.World}, \hyperpage{42}
   \item {FLAGS\_POSTS\_POS}
-    \subitem {World.World}, \hyperpage{29}
+    \subitem {World.World}, \hyperpage{42}
 
   \indexspace
 
+  \item {get\_config\_positions}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{30}
+  \item {get\_input}
+    \subitem {Printing.Printing}, \hyperpage{21}
   \item {get\_team\_params}
-    \subitem {Booting.Booting}, \hyperpage{18}
+    \subitem {Booting.Booting}, \hyperpage{19}
+  \item {GRID\_SCALE}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{33}
 
   \indexspace
 
   \item {IF\_IN\_DEBUG}
-    \subitem {Printing.Printing}, \hyperpage{20}
+    \subitem {Printing.Printing}, \hyperpage{22}
 
   \indexspace
 
   \item {M\_BEFORE\_KICKOFF}
-    \subitem {World.World}, \hyperpage{29}
+    \subitem {World.World}, \hyperpage{42}
   \item {M\_GAME\_OVER}
-    \subitem {World.World}, \hyperpage{29}
+    \subitem {World.World}, \hyperpage{42}
   \item {M\_OUR\_CORNER\_KICK}
-    \subitem {World.World}, \hyperpage{29}
+    \subitem {World.World}, \hyperpage{42}
   \item {M\_OUR\_DIR\_FREE\_KICK}
-    \subitem {World.World}, \hyperpage{29}
+    \subitem {World.World}, \hyperpage{42}
   \item {M\_OUR\_FREE\_KICK}
-    \subitem {World.World}, \hyperpage{30}
+    \subitem {World.World}, \hyperpage{43}
   \item {M\_OUR\_GOAL}
-    \subitem {World.World}, \hyperpage{30}
+    \subitem {World.World}, \hyperpage{43}
   \item {M\_OUR\_GOAL\_KICK}
-    \subitem {World.World}, \hyperpage{30}
+    \subitem {World.World}, \hyperpage{43}
   \item {M\_OUR\_KICK\_IN}
-    \subitem {World.World}, \hyperpage{30}
+    \subitem {World.World}, \hyperpage{43}
   \item {M\_OUR\_KICKOFF}
-    \subitem {World.World}, \hyperpage{30}
+    \subitem {World.World}, \hyperpage{43}
   \item {M\_OUR\_OFFSIDE}
-    \subitem {World.World}, \hyperpage{30}
+    \subitem {World.World}, \hyperpage{43}
   \item {M\_OUR\_PASS}
-    \subitem {World.World}, \hyperpage{30}
+    \subitem {World.World}, \hyperpage{43}
   \item {M\_PLAY\_ON}
-    \subitem {World.World}, \hyperpage{30}
+    \subitem {World.World}, \hyperpage{43}
   \item {M\_THEIR\_CORNER\_KICK}
-    \subitem {World.World}, \hyperpage{31}
+    \subitem {World.World}, \hyperpage{44}
   \item {M\_THEIR\_DIR\_FREE\_KICK}
-    \subitem {World.World}, \hyperpage{31}
+    \subitem {World.World}, \hyperpage{44}
   \item {M\_THEIR\_FREE\_KICK}
-    \subitem {World.World}, \hyperpage{31}
+    \subitem {World.World}, \hyperpage{44}
   \item {M\_THEIR\_GOAL}
-    \subitem {World.World}, \hyperpage{31}
+    \subitem {World.World}, \hyperpage{44}
   \item {M\_THEIR\_GOAL\_KICK}
-    \subitem {World.World}, \hyperpage{31}
+    \subitem {World.World}, \hyperpage{44}
   \item {M\_THEIR\_KICK\_IN}
-    \subitem {World.World}, \hyperpage{31}
+    \subitem {World.World}, \hyperpage{44}
   \item {M\_THEIR\_KICKOFF}
-    \subitem {World.World}, \hyperpage{31}
+    \subitem {World.World}, \hyperpage{44}
   \item {M\_THEIR\_OFFSIDE}
-    \subitem {World.World}, \hyperpage{31}
+    \subitem {World.World}, \hyperpage{44}
   \item {M\_THEIR\_PASS}
-    \subitem {World.World}, \hyperpage{32}
+    \subitem {World.World}, \hyperpage{45}
+  \item {marcadores\_jogadores}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{33}
+  \item {MAX\_JOGADORES}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{33}
   \item {message\_queue}
-    \subitem {ServerComm.ServerComm}, \hyperpage{26}
+    \subitem {ServerComm.ServerComm}, \hyperpage{39}
   \item {MG\_ACTIVE\_BEAM}
-    \subitem {World.World}, \hyperpage{32}
+    \subitem {World.World}, \hyperpage{45}
   \item {MG\_OTHER}
-    \subitem {World.World}, \hyperpage{32}
+    \subitem {World.World}, \hyperpage{45}
   \item {MG\_OUR\_KICK}
-    \subitem {World.World}, \hyperpage{32}
+    \subitem {World.World}, \hyperpage{45}
   \item {MG\_PASSIVE\_BEAM}
-    \subitem {World.World}, \hyperpage{32}
+    \subitem {World.World}, \hyperpage{45}
   \item {MG\_THEIR\_KICK}
-    \subitem {World.World}, \hyperpage{32}
+    \subitem {World.World}, \hyperpage{45}
 
   \indexspace
 
+  \item {nome\_de\_config\_selecionada}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{33}
+  \item {nova\_config}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{31}
+
+  \indexspace
+
+  \item {on\_double\_click\_in\_configs}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{31}, \hyperpage{33}
   \item {options}
     \subitem {Booting.Booting}, \hyperpage{19}
 
   \indexspace
 
   \item {player}
-    \subitem {run\_player}, \hyperpage{10}
+    \subitem {run\_player}, \hyperpage{11}
   \item {players}
     \subitem {run\_full\_team}, \hyperpage{10}
+  \item {posicoes\_atuais}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{33}
   \item {print\_message}
-    \subitem {Printing.Printing}, \hyperpage{20}
+    \subitem {Printing.Printing}, \hyperpage{21}
+  \item {print\_table}
+    \subitem {Printing.Printing}, \hyperpage{22}
   \item {Printing}, \hyperpage{9}
-  \item {Printing.Printing}, \hyperpage{19}
-    \subitem {IF\_IN\_DEBUG}, \hyperpage{20}
-    \subitem {print\_message}, \hyperpage{20}
-    \subitem {TABLE\_COLORS}, \hyperpage{20}
+  \item {Printing.Printing}, \hyperpage{20}
+    \subitem {CONSOLE}, \hyperpage{22}
+    \subitem {get\_input}, \hyperpage{21}
+    \subitem {IF\_IN\_DEBUG}, \hyperpage{22}
+    \subitem {print\_message}, \hyperpage{21}
+    \subitem {print\_table}, \hyperpage{22}
+    \subitem {TABLE\_COLORS}, \hyperpage{22}
 
   \indexspace
 
   \item {receive}
-    \subitem {ServerComm.ServerComm}, \hyperpage{25}
+    \subitem {ServerComm.ServerComm}, \hyperpage{38}
   \item {Robot}, \hyperpage{10}
   \item {robot}
-    \subitem {World.World}, \hyperpage{32}
-  \item {Robot.Robot}, \hyperpage{21}
-    \subitem {\_\_init\_\_}, \hyperpage{22}
+    \subitem {World.World}, \hyperpage{45}
+  \item {Robot.Robot}, \hyperpage{23}
+    \subitem {\_\_init\_\_}, \hyperpage{24}
+  \item {RobotPositionManager}, \hyperpage{10}
+    \subitem {root}, \hyperpage{10}
+  \item {RobotPositionManager.RobotPositionManager}, \hyperpage{24}
+    \subitem {\_\_init\_\_}, \hyperpage{28}
+    \subitem {\_canvas\_to\_field}, \hyperpage{28}
+    \subitem {\_field\_to\_canvas}, \hyperpage{28}
+    \subitem {apagar\_config}, \hyperpage{29}
+    \subitem {canvas}, \hyperpage{32}
+    \subitem {canvas\_height}, \hyperpage{32}
+    \subitem {canvas\_width}, \hyperpage{32}
+    \subitem {clear\_grid}, \hyperpage{29}
+    \subitem {click\_on\_grid}, \hyperpage{29}, \hyperpage{32}
+    \subitem {CONFIG\_POSITION\_PATH}, \hyperpage{32}
+    \subitem {config\_positions}, \hyperpage{32}
+    \subitem {criar\_widgets}, \hyperpage{30}
+    \subitem {destroy}, \hyperpage{30}
+    \subitem {draw\_player}, \hyperpage{30}
+    \subitem {FIELD\_HEIGHT}, \hyperpage{33}
+    \subitem {FIELD\_WIDTH}, \hyperpage{33}
+    \subitem {get\_config\_positions}, \hyperpage{30}
+    \subitem {GRID\_SCALE}, \hyperpage{33}
+    \subitem {marcadores\_jogadores}, \hyperpage{33}
+    \subitem {MAX\_JOGADORES}, \hyperpage{33}
+    \subitem {nome\_de\_config\_selecionada}, \hyperpage{33}
+    \subitem {nova\_config}, \hyperpage{31}
+    \subitem {on\_double\_click\_in\_configs}, \hyperpage{31}, 
+		\hyperpage{33}
+    \subitem {posicoes\_atuais}, \hyperpage{33}
+    \subitem {salvar\_config}, \hyperpage{31}
+    \subitem {save\_config\_positions}, \hyperpage{31}
+    \subitem {tv\_configs}, \hyperpage{34}
+    \subitem {update\_table\_config}, \hyperpage{32}
+    \subitem {X\_MAX}, \hyperpage{34}
+    \subitem {X\_MIN}, \hyperpage{34}
+    \subitem {Y\_MAX}, \hyperpage{34}
+    \subitem {Y\_MIN}, \hyperpage{34}
+  \item {root}
+    \subitem {RobotPositionManager}, \hyperpage{10}
+  \item {run\_config\_positions}, \hyperpage{10}
   \item {run\_full\_team}, \hyperpage{10}
     \subitem {boot}, \hyperpage{10}
     \subitem {players}, \hyperpage{10}
-  \item {run\_player}, \hyperpage{10}
-    \subitem {boot}, \hyperpage{10}
-    \subitem {player}, \hyperpage{10}
+  \item {run\_player}, \hyperpage{11}
+    \subitem {boot}, \hyperpage{11}
+    \subitem {player}, \hyperpage{11}
 
   \indexspace
 
+  \item {salvar\_config}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{31}
+  \item {save\_config\_positions}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{31}
   \item {scom}
     \subitem {BaseAgent.BaseAgent}, \hyperpage{17}
   \item {send}
-    \subitem {ServerComm.ServerComm}, \hyperpage{25}
+    \subitem {ServerComm.ServerComm}, \hyperpage{38}
   \item {send\_immediate}
-    \subitem {ServerComm.ServerComm}, \hyperpage{25}
+    \subitem {ServerComm.ServerComm}, \hyperpage{38}
   \item {ServerComm}, \hyperpage{11}
-  \item {ServerComm.ServerComm}, \hyperpage{22}
-    \subitem {\_\_init\_\_}, \hyperpage{23}
-    \subitem {\_\_receive\_async}, \hyperpage{24}
-    \subitem {buffer}, \hyperpage{26}
-    \subitem {buffer\_size}, \hyperpage{26}
-    \subitem {clear\_queue}, \hyperpage{24}
-    \subitem {close}, \hyperpage{24}
-    \subitem {commit}, \hyperpage{24}
-    \subitem {commit\_beam}, \hyperpage{25}
-    \subitem {message\_queue}, \hyperpage{26}
-    \subitem {receive}, \hyperpage{25}
-    \subitem {send}, \hyperpage{25}
-    \subitem {send\_immediate}, \hyperpage{25}
-    \subitem {socket}, \hyperpage{26}
-    \subitem {unum}, \hyperpage{26}
+  \item {ServerComm.ServerComm}, \hyperpage{35}
+    \subitem {\_\_init\_\_}, \hyperpage{36}
+    \subitem {\_\_receive\_async}, \hyperpage{36}
+    \subitem {buffer}, \hyperpage{39}
+    \subitem {buffer\_size}, \hyperpage{39}
+    \subitem {clear\_queue}, \hyperpage{37}
+    \subitem {close}, \hyperpage{37}
+    \subitem {commit}, \hyperpage{37}
+    \subitem {commit\_beam}, \hyperpage{37}
+    \subitem {message\_queue}, \hyperpage{39}
+    \subitem {receive}, \hyperpage{38}
+    \subitem {send}, \hyperpage{38}
+    \subitem {send\_immediate}, \hyperpage{38}
+    \subitem {socket}, \hyperpage{39}
+    \subitem {unum}, \hyperpage{39}
   \item {socket}
-    \subitem {ServerComm.ServerComm}, \hyperpage{26}
-  \item {src/agent/Agent.py}, \hyperpage{35}
-  \item {src/agent/AgentPenalty.py}, \hyperpage{36}
-  \item {src/agent/BaseAgent.py}, \hyperpage{36, 37}
-  \item {src/communication/ServerComm.py}, \hyperpage{37, 38}
-  \item {src/environment/Robot.py}, \hyperpage{40, 41}
-  \item {src/environment/World.py}, \hyperpage{41, 42}
-  \item {src/run\_full\_team.py}, \hyperpage{43}
-  \item {src/run\_player.py}, \hyperpage{43, 44}
-  \item {src/term/Booting.py}, \hyperpage{44}
-  \item {src/term/Printing.py}, \hyperpage{45, 46}
+    \subitem {ServerComm.ServerComm}, \hyperpage{39}
+  \item {src/agent/Agent.py}, \hyperpage{47}
+  \item {src/agent/AgentPenalty.py}, \hyperpage{48}
+  \item {src/agent/BaseAgent.py}, \hyperpage{48, 49}
+  \item {src/communication/ServerComm.py}, \hyperpage{49, 50}
+  \item {src/environment/Robot.py}, \hyperpage{52, 53}
+  \item {src/environment/World.py}, \hyperpage{53, 54}
+  \item {src/run\_config\_positions.py}, \hyperpage{55}
+  \item {src/run\_full\_team.py}, \hyperpage{55}
+  \item {src/run\_player.py}, \hyperpage{56}
+  \item {src/term/Booting.py}, \hyperpage{56, 57}
+  \item {src/term/Printing.py}, \hyperpage{58}
+  \item {src/utils/RobotPositionManager.py}, \hyperpage{60, 61}
   \item {STEPTIME}
-    \subitem {World.World}, \hyperpage{32}
+    \subitem {World.World}, \hyperpage{45}
   \item {STEPTIME\_MS}
-    \subitem {World.World}, \hyperpage{33}
+    \subitem {World.World}, \hyperpage{46}
 
   \indexspace
 
   \item {TABLE\_COLORS}
-    \subitem {Printing.Printing}, \hyperpage{20}
+    \subitem {Printing.Printing}, \hyperpage{22}
+  \item {tv\_configs}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{34}
 
   \indexspace
 
   \item {unum}
-    \subitem {ServerComm.ServerComm}, \hyperpage{26}
+    \subitem {ServerComm.ServerComm}, \hyperpage{39}
+  \item {update\_table\_config}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{32}
 
   \indexspace
 
   \item {VISUALSTEP}
-    \subitem {World.World}, \hyperpage{33}
+    \subitem {World.World}, \hyperpage{46}
   \item {VISUALSTEP\_MS}
-    \subitem {World.World}, \hyperpage{33}
+    \subitem {World.World}, \hyperpage{46}
 
   \indexspace
 
   \item {World}, \hyperpage{11}
   \item {world}
     \subitem {BaseAgent.BaseAgent}, \hyperpage{17}
-  \item {World.World}, \hyperpage{27}
-    \subitem {\_\_init\_\_}, \hyperpage{29}
-    \subitem {FLAGS\_CORNERS\_POS}, \hyperpage{29}
-    \subitem {FLAGS\_POSTS\_POS}, \hyperpage{29}
-    \subitem {M\_BEFORE\_KICKOFF}, \hyperpage{29}
-    \subitem {M\_GAME\_OVER}, \hyperpage{29}
-    \subitem {M\_OUR\_CORNER\_KICK}, \hyperpage{29}
-    \subitem {M\_OUR\_DIR\_FREE\_KICK}, \hyperpage{29}
-    \subitem {M\_OUR\_FREE\_KICK}, \hyperpage{30}
-    \subitem {M\_OUR\_GOAL}, \hyperpage{30}
-    \subitem {M\_OUR\_GOAL\_KICK}, \hyperpage{30}
-    \subitem {M\_OUR\_KICK\_IN}, \hyperpage{30}
-    \subitem {M\_OUR\_KICKOFF}, \hyperpage{30}
-    \subitem {M\_OUR\_OFFSIDE}, \hyperpage{30}
-    \subitem {M\_OUR\_PASS}, \hyperpage{30}
-    \subitem {M\_PLAY\_ON}, \hyperpage{30}
-    \subitem {M\_THEIR\_CORNER\_KICK}, \hyperpage{31}
-    \subitem {M\_THEIR\_DIR\_FREE\_KICK}, \hyperpage{31}
-    \subitem {M\_THEIR\_FREE\_KICK}, \hyperpage{31}
-    \subitem {M\_THEIR\_GOAL}, \hyperpage{31}
-    \subitem {M\_THEIR\_GOAL\_KICK}, \hyperpage{31}
-    \subitem {M\_THEIR\_KICK\_IN}, \hyperpage{31}
-    \subitem {M\_THEIR\_KICKOFF}, \hyperpage{31}
-    \subitem {M\_THEIR\_OFFSIDE}, \hyperpage{31}
-    \subitem {M\_THEIR\_PASS}, \hyperpage{32}
-    \subitem {MG\_ACTIVE\_BEAM}, \hyperpage{32}
-    \subitem {MG\_OTHER}, \hyperpage{32}
-    \subitem {MG\_OUR\_KICK}, \hyperpage{32}
-    \subitem {MG\_PASSIVE\_BEAM}, \hyperpage{32}
-    \subitem {MG\_THEIR\_KICK}, \hyperpage{32}
-    \subitem {robot}, \hyperpage{32}
-    \subitem {STEPTIME}, \hyperpage{32}
-    \subitem {STEPTIME\_MS}, \hyperpage{33}
-    \subitem {VISUALSTEP}, \hyperpage{33}
-    \subitem {VISUALSTEP\_MS}, \hyperpage{33}
+  \item {World.World}, \hyperpage{40}
+    \subitem {\_\_init\_\_}, \hyperpage{42}
+    \subitem {FLAGS\_CORNERS\_POS}, \hyperpage{42}
+    \subitem {FLAGS\_POSTS\_POS}, \hyperpage{42}
+    \subitem {M\_BEFORE\_KICKOFF}, \hyperpage{42}
+    \subitem {M\_GAME\_OVER}, \hyperpage{42}
+    \subitem {M\_OUR\_CORNER\_KICK}, \hyperpage{42}
+    \subitem {M\_OUR\_DIR\_FREE\_KICK}, \hyperpage{42}
+    \subitem {M\_OUR\_FREE\_KICK}, \hyperpage{43}
+    \subitem {M\_OUR\_GOAL}, \hyperpage{43}
+    \subitem {M\_OUR\_GOAL\_KICK}, \hyperpage{43}
+    \subitem {M\_OUR\_KICK\_IN}, \hyperpage{43}
+    \subitem {M\_OUR\_KICKOFF}, \hyperpage{43}
+    \subitem {M\_OUR\_OFFSIDE}, \hyperpage{43}
+    \subitem {M\_OUR\_PASS}, \hyperpage{43}
+    \subitem {M\_PLAY\_ON}, \hyperpage{43}
+    \subitem {M\_THEIR\_CORNER\_KICK}, \hyperpage{44}
+    \subitem {M\_THEIR\_DIR\_FREE\_KICK}, \hyperpage{44}
+    \subitem {M\_THEIR\_FREE\_KICK}, \hyperpage{44}
+    \subitem {M\_THEIR\_GOAL}, \hyperpage{44}
+    \subitem {M\_THEIR\_GOAL\_KICK}, \hyperpage{44}
+    \subitem {M\_THEIR\_KICK\_IN}, \hyperpage{44}
+    \subitem {M\_THEIR\_KICKOFF}, \hyperpage{44}
+    \subitem {M\_THEIR\_OFFSIDE}, \hyperpage{44}
+    \subitem {M\_THEIR\_PASS}, \hyperpage{45}
+    \subitem {MG\_ACTIVE\_BEAM}, \hyperpage{45}
+    \subitem {MG\_OTHER}, \hyperpage{45}
+    \subitem {MG\_OUR\_KICK}, \hyperpage{45}
+    \subitem {MG\_PASSIVE\_BEAM}, \hyperpage{45}
+    \subitem {MG\_THEIR\_KICK}, \hyperpage{45}
+    \subitem {robot}, \hyperpage{45}
+    \subitem {STEPTIME}, \hyperpage{45}
+    \subitem {STEPTIME\_MS}, \hyperpage{46}
+    \subitem {VISUALSTEP}, \hyperpage{46}
+    \subitem {VISUALSTEP\_MS}, \hyperpage{46}
+
+  \indexspace
+
+  \item {X\_MAX}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{34}
+  \item {X\_MIN}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{34}
+
+  \indexspace
+
+  \item {Y\_MAX}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{34}
+  \item {Y\_MIN}
+    \subitem {RobotPositionManager.RobotPositionManager}, 
+		\hyperpage{34}
 
 \end{theindex}

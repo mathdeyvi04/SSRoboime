@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['receive_0',['receive',['../classServerComm_1_1ServerComm.html#a7f0a7e6253dddebe1a09f2da60b1bf93',1,'ServerComm::ServerComm']]]
+  ['get_5fconfig_5fpositions_0',['get_config_positions',['../classRobotPositionManager_1_1RobotPositionManager.html#ad41b9ec648f300c603574b9a2884908e',1,'RobotPositionManager::RobotPositionManager']]],
+  ['get_5finput_1',['get_input',['../classPrinting_1_1Printing.html#aed6e1e0df8c5b52d17ede69cff53229f',1,'Printing::Printing']]],
+  ['get_5fteam_5fparams_2',['get_team_params',['../classBooting_1_1Booting.html#a77bb6ec6f5826b31d2548d8a960ee32e',1,'Booting::Booting']]]
 ];

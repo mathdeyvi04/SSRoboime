@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['print_5fmessage_0',['print_message',['../classPrinting_1_1Printing.html#a3692966025b767f48741d95e8f02b37c',1,'Printing::Printing']]]
+  ['destroy_0',['destroy',['../classRobotPositionManager_1_1RobotPositionManager.html#a962ead41ba3a2a3469cd177916c90456',1,'RobotPositionManager::RobotPositionManager']]],
+  ['draw_5fplayer_1',['draw_player',['../classRobotPositionManager_1_1RobotPositionManager.html#a780ee731e5bbe72447301c1d1bc980d7',1,'RobotPositionManager::RobotPositionManager']]]
 ];

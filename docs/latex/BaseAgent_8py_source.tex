@@ -6,38 +6,39 @@
 \DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00002}00002\ \textcolor{stringliteral}{@file\ BaseAgent.py}}
 \DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00003}00003\ \textcolor{stringliteral}{@brief\ Implementação\ da\ classe\ de\ jogador\ base,\ que\ deve\ ser\ comum\ a\ todos\ os\ agentes.}}
 \DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00004}00004\ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00005}00005\ \textcolor{keyword}{from}\ abc\ \textcolor{keyword}{import}\ ABC,\ abstractmethod\ \textcolor{comment}{\#\ para\ conseguirmos\ criar\ classes\ abstratas\ em\ Python}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00005}00005\ \textcolor{keyword}{from}\ abc\ \textcolor{keyword}{import}\ ABC\ \ \textcolor{comment}{\#\ para\ conseguirmos\ criar\ classes\ abstratas\ em\ Python}}
 \DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00006}00006\ \textcolor{keyword}{from}\ communication.ServerComm\ \textcolor{keyword}{import}\ ServerComm}
 \DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00007}00007\ \textcolor{keyword}{from}\ environment.World\ \textcolor{keyword}{import}\ World}
 \DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00008}00008\ }
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00009}\mbox{\hyperlink{classBaseAgent_1_1BaseAgent}{00009}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBaseAgent_1_1BaseAgent}{BaseAgent}}(ABC):}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00010}00010\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ @brief\ Classe\ que\ agrupará\ todas\ as\ funcionalidades\ comuns\ a\ qualquer\ agente.}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00013}00013\ }
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00014}\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_ae09aef6bfed840e0fb487808a3c1fd6b}{00014}}\ \ \ \ \ agents\_in\_the\_match\ =\ []}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00015}00015\ }
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00016}\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a1ada653288fd68a43c0f23225ed2071b}{00016}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a1ada653288fd68a43c0f23225ed2071b}{\_\_init\_\_}}(self,\ creation\_options:\ list[list[str]]):}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Construtor\ da\ classe\ base\ de\ agente,\ chamando\ todos\ os\ construtores\ de\ outras}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ classes\ mínimas\ para\ cada\ agente.}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ creation\_options\ Lista\ de\ Parâmetros\ de\ Criação\ de\ Agente}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00022}00022\ }
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00023}\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_adb43f0745e87ee5f0b8c069a99bb608f}{00023}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_adb43f0745e87ee5f0b8c069a99bb608f}{world}}\ =\ \mbox{\hyperlink{namespaceWorld}{World}}(creation\_options)}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00024}\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a144d7d332f26886bc9885bce9c188f79}{00024}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a144d7d332f26886bc9885bce9c188f79}{scom}}\ =\ \mbox{\hyperlink{namespaceServerComm}{ServerComm}}(}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ creation\_options,}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Passamos\ o\ ponteiro\ da\ lista\ de\ jogadores}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Conforme\ eles\ são\ inseridos,\ teremos\ novos\ na\ partida}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ BaseAgent.agents\_in\_the\_match}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Chamaremos\ os\ construtores\ mínimos\ conforme\ formos\ criando-\/os}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00031}00031\ }
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Note\ que\ colocamos\ apenas\ por\ último}}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ BaseAgent.agents\_in\_the\_match.append(self)}
-\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00010}\mbox{\hyperlink{classBaseAgent_1_1BaseAgent}{00010}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBaseAgent_1_1BaseAgent}{BaseAgent}}(ABC):}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00011}00011\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ @brief\ Classe\ que\ agrupará\ todas\ as\ funcionalidades\ comuns\ a\ qualquer\ agente.}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00015}\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_ae09aef6bfed840e0fb487808a3c1fd6b}{00015}}\ \ \ \ \ agents\_in\_the\_match\ =\ []}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00017}\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a1ada653288fd68a43c0f23225ed2071b}{00017}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a1ada653288fd68a43c0f23225ed2071b}{\_\_init\_\_}}(self,\ creation\_options:\ list[list[str]]):}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Construtor\ da\ classe\ base\ de\ agente,\ chamando\ todos\ os\ construtores\ de\ outras}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ classes\ mínimas\ para\ cada\ agente.}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ creation\_options\ Lista\ de\ Parâmetros\ de\ Criação\ de\ Agente}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00024}\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_adb43f0745e87ee5f0b8c069a99bb608f}{00024}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_adb43f0745e87ee5f0b8c069a99bb608f}{world}}\ =\ \mbox{\hyperlink{namespaceWorld}{World}}(creation\_options)}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00025}\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a144d7d332f26886bc9885bce9c188f79}{00025}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a144d7d332f26886bc9885bce9c188f79}{scom}}\ =\ \mbox{\hyperlink{namespaceServerComm}{ServerComm}}(}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ creation\_options,}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Passamos\ o\ ponteiro\ da\ lista\ de\ jogadores}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Conforme\ eles\ são\ inseridos,\ teremos\ novos\ na\ partida}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ BaseAgent.agents\_in\_the\_match}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Chamaremos\ os\ construtores\ mínimos\ conforme\ formos\ criando-\/os}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Note\ que\ colocamos\ apenas\ por\ último}}
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ BaseAgent.agents\_in\_the\_match.append(self)}
 \DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00035}00035\ }
 \DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00036}00036\ }
 \DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{BaseAgent_8py_source_l00038}00038\ }
 
 \end{DoxyCode}

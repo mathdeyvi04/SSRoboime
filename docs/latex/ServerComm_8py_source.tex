@@ -157,70 +157,70 @@
 \DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_a7f0a7e6253dddebe1a09f2da60b1bf93}{receive}}()}
 \DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break}}
 \DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ BlockingIOError:}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00157}00157\ }
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Força\ que\ todos\ estejam\ em\ condições}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ p\ \textcolor{keywordflow}{in}\ other\_players:}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p.scom.send\_immediate(b\textcolor{stringliteral}{"{}(syn)"{}})}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00161}00161\ }
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00162}00162\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Voltamos\ ao\ padrão}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00163}00163\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26}{socket}}.setblocking(\textcolor{keyword}{True})}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ Printing.print\_message(f\textcolor{stringliteral}{"{}Jogador\ \{self.unum\}\ recebeu\ do\ servidor\ assincronamente\(\backslash\)n"{}},\ \textcolor{stringliteral}{"{}info"{}})}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00165}00165\ }
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00167}00167\ }
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00168}\mbox{\hyperlink{classServerComm_1_1ServerComm_af3563dfc76d39e126b055087ac0d4a76}{00168}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classServerComm_1_1ServerComm_af3563dfc76d39e126b055087ac0d4a76}{commit}}(self,\ message:\ bytes)\ -\/>\ \textcolor{keywordtype}{None}:}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00170}00170\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ adicionar\ uma\ nova\ mensagem\ à\ fila\ de\ mensagens}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00171}00171\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ message\ String\ em\ bytes\ a\ ser\ adicionada\ à\ fila}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00172}00172\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ isinstance(message,\ bytes),\ \textcolor{stringliteral}{"{}Mensagem\ deve\ estar\ em\ bytes"{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00174}00174\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}{message\_queue}}.append(message)}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00175}00175\ }
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00176}\mbox{\hyperlink{classServerComm_1_1ServerComm_a03acb02f9a555a932ca0c60a68db1c83}{00176}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classServerComm_1_1ServerComm_a03acb02f9a555a932ca0c60a68db1c83}{close}}(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00178}00178\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ fazer\ o\ encerramento\ dos\ canais\ de\ comunicação}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00179}00179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00180}00180\ }
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00181}00181\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26}{socket}}.\mbox{\hyperlink{classServerComm_1_1ServerComm_a03acb02f9a555a932ca0c60a68db1c83}{close}}()}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00182}00182\ }
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00183}\mbox{\hyperlink{classServerComm_1_1ServerComm_aa47f79379bf0c17d022877df51a52aea}{00183}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classServerComm_1_1ServerComm_aa47f79379bf0c17d022877df51a52aea}{send}}(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00185}00185\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Enviará\ ao\ servidor\ todas\ as\ mensagens\ commitadas.}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00186}00186\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ select(}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [self.\mbox{\hyperlink{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26}{socket}}],}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [],}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sleep(0.25)\ \textcolor{comment}{\#\ Apenas\ para\ não\ ficarmos\ executando\ de\ forma\ ineficiente}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Força\ que\ todos\ estejam\ em\ condições}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ p\ \textcolor{keywordflow}{in}\ other\_players:}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p.scom.send\_immediate(b\textcolor{stringliteral}{"{}(syn)"{}})}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Voltamos\ ao\ padrão}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26}{socket}}.setblocking(\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ Printing.print\_message(f\textcolor{stringliteral}{"{}Jogador\ \{self.unum\}\ recebeu\ do\ servidor\ assincronamente\(\backslash\)n"{}},\ \textcolor{stringliteral}{"{}info"{}})}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00169}\mbox{\hyperlink{classServerComm_1_1ServerComm_af3563dfc76d39e126b055087ac0d4a76}{00169}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classServerComm_1_1ServerComm_af3563dfc76d39e126b055087ac0d4a76}{commit}}(self,\ message:\ bytes)\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00171}00171\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ adicionar\ uma\ nova\ mensagem\ à\ fila\ de\ mensagens}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00172}00172\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ message\ String\ em\ bytes\ a\ ser\ adicionada\ à\ fila}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00173}00173\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ isinstance(message,\ bytes),\ \textcolor{stringliteral}{"{}Mensagem\ deve\ estar\ em\ bytes"{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00175}00175\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}{message\_queue}}.append(message)}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00177}\mbox{\hyperlink{classServerComm_1_1ServerComm_a03acb02f9a555a932ca0c60a68db1c83}{00177}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classServerComm_1_1ServerComm_a03acb02f9a555a932ca0c60a68db1c83}{close}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00179}00179\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ fazer\ o\ encerramento\ dos\ canais\ de\ comunicação}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00180}00180\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00182}00182\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26}{socket}}.\mbox{\hyperlink{classServerComm_1_1ServerComm_a03acb02f9a555a932ca0c60a68db1c83}{close}}()}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00184}\mbox{\hyperlink{classServerComm_1_1ServerComm_aa47f79379bf0c17d022877df51a52aea}{00184}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classServerComm_1_1ServerComm_aa47f79379bf0c17d022877df51a52aea}{send}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00186}00186\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Enviará\ ao\ servidor\ todas\ as\ mensagens\ commitadas.}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00187}00187\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ select(}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [self.\mbox{\hyperlink{classServerComm_1_1ServerComm_abe5f06e9acbe9fd206bf21fd24d26c26}{socket}}],}
 \DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [],}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.0}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ )[0]}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00194}00194\ \ \ \ \ \ \ \ \ )\ ==\ 0:}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Se\ não\ há\ nenhum\ socket\ para\ ler\ neste\ momento,\ enviarei}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}{message\_queue}}.append(b\textcolor{stringliteral}{"{}(syn)"{}})}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_a1b9474476d8ee333cb18da1fd0fc0d5e}{send\_immediate}}(b\textcolor{stringliteral}{''}.join(self.\mbox{\hyperlink{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}{message\_queue}}))}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00198}00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ Printing.print\_message(\textcolor{stringliteral}{"{}Houve\ sockets\ de\ leitura\ disponíveis\ enquanto\ estava\ enviando\ a\ fila\ de\ mensagens\ commitadas."{}},\ \textcolor{stringliteral}{"{}warning"{}})}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00200}00200\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}{message\_queue}}.clear()\ \textcolor{comment}{\#\ Limpamos\ buffer}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00201}00201\ }
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00202}\mbox{\hyperlink{classServerComm_1_1ServerComm_a30794c164c48e9e70d32cee547d819ef}{00202}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classServerComm_1_1ServerComm_a30794c164c48e9e70d32cee547d819ef}{clear\_queue}}(self)\ -\/>\ None:}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00203}00203\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00204}00204\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Limpará\ a\ fila\ de\ commits.}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00205}00205\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00206}00206\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}{message\_queue}}.clear()\ \textcolor{comment}{\#\ Assim\ usamos\ o\ mesmo\ ponteiro}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00207}00207\ }
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00208}00208\ \ \ \ \ \textcolor{comment}{\#\ Métodos\ Derivados}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00209}\mbox{\hyperlink{classServerComm_1_1ServerComm_a54d5fac6275bd90ba504fe6134d3b282}{00209}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classServerComm_1_1ServerComm_a54d5fac6275bd90ba504fe6134d3b282}{commit\_beam}}(self,\ vector\_position2d:\ list,\ rotation:\ float):}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00210}00210\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00211}00211\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Comando\ de\ beam\ oficial\ do\ agente}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00212}00212\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ vector\_position2d\ Sequência\ de\ dois\ valores,\ x\ e\ y\ finais\ do\ agente}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00213}00213\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ rotation\ Valor\ de\ rotação\ a\ ser\ dado\ ao\ robô}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00214}00214\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00215}00215\ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ len(vector\_position2d)\ ==\ 2,\ \textcolor{stringliteral}{"{}O\ beam\ oficial\ permite\ apenas\ posições\ 2D."{}}}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_af3563dfc76d39e126b055087ac0d4a76}{commit}}(}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}(beam\ \{vector\_position2d[0]\}\ \{vector\_position2d[1]\}\ \{rotation\})"{}}.encode()}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [],}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.0}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ )[0]}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00195}00195\ \ \ \ \ \ \ \ \ )\ ==\ 0:}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Se\ não\ há\ nenhum\ socket\ para\ ler\ neste\ momento,\ enviarei}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}{message\_queue}}.append(b\textcolor{stringliteral}{"{}(syn)"{}})}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_a1b9474476d8ee333cb18da1fd0fc0d5e}{send\_immediate}}(b\textcolor{stringliteral}{''}.join(self.\mbox{\hyperlink{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}{message\_queue}}))}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ Printing.print\_message(\textcolor{stringliteral}{"{}Houve\ sockets\ de\ leitura\ disponíveis\ enquanto\ estava\ enviando\ a\ fila\ de\ mensagens\ commitadas."{}},\ \textcolor{stringliteral}{"{}warning"{}})}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00201}00201\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}{message\_queue}}.clear()\ \textcolor{comment}{\#\ Limpamos\ buffer}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00203}\mbox{\hyperlink{classServerComm_1_1ServerComm_a30794c164c48e9e70d32cee547d819ef}{00203}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classServerComm_1_1ServerComm_a30794c164c48e9e70d32cee547d819ef}{clear\_queue}}(self)\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00204}00204\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00205}00205\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Limpará\ a\ fila\ de\ commits.}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00206}00206\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00207}00207\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_ab978690c610469e0530774af4abc4b34}{message\_queue}}.clear()\ \textcolor{comment}{\#\ Assim\ usamos\ o\ mesmo\ ponteiro}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00209}00209\ \ \ \ \ \textcolor{comment}{\#\ Métodos\ Derivados}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00210}\mbox{\hyperlink{classServerComm_1_1ServerComm_a54d5fac6275bd90ba504fe6134d3b282}{00210}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classServerComm_1_1ServerComm_a54d5fac6275bd90ba504fe6134d3b282}{commit\_beam}}(self,\ vector\_position2d:\ list,\ rotation:\ float):}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00211}00211\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00212}00212\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Comando\ de\ beam\ oficial\ do\ agente}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00213}00213\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ vector\_position2d\ Sequência\ de\ dois\ valores,\ x\ e\ y\ finais\ do\ agente}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00214}00214\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @param\ rotation\ Valor\ de\ rotação\ a\ ser\ dado\ ao\ robô}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00215}00215\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{keyword}{assert}\ len(vector\_position2d)\ ==\ 2,\ \textcolor{stringliteral}{"{}O\ beam\ oficial\ permite\ apenas\ posições\ 2D."{}}}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classServerComm_1_1ServerComm_af3563dfc76d39e126b055087ac0d4a76}{commit}}(}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}(beam\ \{vector\_position2d[0]\}\ \{vector\_position2d[1]\}\ \{rotation\})"{}}.encode()}
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ )}
 \DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00220}00220\ }
 \DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00221}00221\ }
 \DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00222}00222\ }
@@ -232,5 +232,6 @@
 \DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00228}00228\ }
 \DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00229}00229\ }
 \DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{ServerComm_8py_source_l00231}00231\ }
 
 \end{DoxyCode}

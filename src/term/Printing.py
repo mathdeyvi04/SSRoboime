@@ -5,6 +5,7 @@
 from rich.console import Console, ConsoleRenderable
 from rich.table import Table
 from rich import box
+
 from select import select
 import sys, tty, termios
 from typing import Callable
@@ -32,6 +33,7 @@ class Printing:
             - info
             - warning
             - error
+            
         Caso nenhuma dessas seja inserida, há a possibilidade de inserir
         o comando ASCII de uma vez.
         """
