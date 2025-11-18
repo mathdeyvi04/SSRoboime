@@ -1,3 +1,9 @@
+# Sumário
+
+- [Descrição](#descrição)
+- [Padronizações](#padronizações)
+- [Linhas de Desenvolvimento](#linhas-de-desenvolvimento)
+
 # Descrição
 
 Neste repositório, marcharemos no progresso de produzir um código proprietário da RoboIME 
@@ -5,9 +11,9 @@ para a categoria do **Simulation Soccer**.
 
 Utilizaremos como muleta o repositório da equipe [FCPortugal](https://github.com/m-abr/FCPCodebase) e pouco a pouco construiremos o nosso. Observe que este é o pontapé inicial para anos de pesquisa e avanço.
 
-# Ideias
+# Padronizações
 
-### Devemos construir um equilíbrio entre Python e C++
+### Equilíbrio entre Python e C++
 
 Assim obteremos a desempenho do baixo nível e a legibilidade do alto. Exemplos demonstrativos da capacidade da interoperabilidade:
 
@@ -24,6 +30,8 @@ possamos correr.
 
 Seguindo a [Wiki](https://gitlab.com/robocup-sim/SimSpark/-/wikis/home) do Simspark, dentre outras possibilidades, forçaremos nosso caminho desde a base.
 
+Dentro da seção de Issues descreveremos as linhas de avanços alcançadas.
+
 ### Organização
 
 Diferente do que é feito no repositório muleta, vamos centralizar o gerenciamento de execuções e compilações pelo
@@ -33,3 +41,24 @@ Assim, permitiremos um booting comum à qualquer máquina linux, sendo necessár
 como `make`, `python` e `g++`.
 
 Para o booting inicial, basta escrever no terminal: `make init`.
+
+# Linhas de Desenvolvimento
+
+Ao chegarmos no ponto de mínimo, afinal conseguimos inicializar e alocar nossos agentes em campo,
+nos deparamos uma nova barreira: Como o robô deve **interpretar** e **interagir** sobre o mundo ao redor?
+
+À luz dessas considerações, dividiremos o projeto em duas branches focadas respectivamente nessas duas linhas.
+
+### Como robô interpreta?
+
+Trabalharemos com:
+
+- Visão computacional, processamento de sensor, fusão sensorial, reconhecimento de padrões
+- Ruído em sensores, oclusões, iluminação variável, interpretação de contexto, ambiguidades, dados incompletos
+
+### Como o robô interage?
+
+Trabalharemos com:
+
+- Planejamento de trajetória, controle motor, navegação autônoma, manipulação de objetos, tomada de decisão em tempo real
+- Colisões, imprecisão mecânica, atrasos de resposta, adaptação a mudanças dinâmicas, segurança operacional

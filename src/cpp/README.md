@@ -10,4 +10,4 @@ Para padronizarmos o conteúdo dessas pastas, faremos o seguinte:
 | debug.cc              | Proverá ferramentas de teste                |
 | module_main.cpp       | Fornecerá a interoperabilidade com o Python |
 
-Novas funcionalidades sempre deverão ser construídas dentro de novas pastas
+Novas funcionalidades sempre deverão ser construídas dentro de novas pastas.
