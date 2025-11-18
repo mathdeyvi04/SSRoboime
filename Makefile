@@ -32,9 +32,13 @@ docs:
 .PHONY: build
 build:
 	@echo ">>> Buildando aplicação..."
-	# Vamos preencher conforme necessidade
+	@# Atente-se à como referencia os arquivos, pois eles podem virar pastas.
 	@pyinstaller \
-				--onefile $(SRC) \
-				--name $(NOME)
-	@mv dist/$(NOME) ./$(NOME)
-	@rm -rf build dist $(NOME).spec
+	--add-data "./src/term/config_team_params.txt:term" \
+	--add-data "./src/agent/tactical_formation.pkl:agent" \
+	src/run_full_team.py \
+	--onefile \
+	--noconfirm \
+	--name run_full_team
+	@mv dist/run_full_team ./
+	@rm -rf build/ dist/ *.spec

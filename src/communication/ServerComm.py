@@ -161,7 +161,6 @@ class ServerComm:
                 self.receive()
                 break
             except BlockingIOError:
-                sleep(0.25) # Apenas para não ficarmos executando de forma ineficiente
                 pass
 
             # Força que todos estejam em condições
