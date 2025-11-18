@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['on_5fdouble_5fclick_5fin_5fconfigs_0',['on_double_click_in_configs',['../classRobotPositionManager_1_1RobotPositionManager.html#ac08e8d99655cdb858867e1febac0b2b3',1,'RobotPositionManager::RobotPositionManager']]]
+  ['nova_5fconfig_0',['nova_config',['../classRobotPositionManager_1_1RobotPositionManager.html#a8803cc44f9ea51d5d034f597d135233d',1,'RobotPositionManager::RobotPositionManager']]]
 ];

@@ -5,6 +5,7 @@
 import os
 import sys
 from term.Printing import Printing
+from pathlib import Path
 
 class Booting:
     """
@@ -14,7 +15,7 @@ class Booting:
         - Estabelece um arquivo de configurações default caso já não exista um.
     """
 
-    CONFIG_PATH = "./config_team_params.txt"
+    CONFIG_PATH = Path(__file__).resolve().parent / "config_team_params.txt"
 
     def __init__(self):
         """

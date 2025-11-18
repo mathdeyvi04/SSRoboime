@@ -12,9 +12,20 @@
 \DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00008}00008\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(0,\ 11):}
 \DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00009}00009\ \ \ \ \ players.append(\mbox{\hyperlink{namespaceAgent}{Agent}}(boot.options))}
 \DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00010}00010\ \ \ \ \ boot.options[4][1]\ +=\ 1}
-\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00011}00011\ \ \ \ \ sleep(1)}
-\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00012}00012\ }
-\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00013}00013\ \textcolor{keywordflow}{for}\ p\ \textcolor{keywordflow}{in}\ players:}
-\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00014}00014\ \ \ \ \ p.scom.close()}
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00012}00012\ \textcolor{keywordflow}{for}\ p\ \textcolor{keywordflow}{in}\ players:}
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00013}\mbox{\hyperlink{namespacerun__full__team_aacf93d065645ef0e6c902f5e8ce26406}{00013}}\ \ \ \ \ p:\ Agent}
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00014}00014\ \ \ \ \ p.beam()}
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00015}00015\ \ \ \ \ p.scom.send()}
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00017}00017\ \textcolor{keywordflow}{for}\ p\ \textcolor{keywordflow}{in}\ players:}
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00018}00018\ \ \ \ \ p.scom.receive()}
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00022}00022\ sleep(30)}
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00024}00024\ \textcolor{keywordflow}{for}\ p\ \textcolor{keywordflow}{in}\ players:}
+\DoxyCodeLine{\Hypertarget{run__full__team_8py_source_l00025}00025\ \ \ \ \ p.scom.close()}
 
 \end{DoxyCode}

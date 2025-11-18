@@ -8,6 +8,7 @@ class Agent(BaseAgent):
     """
     @brief Classe que representará os agentes de campo, possuindo métodos correspondentes.
     """
+
     def __init__(self, creation_options: list[list[str | int]]):
         """
         @brief Construtor da classe agente de campo, inicializando informações gerais.
@@ -25,6 +26,8 @@ class Agent(BaseAgent):
             - Modo de Debug
         """
 
-        creation_options[5][1] = (0,1,1,1,2,3,3,3,4,4,4)[creation_options[4][1] - 1]
+        self.unum = creation_options[4][1]
+        creation_options[5][1] = (0,1,1,1,2,3,3,3,4,4,4)[self.unum - 1]
 
         super().__init__(creation_options)
+

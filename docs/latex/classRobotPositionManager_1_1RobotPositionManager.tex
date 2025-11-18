@@ -2,13 +2,12 @@
 \hypertarget{classRobotPositionManager_1_1RobotPositionManager}{}\label{classRobotPositionManager_1_1RobotPositionManager}\index{RobotPositionManager.RobotPositionManager@{RobotPositionManager.RobotPositionManager}}
 
 
-Responsável por permitir ao usuário a criação de diversas configurações de posições iniciais de partida.  
+Responsável por permitir ao usuário a criação de diversas formações táticas.  
 
 
 
 
-Inheritance diagram for Robot\+Position\+Manager.\+Robot\+Position\+Manager\+:
-\nopagebreak
+Inheritance diagram for Robot\+Position\+Manager.\+Robot\+Position\+Manager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,8 +16,7 @@ Inheritance diagram for Robot\+Position\+Manager.\+Robot\+Position\+Manager\+:
 \end{figure}
 
 
-Collaboration diagram for Robot\+Position\+Manager.\+Robot\+Position\+Manager\+:
-\nopagebreak
+Collaboration diagram for Robot\+Position\+Manager.\+Robot\+Position\+Manager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -99,7 +97,7 @@ None \mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a28bce82
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-str \mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1e054eb629f75a913096f9d217ce684a}{CONFIG\+\_\+\+POSITION\+\_\+\+PATH}} = "{}../agent/config\+\_\+positions.\+pkl"{}
+str \mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1e054eb629f75a913096f9d217ce684a}{CONFIG\+\_\+\+POSITION\+\_\+\+PATH}} = Path(\+\_\+\+\_\+file\+\_\+\+\_\+).resolve().parents\mbox{[}1\mbox{]} / "{}agent"{} / "{}tactical\+\_\+formation.\+pkl"{}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
@@ -111,11 +109,11 @@ tuple \mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a5fd07c
 
 
 \doxysubsection{Detailed Description}
-Responsável por permitir ao usuário a criação de diversas configurações de posições iniciais de partida. 
+Responsável por permitir ao usuário a criação de diversas formações táticas. 
 
 Focada em diversão e customização, gerencia um binário que é a representação de dicionário de listas que contém as 11 posições. Por ter esse objetivo, não faz sentido que haja essa função na lógica geral dos agentes. 
 
-Definition at line \mbox{\hyperlink{RobotPositionManager_8py_source_l00010}{10}} of file \mbox{\hyperlink{RobotPositionManager_8py_source}{Robot\+Position\+Manager.\+py}}.
+Definition at line \mbox{\hyperlink{RobotPositionManager_8py_source_l00011}{11}} of file \mbox{\hyperlink{RobotPositionManager_8py_source}{Robot\+Position\+Manager.\+py}}.
 
 
 
@@ -421,7 +419,7 @@ Definition at line \mbox{\hyperlink{RobotPositionManager_8py_source_l00170}{170}
 \index{RobotPositionManager.RobotPositionManager@{RobotPositionManager.RobotPositionManager}!CONFIG\_POSITION\_PATH@{CONFIG\_POSITION\_PATH}}
 \index{CONFIG\_POSITION\_PATH@{CONFIG\_POSITION\_PATH}!RobotPositionManager.RobotPositionManager@{RobotPositionManager.RobotPositionManager}}
 \doxysubsubsection{\texorpdfstring{CONFIG\_POSITION\_PATH}{CONFIG\_POSITION\_PATH}}
-{\footnotesize\ttfamily str Robot\+Position\+Manager.\+Robot\+Position\+Manager.\+CONFIG\+\_\+\+POSITION\+\_\+\+PATH = "{}../agent/config\+\_\+positions.\+pkl"{}\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily str Robot\+Position\+Manager.\+Robot\+Position\+Manager.\+CONFIG\+\_\+\+POSITION\+\_\+\+PATH = Path(\+\_\+\+\_\+file\+\_\+\+\_\+).resolve().parents\mbox{[}1\mbox{]} / "{}agent"{} / "{}tactical\+\_\+formation.\+pkl"{}\hspace{0.3cm}{\ttfamily [static]}}
 
 
 

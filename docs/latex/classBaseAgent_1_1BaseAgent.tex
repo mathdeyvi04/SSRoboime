@@ -11,7 +11,7 @@ Inheritance diagram for Base\+Agent.\+Base\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=199pt]{classBaseAgent_1_1BaseAgent__inherit__graph}
+\includegraphics[width=206pt]{classBaseAgent_1_1BaseAgent__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -20,41 +20,49 @@ Collaboration diagram for Base\+Agent.\+Base\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=199pt]{classBaseAgent_1_1BaseAgent__coll__graph}
+\includegraphics[width=206pt]{classBaseAgent_1_1BaseAgent__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a1ada653288fd68a43c0f23225ed2071b}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]} creation\+\_\+options)
-\begin{DoxyCompactList}\small\item\em Construtor da classe base de agente, chamando todos os construtores de outras classes mínimas para cada agente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_afaa08f3b8d3dd4d5797d1390ecf1bd3e}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, list\mbox{[}list\mbox{[}str\texorpdfstring{$\vert$}{|}int\mbox{]}\mbox{]} creation\+\_\+options)
+\begin{DoxyCompactList}\small\item\em Construtor da classe base de agente, chamando todos os construtores de outras classes mínimas para cada agente. \end{DoxyCompactList}\item 
+None \mbox{\hyperlink{classBaseAgent_1_1BaseAgent_add206d9e75c65eacd2fc63e9842ee3c4}{beam}} (self)
+\begin{DoxyCompactList}\small\item\em Responsável por gerenciar o teletransporte dos jogadores. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classBaseAgent_1_1BaseAgent_adb43f0745e87ee5f0b8c069a99bb608f}{world}}
 \item 
 \mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a144d7d332f26886bc9885bce9c188f79}{scom}}
+\item 
+\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a3b0d3be2b8bb88a7e508c7cb1fa0fc78}{unum}}
+\item 
+\mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a3ff77764e0197e1d4adebcc6292e3ffa}{init\+\_\+position}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-list \mbox{\hyperlink{classBaseAgent_1_1BaseAgent_ae09aef6bfed840e0fb487808a3c1fd6b}{agents\+\_\+in\+\_\+the\+\_\+match}} = \mbox{[}$\,$\mbox{]}
+list \mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a5da08edf06ee87b467aed4e987c08d4d}{AGENTS\+\_\+\+IN\+\_\+\+THE\+\_\+\+MATCH}} = \mbox{[}$\,$\mbox{]}
+\item 
+list \mbox{\hyperlink{classBaseAgent_1_1BaseAgent_a7929cd8a713dd15c39c82932de9e9740}{INITIAL\+\_\+\+POSITION}} = \mbox{[}$\,$\mbox{]}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Classe que agrupará todas as funcionalidades comuns a qualquer agente. 
 
-Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00010}{10}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
+Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00012}{12}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
 
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classBaseAgent_1_1BaseAgent_a1ada653288fd68a43c0f23225ed2071b}\label{classBaseAgent_1_1BaseAgent_a1ada653288fd68a43c0f23225ed2071b} 
+\Hypertarget{classBaseAgent_1_1BaseAgent_afaa08f3b8d3dd4d5797d1390ecf1bd3e}\label{classBaseAgent_1_1BaseAgent_afaa08f3b8d3dd4d5797d1390ecf1bd3e} 
 \index{BaseAgent.BaseAgent@{BaseAgent.BaseAgent}!\_\_init\_\_@{\_\_init\_\_}}
 \index{\_\_init\_\_@{\_\_init\_\_}!BaseAgent.BaseAgent@{BaseAgent.BaseAgent}}
 \doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily Base\+Agent.\+Base\+Agent.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{list\mbox{[}list\mbox{[}str\mbox{]}\mbox{]}}]{creation\+\_\+options }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Base\+Agent.\+Base\+Agent.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{list\mbox{[}list\mbox{[}str \texorpdfstring{$\vert$}{|} int\mbox{]}\mbox{]}}]{creation\+\_\+options }\end{DoxyParamCaption})}
 
 
 
@@ -67,20 +75,57 @@ Construtor da classe base de agente, chamando todos os construtores de outras cl
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00017}{17}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
+Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00020}{20}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBaseAgent_1_1BaseAgent_add206d9e75c65eacd2fc63e9842ee3c4}\label{classBaseAgent_1_1BaseAgent_add206d9e75c65eacd2fc63e9842ee3c4} 
+\index{BaseAgent.BaseAgent@{BaseAgent.BaseAgent}!beam@{beam}}
+\index{beam@{beam}!BaseAgent.BaseAgent@{BaseAgent.BaseAgent}}
+\doxysubsubsection{\texorpdfstring{beam()}{beam()}}
+{\footnotesize\ttfamily  None Base\+Agent.\+Base\+Agent.\+beam (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Responsável por gerenciar o teletransporte dos jogadores. 
+
+
+
+Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00051}{51}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
 
 
 
 \doxysubsection{Member Data Documentation}
-\Hypertarget{classBaseAgent_1_1BaseAgent_ae09aef6bfed840e0fb487808a3c1fd6b}\label{classBaseAgent_1_1BaseAgent_ae09aef6bfed840e0fb487808a3c1fd6b} 
-\index{BaseAgent.BaseAgent@{BaseAgent.BaseAgent}!agents\_in\_the\_match@{agents\_in\_the\_match}}
-\index{agents\_in\_the\_match@{agents\_in\_the\_match}!BaseAgent.BaseAgent@{BaseAgent.BaseAgent}}
-\doxysubsubsection{\texorpdfstring{agents\_in\_the\_match}{agents\_in\_the\_match}}
-{\footnotesize\ttfamily list Base\+Agent.\+Base\+Agent.\+agents\+\_\+in\+\_\+the\+\_\+match = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+\Hypertarget{classBaseAgent_1_1BaseAgent_a5da08edf06ee87b467aed4e987c08d4d}\label{classBaseAgent_1_1BaseAgent_a5da08edf06ee87b467aed4e987c08d4d} 
+\index{BaseAgent.BaseAgent@{BaseAgent.BaseAgent}!AGENTS\_IN\_THE\_MATCH@{AGENTS\_IN\_THE\_MATCH}}
+\index{AGENTS\_IN\_THE\_MATCH@{AGENTS\_IN\_THE\_MATCH}!BaseAgent.BaseAgent@{BaseAgent.BaseAgent}}
+\doxysubsubsection{\texorpdfstring{AGENTS\_IN\_THE\_MATCH}{AGENTS\_IN\_THE\_MATCH}}
+{\footnotesize\ttfamily list Base\+Agent.\+Base\+Agent.\+AGENTS\+\_\+\+IN\+\_\+\+THE\+\_\+\+MATCH = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00015}{15}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
+Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00017}{17}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
+
+\Hypertarget{classBaseAgent_1_1BaseAgent_a3ff77764e0197e1d4adebcc6292e3ffa}\label{classBaseAgent_1_1BaseAgent_a3ff77764e0197e1d4adebcc6292e3ffa} 
+\index{BaseAgent.BaseAgent@{BaseAgent.BaseAgent}!init\_position@{init\_position}}
+\index{init\_position@{init\_position}!BaseAgent.BaseAgent@{BaseAgent.BaseAgent}}
+\doxysubsubsection{\texorpdfstring{init\_position}{init\_position}}
+{\footnotesize\ttfamily Base\+Agent.\+Base\+Agent.\+init\+\_\+position}
+
+
+
+Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00049}{49}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
+
+\Hypertarget{classBaseAgent_1_1BaseAgent_a7929cd8a713dd15c39c82932de9e9740}\label{classBaseAgent_1_1BaseAgent_a7929cd8a713dd15c39c82932de9e9740} 
+\index{BaseAgent.BaseAgent@{BaseAgent.BaseAgent}!INITIAL\_POSITION@{INITIAL\_POSITION}}
+\index{INITIAL\_POSITION@{INITIAL\_POSITION}!BaseAgent.BaseAgent@{BaseAgent.BaseAgent}}
+\doxysubsubsection{\texorpdfstring{INITIAL\_POSITION}{INITIAL\_POSITION}}
+{\footnotesize\ttfamily list Base\+Agent.\+Base\+Agent.\+INITIAL\+\_\+\+POSITION = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00018}{18}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
 
 \Hypertarget{classBaseAgent_1_1BaseAgent_a144d7d332f26886bc9885bce9c188f79}\label{classBaseAgent_1_1BaseAgent_a144d7d332f26886bc9885bce9c188f79} 
 \index{BaseAgent.BaseAgent@{BaseAgent.BaseAgent}!scom@{scom}}
@@ -90,7 +135,17 @@ Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00015}{15}} of file \m
 
 
 
-Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00025}{25}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
+Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00028}{28}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
+
+\Hypertarget{classBaseAgent_1_1BaseAgent_a3b0d3be2b8bb88a7e508c7cb1fa0fc78}\label{classBaseAgent_1_1BaseAgent_a3b0d3be2b8bb88a7e508c7cb1fa0fc78} 
+\index{BaseAgent.BaseAgent@{BaseAgent.BaseAgent}!unum@{unum}}
+\index{unum@{unum}!BaseAgent.BaseAgent@{BaseAgent.BaseAgent}}
+\doxysubsubsection{\texorpdfstring{unum}{unum}}
+{\footnotesize\ttfamily Base\+Agent.\+Base\+Agent.\+unum}
+
+
+
+Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00036}{36}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
 
 \Hypertarget{classBaseAgent_1_1BaseAgent_adb43f0745e87ee5f0b8c069a99bb608f}\label{classBaseAgent_1_1BaseAgent_adb43f0745e87ee5f0b8c069a99bb608f} 
 \index{BaseAgent.BaseAgent@{BaseAgent.BaseAgent}!world@{world}}
@@ -100,7 +155,7 @@ Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00025}{25}} of file \m
 
 
 
-Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00024}{24}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
+Definition at line \mbox{\hyperlink{BaseAgent_8py_source_l00027}{27}} of file \mbox{\hyperlink{BaseAgent_8py_source}{Base\+Agent.\+py}}.
 
 
 

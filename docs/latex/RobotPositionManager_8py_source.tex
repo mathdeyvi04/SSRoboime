@@ -10,18 +10,18 @@
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00006}00006\ \textcolor{keyword}{import}\ pickle}
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00007}00007\ \textcolor{keyword}{import}\ tkinter\ \textcolor{keyword}{as}\ tk}
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00008}00008\ \textcolor{keyword}{from}\ tkinter\ \textcolor{keyword}{import}\ ttk,\ simpledialog,\ messagebox}
-\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00009}00009\ }
-\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00010}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager}{00010}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager}{RobotPositionManager}}(tk.Tk):}
-\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00011}00011\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ @brief\ Responsável\ por\ permitir\ ao\ usuário\ a\ criação\ de\ diversas\ configurações}}
-\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ de\ posições\ iniciais\ de\ partida.}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00009}00009\ \textcolor{keyword}{from}\ pathlib\ \textcolor{keyword}{import}\ Path}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00011}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager}{RobotPositionManager}}(tk.Tk):}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00012}00012\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ @brief\ Responsável\ por\ permitir\ ao\ usuário\ a\ criação\ de\ diversas\ formações\ táticas.}}
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00014}00014\ \textcolor{stringliteral}{\ \ \ \ @details}}
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00015}00015\ \textcolor{stringliteral}{\ \ \ \ Focada\ em\ diversão\ e\ customização,\ gerencia\ um\ binário\ que\ é\ a\ representação\ de}}
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ dicionário\ de\ listas\ que\ contém\ as\ 11\ posições.}}
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ Por\ ter\ esse\ objetivo,\ não\ faz\ sentido\ que\ haja\ essa\ função\ na\ lógica\ geral\ dos\ agentes.}}
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00019}00019\ }
-\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00020}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1e054eb629f75a913096f9d217ce684a}{00020}}\ \ \ \ \ CONFIG\_POSITION\_PATH\ =\ \textcolor{stringliteral}{"{}../agent/config\_positions.pkl"{}}}
+\DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00020}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1e054eb629f75a913096f9d217ce684a}{00020}}\ \ \ \ \ CONFIG\_POSITION\_PATH\ =\ Path(\_\_file\_\_).resolve().parents[1]\ /\ \textcolor{stringliteral}{"{}agent"{}}\ /\ \textcolor{stringliteral}{"{}tactical\_formation.pkl"{}}}
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00021}00021\ }
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00022}00022\ }
 \DoxyCodeLine{\Hypertarget{RobotPositionManager_8py_source_l00023}\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1b81e407299d8af7f7fd6d7d66457a2b}{00023}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classRobotPositionManager_1_1RobotPositionManager_a1b81e407299d8af7f7fd6d7d66457a2b}{\_\_init\_\_}}(self):}

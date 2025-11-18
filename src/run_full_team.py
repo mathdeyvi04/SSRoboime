@@ -8,7 +8,18 @@ players = []
 for i in range(0, 11):
     players.append(Agent(boot.options))
     boot.options[4][1] += 1
-    sleep(1)
+
+for p in players:
+    p: Agent
+    p.beam()
+    p.scom.send()
+
+for p in players:
+    p.scom.receive()
+
+
+
+sleep(30)
 
 for p in players:
     p.scom.close()

@@ -6,18 +6,18 @@ import os
 import pickle
 import tkinter as tk
 from tkinter import ttk, simpledialog, messagebox
+from pathlib import Path
 
 class RobotPositionManager(tk.Tk):
     """
-    @brief Responsável por permitir ao usuário a criação de diversas configurações
-    de posições iniciais de partida.
+    @brief Responsável por permitir ao usuário a criação de diversas formações táticas.
     @details
     Focada em diversão e customização, gerencia um binário que é a representação de
     dicionário de listas que contém as 11 posições.
     Por ter esse objetivo, não faz sentido que haja essa função na lógica geral dos agentes.
     """
 
-    CONFIG_POSITION_PATH = "../agent/config_positions.pkl"
+    CONFIG_POSITION_PATH = Path(__file__).resolve().parents[1] / "agent" / "tactical_formation.pkl"
 
 
     def __init__(self):

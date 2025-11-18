@@ -84,14 +84,14 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Responsável por permitir ao usuário a criação de diversas configurações de posições iniciais de partida.  
+<p>Responsável por permitir ao usuário a criação de diversas formações táticas.  
  <a href="classRobotPositionManager_1_1RobotPositionManager.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for RobotPositionManager.RobotPositionManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="classRobotPositionManager_1_1RobotPositionManager__inherit__graph.png" border="0" usemap="#aRobotPositionManager_8RobotPositionManager_inherit__map" alt="Inheritance graph"/></div>
 <map name="aRobotPositionManager_8RobotPositionManager_inherit__map" id="aRobotPositionManager_8RobotPositionManager_inherit__map">
-<area shape="rect" title="Responsável por permitir ao usuário a criação de diversas configurações de posições iniciais de parti..." alt="" coords="5,119,225,1015"/>
+<area shape="rect" title="Responsável por permitir ao usuário a criação de diversas formações táticas." alt="" coords="5,119,225,1015"/>
 <area shape="rect" title=" " alt="" coords="90,5,141,71"/>
 <area shape="poly" title=" " alt="" coords="118,85,118,119,113,119,113,85"/>
 </map>
@@ -101,7 +101,7 @@ Collaboration diagram for RobotPositionManager.RobotPositionManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="classRobotPositionManager_1_1RobotPositionManager__coll__graph.png" border="0" usemap="#aRobotPositionManager_8RobotPositionManager_coll__map" alt="Collaboration graph"/></div>
 <map name="aRobotPositionManager_8RobotPositionManager_coll__map" id="aRobotPositionManager_8RobotPositionManager_coll__map">
-<area shape="rect" title="Responsável por permitir ao usuário a criação de diversas configurações de posições iniciais de parti..." alt="" coords="5,119,225,1015"/>
+<area shape="rect" title="Responsável por permitir ao usuário a criação de diversas formações táticas." alt="" coords="5,119,225,1015"/>
 <area shape="rect" title=" " alt="" coords="90,5,141,71"/>
 <area shape="poly" title=" " alt="" coords="118,85,118,119,113,119,113,85"/>
 </map>
@@ -192,7 +192,7 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a1e054eb629f75a913096f9d217ce684a" id="r_a1e054eb629f75a913096f9d217ce684a"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotPositionManager_1_1RobotPositionManager.html#a1e054eb629f75a913096f9d217ce684a">CONFIG_POSITION_PATH</a> = &quot;../agent/config_positions.pkl&quot;</td></tr>
+<tr class="memitem:a1e054eb629f75a913096f9d217ce684a" id="r_a1e054eb629f75a913096f9d217ce684a"><td class="memItemLeft" align="right" valign="top">str&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classRobotPositionManager_1_1RobotPositionManager.html#a1e054eb629f75a913096f9d217ce684a">CONFIG_POSITION_PATH</a> = Path(__file__).resolve().parents[1] / &quot;agent&quot; / &quot;tactical_formation.pkl&quot;</td></tr>
 <tr class="separator:a1e054eb629f75a913096f9d217ce684a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
@@ -205,10 +205,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a5fd07c0ad1d60ee76b58d91268e4bcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Responsável por permitir ao usuário a criação de diversas configurações de posições iniciais de partida. </p>
+<div class="textblock"><p>Responsável por permitir ao usuário a criação de diversas formações táticas. </p>
 <p>Focada em diversão e customização, gerencia um binário que é a representação de dicionário de listas que contém as 11 posições. Por ter esse objetivo, não faz sentido que haja essa função na lógica geral dos agentes. </p>
 
-<p class="definition">Definition at line <a class="el" href="RobotPositionManager_8py_source.html#l00010">10</a> of file <a class="el" href="RobotPositionManager_8py_source.html">RobotPositionManager.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RobotPositionManager_8py_source.html#l00011">11</a> of file <a class="el" href="RobotPositionManager_8py_source.html">RobotPositionManager.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1b81e407299d8af7f7fd6d7d66457a2b" name="a1b81e407299d8af7f7fd6d7d66457a2b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b81e407299d8af7f7fd6d7d66457a2b">&#9670;&#160;</a></span>__init__()</h2>
@@ -755,7 +755,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">str RobotPositionManager.RobotPositionManager.CONFIG_POSITION_PATH = &quot;../agent/config_positions.pkl&quot;</td>
+          <td class="memname">str RobotPositionManager.RobotPositionManager.CONFIG_POSITION_PATH = Path(__file__).resolve().parents[1] / &quot;agent&quot; / &quot;tactical_formation.pkl&quot;</td>
         </tr>
       </table>
   </td>

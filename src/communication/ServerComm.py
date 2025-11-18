@@ -58,8 +58,17 @@ class ServerComm:
             f"(init (unum {self.unum}) (teamname {creation_options[3][1]}))".encode()
         )
         self.__receive_async(other_players)
+        Printing.print_message(f"Jogador {self.unum} recebeu do servidor assincronamente\n", "info")
 
         # Aqui podem ser realizados testes de execução de quaisquer funções do ServerComm
+
+        for _ in range(3):
+            self.send_immediate(b'(syn)')
+            for p in other_players:
+                p.scom.send_immediate(b'(syn)')
+            for p in other_players:
+                p.scom.receive()
+            self.receive()
 
 
         # self.close()
@@ -127,7 +136,6 @@ class ServerComm:
                 break
 
             # Como há algo para ser lido, devemos aplicar o parser
-        print(self.buffer)
 
     def __receive_async(self, other_players: list) -> None:
         """
@@ -160,10 +168,11 @@ class ServerComm:
             for p in other_players:
                 p.scom.send_immediate(b"(syn)")
 
+            for p in other_players:
+                p.scom.receive()
+
         # Voltamos ao padrão
         self.socket.setblocking(True)
-        Printing.print_message(f"Jogador {self.unum} recebeu do servidor assincronamente\n", "info")
-
         return None
 
     def commit(self, message: bytes) -> None:
@@ -197,7 +206,8 @@ class ServerComm:
             self.message_queue.append(b"(syn)")
             self.send_immediate(b''.join(self.message_queue))
         else:
-            Printing.print_message("Houve sockets de leitura disponíveis enquanto estava enviando a fila de mensagens commitadas.", "warning")
+            Printing.print_message("\nHavia sockets de leitura disponíveis enquanto tentava enviar fila de mensagens commitadas.", "warning")
+
         self.message_queue.clear() # Limpamos buffer
 
     def clear_queue(self) -> None:
