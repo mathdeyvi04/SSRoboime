@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['unum_0',['unum',['../classAgent_1_1Agent.html#a4a4dd5d299aac1d8d1e93f0d06a2af00',1,'Agent.Agent.unum'],['../classBaseAgent_1_1BaseAgent.html#a3b0d3be2b8bb88a7e508c7cb1fa0fc78',1,'BaseAgent.BaseAgent.unum'],['../classServerComm_1_1ServerComm.html#a677354d386da70d9ced7355feb458a42',1,'ServerComm.ServerComm.unum']]]
+  ['table_5fcolors_0',['TABLE_COLORS',['../classPrinting_1_1Printing.html#ad999cc214dbf7c5c684da952fc0818cd',1,'Printing::Printing']]],
+  ['tv_5fconfigs_1',['tv_configs',['../classRobotPositionManager_1_1RobotPositionManager.html#ab7b328d2a568abef6b3a2bbfeca31655',1,'RobotPositionManager::RobotPositionManager']]]
 ];

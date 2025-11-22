@@ -1,13 +1,10 @@
 var searchData=
 [
-  ['receive_0',['receive',['../classServerComm_1_1ServerComm.html#a7f0a7e6253dddebe1a09f2da60b1bf93',1,'ServerComm::ServerComm']]],
-  ['robot_1',['robot',['../classRobot_1_1Robot.html',1,'Robot.Robot'],['../namespaceRobot.html',1,'Robot'],['../classWorld_1_1World.html#a0bd5688285a3be94b41d481f2379bf38',1,'World.World.robot']]],
-  ['robot_2epy_2',['Robot.py',['../Robot_8py.html',1,'']]],
-  ['robotpositionmanager_3',['robotpositionmanager',['../classRobotPositionManager_1_1RobotPositionManager.html',1,'RobotPositionManager.RobotPositionManager'],['../namespaceRobotPositionManager.html',1,'RobotPositionManager']]],
-  ['robotpositionmanager_2epy_4',['RobotPositionManager.py',['../RobotPositionManager_8py.html',1,'']]],
-  ['root_5',['root',['../namespaceRobotPositionManager.html#a2b3533e65fd87f1dccf9b8ad08def62e',1,'RobotPositionManager']]],
-  ['run_5ffull_5fteam_6',['run_full_team',['../namespacerun__full__team.html',1,'']]],
-  ['run_5ffull_5fteam_2epy_7',['run_full_team.py',['../run__full__team_8py.html',1,'']]],
-  ['run_5fplayer_8',['run_player',['../namespacerun__player.html',1,'']]],
-  ['run_5fplayer_2epy_9',['run_player.py',['../run__player_8py.html',1,'']]]
+  ['p_0',['p',['../namespacerun__full__team.html#aacf93d065645ef0e6c902f5e8ce26406',1,'run_full_team']]],
+  ['players_1',['players',['../namespacerun__full__team.html#a3091250a934ba10b81fbb9898d14ad2a',1,'run_full_team']]],
+  ['posicoes_5fatuais_2',['posicoes_atuais',['../classRobotPositionManager_1_1RobotPositionManager.html#a6f6b413b38e1859004477f9aafd44d06',1,'RobotPositionManager::RobotPositionManager']]],
+  ['print_5fmessage_3',['print_message',['../classPrinting_1_1Printing.html#a3692966025b767f48741d95e8f02b37c',1,'Printing::Printing']]],
+  ['print_5ftable_4',['print_table',['../classPrinting_1_1Printing.html#a00e429f5451a88fdc34977e4ea71228a',1,'Printing::Printing']]],
+  ['printing_5',['printing',['../classPrinting_1_1Printing.html',1,'Printing.Printing'],['../namespacePrinting.html',1,'Printing']]],
+  ['printing_2epy_6',['Printing.py',['../Printing_8py.html',1,'']]]
 ];

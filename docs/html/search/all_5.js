@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['field_5fheight_0',['FIELD_HEIGHT',['../classRobotPositionManager_1_1RobotPositionManager.html#a90d9d041a473e443fc0a02da8cbb742c',1,'RobotPositionManager::RobotPositionManager']]],
-  ['field_5fwidth_1',['FIELD_WIDTH',['../classRobotPositionManager_1_1RobotPositionManager.html#a7a10a9a5f824be15c1e8420705e3d092',1,'RobotPositionManager::RobotPositionManager']]],
-  ['flags_5fcorners_5fpos_2',['FLAGS_CORNERS_POS',['../classWorld_1_1World.html#abbe85a293a619fb43a281b8f016f32ac',1,'World::World']]],
-  ['flags_5fposts_5fpos_3',['FLAGS_POSTS_POS',['../classWorld_1_1World.html#abca8865bdfda1bcbe6a6844f00f870c0',1,'World::World']]]
+  ['environment_0',['environment',['../classEnvironment.html',1,'Environment'],['../classBaseAgent_1_1BaseAgent.html#af9e465b153c2df370590474f0c747613',1,'BaseAgent.BaseAgent.environment'],['../classServerComm_1_1ServerComm.html#a31545ee4e49dcde06f1089feebd741a1',1,'ServerComm.ServerComm.environment']]],
+  ['environment_2ehpp_1',['Environment.hpp',['../Environment_8hpp.html',1,'']]],
+  ['example_2',['example',['../debug_8cc.html#a6031933688b7991fba7ee2b06af7e789',1,'debug.cc']]]
 ];

@@ -48,7 +48,7 @@ class Printing:
         if role in Printing.TABLE_COLORS:
             print(f"{Printing.TABLE_COLORS[role]}", end="", flush=True)
         else:
-            if role.startswith("\\033["):
+            if role.startswith("\033["):
                 print(f"{role}", end="", flush=True)
             else:
                 Printing.print_message("Erro: `role` não específicada.", "error")

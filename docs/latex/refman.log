@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.8.14)  18 NOV 2025 18:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.8.14)  22 NOV 2025 12:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -905,7 +905,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 8.09995pt on input line 7.
 ) (./namespaceAgentPenalty.tex) (./namespaceBaseAgent.tex)
-(./namespaceBooting.tex) (./namespacePrinting.tex) (./namespaceRobot.tex)
+(./namespaceBooting.tex) (./namespacePrinting.tex)
 (./namespaceRobotPositionManager.tex [9]
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 10.79993pt on input line 15.
@@ -918,19 +918,19 @@ LaTeX Font Info:    Trying to load font information for T1+pcr on input line 20
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 ))
 (./namespacerun__full__team.tex) (./namespacerun__player.tex [10])
-(./namespaceServerComm.tex) (./namespaceWorld.tex) [11] [12
+(./namespaceServerComm.tex) [11] [12
 
 ]
 Chapter 6.
 (./classAgent_1_1Agent.tex <./classAgent_1_1Agent__inherit__graph.pdf>
-<classAgent_1_1Agent__inherit__graph.pdf, id=1256, 203.76125pt x 236.885pt>
+<classAgent_1_1Agent__inherit__graph.pdf, id=1079, 203.76125pt x 236.885pt>
 File: classAgent_1_1Agent__inherit__graph.pdf Graphic file (type pdf)
 <use classAgent_1_1Agent__inherit__graph.pdf>
 Package pdftex.def Info: classAgent_1_1Agent__inherit__graph.pdf  used on input
  line 14.
 (pdftex.def)             Requested size: 203.0pt x 236.00967pt.
  <./classAgent_1_1Agent__coll__graph.pdf>
-<classAgent_1_1Agent__coll__graph.pdf, id=1264, 203.76125pt x 236.885pt>
+<classAgent_1_1Agent__coll__graph.pdf, id=1087, 203.76125pt x 236.885pt>
 File: classAgent_1_1Agent__coll__graph.pdf Graphic file (type pdf)
 <use classAgent_1_1Agent__coll__graph.pdf>
 Package pdftex.def Info: classAgent_1_1Agent__coll__graph.pdf  used on input li
@@ -943,70 +943,74 @@ LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
 (Font)              Font shape `T1/pcr/m/sl' tried instead on input line 50.
  [14]) (./classBaseAgent_1_1BaseAgent.tex <./classBaseAgent_1_1BaseAgent__inher
 it__graph.pdf>
-<classBaseAgent_1_1BaseAgent__inherit__graph.pdf, id=1302, 206.7725pt x 338.263
+<classBaseAgent_1_1BaseAgent__inherit__graph.pdf, id=1125, 206.7725pt x 338.263
 75pt>
 File: classBaseAgent_1_1BaseAgent__inherit__graph.pdf Graphic file (type pdf)
 <use classBaseAgent_1_1BaseAgent__inherit__graph.pdf>
 Package pdftex.def Info: classBaseAgent_1_1BaseAgent__inherit__graph.pdf  used 
-on input line 14.
+on input line 15.
 (pdftex.def)             Requested size: 206.0pt x 337.00867pt.
  [15] <./classBaseAgent_1_1BaseAgent__coll__graph.pdf>
-<classBaseAgent_1_1BaseAgent__coll__graph.pdf, id=1325, 206.7725pt x 338.26375p
+<classBaseAgent_1_1BaseAgent__coll__graph.pdf, id=1148, 206.7725pt x 338.26375p
 t>
 File: classBaseAgent_1_1BaseAgent__coll__graph.pdf Graphic file (type pdf)
 <use classBaseAgent_1_1BaseAgent__coll__graph.pdf>
 Package pdftex.def Info: classBaseAgent_1_1BaseAgent__coll__graph.pdf  used on 
-input line 23.
+input line 25.
 (pdftex.def)             Requested size: 206.0pt x 337.00867pt.
  [16] [17] [18]) (./classBooting_1_1Booting.tex <./classBooting_1_1Booting__col
 l__graph.pdf>
-<classBooting_1_1Booting__coll__graph.pdf, id=1403, 201.75375pt x 185.69376pt>
+<classBooting_1_1Booting__coll__graph.pdf, id=1226, 216.81pt x 211.79124pt>
 File: classBooting_1_1Booting__coll__graph.pdf Graphic file (type pdf)
 <use classBooting_1_1Booting__coll__graph.pdf>
 Package pdftex.def Info: classBooting_1_1Booting__coll__graph.pdf  used on inpu
-t line 14.
-(pdftex.def)             Requested size: 201.0pt x 185.00192pt.
+t line 15.
+(pdftex.def)             Requested size: 216.0pt x 211.01189pt.
  [19]
-Underfull \hbox (badness 10000) detected at line 81
+Underfull \hbox (badness 10000) detected at line 84
 [][][]
  []
 
 [20]
-Underfull \hbox (badness 10000) detected at line 98
+Underfull \hbox (badness 10000) detected at line 101
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--113
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 \T1/pcr/m/n/8 str Booting.[]Booting.[]CONFIG[]_[][]PATH = Path([]_[][]_[]file[]
 _[][]_[]).resolve().parent / "config[]_[]team[]_[]params.[]txt"
  []
 
+) (./classEnvironment.tex <./classEnvironment__coll__graph.pdf>
+<classEnvironment__coll__graph.pdf, id=1289, 216.81pt x 140.525pt>
+File: classEnvironment__coll__graph.pdf Graphic file (type pdf)
+<use classEnvironment__coll__graph.pdf>
+Package pdftex.def Info: classEnvironment__coll__graph.pdf  used on input line 
+14.
+(pdftex.def)             Requested size: 216.0pt x 140.00787pt.
+ [21] [22]
+Underfull \hbox (badness 10000) detected at line 43
+[][][]
+ []
+
 ) (./classPrinting_1_1Printing.tex <./classPrinting_1_1Printing__coll__graph.pd
 f>
-<classPrinting_1_1Printing__coll__graph.pdf, id=1455, 279.0425pt x 322.20375pt>
+<classPrinting_1_1Printing__coll__graph.pdf, id=1325, 279.0425pt x 322.20375pt>
 
 File: classPrinting_1_1Printing__coll__graph.pdf Graphic file (type pdf)
 <use classPrinting_1_1Printing__coll__graph.pdf>
 Package pdftex.def Info: classPrinting_1_1Printing__coll__graph.pdf  used on in
 put line 14.
 (pdftex.def)             Requested size: 278.0pt x 321.00826pt.
- [21] [22]
+ [23]
 Underfull \hbox (badness 10000) detected at line 62
 [][][]
  []
 
-[23] [24]) (./classRobot_1_1Robot.tex <./classRobot_1_1Robot__coll__graph.pdf>
-<classRobot_1_1Robot__coll__graph.pdf, id=1528, 226.8475pt x 140.525pt>
-File: classRobot_1_1Robot__coll__graph.pdf Graphic file (type pdf)
-<use classRobot_1_1Robot__coll__graph.pdf>
-Package pdftex.def Info: classRobot_1_1Robot__coll__graph.pdf  used on input li
-ne 14.
-(pdftex.def)             Requested size: 226.0pt x 140.00143pt.
-
-[25]) (./classRobotPositionManager_1_1RobotPositionManager.tex <./classRobotPos
-itionManager_1_1RobotPositionManager__inherit__graph.pdf>
-<classRobotPositionManager_1_1RobotPositionManager__inherit__graph.pdf, id=1553
+[24] [25]) (./classRobotPositionManager_1_1RobotPositionManager.tex <./classRob
+otPositionManager_1_1RobotPositionManager__inherit__graph.pdf>
+<classRobotPositionManager_1_1RobotPositionManager__inherit__graph.pdf, id=1390
 , 245.91875pt x 840.13875pt>
 File: classRobotPositionManager_1_1RobotPositionManager__inherit__graph.pdf Gra
 phic file (type pdf)
@@ -1015,7 +1019,7 @@ Package pdftex.def Info: classRobotPositionManager_1_1RobotPositionManager__inh
 erit__graph.pdf  used on input line 14.
 (pdftex.def)             Requested size: 160.99352pt x 550.0pt.
  [26] <./classRobotPositionManager_1_1RobotPositionManager__coll__graph.pdf>
-<classRobotPositionManager_1_1RobotPositionManager__coll__graph.pdf, id=1573, 2
+<classRobotPositionManager_1_1RobotPositionManager__coll__graph.pdf, id=1410, 2
 45.91875pt x 840.13875pt>
 File: classRobotPositionManager_1_1RobotPositionManager__coll__graph.pdf Graphi
 c file (type pdf)
@@ -1073,55 +1077,177 @@ Overfull \hbox (43.9562pt too wide) in paragraph at lines 422--423
 
 [34] [35]) (./classServerComm_1_1ServerComm.tex <./classServerComm_1_1ServerCom
 m__coll__graph.pdf>
-<classServerComm_1_1ServerComm__coll__graph.pdf, id=1811, 237.88875pt x 387.447
-5pt>
+<classServerComm_1_1ServerComm__coll__graph.pdf, id=1648, 222.8325pt x 424.5862
+4pt>
 File: classServerComm_1_1ServerComm__coll__graph.pdf Graphic file (type pdf)
 <use classServerComm_1_1ServerComm__coll__graph.pdf>
 Package pdftex.def Info: classServerComm_1_1ServerComm__coll__graph.pdf  used o
-n input line 14.
-(pdftex.def)             Requested size: 237.0pt x 386.01584pt.
- [36] [37] [38] [39] [40]) (./classWorld_1_1World.tex <./classWorld_1_1World__c
-oll__graph.pdf>
-<classWorld_1_1World__coll__graph.pdf, id=1934, 242.9075pt x 633.36626pt>
-File: classWorld_1_1World__coll__graph.pdf Graphic file (type pdf)
-<use classWorld_1_1World__coll__graph.pdf>
-Package pdftex.def Info: classWorld_1_1World__coll__graph.pdf  used on input li
-ne 14.
-(pdftex.def)             Requested size: 210.94974pt x 550.0pt.
- [41] [42]
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
-\T1/pcr/m/n/8 tuple World.[]World.[]FLAGS[]_[][]CORNERS[]_[][]POS = ((-15, -10,
- 0), (-15, +10, 0), (+15, -10, 0), (+15, +10,
- []
+n input line 15.
+(pdftex.def)             Requested size: 222.0pt x 423.00441pt.
+ [36] [37] [38] [39] [40]) [41] [42
 
-[43]
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
-\T1/pcr/m/n/8 tuple World.[]World.[]FLAGS[]_[][]POSTS[]_[][]POS = ((-15, -1.[]0
-5, 0.[]8), (-15, +1.[]05, 0.[]8), (+15, -1.[]05, 0.[]8),
- []
-
-[44] [45] [46] [47]) [48]
+]
 Chapter 7.
-(./Agent_8py.tex) (./Agent_8py_source.tex [49
-
-]) (./AgentPenalty_8py.tex)
+(./Agent_8py.tex) (./Agent_8py_source.tex [43]) (./AgentPenalty_8py.tex)
 (./AgentPenalty_8py_source.tex) (./BaseAgent_8py.tex)
-(./BaseAgent_8py_source.tex [50]) (./ServerComm_8py.tex [51])
-(./ServerComm_8py_source.tex [52] [53] [54]) (./Robot_8py.tex)
-(./Robot_8py_source.tex [55]) (./World_8py.tex) (./World_8py_source.tex
-[56]) (./run__full__team_8py.tex) (./run__full__team_8py_source.tex [57])
-(./run__player_8py.tex) (./run__player_8py_source.tex) (./Booting_8py.tex
-[58]) (./Booting_8py_source.tex [59]) (./Printing_8py.tex)
-(./Printing_8py_source.tex [60] [61]) (./RobotPositionManager_8py.tex [62])
-(./RobotPositionManager_8py_source.tex [63] [64] [65] [66] [67]) [68]
+(./BaseAgent_8py_source.tex [44]) (./ServerComm_8py.tex [45])
+(./ServerComm_8py_source.tex [46] [47] [48]) (./debug_8cc.tex <./debug_8cc__inc
+l.pdf>
+<debug_8cc__incl.pdf, id=2227, 232.87pt x 220.825pt>
+File: debug_8cc__incl.pdf Graphic file (type pdf)
+<use debug_8cc__incl.pdf>
+Package pdftex.def Info: debug_8cc__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 232.0pt x 220.00902pt.
+ [49]
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 const char$\OMS/cmsy/m/n/8 ^^C$ \T1/pcr/m/n/8 example = "(time (n
+ow 10.[]06))(GS (sl 0) (sr 0) (t 0.[]00) (pm Before[]Kick[]Off))(GYR (n
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 torso) (rt 0.[]01 -0.[]00 0.[]00))(ACC (n torso) (a -0.[]00 -0.[]
+00 0.[]01))(HJ (n hj1) (ax 0.[]00))(HJ (n
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 hj2) (ax -0.[]00))(See (P (team Robo[]IME) (id 1) (rlowerarm (pol
+ 0.[]18 -35.[]30 -22.[]17)) (llowerarm
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 (pol 0.[]18 36.[]49 -21.[]66))) (G2R (pol 30.[]92 -19.[]31 0.[]55
+)) (G1R (pol 30.[]30 -15.[]73 0.[]47)) (F1R
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 (pol 29.[]27 1.[]62 -1.[]01)) (F2R (pol 34.[]87 -33.[]26 -0.[]82)
+) (B (pol 16.[]91 -32.[]71 -1.[]64)) (L (pol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 23.[]88 -53.[]55 -1.[]53) (pol 14.[]22 3.[]30 -2.[]23)) (L (pol 3
+4.[]95 -33.[]18 -0.[]98) (pol 29.[]18 1.[]37 -1.[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 25)) (L (pol 29.[]20 1.[]45 -1.[]09) (pol 1.[]07 59.[]96 -29.[]70
+)) (L (pol 34.[]98 -33.[]31 -0.[]90) (pol 22.[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 18 -60.[]01 -1.[]25)) (L (pol 28.[]07 -12.[]48 -0.[]97) (pol 29.[
+]94 -23.[]73 -1.[]00)) (L (pol 28.[]07 -12.[]88
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 -1.[]02) (pol 29.[]83 -11.[]92 -1.[]07)) (L (pol 29.[]99 -23.[]90
+ -1.[]00) (pol 31.[]66 -22.[]86 -0.[]96)) (L (pol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 18.[]62 -29.[]50 -1.[]68) (pol 17.[]73 -26.[]93 -1.[]76)) (L (pol
+ 17.[]76 -26.[]80 -1.[]58) (pol 16.[]53 -26.[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 27 -1.[]95)) (L (pol 16.[]52 -26.[]24 -1.[]94) (pol 15.[]44 -28.[
+]34 -2.[]03)) (L (pol 15.[]42 -28.[]55 -1.[]86)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 (pol 14.[]92 -32.[]55 -1.[]98)) (L (pol 14.[]90 -32.[]54 -2.[]25)
+ (pol 15.[]26 -37.[]08 -1.[]89)) (L (pol 15.[]28
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 -37.[]21 -2.[]06) (pol 16.[]31 -39.[]67 -1.[]78)) (L (pol 16.[]28
+ -39.[]55 -1.[]64) (pol 17.[]54 -39.[]17 -1.[]67))
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 (L (pol 17.[]55 -39.[]31 -1.[]67) (pol 18.[]51 -36.[]89 -1.[]61))
+ (L (pol 18.[]55 -36.[]88 -1.[]69) (pol 18.[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 93 -33.[]46 -1.[]78)) (L (pol 18.[]93 -33.[]32 -1.[]51) (pol 18.[
+]64 -29.[]59 -1.[]54)))(HJ (n raj1) (ax 0.[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 00))(HJ (n raj2) (ax 0.[]00))(HJ (n raj3) (ax 0.[]00))(HJ (n raj4
+) (ax 0.[]00))(HJ (n laj1) (ax 0.[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 00))(HJ (n laj2) (ax -0.[]00))(HJ (n laj3) (ax 0.[]00))(HJ (n laj
+4) (ax -0.[]00))(HJ (n rlj1) (ax
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 0.[]00))(HJ (n rlj2) (ax -0.[]00))(HJ (n rlj3) (ax -0.[]00))(HJ (
+n rlj4) (ax -0.[]00))(HJ (n rlj5) (ax
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+\T1/pcr/m/n/8 -0.[]00))(HJ (n rlj6) (ax -0.[]00))(HJ (n llj1) (ax 0.[]00))(HJ (
+n llj2) (ax 0.[]00))(HJ (n llj3) (ax
+ []
+
+[50]) (./debug_8cc_source.tex) (./Environment_8hpp.tex <./Environment_8hpp__inc
+l.pdf>
+<Environment_8hpp__incl.pdf, id=2305, 232.87pt x 165.61874pt>
+File: Environment_8hpp__incl.pdf Graphic file (type pdf)
+<use Environment_8hpp__incl.pdf>
+Package pdftex.def Info: Environment_8hpp__incl.pdf  used on input line 10.
+(pdftex.def)             Requested size: 232.0pt x 165.00676pt.
+ <./Environment_8hpp__dep__incl.pdf>
+<Environment_8hpp__dep__incl.pdf, id=2313, 331.2375pt x 176.66pt>
+File: Environment_8hpp__dep__incl.pdf Graphic file (type pdf)
+<use Environment_8hpp__dep__incl.pdf>
+Package pdftex.def Info: Environment_8hpp__dep__incl.pdf  used on input line 18
+.
+(pdftex.def)             Requested size: 330.0pt x 176.00722pt.
+ [51]) (./Environment_8hpp_source.tex) (./module__main_8cpp.tex <./module__main
+_8cpp__incl.pdf>
+<module__main_8cpp__incl.pdf, id=2346, 341.275pt x 220.825pt>
+File: module__main_8cpp__incl.pdf Graphic file (type pdf)
+<use module__main_8cpp__incl.pdf>
+Package pdftex.def Info: module__main_8cpp__incl.pdf  used on input line 10.
+(pdftex.def)             Requested size: 340.0pt x 220.01239pt.
+ [52])
+(./module__main_8cpp_source.tex) (./run__full__team_8py.tex [53])
+(./run__full__team_8py_source.tex) (./run__player_8py.tex)
+(./run__player_8py_source.tex) (./Booting_8py.tex [54])
+(./Booting_8py_source.tex [55] [56] [57]) (./Printing_8py.tex)
+(./Printing_8py_source.tex [58] [59]) (./RobotPositionManager_8py.tex [60])
+(./RobotPositionManager_8py_source.tex [61] [62] [63] [64] [65]) [66]
 (./refman.ind
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 22.39185pt on input line 1.
- [69
+ [67
 
 
 
-] [70] [71] [72
+] [68] [69
 
 ]) (./refman.aux)
  ***********
@@ -1129,29 +1255,30 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: DD7F440C4CD654C8590CEB08AFDFDF7C;40174.
+(rerunfilecheck)             Checksum: 8C29A7A63873AB019B6054CE6C2DA106;33930.
  ) 
 Here is how much of TeX's memory you used:
- 20171 strings out of 476182
- 355147 string characters out of 5795595
- 1955975 words of memory out of 5000000
- 40109 multiletter control sequences out of 15000+600000
+ 20168 strings out of 476182
+ 354385 string characters out of 5795595
+ 1957975 words of memory out of 5000000
+ 40072 multiletter control sequences out of 15000+600000
  612413 words of font info for 103 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 101i,16n,117p,839b,744s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf
--dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/hel
-vetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a
-c.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (80 pages, 423879 bytes).
+ 101i,16n,117p,2642b,744s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/
+uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on refman.pdf (77 pages, 441715 bytes).
 PDF statistics:
- 4394 PDF objects out of 5155 (max. 8388607)
- 4196 compressed objects within 42 object streams
- 1651 named destinations out of 1728 (max. 500000)
- 1672 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4148 PDF objects out of 4296 (max. 8388607)
+ 3942 compressed objects within 40 object streams
+ 1686 named destinations out of 1728 (max. 500000)
+ 1431 words of extra memory for PDF output out of 10000 (max. 10000000)
 

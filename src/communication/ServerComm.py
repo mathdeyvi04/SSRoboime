@@ -6,20 +6,23 @@ import socket
 from time import sleep
 from term.Printing import Printing
 from select import select
+from cpp.environment.environment import Environment
 
 class ServerComm:
     """
     @brief Responsável pela comunicação com servidor.
     """
 
-    def __init__(self, creation_options: list[list[str]], other_players: list):
+    def __init__(self, creation_options: list[list[str]], environment: Environment, other_players: list):
         """
         @brief Construtor da classe, inicializando buffers e a conexão de cada agente com servidor.
         @param creation_options Lista de parâmetros de criação, self ainda não foi incluído na lista.
+        @param environment
+        @param other_players
         """
 
         # Características da comunicação
-        self.buffer_size = 4000 # Posteriormente, devemos analisar se realmente vale a pena ter um buffer com este comprimento
+        self.buffer_size = 4096 # Posteriormente, devemos analisar se realmente vale a pena ter um buffer com este comprimento
         self.buffer = bytearray(self.buffer_size)
         self.socket = socket.socket(
                                     socket.AF_INET,
@@ -30,6 +33,7 @@ class ServerComm:
         # Características alheias
         self.message_queue = []
         self.unum = creation_options[4][1]
+        self.environment = environment
 
         # Fazemos a conexão com servidor
         Printing.print_message(f"Tentando conexão do jogador {self.unum}", "info")
@@ -94,6 +98,7 @@ class ServerComm:
         @brief Receberá informações diretamente do servidor, fazendo todas as verificações necessárias.
         """
 
+        msg_size = None
         while True:
             try:
                 # Verificamos se há 4 bytes no cabeçalho e nos preparamos para ler.
@@ -135,7 +140,8 @@ class ServerComm:
             ) == 0: # Logo, não há dados disponíveis para leitura
                 break
 
-            # Como há algo para ser lido, devemos aplicar o parser
+        # Como há algo para ser lido, devemos aplicar o parser
+        self.environment.update_from_server(self.buffer[:msg_size])
 
     def __receive_async(self, other_players: list) -> None:
         """

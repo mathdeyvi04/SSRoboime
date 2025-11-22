@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['servercomm_0',['ServerComm',['../classServerComm_1_1ServerComm.html',1,'ServerComm']]]
+  ['robotpositionmanager_0',['RobotPositionManager',['../classRobotPositionManager_1_1RobotPositionManager.html',1,'RobotPositionManager']]]
 ];

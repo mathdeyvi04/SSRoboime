@@ -7,11 +7,12 @@ Responsável por inicializar todas as necessidades de execução do time.
 
 
 
-Collaboration diagram for Booting.\+Booting\+:\nopagebreak
+Collaboration diagram for Booting.\+Booting\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=201pt]{classBooting_1_1Booting__coll__graph}
+\includegraphics[width=216pt]{classBooting_1_1Booting__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -24,7 +25,9 @@ Collaboration diagram for Booting.\+Booting\+:\nopagebreak
 \item 
 list\mbox{[}list\mbox{[}str\texorpdfstring{$\vert$}{|}int\mbox{]}\mbox{]} \mbox{\hyperlink{classBooting_1_1Booting_a77bb6ec6f5826b31d2548d8a960ee32e}{get\+\_\+team\+\_\+params}} ()
 \begin{DoxyCompactList}\small\item\em Verifica existência de arquivo de parâmetros de time, caso não exista, usará o default. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classBooting_1_1Booting_a1e9e1d39368b25afb62206e8b4a897ac}{cpp\+\_\+builder}} (self)
+None \mbox{\hyperlink{classBooting_1_1Booting_a214ddd277b683503d96ab383a8ab492f}{show\+\_\+spinner}} (list\mbox{[}bool\mbox{]} running\+\_\+flag)
+\begin{DoxyCompactList}\small\item\em Por motivos estéticos, mostrará um spinner enquanto há o carregamento de módulos C++. \end{DoxyCompactList}\item 
+None \mbox{\hyperlink{classBooting_1_1Booting_a3044c0b15b3ed04a75b91616353e7305}{cpp\+\_\+builder}} ()
 \begin{DoxyCompactList}\small\item\em Responsável por buildar os arquivos .cpp presentes na pasta cpp. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -46,7 +49,7 @@ Assume as seguintes responsabilidades\+:
 \item Estabelece um arquivo de configurações default caso já não exista um. 
 \end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{Booting_8py_source_l00010}{10}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00016}{16}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
 
 
 
@@ -63,16 +66,16 @@ Responsável por chamar as inicializações mínimas.
 
 
 
-Definition at line \mbox{\hyperlink{Booting_8py_source_l00020}{20}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00026}{26}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
 
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classBooting_1_1Booting_a1e9e1d39368b25afb62206e8b4a897ac}\label{classBooting_1_1Booting_a1e9e1d39368b25afb62206e8b4a897ac} 
+\Hypertarget{classBooting_1_1Booting_a3044c0b15b3ed04a75b91616353e7305}\label{classBooting_1_1Booting_a3044c0b15b3ed04a75b91616353e7305} 
 \index{Booting.Booting@{Booting.Booting}!cpp\_builder@{cpp\_builder}}
 \index{cpp\_builder@{cpp\_builder}!Booting.Booting@{Booting.Booting}}
 \doxysubsubsection{\texorpdfstring{cpp\_builder()}{cpp\_builder()}}
-{\footnotesize\ttfamily Booting.\+Booting.\+cpp\+\_\+builder (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily  None Booting.\+Booting.\+cpp\+\_\+builder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -83,7 +86,7 @@ Funcionalidades C++ em condições de interoperabilidade.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Booting_8py_source_l00084}{84}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00110}{110}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
 
 \Hypertarget{classBooting_1_1Booting_a77bb6ec6f5826b31d2548d8a960ee32e}\label{classBooting_1_1Booting_a77bb6ec6f5826b31d2548d8a960ee32e} 
 \index{Booting.Booting@{Booting.Booting}!get\_team\_params@{get\_team\_params}}
@@ -100,7 +103,21 @@ Faremos em tupla para permitir uso mínimo de memória. \begin{DoxyReturn}{Retur
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Booting_8py_source_l00035}{35}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00044}{44}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+
+\Hypertarget{classBooting_1_1Booting_a214ddd277b683503d96ab383a8ab492f}\label{classBooting_1_1Booting_a214ddd277b683503d96ab383a8ab492f} 
+\index{Booting.Booting@{Booting.Booting}!show\_spinner@{show\_spinner}}
+\index{show\_spinner@{show\_spinner}!Booting.Booting@{Booting.Booting}}
+\doxysubsubsection{\texorpdfstring{show\_spinner()}{show\_spinner()}}
+{\footnotesize\ttfamily  None Booting.\+Booting.\+show\+\_\+spinner (\begin{DoxyParamCaption}\item[{list\mbox{[}bool\mbox{]}     }]{running\+\_\+flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Por motivos estéticos, mostrará um spinner enquanto há o carregamento de módulos C++. 
+
+
+
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00093}{93}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
 
 
 
@@ -113,7 +130,7 @@ Definition at line \mbox{\hyperlink{Booting_8py_source_l00035}{35}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{Booting_8py_source_l00018}{18}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00024}{24}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
 
 \Hypertarget{classBooting_1_1Booting_aca4bc452e914225c33db9cabe797e611}\label{classBooting_1_1Booting_aca4bc452e914225c33db9cabe797e611} 
 \index{Booting.Booting@{Booting.Booting}!options@{options}}
@@ -123,7 +140,7 @@ Definition at line \mbox{\hyperlink{Booting_8py_source_l00018}{18}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{Booting_8py_source_l00025}{25}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
+Definition at line \mbox{\hyperlink{Booting_8py_source_l00031}{31}} of file \mbox{\hyperlink{Booting_8py_source}{Booting.\+py}}.
 
 
 

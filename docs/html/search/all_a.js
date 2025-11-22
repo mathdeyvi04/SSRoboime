@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['on_5fdouble_5fclick_5fin_5fconfigs_0',['on_double_click_in_configs',['../classRobotPositionManager_1_1RobotPositionManager.html#aeb39702bf4fcd12dde1bb681a7493bdd',1,'RobotPositionManager.RobotPositionManager.on_double_click_in_configs'],['../classRobotPositionManager_1_1RobotPositionManager.html#ac08e8d99655cdb858867e1febac0b2b3',1,'RobotPositionManager.RobotPositionManager.on_double_click_in_configs(self, tk.Event event)']]],
-  ['options_1',['options',['../classBooting_1_1Booting.html#aca4bc452e914225c33db9cabe797e611',1,'Booting::Booting']]]
+  ['nb_5fmodule_0',['NB_MODULE',['../module__main_8cpp.html#acdd9b18da852bb24e80aac4c96928584',1,'module_main.cpp']]],
+  ['nome_5fde_5fconfig_5fselecionada_1',['nome_de_config_selecionada',['../classRobotPositionManager_1_1RobotPositionManager.html#a83f1aced496776968ac9113a524637df',1,'RobotPositionManager::RobotPositionManager']]],
+  ['nova_5fconfig_2',['nova_config',['../classRobotPositionManager_1_1RobotPositionManager.html#a8803cc44f9ea51d5d034f597d135233d',1,'RobotPositionManager::RobotPositionManager']]]
 ];

@@ -4,6 +4,12 @@
 """
 import os
 import sys
+import subprocess
+import sysconfig
+import nanobind
+import threading
+import pickle
+from time import sleep
 from term.Printing import Printing
 from pathlib import Path
 
@@ -24,12 +30,15 @@ class Booting:
 
         self.options = Booting.get_team_params()
 
-
         if getattr(sys, 'frozen', False):
             # Então estamos executando o binário!
             # Devemos forçar que o debug seja 0.
             self.options[8][1] = '0'
             Printing.IF_IN_DEBUG = False
+        else:
+            # Note que isso só faz sentido quando não estamos executando o código em binário
+            # Já que esta execução não conteria os arquivos .hpp, por exemplo.
+            Booting.cpp_builder()
 
     @staticmethod
     def get_team_params() -> list[list[str | int]]:
@@ -81,12 +90,141 @@ class Booting:
         return config_team_params
 
     @staticmethod
-    def cpp_builder(self):
+    def show_spinner(
+            running_flag: list[bool]
+    ) -> None:
+        """
+        @brief Por motivos estéticos, mostrará um spinner enquanto há o carregamento de módulos C++
+        """
+
+        spinner = ['|', '/', '-', '\\']
+        i = 0
+        while running_flag[0] and i < 1000:
+            print(f"{spinner[i % len(spinner)]}", end='', flush=True)
+            i += 1
+            sleep(0.5)
+            print("\b", end='')
+
+
+    @staticmethod
+    def cpp_builder() -> None:
         """
         @brief Responsável por buildar os arquivos .cpp presentes na pasta cpp.
         @return Funcionalidades C++ em condições de interoperabilidade.
         """
-        # Voltaremos para esta assim que tivermos desenvolvido pelo menos uma pasta cpp
-        pass
 
+        # Vamos verificar quais arquivos .cpp estão disponíveis para buildar
+        cpp_path = Path(__file__).resolve().parents[1] / "cpp"
+        cpp_modules = [
+            module for module in os.listdir(
+                cpp_path
+            ) if os.path.isdir(os.path.join(cpp_path, module))
+        ]
 
+        if not cpp_modules:
+            return None # Não há nenhum para construirmos
+
+        # Servirá para verificarmos quais binários estão atualizados com a versão
+        python_cmd = f"python{sys.version_info.major}.{sys.version_info.minor}"
+
+        # -- Os includes que serão necessários
+        nb_root = os.path.dirname(nanobind.__file__)
+        py_inc = sysconfig.get_path("include") # Python.h
+        nb_inc = nanobind.include_dir() # nanobind.h
+        robin_inc = os.path.join(nb_root, "ext", "robin_map", "include") # robin_map.h
+        nb_src = os.path.join(nb_root, "src", "nb_combined.cpp")
+        n_proc = str(os.cpu_count())
+        command_chain = [
+            "make",
+            f"-j{n_proc}",
+            f"PY_INC={py_inc}",
+            f"NB_INC={nb_inc}",
+            f"ROBIN_INC={robin_inc}",
+            f"NB_SRC={nb_src}"
+        ]
+
+        print("\033[1;7m/* ---- Construção de Funcionalidades C++ ---- */\033[0m")
+        for cpp_module in cpp_modules:
+            cpp_module_path = os.path.join(cpp_path, cpp_module)
+
+            # Verificamos se já existe um binário pronto
+            if os.path.isfile(
+                os.path.join(
+                    cpp_module_path,
+                    f"{cpp_module}.so"
+                )
+            ):
+                # Caso exista, devemos verificar se ele foi modificado em um limite de tempo
+                with open(
+                    os.path.join(
+                        cpp_module_path,
+                        f"{cpp_module}.cpp_info"
+                    ),
+                    "rb"
+                ) as f:
+                    info_version = pickle.load(f)
+
+                if info_version == python_cmd:
+                    # Considerando que está na mesma versão, ainda devemos verificar modificações
+
+                    code_mod_time = max(
+                        os.path.getmtime(
+                            os.path.join(
+                                cpp_module_path,
+                                file_in_the_module
+                            )
+                        ) for file_in_the_module in os.listdir(
+                            cpp_module_path
+                        ) if file_in_the_module.endswith(".cpp") or file_in_the_module.endswith(".hpp")
+                    )
+
+                    bin_mod_time = os.path.getmtime(os.path.join(cpp_module_path, f"{cpp_module}.so"))
+
+                    if bin_mod_time + 30 > code_mod_time:
+                        continue
+
+            msg = f"\033[1;7mConstruindo: \033[32;40m{cpp_module}\033[0m"
+            print(f"{msg:.<{60}}", end='', flush=True)
+
+            processo = subprocess.Popen(
+                command_chain,
+                cwd=cpp_module_path,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=False
+            )
+
+            # Iniciamos thread de spinner
+            running_flag = [True]
+            worker = threading.Thread(target=Booting.show_spinner, args=(running_flag,))
+            worker.start()
+
+            output, error = processo.communicate()
+            return_code = processo.wait()
+
+            running_flag[0] = False
+            worker.join()
+
+            if return_code == 0:
+                print("\033[7m\033[1mSucesso\033[0m")
+
+                # Podemos construir um arquivo de fiscalização
+                with open(
+                    os.path.join(cpp_module_path, f"{cpp_module}.cpp_info"),
+                    "wb"
+                ) as f:
+                    # noinspection PyTypeChecker
+                    pickle.dump(python_cmd, f)
+            else:
+                Printing.print_message("Abortando", "error")
+                print(output.decode(), error.decode())
+                exit()
+
+            subprocess.run(
+                ["make", "clean"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                cwd=cpp_module_path
+            )
+
+        return None

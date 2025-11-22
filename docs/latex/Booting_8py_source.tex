@@ -8,91 +8,229 @@
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00004}00004\ \textcolor{stringliteral}{"{}"{}"{}}}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00005}00005\ \textcolor{keyword}{import}\ os}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00006}00006\ \textcolor{keyword}{import}\ sys}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00007}00007\ \textcolor{keyword}{from}\ term.Printing\ \textcolor{keyword}{import}\ Printing}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00008}00008\ \textcolor{keyword}{from}\ pathlib\ \textcolor{keyword}{import}\ Path}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00009}00009\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00010}\mbox{\hyperlink{classBooting_1_1Booting}{00010}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBooting_1_1Booting}{Booting}}:}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00011}00011\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ @brief\ Responsável\ por\ inicializar\ todas\ as\ necessidades\ de\ execução\ do\ time}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ \ \ @details}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00014}00014\ \textcolor{stringliteral}{\ \ \ \ Assume\ as\ seguintes\ responsabilidades:}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00015}00015\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ Estabelece\ um\ arquivo\ de\ configurações\ default\ caso\ já\ não\ exista\ um.}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00017}00017\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00018}\mbox{\hyperlink{classBooting_1_1Booting_a8b4c21f63ed9bc81e66f79ca884a73d7}{00018}}\ \ \ \ \ CONFIG\_PATH\ =\ Path(\_\_file\_\_).resolve().parent\ /\ \textcolor{stringliteral}{"{}config\_team\_params.txt"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00019}00019\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00020}\mbox{\hyperlink{classBooting_1_1Booting_a9bb5465bfdbe93b09608623901baeed9}{00020}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classBooting_1_1Booting_a9bb5465bfdbe93b09608623901baeed9}{\_\_init\_\_}}(self):}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ chamar\ as\ inicializações\ mínimas.}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00024}00024\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00025}\mbox{\hyperlink{classBooting_1_1Booting_aca4bc452e914225c33db9cabe797e611}{00025}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classBooting_1_1Booting_aca4bc452e914225c33db9cabe797e611}{options}}\ =\ Booting.get\_team\_params()}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00026}00026\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00027}00027\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ getattr(sys,\ \textcolor{stringliteral}{'frozen'},\ \textcolor{keyword}{False}):}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Então\ estamos\ executando\ o\ binário!}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Devemos\ forçar\ que\ o\ debug\ seja\ 0.}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classBooting_1_1Booting_aca4bc452e914225c33db9cabe797e611}{options}}[8][1]\ =\ \textcolor{stringliteral}{'0'}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ Printing.IF\_IN\_DEBUG\ =\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00033}00033\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00034}00034\ \ \ \ \ \textcolor{preprocessor}{@staticmethod}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00035}\mbox{\hyperlink{classBooting_1_1Booting_a77bb6ec6f5826b31d2548d8a960ee32e}{00035}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classBooting_1_1Booting_a77bb6ec6f5826b31d2548d8a960ee32e}{get\_team\_params}}()\ -\/>\ list[list[str\ |\ int]]:}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Verifica\ existência\ de\ arquivo\ de\ parâmetros\ de\ time,\ caso\ não\ exista,\ usará\ o\ default.}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @details}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Faremos\ em\ tupla\ para\ permitir\ uso\ mínimo\ de\ memória.}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00040}00040\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @return}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00007}00007\ \textcolor{keyword}{import}\ subprocess}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00008}00008\ \textcolor{keyword}{import}\ sysconfig}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00009}00009\ \textcolor{keyword}{import}\ nanobind}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00010}00010\ \textcolor{keyword}{import}\ threading}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00011}00011\ \textcolor{keyword}{import}\ pickle}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00012}00012\ \textcolor{keyword}{from}\ time\ \textcolor{keyword}{import}\ sleep}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00013}00013\ \textcolor{keyword}{from}\ term.Printing\ \textcolor{keyword}{import}\ Printing}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00014}00014\ \textcolor{keyword}{from}\ pathlib\ \textcolor{keyword}{import}\ Path}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00016}\mbox{\hyperlink{classBooting_1_1Booting}{00016}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBooting_1_1Booting}{Booting}}:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00017}00017\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ @brief\ Responsável\ por\ inicializar\ todas\ as\ necessidades\ de\ execução\ do\ time}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ @details}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ Assume\ as\ seguintes\ responsabilidades:}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ -\/\ Estabelece\ um\ arquivo\ de\ configurações\ default\ caso\ já\ não\ exista\ um.}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00024}\mbox{\hyperlink{classBooting_1_1Booting_a8b4c21f63ed9bc81e66f79ca884a73d7}{00024}}\ \ \ \ \ CONFIG\_PATH\ =\ Path(\_\_file\_\_).resolve().parent\ /\ \textcolor{stringliteral}{"{}config\_team\_params.txt"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00026}\mbox{\hyperlink{classBooting_1_1Booting_a9bb5465bfdbe93b09608623901baeed9}{00026}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classBooting_1_1Booting_a9bb5465bfdbe93b09608623901baeed9}{\_\_init\_\_}}(self):}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ chamar\ as\ inicializações\ mínimas.}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00031}\mbox{\hyperlink{classBooting_1_1Booting_aca4bc452e914225c33db9cabe797e611}{00031}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classBooting_1_1Booting_aca4bc452e914225c33db9cabe797e611}{options}}\ =\ Booting.get\_team\_params()}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ getattr(sys,\ \textcolor{stringliteral}{'frozen'},\ \textcolor{keyword}{False}):}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Então\ estamos\ executando\ o\ binário!}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Devemos\ forçar\ que\ o\ debug\ seja\ 0.}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classBooting_1_1Booting_aca4bc452e914225c33db9cabe797e611}{options}}[8][1]\ =\ \textcolor{stringliteral}{'0'}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ Printing.IF\_IN\_DEBUG\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Note\ que\ isso\ só\ faz\ sentido\ quando\ não\ estamos\ executando\ o\ código\ em\ binário}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Já\ que\ esta\ execução\ não\ conteria\ os\ arquivos\ .hpp,\ por\ exemplo.}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ Booting.cpp\_builder()}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00042}00042\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ os.path.exists(Booting.CONFIG\_PATH):}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Booting.CONFIG\_PATH,}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}r"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{as}\ file\_team\_params:}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ config\_team\_params:\ list[list[str\ |\ int]]\ =\ \ [}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ string\_tupla.split(\textcolor{stringliteral}{"{},"{}})\ \textcolor{keywordflow}{for}\ string\_tupla\ \textcolor{keywordflow}{in}\ file\_team\_params.read().split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}})[:-\/1]}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00043}00043\ \ \ \ \ \textcolor{preprocessor}{@staticmethod}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00044}\mbox{\hyperlink{classBooting_1_1Booting_a77bb6ec6f5826b31d2548d8a960ee32e}{00044}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classBooting_1_1Booting_a77bb6ec6f5826b31d2548d8a960ee32e}{get\_team\_params}}()\ -\/>\ list[list[str\ |\ int]]:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Verifica\ existência\ de\ arquivo\ de\ parâmetros\ de\ time,\ caso\ não\ exista,\ usará\ o\ default.}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @details}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Faremos\ em\ tupla\ para\ permitir\ uso\ mínimo\ de\ memória.}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @return}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00051}00051\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ idx\ \textcolor{keywordflow}{in}\ range(0,\ len(config\_team\_params)):}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Somente\ o\ IP\ Server\ e\ Team\ Name\ são\ palavras}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ idx\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ \{0,\ 3\}:}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ config\_team\_params[idx][1]\ =\ int(config\_team\_params[idx][1])}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00056}00056\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00057}00057\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00058}00058\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ config\_team\_params\ =\ [}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}IP\ Server"{}},\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}localhost"{}}],}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Agent\ Port"{}},\ \ \ \ \ \ 3100],\ \textcolor{comment}{\#\ Onde\ nos\ conectaremos\ com\ rcssserver3d}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Monitor\ Port"{}},\ \ \ \ 3200],\ \textcolor{comment}{\#\ Onde\ nos\ conectaremos\ com\ Roboviz}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Team\ Name"{}},\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}RoboIME"{}}],}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Uniform\ Number"{}},\ \ 1],}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Robot\ Type"{}},\ \ \ \ \ \ 1],}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Penalty\ Shootout"{}},\ 0],}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}MagmaFatProxy"{}},\ \ \ 0],}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Debug\ Mode"{}},\ \ \ \ \ \ 1]}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ ]}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00070}00070\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ E\ criamos\ o\ arquivo}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ Booting.CONFIG\_PATH,}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}w+"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{as}\ file\_team\_params:}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ doc,\ value\ \textcolor{keywordflow}{in}\ config\_team\_params:}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\_team\_params.write(}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}\{doc\},\{value\}\(\backslash\)n"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00080}00080\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ config\_team\_params}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00082}00082\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00083}00083\ \ \ \ \ \textcolor{preprocessor}{@staticmethod}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00084}\mbox{\hyperlink{classBooting_1_1Booting_a1e9e1d39368b25afb62206e8b4a897ac}{00084}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classBooting_1_1Booting_a1e9e1d39368b25afb62206e8b4a897ac}{cpp\_builder}}(self):}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00086}00086\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ buildar\ os\ arquivos\ .cpp\ presentes\ na\ pasta\ cpp.}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @return\ Funcionalidades\ C++\ em\ condições\ de\ interoperabilidade.}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Voltaremos\ para\ esta\ assim\ que\ tivermos\ desenvolvido\ pelo\ menos\ uma\ pasta\ cpp}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ os.path.exists(Booting.CONFIG\_PATH):}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Booting.CONFIG\_PATH,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}r"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{as}\ file\_team\_params:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ config\_team\_params:\ list[list[str\ |\ int]]\ =\ \ [}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ string\_tupla.split(\textcolor{stringliteral}{"{},"{}})\ \textcolor{keywordflow}{for}\ string\_tupla\ \textcolor{keywordflow}{in}\ file\_team\_params.read().split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}})[:-\/1]}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ idx\ \textcolor{keywordflow}{in}\ range(0,\ len(config\_team\_params)):}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Somente\ o\ IP\ Server\ e\ Team\ Name\ são\ palavras}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ idx\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ \{0,\ 3\}:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ config\_team\_params[idx][1]\ =\ int(config\_team\_params[idx][1])}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ config\_team\_params\ =\ [}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}IP\ Server"{}},\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}localhost"{}}],}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Agent\ Port"{}},\ \ \ \ \ \ 3100],\ \textcolor{comment}{\#\ Onde\ nos\ conectaremos\ com\ rcssserver3d}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Monitor\ Port"{}},\ \ \ \ 3200],\ \textcolor{comment}{\#\ Onde\ nos\ conectaremos\ com\ Roboviz}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Team\ Name"{}},\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}RoboIME"{}}],}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Uniform\ Number"{}},\ \ 1],}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Robot\ Type"{}},\ \ \ \ \ \ 1],}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Penalty\ Shootout"{}},\ 0],}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}MagmaFatProxy"{}},\ \ \ 0],}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}Debug\ Mode"{}},\ \ \ \ \ \ 1]}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ E\ criamos\ o\ arquivo}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ Booting.CONFIG\_PATH,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}w+"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{as}\ file\_team\_params:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ doc,\ value\ \textcolor{keywordflow}{in}\ config\_team\_params:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\_team\_params.write(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}\{doc\},\{value\}\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ config\_team\_params}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00091}00091\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00092}00092\ \ \ \ \ \textcolor{preprocessor}{@staticmethod}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00093}\mbox{\hyperlink{classBooting_1_1Booting_a214ddd277b683503d96ab383a8ab492f}{00093}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classBooting_1_1Booting_a214ddd277b683503d96ab383a8ab492f}{show\_spinner}}(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ running\_flag:\ list[bool]}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00095}00095\ \ \ \ \ )\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00097}00097\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Por\ motivos\ estéticos,\ mostrará\ um\ spinner\ enquanto\ há\ o\ carregamento\ de\ módulos\ C++}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00098}00098\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ spinner\ =\ [\textcolor{stringliteral}{'|'},\ \textcolor{stringliteral}{'/'},\ \textcolor{stringliteral}{'-\/'},\ \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)'}]}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00101}00101\ \ \ \ \ \ \ \ \ i\ =\ 0}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ running\_flag[0]\ \textcolor{keywordflow}{and}\ i\ <\ 1000:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{spinner[i\ \%\ len(spinner)]\}"{}},\ end=\textcolor{stringliteral}{''},\ flush=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ i\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ sleep(0.5)}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}\(\backslash\)b"{}},\ end=\textcolor{stringliteral}{''})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00109}00109\ \ \ \ \ \textcolor{preprocessor}{@staticmethod}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00110}\mbox{\hyperlink{classBooting_1_1Booting_a3044c0b15b3ed04a75b91616353e7305}{00110}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classBooting_1_1Booting_a3044c0b15b3ed04a75b91616353e7305}{cpp\_builder}}()\ -\/>\ None:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00112}00112\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Responsável\ por\ buildar\ os\ arquivos\ .cpp\ presentes\ na\ pasta\ cpp.}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00113}00113\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @return\ Funcionalidades\ C++\ em\ condições\ de\ interoperabilidade.}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00114}00114\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Vamos\ verificar\ quais\ arquivos\ .cpp\ estão\ disponíveis\ para\ buildar}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ cpp\_path\ =\ Path(\_\_file\_\_).resolve().parents[1]\ /\ \textcolor{stringliteral}{"{}cpp"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00118}00118\ \ \ \ \ \ \ \ \ cpp\_modules\ =\ [}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ module\ \textcolor{keywordflow}{for}\ module\ \textcolor{keywordflow}{in}\ os.listdir(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpp\_path}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ )\ \textcolor{keywordflow}{if}\ os.path.isdir(os.path.join(cpp\_path,\ module))}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00122}00122\ \ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ cpp\_modules:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None}\ \textcolor{comment}{\#\ Não\ há\ nenhum\ para\ construirmos}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Servirá\ para\ verificarmos\ quais\ binários\ estão\ atualizados\ com\ a\ versão}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00128}00128\ \ \ \ \ \ \ \ \ python\_cmd\ =\ f\textcolor{stringliteral}{"{}python\{sys.version\_info.major\}.\{sys.version\_info.minor\}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ -\/-\/\ Os\ includes\ que\ serão\ necessários}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ nb\_root\ =\ os.path.dirname(nanobind.\_\_file\_\_)}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00132}00132\ \ \ \ \ \ \ \ \ py\_inc\ =\ sysconfig.get\_path(\textcolor{stringliteral}{"{}include"{}})\ \textcolor{comment}{\#\ Python.h}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ nb\_inc\ =\ nanobind.include\_dir()\ \textcolor{comment}{\#\ nanobind.h}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00134}00134\ \ \ \ \ \ \ \ \ robin\_inc\ =\ os.path.join(nb\_root,\ \textcolor{stringliteral}{"{}ext"{}},\ \textcolor{stringliteral}{"{}robin\_map"{}},\ \textcolor{stringliteral}{"{}include"{}})\ \textcolor{comment}{\#\ robin\_map.h}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00135}00135\ \ \ \ \ \ \ \ \ nb\_src\ =\ os.path.join(nb\_root,\ \textcolor{stringliteral}{"{}src"{}},\ \textcolor{stringliteral}{"{}nb\_combined.cpp"{}})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ n\_proc\ =\ str(os.cpu\_count())}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00137}00137\ \ \ \ \ \ \ \ \ command\_chain\ =\ [}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}make"{}},}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}-\/j\{n\_proc\}"{}},}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}PY\_INC=\{py\_inc\}"{}},}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}NB\_INC=\{nb\_inc\}"{}},}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}ROBIN\_INC=\{robin\_inc\}"{}},}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}NB\_SRC=\{nb\_src\}"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00144}00144\ \ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}\(\backslash\)033[1;7m/*\ -\/-\/-\/-\/\ Construção\ de\ Funcionalidades\ C++\ -\/-\/-\/-\/\ */\(\backslash\)033[0m"{}})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ cpp\_module\ \textcolor{keywordflow}{in}\ cpp\_modules:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ cpp\_module\_path\ =\ os.path.join(cpp\_path,\ cpp\_module)}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Verificamos\ se\ já\ existe\ um\ binário\ pronto}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ os.path.isfile(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpp\_module\_path,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}\{cpp\_module\}.so"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ ):}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Caso\ exista,\ devemos\ verificar\ se\ ele\ foi\ modificado\ em\ um\ limite\ de\ tempo}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpp\_module\_path,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}\{cpp\_module\}.cpp\_info"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}rb"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ info\_version\ =\ pickle.load(f)}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ info\_version\ ==\ python\_cmd:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Considerando\ que\ está\ na\ mesma\ versão,\ ainda\ devemos\ verificar\ modificações}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ code\_mod\_time\ =\ max(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os.path.getmtime(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpp\_module\_path,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\_in\_the\_module}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ \textcolor{keywordflow}{for}\ file\_in\_the\_module\ \textcolor{keywordflow}{in}\ os.listdir(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpp\_module\_path}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ \textcolor{keywordflow}{if}\ file\_in\_the\_module.endswith(\textcolor{stringliteral}{"{}.cpp"{}})\ \textcolor{keywordflow}{or}\ file\_in\_the\_module.endswith(\textcolor{stringliteral}{"{}.hpp"{}})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bin\_mod\_time\ =\ os.path.getmtime(os.path.join(cpp\_module\_path,\ f\textcolor{stringliteral}{"{}\{cpp\_module\}.so"{}}))}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ bin\_mod\_time\ +\ 30\ >\ code\_mod\_time:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ msg\ =\ f\textcolor{stringliteral}{"{}\(\backslash\)033[1;7mConstruindo:\ \(\backslash\)033[32;40m\{cpp\_module\}\(\backslash\)033[0m"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{msg:.<\{60\}\}"{}},\ end=\textcolor{stringliteral}{''},\ flush=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ processo\ =\ subprocess.Popen(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ command\_chain,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cwd=cpp\_module\_path,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stdout=subprocess.PIPE,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stderr=subprocess.PIPE,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text=\textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Iniciamos\ thread\ de\ spinner}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ running\_flag\ =\ [\textcolor{keyword}{True}]}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ worker\ =\ threading.Thread(target=Booting.show\_spinner,\ args=(running\_flag,))}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ worker.start()}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ output,\ error\ =\ processo.communicate()}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ return\_code\ =\ processo.wait()}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ running\_flag[0]\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ worker.join()}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ return\_code\ ==\ 0:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}\(\backslash\)033[7m\(\backslash\)033[1mSucesso\(\backslash\)033[0m"{}})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Podemos\ construir\ um\ arquivo\ de\ fiscalização}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(cpp\_module\_path,\ f\textcolor{stringliteral}{"{}\{cpp\_module\}.cpp\_info"{}}),}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}wb"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ noinspection\ PyTypeChecker}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pickle.dump(python\_cmd,\ f)}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Printing.print\_message(\textcolor{stringliteral}{"{}Abortando"{}},\ \textcolor{stringliteral}{"{}error"{}})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(output.decode(),\ error.decode())}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit()}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ subprocess.run(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}make"{}},\ \textcolor{stringliteral}{"{}clean"{}}],}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stdout=subprocess.PIPE,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stderr=subprocess.PIPE,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cwd=cpp\_module\_path}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None}}
 
 \end{DoxyCode}

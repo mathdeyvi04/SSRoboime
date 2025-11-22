@@ -4,9 +4,8 @@
 """
 from abc import ABC  # para conseguirmos criar classes abstratas em Python
 from communication.ServerComm import ServerComm
-from environment.World import World
+from cpp.environment.environment import Environment
 from pathlib import Path
-
 import pickle
 
 class BaseAgent(ABC):
@@ -24,9 +23,10 @@ class BaseAgent(ABC):
         @param creation_options Lista de Parâmetros de Criação de Agente
         """
 
-        self.world = World(creation_options)
+        self.environment = Environment()
         self.scom = ServerComm(
             creation_options,
+            self.environment,
             # Passamos o ponteiro da lista de jogadores
             # Conforme eles são inseridos, teremos novos na partida
             BaseAgent.AGENTS_IN_THE_MATCH
