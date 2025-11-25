@@ -100,7 +100,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>                <a class="code hl_class" href="classEnvironment.html">Environment</a> &amp;self,</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>                <span class="keyword">const</span> nb::bytearray&amp; b</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            ){</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                <span class="keywordflow">return</span> self.<a class="code hl_function" href="classEnvironment.html#aa2bcc637e73aaa82efdd0b912b2235c2">update_from_server</a>(std::string_view(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(b.data()), b.size()));</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>                <span class="keywordflow">return</span> self.<a class="code hl_function" href="classEnvironment.html#ab5909bf7f4b37470b2260d15fb8cb352">update_from_server</a>(std::string_view(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(b.data()), b.size()));</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            },</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="stringliteral">&quot;doc&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        );</div>
@@ -108,8 +108,8 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="ttc" id="aEnvironment_8hpp_html"><div class="ttname"><a href="Environment_8hpp.html">Environment.hpp</a></div></div>
-<div class="ttc" id="aclassEnvironment_html"><div class="ttname"><a href="classEnvironment.html">Environment</a></div><div class="ttdef"><b>Definition</b> <a href="Environment_8hpp_source.html#l00006">Environment.hpp:6</a></div></div>
-<div class="ttc" id="aclassEnvironment_html_aa2bcc637e73aaa82efdd0b912b2235c2"><div class="ttname"><a href="classEnvironment.html#aa2bcc637e73aaa82efdd0b912b2235c2">Environment::update_from_server</a></div><div class="ttdeci">int update_from_server(std::string_view data)</div><div class="ttdef"><b>Definition</b> <a href="Environment_8hpp_source.html#l00022">Environment.hpp:22</a></div></div>
+<div class="ttc" id="aclassEnvironment_html"><div class="ttname"><a href="classEnvironment.html">Environment</a></div><div class="ttdoc">Responsável por representar o ambiente externo ao robô</div><div class="ttdef"><b>Definition</b> <a href="Environment_8hpp_source.html#l00018">Environment.hpp:18</a></div></div>
+<div class="ttc" id="aclassEnvironment_html_ab5909bf7f4b37470b2260d15fb8cb352"><div class="ttname"><a href="classEnvironment.html#ab5909bf7f4b37470b2260d15fb8cb352">Environment::update_from_server</a></div><div class="ttdeci">int update_from_server(std::string_view msg)</div><div class="ttdoc">Completamente responsável por realizar o parsing da mensagem do servidor.</div><div class="ttdef"><b>Definition</b> <a href="Environment_8hpp_source.html#l00070">Environment.hpp:70</a></div></div>
 <div class="ttc" id="amodule__main_8cpp_html_acdd9b18da852bb24e80aac4c96928584"><div class="ttname"><a href="module__main_8cpp.html#acdd9b18da852bb24e80aac4c96928584">NB_MODULE</a></div><div class="ttdeci">NB_MODULE(environment, m)</div><div class="ttdef"><b>Definition</b> <a href="module__main_8cpp_source.html#l00006">module_main.cpp:6</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

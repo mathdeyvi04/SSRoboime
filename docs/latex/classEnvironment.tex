@@ -2,6 +2,11 @@
 \hypertarget{classEnvironment}{}\label{classEnvironment}\index{Environment@{Environment}}
 
 
+Responsável por representar o ambiente externo ao robô  
+
+
+
+
 {\ttfamily \#include $<$Environment.\+hpp$>$}
 
 
@@ -14,38 +19,270 @@ Collaboration diagram for Environment\+:
 \includegraphics[width=216pt]{classEnvironment__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480}{Play\+Mode}} \+: int \{ \newline
+\mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a074acc35d624ad67dc2c7384a9f66a99}{OUR\+\_\+\+KICKOFF}} = 0
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a2b3ea53288f0e920e6ee7dca743ac715}{OUR\+\_\+\+KICK\+\_\+\+IN}} = 1
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a018987840bf4060b0e113dee69ea8ae8}{OUR\+\_\+\+CORNER\+\_\+\+KICK}} = 2
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480ad990b5a39ee67aedc2c64990f16349dd}{OUR\+\_\+\+GOAL\+\_\+\+KICK}} = 3
+, \newline
+\mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480af52c19c90352fafdabe262acaa50f012}{OUR\+\_\+\+FREE\+\_\+\+KICK}} = 4
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a5ffc2526a52f027ee5bd8c3f5a01fe12}{OUR\+\_\+\+PASS}} = 5
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480ab142a622861ec8a0a5031a2c4981e7b0}{OUR\+\_\+\+DIR\+\_\+\+FREE\+\_\+\+KICK}} = 6
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a2c55b2b29fb14448ae19d6b59d813ef4}{OUR\+\_\+\+GOAL}} = 7
+, \newline
+\mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480aa6796edff2c4513e2cfd04322ebcdb4b}{OUR\+\_\+\+OFFSIDE}} = 8
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a3a6ced82783bbfae2fe046ce025b2d51}{THEIR\+\_\+\+KICKOFF}} = 9
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a25b76a4b888f65c80ce03e608d2a146d}{THEIR\+\_\+\+KICK\+\_\+\+IN}} = 10
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480acefa023bc7c88167ad91ad9336840517}{THEIR\+\_\+\+CORNER\+\_\+\+KICK}} = 11
+, \newline
+\mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a8780cf32f5fc20ecbf83bc782676240b}{THEIR\+\_\+\+GOAL\+\_\+\+KICK}} = 12
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a41765edd8b7a74647d884aa501193188}{THEIR\+\_\+\+FREE\+\_\+\+KICK}} = 13
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a4116175f1cbb68ec82347796894cd0a6}{THEIR\+\_\+\+PASS}} = 14
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480afcf1c8ca13c156f33894b89e96c3697e}{THEIR\+\_\+\+DIR\+\_\+\+FREE\+\_\+\+KICK}} = 15
+, \newline
+\mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a3c1ddecaab5545090f787ef67b2353e4}{THEIR\+\_\+\+GOAL}} = 16
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480af55a4425a80ccfcea3bde39dfcfb8177}{THEIR\+\_\+\+OFFSIDE}} = 17
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a915f855078ca3eac8d14f374bef322a2}{BEFORE\+\_\+\+KICKOFF}} = 18
+, \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480af8454a27e1df41397bf42444fe5aa45b}{GAME\+\_\+\+OVER}} = 19
+, \newline
+\mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480a389cfe0c4b78248c7fff140487602d54}{PLAY\+\_\+\+ON}} = 20
+ \}
+\item 
+enum class \mbox{\hyperlink{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1}{Play\+Mode\+Group}} \+: int \{ \newline
+\mbox{\hyperlink{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a1af26a02799359e1d912a126da04b69e}{OUR\+\_\+\+KICK}} = 0
+, \mbox{\hyperlink{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1ab35e1bf66a19f869ad9578e001bf5095}{THEIR\+\_\+\+KICK}} = 1
+, \mbox{\hyperlink{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a952b1ab8720e4eece04e71aaf33bc1be}{ACTIVE\+\_\+\+BEAM}} = 2
+, \mbox{\hyperlink{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a14ff1f89b7a34dae85dd127707204b5a}{PASSIVE\+\_\+\+BEAM}} = 3
+, \newline
+\mbox{\hyperlink{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a03570470bad94692ce93e32700d2e1cb}{OTHER}} = 4
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{classEnvironment_aa2bcc637e73aaa82efdd0b912b2235c2}{update\+\_\+from\+\_\+server}} (std\+::string\+\_\+view data)
-\end{DoxyCompactItemize}
+int \mbox{\hyperlink{classEnvironment_ab5909bf7f4b37470b2260d15fb8cb352}{update\+\_\+from\+\_\+server}} (std\+::string\+\_\+view msg)
+\begin{DoxyCompactList}\small\item\em Completamente responsável por realizar o parsing da mensagem do servidor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classEnvironment_a3500996d7b4ae1d35cbdc028213d4482}{time\+\_\+server}} = 0
+\begin{DoxyCompactList}\small\item\em Instante de Tempo do Servidor, útil apenas para sincronização entre agentes. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classEnvironment_aca59bd8424243af4036a7363bf8514bd}{time\+\_\+match}} = 0
+\begin{DoxyCompactList}\small\item\em Instante de Tempo de Partida. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Responsável por representar o ambiente externo ao robô 
+
+Agrupará todos os métodos de interpretação do mundo. Focaremos em performance e eficiência no uso da memória. 
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00018}{18}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
 
 
-Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00006}{6}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480} 
+\index{Environment@{Environment}!PlayMode@{PlayMode}}
+\index{PlayMode@{PlayMode}!Environment@{Environment}}
+\doxysubsubsection{\texorpdfstring{PlayMode}{PlayMode}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classEnvironment_aa46adbbc28751383aedd5194d64f5480}{Environment\+::\+Play\+Mode}} \+: int\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUR\_KICKOFF@{OUR\_KICKOFF}!Environment@{Environment}}\index{Environment@{Environment}!OUR\_KICKOFF@{OUR\_KICKOFF}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a074acc35d624ad67dc2c7384a9f66a99}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a074acc35d624ad67dc2c7384a9f66a99} 
+OUR\+\_\+\+KICKOFF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUR\_KICK\_IN@{OUR\_KICK\_IN}!Environment@{Environment}}\index{Environment@{Environment}!OUR\_KICK\_IN@{OUR\_KICK\_IN}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a2b3ea53288f0e920e6ee7dca743ac715}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a2b3ea53288f0e920e6ee7dca743ac715} 
+OUR\+\_\+\+KICK\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUR\_CORNER\_KICK@{OUR\_CORNER\_KICK}!Environment@{Environment}}\index{Environment@{Environment}!OUR\_CORNER\_KICK@{OUR\_CORNER\_KICK}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a018987840bf4060b0e113dee69ea8ae8}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a018987840bf4060b0e113dee69ea8ae8} 
+OUR\+\_\+\+CORNER\+\_\+\+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUR\_GOAL\_KICK@{OUR\_GOAL\_KICK}!Environment@{Environment}}\index{Environment@{Environment}!OUR\_GOAL\_KICK@{OUR\_GOAL\_KICK}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480ad990b5a39ee67aedc2c64990f16349dd}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480ad990b5a39ee67aedc2c64990f16349dd} 
+OUR\+\_\+\+GOAL\+\_\+\+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUR\_FREE\_KICK@{OUR\_FREE\_KICK}!Environment@{Environment}}\index{Environment@{Environment}!OUR\_FREE\_KICK@{OUR\_FREE\_KICK}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480af52c19c90352fafdabe262acaa50f012}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480af52c19c90352fafdabe262acaa50f012} 
+OUR\+\_\+\+FREE\+\_\+\+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUR\_PASS@{OUR\_PASS}!Environment@{Environment}}\index{Environment@{Environment}!OUR\_PASS@{OUR\_PASS}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a5ffc2526a52f027ee5bd8c3f5a01fe12}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a5ffc2526a52f027ee5bd8c3f5a01fe12} 
+OUR\+\_\+\+PASS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUR\_DIR\_FREE\_KICK@{OUR\_DIR\_FREE\_KICK}!Environment@{Environment}}\index{Environment@{Environment}!OUR\_DIR\_FREE\_KICK@{OUR\_DIR\_FREE\_KICK}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480ab142a622861ec8a0a5031a2c4981e7b0}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480ab142a622861ec8a0a5031a2c4981e7b0} 
+OUR\+\_\+\+DIR\+\_\+\+FREE\+\_\+\+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUR\_GOAL@{OUR\_GOAL}!Environment@{Environment}}\index{Environment@{Environment}!OUR\_GOAL@{OUR\_GOAL}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a2c55b2b29fb14448ae19d6b59d813ef4}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a2c55b2b29fb14448ae19d6b59d813ef4} 
+OUR\+\_\+\+GOAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUR\_OFFSIDE@{OUR\_OFFSIDE}!Environment@{Environment}}\index{Environment@{Environment}!OUR\_OFFSIDE@{OUR\_OFFSIDE}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480aa6796edff2c4513e2cfd04322ebcdb4b}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480aa6796edff2c4513e2cfd04322ebcdb4b} 
+OUR\+\_\+\+OFFSIDE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THEIR\_KICKOFF@{THEIR\_KICKOFF}!Environment@{Environment}}\index{Environment@{Environment}!THEIR\_KICKOFF@{THEIR\_KICKOFF}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a3a6ced82783bbfae2fe046ce025b2d51}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a3a6ced82783bbfae2fe046ce025b2d51} 
+THEIR\+\_\+\+KICKOFF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THEIR\_KICK\_IN@{THEIR\_KICK\_IN}!Environment@{Environment}}\index{Environment@{Environment}!THEIR\_KICK\_IN@{THEIR\_KICK\_IN}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a25b76a4b888f65c80ce03e608d2a146d}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a25b76a4b888f65c80ce03e608d2a146d} 
+THEIR\+\_\+\+KICK\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THEIR\_CORNER\_KICK@{THEIR\_CORNER\_KICK}!Environment@{Environment}}\index{Environment@{Environment}!THEIR\_CORNER\_KICK@{THEIR\_CORNER\_KICK}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480acefa023bc7c88167ad91ad9336840517}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480acefa023bc7c88167ad91ad9336840517} 
+THEIR\+\_\+\+CORNER\+\_\+\+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THEIR\_GOAL\_KICK@{THEIR\_GOAL\_KICK}!Environment@{Environment}}\index{Environment@{Environment}!THEIR\_GOAL\_KICK@{THEIR\_GOAL\_KICK}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a8780cf32f5fc20ecbf83bc782676240b}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a8780cf32f5fc20ecbf83bc782676240b} 
+THEIR\+\_\+\+GOAL\+\_\+\+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THEIR\_FREE\_KICK@{THEIR\_FREE\_KICK}!Environment@{Environment}}\index{Environment@{Environment}!THEIR\_FREE\_KICK@{THEIR\_FREE\_KICK}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a41765edd8b7a74647d884aa501193188}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a41765edd8b7a74647d884aa501193188} 
+THEIR\+\_\+\+FREE\+\_\+\+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THEIR\_PASS@{THEIR\_PASS}!Environment@{Environment}}\index{Environment@{Environment}!THEIR\_PASS@{THEIR\_PASS}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a4116175f1cbb68ec82347796894cd0a6}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a4116175f1cbb68ec82347796894cd0a6} 
+THEIR\+\_\+\+PASS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THEIR\_DIR\_FREE\_KICK@{THEIR\_DIR\_FREE\_KICK}!Environment@{Environment}}\index{Environment@{Environment}!THEIR\_DIR\_FREE\_KICK@{THEIR\_DIR\_FREE\_KICK}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480afcf1c8ca13c156f33894b89e96c3697e}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480afcf1c8ca13c156f33894b89e96c3697e} 
+THEIR\+\_\+\+DIR\+\_\+\+FREE\+\_\+\+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THEIR\_GOAL@{THEIR\_GOAL}!Environment@{Environment}}\index{Environment@{Environment}!THEIR\_GOAL@{THEIR\_GOAL}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a3c1ddecaab5545090f787ef67b2353e4}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a3c1ddecaab5545090f787ef67b2353e4} 
+THEIR\+\_\+\+GOAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THEIR\_OFFSIDE@{THEIR\_OFFSIDE}!Environment@{Environment}}\index{Environment@{Environment}!THEIR\_OFFSIDE@{THEIR\_OFFSIDE}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480af55a4425a80ccfcea3bde39dfcfb8177}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480af55a4425a80ccfcea3bde39dfcfb8177} 
+THEIR\+\_\+\+OFFSIDE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BEFORE\_KICKOFF@{BEFORE\_KICKOFF}!Environment@{Environment}}\index{Environment@{Environment}!BEFORE\_KICKOFF@{BEFORE\_KICKOFF}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a915f855078ca3eac8d14f374bef322a2}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a915f855078ca3eac8d14f374bef322a2} 
+BEFORE\+\_\+\+KICKOFF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_OVER@{GAME\_OVER}!Environment@{Environment}}\index{Environment@{Environment}!GAME\_OVER@{GAME\_OVER}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480af8454a27e1df41397bf42444fe5aa45b}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480af8454a27e1df41397bf42444fe5aa45b} 
+GAME\+\_\+\+OVER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAY\_ON@{PLAY\_ON}!Environment@{Environment}}\index{Environment@{Environment}!PLAY\_ON@{PLAY\_ON}}}\Hypertarget{classEnvironment_aa46adbbc28751383aedd5194d64f5480a389cfe0c4b78248c7fff140487602d54}\label{classEnvironment_aa46adbbc28751383aedd5194d64f5480a389cfe0c4b78248c7fff140487602d54} 
+PLAY\+\_\+\+ON&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+
+\Hypertarget{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1}\label{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1} 
+\index{Environment@{Environment}!PlayModeGroup@{PlayModeGroup}}
+\index{PlayModeGroup@{PlayModeGroup}!Environment@{Environment}}
+\doxysubsubsection{\texorpdfstring{PlayModeGroup}{PlayModeGroup}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1}{Environment\+::\+Play\+Mode\+Group}} \+: int\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OUR\_KICK@{OUR\_KICK}!Environment@{Environment}}\index{Environment@{Environment}!OUR\_KICK@{OUR\_KICK}}}\Hypertarget{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a1af26a02799359e1d912a126da04b69e}\label{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a1af26a02799359e1d912a126da04b69e} 
+OUR\+\_\+\+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THEIR\_KICK@{THEIR\_KICK}!Environment@{Environment}}\index{Environment@{Environment}!THEIR\_KICK@{THEIR\_KICK}}}\Hypertarget{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1ab35e1bf66a19f869ad9578e001bf5095}\label{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1ab35e1bf66a19f869ad9578e001bf5095} 
+THEIR\+\_\+\+KICK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACTIVE\_BEAM@{ACTIVE\_BEAM}!Environment@{Environment}}\index{Environment@{Environment}!ACTIVE\_BEAM@{ACTIVE\_BEAM}}}\Hypertarget{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a952b1ab8720e4eece04e71aaf33bc1be}\label{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a952b1ab8720e4eece04e71aaf33bc1be} 
+ACTIVE\+\_\+\+BEAM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PASSIVE\_BEAM@{PASSIVE\_BEAM}!Environment@{Environment}}\index{Environment@{Environment}!PASSIVE\_BEAM@{PASSIVE\_BEAM}}}\Hypertarget{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a14ff1f89b7a34dae85dd127707204b5a}\label{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a14ff1f89b7a34dae85dd127707204b5a} 
+PASSIVE\+\_\+\+BEAM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OTHER@{OTHER}!Environment@{Environment}}\index{Environment@{Environment}!OTHER@{OTHER}}}\Hypertarget{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a03570470bad94692ce93e32700d2e1cb}\label{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1a03570470bad94692ce93e32700d2e1cb} 
+OTHER&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
 
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classEnvironment_aa2bcc637e73aaa82efdd0b912b2235c2}\label{classEnvironment_aa2bcc637e73aaa82efdd0b912b2235c2} 
+\Hypertarget{classEnvironment_ab5909bf7f4b37470b2260d15fb8cb352}\label{classEnvironment_ab5909bf7f4b37470b2260d15fb8cb352} 
 \index{Environment@{Environment}!update\_from\_server@{update\_from\_server}}
 \index{update\_from\_server@{update\_from\_server}!Environment@{Environment}}
 \doxysubsubsection{\texorpdfstring{update\_from\_server()}{update\_from\_server()}}
-{\footnotesize\ttfamily int Environment\+::update\+\_\+from\+\_\+server (\begin{DoxyParamCaption}\item[{std\+::string\+\_\+view}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily int Environment\+::update\+\_\+from\+\_\+server (\begin{DoxyParamCaption}\item[{std\+::string\+\_\+view}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Completamente responsável por realizar o parsing da mensagem do servidor. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em } & \\
+{\em msg} & Mensagem bruta enviada pelo servidor \\
 \hline
 \end{DoxyParams}
-param \begin{DoxyReturn}{Returns}
-
+\begin{DoxyReturn}{Returns}
+Atualização de todas as variáveis de ambiente 
 \end{DoxyReturn}
+\texorpdfstring{$<$}{<} Com isso, podemos mover o ponteiro sem modificar o conteúdo
+
+\texorpdfstring{$<$}{<} Garante que chegamos no ( anterior a tag
+
+\texorpdfstring{$<$}{<} Pulamos mais um para o início da tag
+
+\texorpdfstring{$<$}{<} Buffer se encontra no espaço(\textquotesingle{} \textquotesingle{}) imediatamente após a tag
+
+\texorpdfstring{$<$}{<} Lê-\/se \textquotesingle{}time\textquotesingle{} de momento, em inglês, não grupo de jogadores.
+
+\texorpdfstring{$<$}{<} O caso do time é o mais trivial
+
+\texorpdfstring{$<$}{<} Função especial para máxima performance
+
+\texorpdfstring{$<$}{<} Game State
+
+\texorpdfstring{$<$}{<} Score Left
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classEnvironment_aca59bd8424243af4036a7363bf8514bd}\label{classEnvironment_aca59bd8424243af4036a7363bf8514bd} 
+\index{Environment@{Environment}!time\_match@{time\_match}}
+\index{time\_match@{time\_match}!Environment@{Environment}}
+\doxysubsubsection{\texorpdfstring{time\_match}{time\_match}}
+{\footnotesize\ttfamily float Environment\+::time\+\_\+match = 0}
+
+
+
+Instante de Tempo de Partida. 
+
 
 
 Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+
+\Hypertarget{classEnvironment_a3500996d7b4ae1d35cbdc028213d4482}\label{classEnvironment_a3500996d7b4ae1d35cbdc028213d4482} 
+\index{Environment@{Environment}!time\_server@{time\_server}}
+\index{time\_server@{time\_server}!Environment@{Environment}}
+\doxysubsubsection{\texorpdfstring{time\_server}{time\_server}}
+{\footnotesize\ttfamily float Environment\+::time\+\_\+server = 0}
+
+
+
+Instante de Tempo do Servidor, útil apenas para sincronização entre agentes. 
+
+
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
 
 
 

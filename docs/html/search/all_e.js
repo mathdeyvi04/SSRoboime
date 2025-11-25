@@ -9,5 +9,6 @@ var searchData=
   ['servercomm_2epy_6',['ServerComm.py',['../ServerComm_8py.html',1,'']]],
   ['show_5fspinner_7',['show_spinner',['../classBooting_1_1Booting.html#a214ddd277b683503d96ab383a8ab492f',1,'Booting::Booting']]],
   ['size_8',['size',['../debug_8cc.html#a439227feff9d7f55384e8780cfc2eb82',1,'debug.cc']]],
-  ['socket_9',['socket',['../classServerComm_1_1ServerComm.html#abe5f06e9acbe9fd206bf21fd24d26c26',1,'ServerComm::ServerComm']]]
+  ['size1_9',['size1',['../debug_8cc.html#af68f0dccfb25d93948b065a91f6b8860',1,'debug.cc']]],
+  ['socket_10',['socket',['../classServerComm_1_1ServerComm.html#abe5f06e9acbe9fd206bf21fd24d26c26',1,'ServerComm::ServerComm']]]
 ];
