@@ -1,3 +1,5 @@
 <map id="Environment" name="Environment">
-<area shape="rect" id="Node000001" title="Responsável por representar o ambiente externo ao robô" alt="" coords="5,5,187,105"/>
+<area shape="rect" id="Node000001" title="Responsável por representar o ambiente externo ao robô" alt="" coords="16,753,197,1003"/>
+<area shape="rect" id="Node000002" href="$classLogger.html" title="Singleton para logging assíncrono." alt="" coords="5,5,208,691"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,691,109,737,104,737,104,691"/>
 </map>

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['on_5fdouble_5fclick_5fin_5fconfigs_0',['on_double_click_in_configs',['../classRobotPositionManager_1_1RobotPositionManager.html#aeb39702bf4fcd12dde1bb681a7493bdd',1,'RobotPositionManager::RobotPositionManager']]],
-  ['options_1',['options',['../classBooting_1_1Booting.html#aca4bc452e914225c33db9cabe797e611',1,'Booting::Booting']]]
+  ['marcadores_5fjogadores_0',['marcadores_jogadores',['../classRobotPositionManager_1_1RobotPositionManager.html#a8eb697381c4de9bdb42b4e8ba9452f31',1,'RobotPositionManager::RobotPositionManager']]],
+  ['max_5fjogadores_1',['MAX_JOGADORES',['../classRobotPositionManager_1_1RobotPositionManager.html#a603925ccebc0cdd7b3dc444724f36823',1,'RobotPositionManager::RobotPositionManager']]],
+  ['message_5fqueue_2',['message_queue',['../classServerComm_1_1ServerComm.html#ab978690c610469e0530774af4abc4b34',1,'ServerComm::ServerComm']]]
 ];

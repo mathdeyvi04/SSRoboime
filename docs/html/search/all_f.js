@@ -1,18 +1,15 @@
 var searchData=
 [
-  ['table_5fcolors_0',['TABLE_COLORS',['../classPrinting_1_1Printing.html#ad999cc214dbf7c5c684da952fc0818cd',1,'Printing::Printing']]],
-  ['their_5fcorner_5fkick_1',['THEIR_CORNER_KICK',['../classEnvironment.html#aa46adbbc28751383aedd5194d64f5480acefa023bc7c88167ad91ad9336840517',1,'Environment']]],
-  ['their_5fdir_5ffree_5fkick_2',['THEIR_DIR_FREE_KICK',['../classEnvironment.html#aa46adbbc28751383aedd5194d64f5480afcf1c8ca13c156f33894b89e96c3697e',1,'Environment']]],
-  ['their_5ffree_5fkick_3',['THEIR_FREE_KICK',['../classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a41765edd8b7a74647d884aa501193188',1,'Environment']]],
-  ['their_5fgoal_4',['THEIR_GOAL',['../classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a3c1ddecaab5545090f787ef67b2353e4',1,'Environment']]],
-  ['their_5fgoal_5fkick_5',['THEIR_GOAL_KICK',['../classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a8780cf32f5fc20ecbf83bc782676240b',1,'Environment']]],
-  ['their_5fkick_6',['THEIR_KICK',['../classEnvironment.html#ad2970bc9f37b22279f0ff17b675b8de1ab35e1bf66a19f869ad9578e001bf5095',1,'Environment']]],
-  ['their_5fkick_5fin_7',['THEIR_KICK_IN',['../classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a25b76a4b888f65c80ce03e608d2a146d',1,'Environment']]],
-  ['their_5fkickoff_8',['THEIR_KICKOFF',['../classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a3a6ced82783bbfae2fe046ce025b2d51',1,'Environment']]],
-  ['their_5foffside_9',['THEIR_OFFSIDE',['../classEnvironment.html#aa46adbbc28751383aedd5194d64f5480af55a4425a80ccfcea3bde39dfcfb8177',1,'Environment']]],
-  ['their_5fpass_10',['THEIR_PASS',['../classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a4116175f1cbb68ec82347796894cd0a6',1,'Environment']]],
-  ['time_5fmatch_11',['time_match',['../classEnvironment.html#aca59bd8424243af4036a7363bf8514bd',1,'Environment']]],
-  ['time_5fserver_12',['time_server',['../classEnvironment.html#a3500996d7b4ae1d35cbdc028213d4482',1,'Environment']]],
-  ['true_13',['True',['../Environment_8hpp.html#add3ca9eefe3b5b754426f51d3043e579',1,'Environment.hpp']]],
-  ['tv_5fconfigs_14',['tv_configs',['../classRobotPositionManager_1_1RobotPositionManager.html#ab7b328d2a568abef6b3a2bbfeca31655',1,'RobotPositionManager::RobotPositionManager']]]
+  ['salvar_5fconfig_0',['salvar_config',['../classRobotPositionManager_1_1RobotPositionManager.html#a1e5cf699d8e16774cefadcef3f51b851',1,'RobotPositionManager::RobotPositionManager']]],
+  ['save_5fconfig_5fpositions_1',['save_config_positions',['../classRobotPositionManager_1_1RobotPositionManager.html#a28bce82d7c30aa8226411d94b792704c',1,'RobotPositionManager::RobotPositionManager']]],
+  ['scom_2',['scom',['../classBaseAgent_1_1BaseAgent.html#a144d7d332f26886bc9885bce9c188f79',1,'BaseAgent::BaseAgent']]],
+  ['send_3',['send',['../classServerComm_1_1ServerComm.html#aa47f79379bf0c17d022877df51a52aea',1,'ServerComm::ServerComm']]],
+  ['send_5fimmediate_4',['send_immediate',['../classServerComm_1_1ServerComm.html#a1b9474476d8ee333cb18da1fd0fc0d5e',1,'ServerComm::ServerComm']]],
+  ['servercomm_5',['servercomm',['../classServerComm_1_1ServerComm.html',1,'ServerComm.ServerComm'],['../namespaceServerComm.html',1,'ServerComm']]],
+  ['servercomm_2epy_6',['ServerComm.py',['../ServerComm_8py.html',1,'']]],
+  ['show_5fspinner_7',['show_spinner',['../classBooting_1_1Booting.html#a214ddd277b683503d96ab383a8ab492f',1,'Booting::Booting']]],
+  ['size_8',['size',['../environment_2debug_8cc.html#a439227feff9d7f55384e8780cfc2eb82',1,'debug.cc']]],
+  ['size1_9',['size1',['../environment_2debug_8cc.html#af68f0dccfb25d93948b065a91f6b8860',1,'debug.cc']]],
+  ['skip_5funtil_5fchar_10',['skip_until_char',['../classEnvironment_1_1Parsing.html#aab7543cdd7f10d9370e07073127699de',1,'Environment::Parsing']]],
+  ['socket_11',['socket',['../classServerComm_1_1ServerComm.html#abe5f06e9acbe9fd206bf21fd24d26c26',1,'ServerComm::ServerComm']]]
 ];

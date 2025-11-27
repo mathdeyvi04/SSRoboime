@@ -1,0 +1,56 @@
+\doxysection{module\+\_\+main.\+cpp}
+\hypertarget{environment_2module__main_8cpp_source}{}\label{environment_2module__main_8cpp_source}\index{src/cpp/environment/module\_main.cpp@{src/cpp/environment/module\_main.cpp}}
+\mbox{\hyperlink{environment_2module__main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Environment_8hpp}{Environment.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <nanobind/nanobind.h>}}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00004}00004\ \textcolor{keyword}{namespace\ }nb\ =\ nanobind;}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00006}\mbox{\hyperlink{environment_2module__main_8cpp_acdd9b18da852bb24e80aac4c96928584}{00006}}\ \mbox{\hyperlink{environment_2module__main_8cpp_acdd9b18da852bb24e80aac4c96928584}{NB\_MODULE}}(}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00007}00007\ \ \ \ \ environment,}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00008}00008\ \ \ \ \ m}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00009}00009\ )\{}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00010}00010\ \ \ \ \ nb::class\_<Environment>(}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ m,}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Environment"{}},}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Responsável\ por\ representar\ o\ ambiente\ externo\ ao\ robô.\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Agrupará\ todos\ os\ métodos\ de\ interpretação\ do\ mundo."{}}}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00015}00015\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ .def(}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ nb::init<Logger\&>(),}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ nb::arg(\textcolor{stringliteral}{"{}Logger"{}}),}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ R\textcolor{stringliteral}{"{}(Classe\ Logger\ para\ imprimirmos\ possíveis\ erros.)"{}}}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00021}00021\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ -\/-\/\ Definição\ de\ Atributos\ da\ Classe\ -\/-\/\ */}}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ .def\_ro(\textcolor{stringliteral}{"{}time\_server"{}},\ \&\mbox{\hyperlink{classEnvironment_a3500996d7b4ae1d35cbdc028213d4482}{Environment::time\_server}},}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Instante\ de\ Tempo\ do\ Servidor,\ útil\ apenas\ para\ sincronização\ entre\ agentes"{}})}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ .def\_ro(\textcolor{stringliteral}{"{}time\_match"{}},\ \&\mbox{\hyperlink{classEnvironment_aca59bd8424243af4036a7363bf8514bd}{Environment::time\_match}},}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Instante\ de\ Tempo\ de\ Partida"{}})}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ .def\_ro(\textcolor{stringliteral}{"{}goals\_scored"{}},\ \&\mbox{\hyperlink{classEnvironment_a754e950665cae91cac85888b82019dae}{Environment::goals\_scored}},}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Nossos\ Gols,\ pode\ ser\ útil\ para\ mudarmos\ de\ tática\ conforme\ o\ jogo\ avança"{}})}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ .def\_ro(\textcolor{stringliteral}{"{}goals\_conceded"{}},\ \&\mbox{\hyperlink{classEnvironment_a577846720836f69b8b7bf9daed8e3856}{Environment::goals\_conceded}},}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Gols\ adversários,\ pode\ ser\ útil\ para\ mudarmos\ de\ tática\ conforme\ o\ jogo\ avança"{}})}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ -\/-\/\ Métodos\ da\ Classe\ -\/-\/\ */}}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ .def(}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}update\_from\_server"{}},}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ A\ função\ anônima\ é\ apenas\ para\ convertermos\ os\ tipos}}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ [](}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEnvironment}{Environment}}\ \&self,}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ nb::bytearray\&\ from\_server}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ self.\mbox{\hyperlink{classEnvironment_ab5909bf7f4b37470b2260d15fb8cb352}{update\_from\_server}}(std::string\_view(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(from\_server.data()),\ from\_server.size()));}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ nb::arg(\textcolor{stringliteral}{"{}from\_server"{}}),}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{environment_2module__main_8cpp_source_l00050}00050\ }
+
+\end{DoxyCode}

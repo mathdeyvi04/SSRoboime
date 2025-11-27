@@ -12,7 +12,7 @@ class ServerComm:
     @brief Responsável pela comunicação com servidor.
     """
 
-    def __init__(self, creation_options: list[list[str]], other_players: list):
+    def __init__(self, creation_options: list[list[str]], environment,  other_players: list):
         """
         @brief Construtor da classe, inicializando buffers e a conexão de cada agente com servidor.
         @param creation_options Lista de parâmetros de criação, self ainda não foi incluído na lista.
@@ -32,7 +32,7 @@ class ServerComm:
         # Características alheias
         self.message_queue = []
         self.unum = creation_options[4][1]
-        # self.environment = environment
+        self.env = environment
 
         # Fazemos a conexão com servidor
         Printing.print_message(f"Tentando conexão do jogador {self.unum}", "info")
@@ -139,7 +139,7 @@ class ServerComm:
                 break
 
         # Como há algo para ser lido, devemos aplicar o parser
-        # self.environment.update_from_server(self.buffer[:msg_size])
+        self.env.update_from_server(self.buffer[:msg_size])
 
     def __receive_async(self, other_players: list) -> None:
         """

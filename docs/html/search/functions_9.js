@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['print_5fmessage_0',['print_message',['../classPrinting_1_1Printing.html#a3692966025b767f48741d95e8f02b37c',1,'Printing::Printing']]],
-  ['print_5ftable_1',['print_table',['../classPrinting_1_1Printing.html#a00e429f5451a88fdc34977e4ea71228a',1,'Printing::Printing']]]
+  ['main_0',['main',['../environment_2debug_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;debug.cc'],['../logger_2debug_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;debug.cc']]]
 ];

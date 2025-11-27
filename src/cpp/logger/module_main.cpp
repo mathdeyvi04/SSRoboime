@@ -13,19 +13,28 @@ NB_MODULE(logger, m) {
         // para o objeto estático existente no C++, sem tentar gerenciá-lo ou deletá-lo.
         .def_static("get", &Logger::get, nb::rv_policy::reference,
             "Acesso à instância única")
-        .def("info", &Logger::info, nb::arg("msg"),
+        .def("info", [](Logger& self, std::string msg) {
+                                                        self.info(std::move(msg));
+                                                       },
+            nb::arg("msg"),
             "Adiciona log nível INFO.\n\n"
             "Args:\n"
             "    msg (str): Mensagem a ser imprimida.\n\n"
             "Details:\n"
             "    Recebe por valor para permitir std::move (otimização de r-values).")
-        .def("warn", &Logger::warn, nb::arg("msg"),
+        .def("warn", [](Logger& self, std::string msg) {
+                                                            self.warn(std::move(msg));
+                                                       },
+            nb::arg("msg"),
             "Adiciona log nível WARN.\n\n"
             "Args:\n"
             "    msg (str): Mensagem a ser imprimida.\n\n"
             "Details:\n"
             "    Recebe por valor para permitir std::move (otimização de r-values).")
-        .def("error", &Logger::error, nb::arg("msg"),
+        .def("error", [](Logger& self, std::string msg) {
+                                                            self.error(std::move(msg));
+                                                       },
+            nb::arg("msg"),
             "Adiciona log nível ERROR.\n\n"
             "Args:\n"
             "    msg (str): Mensagem a ser imprimida.\n\n"

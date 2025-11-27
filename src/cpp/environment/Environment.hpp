@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string_view>
 #include <charconv> ///< std::from_chars
+#include <unordered_map>
 
 #define True true
 #define False false
@@ -13,13 +14,11 @@
  * @details
  * Agrupará todos os métodos de interpretação do mundo.
  * Focaremos em performance e eficiência no uso da memória.
- *
  */
 class Environment {
 public:
 
     Logger& logger;
-
     /**
      * @brief Construtor da Classe
      */
@@ -27,24 +26,7 @@ public:
         Logger& logger
     ) : logger(logger) {}
 
-    /* Atributos Públicos de Ambiente */
-    float time_server; ///< Instante de Tempo do Servidor, útil apenas para sincronização entre agentes
-    float time_match;  ///< Instante de Tempo de Partida
-    int goals_scored;  ///< Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança
-    int goals_conceded;  ///< Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança
-
-    /**
-     * @brief Apresentará os dados lidos do servidor
-     */
-    void
-    print_status() const {
-        printf("\n=== Environment State ===\n");
-        printf("time_server    : %.3f\n", time_server);
-        printf("time_match     : %.3f\n", time_match);
-        printf("goals_scored   : %d\n", goals_scored);
-        printf("goals_conceded : %d\n", goals_conceded);
-    }
-
+    /* -- Definição de Ferramentas que serão amplamente Usadas -- */
     enum class PlayMode : int {
         // Ao nosso favor
         OUR_KICKOFF = 0,
@@ -72,14 +54,27 @@ public:
         BEFORE_KICKOFF = 18,
         GAME_OVER = 19,
         PLAY_ON = 20
-    }; ///< Servidor nos fornecerá isso
+    }; ///< Modos de Jogo Simplificados
     enum class PlayModeGroup : int {
-        OUR_KICK = 0,
-        THEIR_KICK = 1,
-        ACTIVE_BEAM = 2,
-        PASSIVE_BEAM = 3,
-        OTHER = 4
+        OUR_KICK = 0,      // É nossa vez de chutar parado
+        THEIR_KICK = 1,    // É vez deles de chutar parado
+        ACTIVE_BEAM = 2,   // Podemos usar o comando beam (teleporte)
+        PASSIVE_BEAM = 3,  // Devemos esperar (beam passivo/goalie)
+        OTHER = 4          // Jogo rolando ou parado sem ação específica
     }; ///< Agente precisará de uma informação mais geral para tomada de decisões
+    static const
+    std::unordered_map<std::string, PlayMode[2], std::hash<>, std::equal_to<void>> play_modes = {
+
+    }; ///<
+
+    /* Atributos Públicos de Ambiente */
+
+    float time_server; ///< Instante de Tempo do Servidor, útil apenas para sincronização entre agentes
+    float time_match;  ///< Instante de Tempo de Partida
+    int goals_scored;  ///< Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança
+    int goals_conceded;  ///< Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança
+    int unum; ///< Número do Jogador
+    bool is_left; ///< De qual lado estamos
 
     /* Métodos Inerentes a Execução da Aplicação */
 
@@ -174,7 +169,6 @@ public:
          */
         void
         parse_time(){
-
             /*
             Buffer está aqui.
               |
@@ -203,18 +197,27 @@ public:
                         break;
 
                     case 'p': ///< Há apenas 'pm'
-                        // Não sabemos que lado estamos! Isso fará muita diferença!
-                        /*
-                        Segundo o repositório muleta, haverá uma nova lower_tag, denominada team ou outra coisa.
-                        A partir dela identificaremos se estamos no lado esquerdo ou direito.
-                        Minha sugestão é primeiro encerrar aqui esse desenvolvimento e iniciar o desenvolvimento do Logger, também em C++.
-                        */
+
+                        lower_tag = this->get_str();
+
+                        std::cout << "Estamos no modo: " << lower_tag << std::endl;
                         break;
 
-                    case 't': ///< Há apenas 't'
-                        this->get_value(env->time_match);
+                    case 't': ///< Há 'time' e 'team'
+
+                        if(lower_tag[1] == 'i'){ this->get_value(env->time_match); }
+                        else{
+                            env->is_left = this->get_str()[0] == 'l';
+                        }
+                        break;
+
+                    case 'u': ///< Há apenas o 'u'
+                        this->get_value(env->unum);
+                        break;
 
                     default:
+
+                        env->logger.warn("Flag Desconhecida Encontrada em 'GS': {} \n\t\t\t\t Buffer Neste momento: {}", lower_tag, buffer);
                         break;
                 }
 
@@ -275,6 +278,20 @@ public:
                     break;
             }
         }
+    }
+
+private:
+
+    /**
+     * @brief Apresentará os dados lidos do servidor
+     */
+    void
+    print_status() const {
+        printf("\n=== Environment State ===\n");
+        printf("time_server    : %.3f\n", time_server);
+        printf("time_match     : %.3f\n", time_match);
+        printf("goals_scored   : %d\n", goals_scored);
+        printf("goals_conceded : %d\n", goals_conceded);
     }
 };
 

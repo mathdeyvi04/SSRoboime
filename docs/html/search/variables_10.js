@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['y_5fmax_0',['Y_MAX',['../classRobotPositionManager_1_1RobotPositionManager.html#a2ad295faf61e5e540d3069fb3c28d973',1,'RobotPositionManager::RobotPositionManager']]],
-  ['y_5fmin_1',['Y_MIN',['../classRobotPositionManager_1_1RobotPositionManager.html#a65524df759b2592775c5e87cc7361212',1,'RobotPositionManager::RobotPositionManager']]]
+  ['unum_0',['unum',['../classAgent_1_1Agent.html#a4a4dd5d299aac1d8d1e93f0d06a2af00',1,'Agent.Agent.unum'],['../classBaseAgent_1_1BaseAgent.html#a3b0d3be2b8bb88a7e508c7cb1fa0fc78',1,'BaseAgent.BaseAgent.unum'],['../classServerComm_1_1ServerComm.html#a677354d386da70d9ced7355feb458a42',1,'ServerComm.ServerComm.unum'],['../classEnvironment.html#a6ade6cdb4cd66eb8b883131dd236f914',1,'Environment::unum']]]
 ];

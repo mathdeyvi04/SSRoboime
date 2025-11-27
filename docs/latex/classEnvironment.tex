@@ -16,9 +16,14 @@ Collaboration diagram for Environment\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=216pt]{classEnvironment__coll__graph}
+\includegraphics[height=550pt]{classEnvironment__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classEnvironment_1_1Parsing}{Parsing}}
+\begin{DoxyCompactList}\small\item\em Responsável por prover ferramentas de auxílio de parsing. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -63,15 +68,32 @@ enum class \mbox{\hyperlink{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1}{
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classEnvironment_a29c4a5470fc47a3168a63a330ac6cd82}{Environment}} (\mbox{\hyperlink{classLogger}{Logger}} \&\mbox{\hyperlink{classEnvironment_ab341b125ad19aa31c20d7d69e52ef7e8}{logger}})
+\begin{DoxyCompactList}\small\item\em Construtor da Classe. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classEnvironment_ab5909bf7f4b37470b2260d15fb8cb352}{update\+\_\+from\+\_\+server}} (std\+::string\+\_\+view msg)
-\begin{DoxyCompactList}\small\item\em Completamente responsável por realizar o parsing da mensagem do servidor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Interpretará as mensagens do servidor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-float \mbox{\hyperlink{classEnvironment_a3500996d7b4ae1d35cbdc028213d4482}{time\+\_\+server}} = 0
+\mbox{\hyperlink{classLogger}{Logger}} \& \mbox{\hyperlink{classEnvironment_ab341b125ad19aa31c20d7d69e52ef7e8}{logger}}
+\item 
+float \mbox{\hyperlink{classEnvironment_a3500996d7b4ae1d35cbdc028213d4482}{time\+\_\+server}}
 \begin{DoxyCompactList}\small\item\em Instante de Tempo do Servidor, útil apenas para sincronização entre agentes. \end{DoxyCompactList}\item 
-float \mbox{\hyperlink{classEnvironment_aca59bd8424243af4036a7363bf8514bd}{time\+\_\+match}} = 0
-\begin{DoxyCompactList}\small\item\em Instante de Tempo de Partida. \end{DoxyCompactList}\end{DoxyCompactItemize}
+float \mbox{\hyperlink{classEnvironment_aca59bd8424243af4036a7363bf8514bd}{time\+\_\+match}}
+\begin{DoxyCompactList}\small\item\em Instante de Tempo de Partida. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEnvironment_a754e950665cae91cac85888b82019dae}{goals\+\_\+scored}}
+\begin{DoxyCompactList}\small\item\em Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEnvironment_a577846720836f69b8b7bf9daed8e3856}{goals\+\_\+conceded}}
+\begin{DoxyCompactList}\small\item\em Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classEnvironment_a6ade6cdb4cd66eb8b883131dd236f914}{unum}}
+\begin{DoxyCompactList}\small\item\em Número do Jogador. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classEnvironment_a2e963780bb2ab24bf1b46c8e257bbffc}{is\+\_\+left}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classEnvironment_a59cc774a8c7309258d8b42fed2df3e3b}{print\+\_\+status}} () const
+\begin{DoxyCompactList}\small\item\em Apresentará os dados lidos do servidor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -79,7 +101,7 @@ Responsável por representar o ambiente externo ao robô
 
 Agrupará todos os métodos de interpretação do mundo. Focaremos em performance e eficiência no uso da memória. 
 
-Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00018}{18}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00017}{17}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
 
 
 
@@ -178,7 +200,7 @@ PLAY\+\_\+\+ON&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
 
 \Hypertarget{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1}\label{classEnvironment_ad2970bc9f37b22279f0ff17b675b8de1} 
 \index{Environment@{Environment}!PlayModeGroup@{PlayModeGroup}}
@@ -210,11 +232,42 @@ OTHER&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00052}{52}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00065}{65}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classEnvironment_a29c4a5470fc47a3168a63a330ac6cd82}\label{classEnvironment_a29c4a5470fc47a3168a63a330ac6cd82} 
+\index{Environment@{Environment}!Environment@{Environment}}
+\index{Environment@{Environment}!Environment@{Environment}}
+\doxysubsubsection{\texorpdfstring{Environment()}{Environment()}}
+{\footnotesize\ttfamily Environment\+::\+Environment (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLogger}{Logger}} \&}]{logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construtor da Classe. 
+
+
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
 
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classEnvironment_a59cc774a8c7309258d8b42fed2df3e3b}\label{classEnvironment_a59cc774a8c7309258d8b42fed2df3e3b} 
+\index{Environment@{Environment}!print\_status@{print\_status}}
+\index{print\_status@{print\_status}!Environment@{Environment}}
+\doxysubsubsection{\texorpdfstring{print\_status()}{print\_status()}}
+{\footnotesize\ttfamily void Environment\+::print\+\_\+status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Apresentará os dados lidos do servidor. 
+
+
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00283}{283}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+
 \Hypertarget{classEnvironment_ab5909bf7f4b37470b2260d15fb8cb352}\label{classEnvironment_ab5909bf7f4b37470b2260d15fb8cb352} 
 \index{Environment@{Environment}!update\_from\_server@{update\_from\_server}}
 \index{update\_from\_server@{update\_from\_server}!Environment@{Environment}}
@@ -223,44 +276,84 @@ Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00052}{52}} of file
 
 
 
-Completamente responsável por realizar o parsing da mensagem do servidor. 
+Interpretará as mensagens do servidor. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em msg} & Mensagem bruta enviada pelo servidor \\
+{\em msg} & Mensagem bruta enviada pelo servidor. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Atualização de todas as variáveis de ambiente 
+Atualização de todas as variáveis de ambiente. 
 \end{DoxyReturn}
-\texorpdfstring{$<$}{<} Com isso, podemos mover o ponteiro sem modificar o conteúdo
+\texorpdfstring{$<$}{<} Vamos extrair uma tag
 
-\texorpdfstring{$<$}{<} Garante que chegamos no ( anterior a tag
+\texorpdfstring{$<$}{<} Há apenas \textquotesingle{}time\textquotesingle{}
 
-\texorpdfstring{$<$}{<} Pulamos mais um para o início da tag
+\texorpdfstring{$<$}{<} Pode ser \textquotesingle{}GS\textquotesingle{} ou \textquotesingle{}GYR\textquotesingle{}
 
-\texorpdfstring{$<$}{<} Buffer se encontra no espaço(\textquotesingle{} \textquotesingle{}) imediatamente após a tag
+\texorpdfstring{$<$}{<} Tag Desconhecida
 
-\texorpdfstring{$<$}{<} Lê-\/se \textquotesingle{}time\textquotesingle{} de momento, em inglês, não grupo de jogadores.
+\texorpdfstring{$<$}{<} Tag Superior Desconhecida
 
-\texorpdfstring{$<$}{<} O caso do time é o mais trivial
-
-\texorpdfstring{$<$}{<} Função especial para máxima performance
-
-\texorpdfstring{$<$}{<} Game State
-
-\texorpdfstring{$<$}{<} Score Left
-
-Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00070}{70}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00230}{230}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
 
 
 
 \doxysubsection{Member Data Documentation}
+\Hypertarget{classEnvironment_a577846720836f69b8b7bf9daed8e3856}\label{classEnvironment_a577846720836f69b8b7bf9daed8e3856} 
+\index{Environment@{Environment}!goals\_conceded@{goals\_conceded}}
+\index{goals\_conceded@{goals\_conceded}!Environment@{Environment}}
+\doxysubsubsection{\texorpdfstring{goals\_conceded}{goals\_conceded}}
+{\footnotesize\ttfamily int Environment\+::goals\+\_\+conceded}
+
+
+
+Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança. 
+
+
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+
+\Hypertarget{classEnvironment_a754e950665cae91cac85888b82019dae}\label{classEnvironment_a754e950665cae91cac85888b82019dae} 
+\index{Environment@{Environment}!goals\_scored@{goals\_scored}}
+\index{goals\_scored@{goals\_scored}!Environment@{Environment}}
+\doxysubsubsection{\texorpdfstring{goals\_scored}{goals\_scored}}
+{\footnotesize\ttfamily int Environment\+::goals\+\_\+scored}
+
+
+
+Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança. 
+
+
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+
+\Hypertarget{classEnvironment_a2e963780bb2ab24bf1b46c8e257bbffc}\label{classEnvironment_a2e963780bb2ab24bf1b46c8e257bbffc} 
+\index{Environment@{Environment}!is\_left@{is\_left}}
+\index{is\_left@{is\_left}!Environment@{Environment}}
+\doxysubsubsection{\texorpdfstring{is\_left}{is\_left}}
+{\footnotesize\ttfamily bool Environment\+::is\+\_\+left}
+
+
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00035}{35}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+
+\Hypertarget{classEnvironment_ab341b125ad19aa31c20d7d69e52ef7e8}\label{classEnvironment_ab341b125ad19aa31c20d7d69e52ef7e8} 
+\index{Environment@{Environment}!logger@{logger}}
+\index{logger@{logger}!Environment@{Environment}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLogger}{Logger}}\& Environment\+::logger}
+
+
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00020}{20}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+
 \Hypertarget{classEnvironment_aca59bd8424243af4036a7363bf8514bd}\label{classEnvironment_aca59bd8424243af4036a7363bf8514bd} 
 \index{Environment@{Environment}!time\_match@{time\_match}}
 \index{time\_match@{time\_match}!Environment@{Environment}}
 \doxysubsubsection{\texorpdfstring{time\_match}{time\_match}}
-{\footnotesize\ttfamily float Environment\+::time\+\_\+match = 0}
+{\footnotesize\ttfamily float Environment\+::time\+\_\+match}
 
 
 
@@ -268,13 +361,13 @@ Instante de Tempo de Partida.
 
 
 
-Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
 
 \Hypertarget{classEnvironment_a3500996d7b4ae1d35cbdc028213d4482}\label{classEnvironment_a3500996d7b4ae1d35cbdc028213d4482} 
 \index{Environment@{Environment}!time\_server@{time\_server}}
 \index{time\_server@{time\_server}!Environment@{Environment}}
 \doxysubsubsection{\texorpdfstring{time\_server}{time\_server}}
-{\footnotesize\ttfamily float Environment\+::time\+\_\+server = 0}
+{\footnotesize\ttfamily float Environment\+::time\+\_\+server}
 
 
 
@@ -282,7 +375,21 @@ Instante de Tempo do Servidor, útil apenas para sincronização entre agentes.
 
 
 
-Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+
+\Hypertarget{classEnvironment_a6ade6cdb4cd66eb8b883131dd236f914}\label{classEnvironment_a6ade6cdb4cd66eb8b883131dd236f914} 
+\index{Environment@{Environment}!unum@{unum}}
+\index{unum@{unum}!Environment@{Environment}}
+\doxysubsubsection{\texorpdfstring{unum}{unum}}
+{\footnotesize\ttfamily int Environment\+::unum}
+
+
+
+Número do Jogador. 
+
+
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00034}{34}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
 
 
 

@@ -70,9 +70,11 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classEnvironment-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Environment Class Reference</div></div>
 </div><!--header-->
@@ -87,10 +89,18 @@ Collaboration diagram for Environment:</div>
 <div class="dyncontent">
 <div class="center"><img src="classEnvironment__coll__graph.png" border="0" usemap="#aEnvironment_coll__map" alt="Collaboration graph"/></div>
 <map name="aEnvironment_coll__map" id="aEnvironment_coll__map">
-<area shape="rect" title="Responsável por representar o ambiente externo ao robô" alt="" coords="5,5,187,105"/>
+<area shape="rect" title="Responsável por representar o ambiente externo ao robô" alt="" coords="16,753,197,1003"/>
+<area shape="rect" href="classLogger.html" title="Singleton para logging assíncrono." alt="" coords="5,5,208,691"/>
+<area shape="poly" title=" " alt="" coords="109,691,109,737,104,737,104,691"/>
 </map>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment_1_1Parsing.html">Parsing</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Responsável por prover ferramentas de auxílio de parsing.  <a href="classEnvironment_1_1Parsing.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:aa46adbbc28751383aedd5194d64f5480" id="r_aa46adbbc28751383aedd5194d64f5480"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480">PlayMode</a> : int { <br />
@@ -136,24 +146,46 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a29c4a5470fc47a3168a63a330ac6cd82" id="r_a29c4a5470fc47a3168a63a330ac6cd82"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a29c4a5470fc47a3168a63a330ac6cd82">Environment</a> (<a class="el" href="classLogger.html">Logger</a> &amp;<a class="el" href="classEnvironment.html#ab341b125ad19aa31c20d7d69e52ef7e8">logger</a>)</td></tr>
+<tr class="memdesc:a29c4a5470fc47a3168a63a330ac6cd82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor da Classe.  <br /></td></tr>
+<tr class="separator:a29c4a5470fc47a3168a63a330ac6cd82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5909bf7f4b37470b2260d15fb8cb352" id="r_ab5909bf7f4b37470b2260d15fb8cb352"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#ab5909bf7f4b37470b2260d15fb8cb352">update_from_server</a> (std::string_view msg)</td></tr>
-<tr class="memdesc:ab5909bf7f4b37470b2260d15fb8cb352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Completamente responsável por realizar o parsing da mensagem do servidor.  <br /></td></tr>
+<tr class="memdesc:ab5909bf7f4b37470b2260d15fb8cb352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpretará as mensagens do servidor.  <br /></td></tr>
 <tr class="separator:ab5909bf7f4b37470b2260d15fb8cb352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a3500996d7b4ae1d35cbdc028213d4482" id="r_a3500996d7b4ae1d35cbdc028213d4482"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a3500996d7b4ae1d35cbdc028213d4482">time_server</a> = 0</td></tr>
+<tr class="memitem:ab341b125ad19aa31c20d7d69e52ef7e8" id="r_ab341b125ad19aa31c20d7d69e52ef7e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogger.html">Logger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#ab341b125ad19aa31c20d7d69e52ef7e8">logger</a></td></tr>
+<tr class="separator:ab341b125ad19aa31c20d7d69e52ef7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3500996d7b4ae1d35cbdc028213d4482" id="r_a3500996d7b4ae1d35cbdc028213d4482"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a3500996d7b4ae1d35cbdc028213d4482">time_server</a></td></tr>
 <tr class="memdesc:a3500996d7b4ae1d35cbdc028213d4482"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instante de Tempo do Servidor, útil apenas para sincronização entre agentes.  <br /></td></tr>
 <tr class="separator:a3500996d7b4ae1d35cbdc028213d4482"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca59bd8424243af4036a7363bf8514bd" id="r_aca59bd8424243af4036a7363bf8514bd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#aca59bd8424243af4036a7363bf8514bd">time_match</a> = 0</td></tr>
+<tr class="memitem:aca59bd8424243af4036a7363bf8514bd" id="r_aca59bd8424243af4036a7363bf8514bd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#aca59bd8424243af4036a7363bf8514bd">time_match</a></td></tr>
 <tr class="memdesc:aca59bd8424243af4036a7363bf8514bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instante de Tempo de Partida.  <br /></td></tr>
 <tr class="separator:aca59bd8424243af4036a7363bf8514bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a754e950665cae91cac85888b82019dae" id="r_a754e950665cae91cac85888b82019dae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a754e950665cae91cac85888b82019dae">goals_scored</a></td></tr>
+<tr class="memdesc:a754e950665cae91cac85888b82019dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança.  <br /></td></tr>
+<tr class="separator:a754e950665cae91cac85888b82019dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a577846720836f69b8b7bf9daed8e3856" id="r_a577846720836f69b8b7bf9daed8e3856"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a577846720836f69b8b7bf9daed8e3856">goals_conceded</a></td></tr>
+<tr class="memdesc:a577846720836f69b8b7bf9daed8e3856"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança.  <br /></td></tr>
+<tr class="separator:a577846720836f69b8b7bf9daed8e3856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ade6cdb4cd66eb8b883131dd236f914" id="r_a6ade6cdb4cd66eb8b883131dd236f914"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a6ade6cdb4cd66eb8b883131dd236f914">unum</a></td></tr>
+<tr class="memdesc:a6ade6cdb4cd66eb8b883131dd236f914"><td class="mdescLeft">&#160;</td><td class="mdescRight">Número do Jogador.  <br /></td></tr>
+<tr class="separator:a6ade6cdb4cd66eb8b883131dd236f914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e963780bb2ab24bf1b46c8e257bbffc" id="r_a2e963780bb2ab24bf1b46c8e257bbffc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a2e963780bb2ab24bf1b46c8e257bbffc">is_left</a></td></tr>
+<tr class="separator:a2e963780bb2ab24bf1b46c8e257bbffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a59cc774a8c7309258d8b42fed2df3e3b" id="r_a59cc774a8c7309258d8b42fed2df3e3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a59cc774a8c7309258d8b42fed2df3e3b">print_status</a> () const</td></tr>
+<tr class="memdesc:a59cc774a8c7309258d8b42fed2df3e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apresentará os dados lidos do servidor.  <br /></td></tr>
+<tr class="separator:a59cc774a8c7309258d8b42fed2df3e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Responsável por representar o ambiente externo ao robô </p>
 <p>Agrupará todos os métodos de interpretação do mundo. Focaremos em performance e eficiência no uso da memória. </p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00018">18</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00017">17</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="aa46adbbc28751383aedd5194d64f5480" name="aa46adbbc28751383aedd5194d64f5480"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa46adbbc28751383aedd5194d64f5480">&#9670;&#160;</a></span>PlayMode</h2>
@@ -198,7 +230,7 @@ Public Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a389cfe0c4b78248c7fff140487602d54" name="aa46adbbc28751383aedd5194d64f5480a389cfe0c4b78248c7fff140487602d54"></a>PLAY_ON&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00024">24</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00037">37</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
@@ -229,11 +261,71 @@ Public Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="ad2970bc9f37b22279f0ff17b675b8de1a03570470bad94692ce93e32700d2e1cb" name="ad2970bc9f37b22279f0ff17b675b8de1a03570470bad94692ce93e32700d2e1cb"></a>OTHER&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00052">52</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00065">65</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a29c4a5470fc47a3168a63a330ac6cd82" name="a29c4a5470fc47a3168a63a330ac6cd82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29c4a5470fc47a3168a63a330ac6cd82">&#9670;&#160;</a></span>Environment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Environment::Environment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classLogger.html">Logger</a> &amp;&#160;</td>
+          <td class="paramname"><em>logger</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construtor da Classe. </p>
+
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00025">25</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a59cc774a8c7309258d8b42fed2df3e3b" name="a59cc774a8c7309258d8b42fed2df3e3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59cc774a8c7309258d8b42fed2df3e3b">&#9670;&#160;</a></span>print_status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Environment::print_status </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Apresentará os dados lidos do servidor. </p>
+
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00283">283</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+
+</div>
+</div>
 <a id="ab5909bf7f4b37470b2260d15fb8cb352" name="ab5909bf7f4b37470b2260d15fb8cb352"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5909bf7f4b37470b2260d15fb8cb352">&#9670;&#160;</a></span>update_from_server()</h2>
 
@@ -258,29 +350,93 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Completamente responsável por realizar o parsing da mensagem do servidor. </p>
+<p>Interpretará as mensagens do servidor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msg</td><td>Mensagem bruta enviada pelo servidor </td></tr>
+    <tr><td class="paramname">msg</td><td>Mensagem bruta enviada pelo servidor. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Atualização de todas as variáveis de ambiente </dd></dl>
-<p>&lt; Com isso, podemos mover o ponteiro sem modificar o conteúdo</p>
-<p>&lt; Garante que chegamos no ( anterior a tag</p>
-<p>&lt; Pulamos mais um para o início da tag</p>
-<p>&lt; Buffer se encontra no espaço(' ') imediatamente após a tag</p>
-<p>&lt; Lê-se 'time' de momento, em inglês, não grupo de jogadores.</p>
-<p>&lt; O caso do time é o mais trivial</p>
-<p>&lt; Função especial para máxima performance</p>
-<p>&lt; Game State</p>
-<p>&lt; Score Left</p>
+<dl class="section return"><dt>Returns</dt><dd>Atualização de todas as variáveis de ambiente. </dd></dl>
+<p>&lt; Vamos extrair uma tag</p>
+<p>&lt; Há apenas 'time'</p>
+<p>&lt; Pode ser 'GS' ou 'GYR'</p>
+<p>&lt; Tag Desconhecida</p>
+<p>&lt; Tag Superior Desconhecida</p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00070">70</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00230">230</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a577846720836f69b8b7bf9daed8e3856" name="a577846720836f69b8b7bf9daed8e3856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a577846720836f69b8b7bf9daed8e3856">&#9670;&#160;</a></span>goals_conceded</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Environment::goals_conceded</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança. </p>
+
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00033">33</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a754e950665cae91cac85888b82019dae" name="a754e950665cae91cac85888b82019dae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a754e950665cae91cac85888b82019dae">&#9670;&#160;</a></span>goals_scored</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Environment::goals_scored</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança. </p>
+
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00032">32</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2e963780bb2ab24bf1b46c8e257bbffc" name="a2e963780bb2ab24bf1b46c8e257bbffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e963780bb2ab24bf1b46c8e257bbffc">&#9670;&#160;</a></span>is_left</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Environment::is_left</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00035">35</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab341b125ad19aa31c20d7d69e52ef7e8" name="ab341b125ad19aa31c20d7d69e52ef7e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab341b125ad19aa31c20d7d69e52ef7e8">&#9670;&#160;</a></span>logger</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogger.html">Logger</a>&amp; Environment::logger</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00020">20</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+
+</div>
+</div>
 <a id="aca59bd8424243af4036a7363bf8514bd" name="aca59bd8424243af4036a7363bf8514bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aca59bd8424243af4036a7363bf8514bd">&#9670;&#160;</a></span>time_match</h2>
 
@@ -288,14 +444,14 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Environment::time_match = 0</td>
+          <td class="memname">float Environment::time_match</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Instante de Tempo de Partida. </p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00022">22</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00031">31</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
@@ -306,14 +462,32 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Environment::time_server = 0</td>
+          <td class="memname">float Environment::time_server</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Instante de Tempo do Servidor, útil apenas para sincronização entre agentes. </p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00021">21</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00030">30</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6ade6cdb4cd66eb8b883131dd236f914" name="a6ade6cdb4cd66eb8b883131dd236f914"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ade6cdb4cd66eb8b883131dd236f914">&#9670;&#160;</a></span>unum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Environment::unum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Número do Jogador. </p>
+
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00034">34</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>

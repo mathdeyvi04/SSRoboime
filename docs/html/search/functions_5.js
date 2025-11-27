@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['get_5fconfig_5fpositions_0',['get_config_positions',['../classRobotPositionManager_1_1RobotPositionManager.html#ad41b9ec648f300c603574b9a2884908e',1,'RobotPositionManager::RobotPositionManager']]],
-  ['get_5finput_1',['get_input',['../classPrinting_1_1Printing.html#aed6e1e0df8c5b52d17ede69cff53229f',1,'Printing::Printing']]],
-  ['get_5fteam_5fparams_2',['get_team_params',['../classBooting_1_1Booting.html#a77bb6ec6f5826b31d2548d8a960ee32e',1,'Booting::Booting']]]
+  ['environment_0',['Environment',['../classEnvironment.html#a29c4a5470fc47a3168a63a330ac6cd82',1,'Environment']]],
+  ['error_1',['error',['../classLogger.html#a5a5ae8bd2e452e9c844939fcaf5af790',1,'Logger::error(std::string msg)'],['../classLogger.html#a76f0aeef39fbede4d590e7d41b5b0e74',1,'Logger::error(std::format_string&lt; Args... &gt; fmt, Args &amp;&amp;... args)']]]
 ];

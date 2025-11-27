@@ -11,6 +11,7 @@
 #include <chrono>
 #include <iomanip>
 #include <atomic>
+#include <format>
 
 namespace fs = std::filesystem;
 
@@ -54,6 +55,34 @@ public:
      */
     void
     error(std::string msg){ this->log("[ERROR] ", std::move(msg)); }
+
+    /**
+     * @brief Log INFO usando C++20 std::format (Alta Performance).
+     * @param fmt A string de formatação (ex: "Valor: {}"). Deve ser uma string literal (constante).
+     * @param args Os argumentos a serem formatados.
+     */
+    template<typename... Args>
+    void info(std::format_string<Args...> fmt, Args&&... args) {
+        // std::format gera a std::string final de forma otimizada.
+        // std::forward garante que não haja cópias desnecessárias dos argumentos.
+        this->log("[INFO]  ", std::format(fmt, std::forward<Args>(args)...));
+    }
+
+    /**
+     * @brief Log WARN usando C++20 std::format.
+     */
+    template<typename... Args>
+    void warn(std::format_string<Args...> fmt, Args&&... args) {
+        this->log("[WARN]  ", std::format(fmt, std::forward<Args>(args)...));
+    }
+
+    /**
+     * @brief Log ERROR usando C++20 std::format.
+     */
+    template<typename... Args>
+    void error(std::format_string<Args...> fmt, Args&&... args) {
+        this->log("[ERROR] ", std::format(fmt, std::forward<Args>(args)...));
+    }
 
 private:
     // Buffers para técnica de Double Buffering
@@ -119,7 +148,7 @@ private:
      */
     void
     log(const char* prefixo, std::string&& msg) {
-        ///< Apenas separaremos para estética
+        ///< Esse lock_guard trava enquanto estiver nesse escopo
         {
             std::lock_guard<std::mutex> lock(this->_mutex);
             // Constrói a string final na memória RAM

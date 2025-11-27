@@ -30,6 +30,7 @@ class BaseAgent(ABC):
         self.env = Environment(self.logger)
         self.scom = ServerComm(
             creation_options,
+            self.env,
             # Passamos o ponteiro da lista de jogadores
             # Conforme eles são inseridos, teremos novos na partida
             BaseAgent.AGENTS_IN_THE_MATCH

@@ -147,7 +147,7 @@
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}NB\_SRC=\{nb\_src\}"{}}}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00144}00144\ \ \ \ \ \ \ \ \ ]}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00145}00145\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}\(\backslash\)033[1;7m/*\ -\/-\/-\/-\/\ Construção\ de\ Funcionalidades\ C++\ -\/-\/-\/-\/\ */\(\backslash\)033[0m"{}})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00146}00146\ \ \ \ \ \ \ \ \ first\ =\ \textcolor{keyword}{True}}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ cpp\_module\ \textcolor{keywordflow}{in}\ cpp\_modules:}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ cpp\_module\_path\ =\ os.path.join(cpp\_path,\ cpp\_module)}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00149}00149\ }
@@ -184,53 +184,56 @@
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00180}00180\ }
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bin\_mod\_time\ =\ os.path.getmtime(os.path.join(cpp\_module\_path,\ f\textcolor{stringliteral}{"{}\{cpp\_module\}.so"{}}))}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00182}00182\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ bin\_mod\_time\ +\ 30\ >\ code\_mod\_time:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ bin\_mod\_time\ +\ 15\ >\ code\_mod\_time:}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00185}00185\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ msg\ =\ f\textcolor{stringliteral}{"{}\(\backslash\)033[1;7mConstruindo:\ \(\backslash\)033[32;40m\{cpp\_module\}\(\backslash\)033[0m"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{msg:.<\{60\}\}"{}},\ end=\textcolor{stringliteral}{''},\ flush=\textcolor{keyword}{True})}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00188}00188\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ processo\ =\ subprocess.Popen(}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ command\_chain,}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cwd=cpp\_module\_path,}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stdout=subprocess.PIPE,}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stderr=subprocess.PIPE,}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text=\textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00196}00196\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Iniciamos\ thread\ de\ spinner}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ running\_flag\ =\ [\textcolor{keyword}{True}]}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ worker\ =\ threading.Thread(target=Booting.show\_spinner,\ args=(running\_flag,))}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ worker.start()}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00201}00201\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ output,\ error\ =\ processo.communicate()}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ return\_code\ =\ processo.wait()}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ first:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}\(\backslash\)033[1;7m/*\ -\/-\/-\/-\/\ Construção\ de\ Funcionalidades\ C++\ -\/-\/-\/-\/\ */\(\backslash\)033[0m"{}})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ msg\ =\ f\textcolor{stringliteral}{"{}\(\backslash\)033[1;7mConstruindo:\ \(\backslash\)033[32;40m\{cpp\_module\}\(\backslash\)033[0m"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\{msg:.<\{60\}\}"{}},\ end=\textcolor{stringliteral}{''},\ flush=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ processo\ =\ subprocess.Popen(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ command\_chain,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cwd=cpp\_module\_path,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stdout=subprocess.PIPE,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stderr=subprocess.PIPE,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ text=\textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Iniciamos\ thread\ de\ spinner}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ running\_flag\ =\ [\textcolor{keyword}{True}]}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ worker\ =\ threading.Thread(target=Booting.show\_spinner,\ args=(running\_flag,))}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ worker.start()}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00204}00204\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ running\_flag[0]\ =\ \textcolor{keyword}{False}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ worker.join()}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ output,\ error\ =\ processo.communicate()}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ return\_code\ =\ processo.wait()}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00207}00207\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ return\_code\ ==\ 0:}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}\(\backslash\)033[7m\(\backslash\)033[1mSucesso\(\backslash\)033[0m"{}})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ running\_flag[0]\ =\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ worker.join()}
 \DoxyCodeLine{\Hypertarget{Booting_8py_source_l00210}00210\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Podemos\ construir\ um\ arquivo\ de\ fiscalização}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(cpp\_module\_path,\ f\textcolor{stringliteral}{"{}\{cpp\_module\}.cpp\_info"{}}),}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}wb"{}}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{as}\ f:}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ noinspection\ PyTypeChecker}}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pickle.dump(python\_cmd,\ f)}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Printing.print\_message(\textcolor{stringliteral}{"{}Abortando"{}},\ \textcolor{stringliteral}{"{}error"{}})}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(output.decode(),\ error.decode())}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit()}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00222}00222\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ subprocess.run(}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}make"{}},\ \textcolor{stringliteral}{"{}clean"{}}],}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stdout=subprocess.PIPE,}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stderr=subprocess.PIPE,}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cwd=cpp\_module\_path}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00229}00229\ }
-\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ return\_code\ ==\ 0:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}\(\backslash\)033[7m\(\backslash\)033[1mSucesso\(\backslash\)033[0m"{}})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Podemos\ construir\ um\ arquivo\ de\ fiscalização}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(cpp\_module\_path,\ f\textcolor{stringliteral}{"{}\{cpp\_module\}.cpp\_info"{}}),}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}wb"{}}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ noinspection\ PyTypeChecker}}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pickle.dump(python\_cmd,\ f)}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Printing.print\_message(\textcolor{stringliteral}{"{}Abortando"{}},\ \textcolor{stringliteral}{"{}error"{}})}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(output.decode(),\ error.decode())}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit()}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ subprocess.run(}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}make"{}},\ \textcolor{stringliteral}{"{}clean"{}}],}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stdout=subprocess.PIPE,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stderr=subprocess.PIPE,}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cwd=cpp\_module\_path}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{Booting_8py_source_l00233}00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{None}}
 
 \end{DoxyCode}

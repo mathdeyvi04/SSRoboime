@@ -1,9 +1,8 @@
 \doxysection{src/cpp/environment/\+Environment.hpp File Reference}
 \hypertarget{Environment_8hpp}{}\label{Environment_8hpp}\index{src/cpp/environment/Environment.hpp@{src/cpp/environment/Environment.hpp}}
+{\ttfamily \#include "{}../logger/\+Logger.\+hpp"{}}\newline
 {\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$string\+\_\+view$>$}\newline
-{\ttfamily \#include $<$functional$>$}\newline
-{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
 {\ttfamily \#include $<$charconv$>$}\newline
 Include dependency graph for Environment.\+hpp\+:
 \nopagebreak
@@ -13,7 +12,8 @@ Include dependency graph for Environment.\+hpp\+:
 \includegraphics[width=350pt]{Environment_8hpp__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -24,12 +24,14 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classEnvironment}{Environment}}
-\begin{DoxyCompactList}\small\item\em Responsável por representar o ambiente externo ao robô \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Responsável por representar o ambiente externo ao robô \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classEnvironment_1_1Parsing}{Environment\+::\+Parsing}}
+\begin{DoxyCompactList}\small\item\em Responsável por prover ferramentas de auxílio de parsing. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{Environment_8hpp_add3ca9eefe3b5b754426f51d3043e579}{True}}~true
-\item 
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} std\+::from\+\_\+chars \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{Environment_8hpp_a306ebd41c0cd1303b1372c6153f0caf8}{False}}~false
 \end{DoxyCompactItemize}
 
@@ -43,7 +45,7 @@ class \mbox{\hyperlink{classEnvironment}{Environment}}
 
 
 
-Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00010}{10}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
 
 \Hypertarget{Environment_8hpp_add3ca9eefe3b5b754426f51d3043e579}\label{Environment_8hpp_add3ca9eefe3b5b754426f51d3043e579} 
 \index{Environment.hpp@{Environment.hpp}!True@{True}}
@@ -53,5 +55,9 @@ Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00010}{10}} of file
 
 
 
-Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
+\texorpdfstring{$<$}{<} std\+::from\+\_\+chars 
+
+
+
+Definition at line \mbox{\hyperlink{Environment_8hpp_source_l00008}{8}} of file \mbox{\hyperlink{Environment_8hpp_source}{Environment.\+hpp}}.
 

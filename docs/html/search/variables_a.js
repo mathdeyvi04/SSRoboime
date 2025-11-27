@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['p_0',['p',['../namespacerun__full__team.html#aacf93d065645ef0e6c902f5e8ce26406',1,'run_full_team']]],
-  ['players_1',['players',['../namespacerun__full__team.html#a3091250a934ba10b81fbb9898d14ad2a',1,'run_full_team']]],
-  ['posicoes_5fatuais_2',['posicoes_atuais',['../classRobotPositionManager_1_1RobotPositionManager.html#a6f6b413b38e1859004477f9aafd44d06',1,'RobotPositionManager::RobotPositionManager']]]
+  ['nome_5fde_5fconfig_5fselecionada_0',['nome_de_config_selecionada',['../classRobotPositionManager_1_1RobotPositionManager.html#a83f1aced496776968ac9113a524637df',1,'RobotPositionManager::RobotPositionManager']]]
 ];

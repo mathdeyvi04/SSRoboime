@@ -10,7 +10,7 @@ int
 main(){
 
     std::string_view message_from_server(example, size);
-    Environment ex = Environment();
+    Environment ex = Environment(Logger::get());
     ex.update_from_server(message_from_server);
 
     return 0;

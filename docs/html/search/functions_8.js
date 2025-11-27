@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['on_5fdouble_5fclick_5fin_5fconfigs_0',['on_double_click_in_configs',['../classRobotPositionManager_1_1RobotPositionManager.html#ac08e8d99655cdb858867e1febac0b2b3',1,'RobotPositionManager::RobotPositionManager']]]
+  ['log_0',['log',['../classLogger.html#a5cb6408e6b41201404b8adca8eb6509d',1,'Logger']]],
+  ['logger_1',['logger',['../classLogger.html#add0f34d4c753c86af8074840a72366b3',1,'Logger::Logger(const Logger &amp;)=delete'],['../classLogger.html#abc41bfb031d896170c7675fa96a6b30c',1,'Logger::Logger()']]]
 ];

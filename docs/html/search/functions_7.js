@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['nb_5fmodule_0',['NB_MODULE',['../module__main_8cpp.html#acdd9b18da852bb24e80aac4c96928584',1,'module_main.cpp']]],
-  ['nova_5fconfig_1',['nova_config',['../classRobotPositionManager_1_1RobotPositionManager.html#a8803cc44f9ea51d5d034f597d135233d',1,'RobotPositionManager::RobotPositionManager']]]
+  ['info_0',['info',['../classLogger.html#aba0bf8a3ebff47c016a5732eda9fa5e6',1,'Logger::info(std::string msg)'],['../classLogger.html#a69962e915fed2c438e0e4a1c4769ba08',1,'Logger::info(std::format_string&lt; Args... &gt; fmt, Args &amp;&amp;... args)']]]
 ];

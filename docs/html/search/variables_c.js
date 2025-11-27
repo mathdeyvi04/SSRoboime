@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['scom_0',['scom',['../classBaseAgent_1_1BaseAgent.html#a144d7d332f26886bc9885bce9c188f79',1,'BaseAgent::BaseAgent']]],
-  ['size_1',['size',['../debug_8cc.html#a439227feff9d7f55384e8780cfc2eb82',1,'debug.cc']]],
-  ['size1_2',['size1',['../debug_8cc.html#af68f0dccfb25d93948b065a91f6b8860',1,'debug.cc']]],
-  ['socket_3',['socket',['../classServerComm_1_1ServerComm.html#abe5f06e9acbe9fd206bf21fd24d26c26',1,'ServerComm::ServerComm']]]
+  ['p_0',['p',['../namespacerun__full__team.html#aacf93d065645ef0e6c902f5e8ce26406',1,'run_full_team.p'],['../namespacerun__player.html#ac3102aa4a47d1992543abbab467e9125',1,'run_player.p']]],
+  ['players_1',['players',['../namespacerun__full__team.html#a3091250a934ba10b81fbb9898d14ad2a',1,'run_full_team']]],
+  ['posicoes_5fatuais_2',['posicoes_atuais',['../classRobotPositionManager_1_1RobotPositionManager.html#a6f6b413b38e1859004477f9aafd44d06',1,'RobotPositionManager::RobotPositionManager']]]
 ];
