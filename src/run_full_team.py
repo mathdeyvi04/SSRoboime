@@ -19,7 +19,7 @@ for p in players:
 
 
 
-sleep(30)
+sleep(60)
 
 for p in players:
     p.scom.close()

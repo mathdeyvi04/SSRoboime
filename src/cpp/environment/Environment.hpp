@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../logger/Logger.hpp"
 #include <iostream>
 #include <string_view>
 #include <charconv> ///< std::from_chars
@@ -16,6 +17,16 @@
  */
 class Environment {
 public:
+
+    Logger& logger;
+
+    /**
+     * @brief Construtor da Classe
+     */
+    Environment(
+        Logger& logger
+    ) : logger(logger) {}
+
     /* Atributos Públicos de Ambiente */
     float time_server; ///< Instante de Tempo do Servidor, útil apenas para sincronização entre agentes
     float time_match;  ///< Instante de Tempo de Partida
@@ -71,6 +82,12 @@ public:
     }; ///< Agente precisará de uma informação mais geral para tomada de decisões
 
     /* Métodos Inerentes a Execução da Aplicação */
+
+
+
+
+
+    /* ------------------ Parser de Mensagem do Servidor ----------------------- */
 
     /**
      * @brief Responsável por prover ferramentas de auxílio de parsing.
@@ -138,7 +155,7 @@ public:
         bool
         get_value(T& out){
             const char* value_start = this->buffer;
-            while(*this->buffer != ' ' && *this->buffer != ')'){ *this->buffer++; }
+            while(*this->buffer != ' ' && *this->buffer != ')'){ this->buffer++; }
             return std::from_chars(value_start, this->buffer++, out).ec == std::errc{};
         }
 

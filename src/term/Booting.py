@@ -143,7 +143,7 @@ class Booting:
             f"NB_SRC={nb_src}"
         ]
 
-        print("\033[1;7m/* ---- Construção de Funcionalidades C++ ---- */\033[0m")
+        first = True
         for cpp_module in cpp_modules:
             cpp_module_path = os.path.join(cpp_path, cpp_module)
 
@@ -180,9 +180,12 @@ class Booting:
 
                     bin_mod_time = os.path.getmtime(os.path.join(cpp_module_path, f"{cpp_module}.so"))
 
-                    if bin_mod_time + 30 > code_mod_time:
+                    if bin_mod_time + 15 > code_mod_time:
                         continue
 
+            if first:
+                print("\033[1;7m/* ---- Construção de Funcionalidades C++ ---- */\033[0m")
+                first = False
             msg = f"\033[1;7mConstruindo: \033[32;40m{cpp_module}\033[0m"
             print(f"{msg:.<{60}}", end='', flush=True)
 

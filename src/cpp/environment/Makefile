@@ -19,9 +19,6 @@ NB_SRC ?= $(shell python3 -c "import os, nanobind; print(os.path.join(os.path.di
 all:
 	$(CXX) $(CXXFLAGS) $(INCLUDES) module_main.cpp $(NB_SRC) -o $(TARGET)
 
-debug:
-	@g++ -std=c++20 debug.cc; ./a.out; rm a.out;
-
 gdb:
 	@g++ -g -std=c++20 debug.cc; gdb ./a.out; rm a.out;
 

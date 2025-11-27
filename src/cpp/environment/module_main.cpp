@@ -8,7 +8,7 @@ NB_MODULE(
     m
 ){
     nb::class_<Environment>(m, "Environment")
-        .def(nb::init<>())
+        .def(nb::init<Logger&>())
         .def(
             "update_from_server",
             // A função anônima é apenas para convertermos os tipos
