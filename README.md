@@ -2,6 +2,10 @@
 
 - [Descrição](#descrição)
 - [Padronizações](#padronizações)
+  - [Equilíbrio entre Python/C++](#equilíbrio-entre-python-e-c)
+  - [Construção da Base](#partir-do-mínimo-possível)
+  - [Organização](#organização)
+  - [Debugação](#debugação)
 - [Linhas de Desenvolvimento](#linhas-de-desenvolvimento)
 
 # Descrição
@@ -41,6 +45,13 @@ Assim, permitiremos um booting comum à qualquer máquina linux, sendo necessár
 como `make`, `python` e `g++`.
 
 Para o booting inicial, basta escrever no terminal: `make init`.
+
+### Debugação
+
+Percebi que para ter acesso mais profundo a como nosso código está funcionando, é essencial que utilizemos
+um debugger de verdade e não mais `print` como um amador. 
+
+Sendo assim, deixo registrado a necessidade de utilização do `debugger python` e `gdb`.
 
 # Linhas de Desenvolvimento
 

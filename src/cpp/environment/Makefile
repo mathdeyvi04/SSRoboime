@@ -17,10 +17,10 @@ INCLUDES = -I$(PY_INC) -I$(NB_INC) -I$(ROBIN_INC)
 NB_SRC ?= $(shell python3 -c "import os, nanobind; print(os.path.join(os.path.dirname(nanobind.__file__), 'src', 'nb_combined.cpp'))")
 
 all:
-	$(CXX) $(CXXFLAGS) $(INCLUDES) module_main.cpp $(NB_SRC) -o $(TARGET)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) Environment.cpp module_main.cpp $(NB_SRC) -o $(TARGET)
 
 gdb:
-	@g++ -g -std=c++20 debug.cc; gdb ./a.out; rm a.out;
+	@g++ -g -std=c++20 Environment.cpp debug.cc; gdb ./a.out; rm a.out;
 
 clean:
 	@rm -rf *.o

@@ -27,7 +27,8 @@ public:
     ) : logger(logger) {}
 
     /* -- Definição de Ferramentas que serão amplamente Usadas -- */
-    enum class PlayMode : int {
+    ///< Tentaremos utilizar o mínimo possível de memória
+    enum class PlayMode : uint8_t {
         // Ao nosso favor
         OUR_KICKOFF = 0,
         OUR_KICK_IN = 1,
@@ -55,26 +56,36 @@ public:
         GAME_OVER = 19,
         PLAY_ON = 20
     }; ///< Modos de Jogo Simplificados
-    enum class PlayModeGroup : int {
+    enum class PlayModeGroup : uint8_t {
         OUR_KICK = 0,      // É nossa vez de chutar parado
         THEIR_KICK = 1,    // É vez deles de chutar parado
         ACTIVE_BEAM = 2,   // Podemos usar o comando beam (teleporte)
         PASSIVE_BEAM = 3,  // Devemos esperar (beam passivo/goalie)
         OTHER = 4          // Jogo rolando ou parado sem ação específica
     }; ///< Agente precisará de uma informação mais geral para tomada de decisões
+    struct Enabler_Stringview_Hash {
+        using is_transparent = void; ///< Sinaliza ao unordered_map que essa struct suporta tipos heterogêneos para pesquisa
+        // Sobrecarga do operador para hashing de std::string
+        size_t operator()(const std::string& s) const { return std::hash<std::string>{}(s); }
+        // Sobrecarga do operador para hashing de std::string_view (para pesquisa)
+        size_t operator()(std::string_view sv) const { return std::hash<std::string_view>{}(sv); }
+    };
     static const
-    std::unordered_map<std::string, PlayMode[2], std::hash<>, std::equal_to<void>> play_modes = {
-
-    }; ///<
+    std::unordered_map< std::string,
+                        std::array<PlayMode, 2>,
+                        Enabler_Stringview_Hash,
+                        std::equal_to<>
+                      > play_modes; ///< Vamos precisar definir essa princesinha em outro lugar.
 
     /* Atributos Públicos de Ambiente */
-
+    ////< Observe que alguns tipos serão reduzidos devido ao escopo de possibilidades
     float time_server; ///< Instante de Tempo do Servidor, útil apenas para sincronização entre agentes
     float time_match;  ///< Instante de Tempo de Partida
-    int goals_scored;  ///< Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança
-    int goals_conceded;  ///< Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança
-    int unum; ///< Número do Jogador
+    uint8_t goals_scored;  ///< Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança
+    uint8_t goals_conceded;  ///< Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança
+    uint8_t unum; ///< Número do Jogador
     bool is_left; ///< De qual lado estamos
+    PlayMode current_mode;
 
     /* Métodos Inerentes a Execução da Aplicação */
 
@@ -192,33 +203,34 @@ public:
 
                 switch(lower_tag[0]){
 
-                    case 's': ///< Poderá ser 'sl', 'sr'
+                    case 's': { ///< Poderá ser 'sl', 'sr'
                         this->get_value( (lower_tag[1] == 'l') ? env->goals_scored : env->goals_conceded );
                         break;
+                    }
 
-                    case 'p': ///< Há apenas 'pm'
-
+                    case 'p': { ///< Há apenas 'pm'
+                        // É garantido que já tenhamos tido is_left
                         lower_tag = this->get_str();
-
-                        std::cout << "Estamos no modo: " << lower_tag << std::endl;
+                        auto it = play_modes.find(lower_tag);
+                        if( it != play_modes.end() ){ env->current_mode = it->second[env->is_left]; }
                         break;
+                    }
 
-                    case 't': ///< Há 'time' e 'team'
-
+                    case 't': { ///< Há 'time' e 'team'
                         if(lower_tag[1] == 'i'){ this->get_value(env->time_match); }
-                        else{
-                            env->is_left = this->get_str()[0] == 'l';
-                        }
+                        else{ env->is_left = this->get_str()[0] == 'l'; }
                         break;
+                    }
 
-                    case 'u': ///< Há apenas o 'u'
+                    case 'u': { ///< Há apenas o 'u'
                         this->get_value(env->unum);
                         break;
+                    }
 
-                    default:
-
+                    default: {
                         env->logger.warn("Flag Desconhecida Encontrada em 'GS': {} \n\t\t\t\t Buffer Neste momento: {}", lower_tag, buffer);
                         break;
+                    }
                 }
 
                 if(*this->buffer == ')'){ break; } ///< Se após encontrarmos um ')' houver outro ')', então chegamos ao final da lower_tag.
@@ -247,11 +259,12 @@ public:
 
             upper_tag = cursor.get_str(); ///< Vamos extrair uma tag
             switch(upper_tag[0]){
-                case 't': ///< Há apenas 'time'
+                case 't': { ///< Há apenas 'time'
                     cursor.parse_time();
                     break;
+                }
 
-                case 'G': ///< Pode ser 'GS' ou 'GYR'
+                case 'G': { ///< Pode ser 'GS' ou 'GYR'
                     if(upper_tag[1] == 'S'){
                         cursor.parse_gamestate();
                     }
@@ -263,19 +276,24 @@ public:
                     }
 
                     break;
+                }
 
-                case 'S':
+                case 'S': {
                     break;
+                }
 
-                case 'H':
+                case 'H': {
                     break;
+                }
 
-                case 'A':
+                case 'A': {
                     break;
+                }
 
-                default:
+                default: {
                     ///< Tag Superior Desconhecida
                     break;
+                }
             }
         }
     }
@@ -292,6 +310,8 @@ private:
         printf("time_match     : %.3f\n", time_match);
         printf("goals_scored   : %d\n", goals_scored);
         printf("goals_conceded : %d\n", goals_conceded);
+        printf("is_left        : %d\n", is_left);
+        printf("playmode       : %d\n", static_cast<uint8_t>(current_mode));
     }
 };
 
