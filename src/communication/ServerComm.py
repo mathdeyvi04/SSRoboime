@@ -6,6 +6,7 @@ import socket
 from time import sleep
 from term.Printing import Printing
 from select import select
+from pathlib import Path
 
 class ServerComm:
     """
@@ -140,6 +141,14 @@ class ServerComm:
 
         # Como há algo para ser lido, devemos aplicar o parser
         self.env.update_from_server(self.buffer[:msg_size])
+
+        # if self.buffer[:msg_size].find(b'(See') != -1:
+        #     with open(
+        #             Path(__file__).resolve().parents[1] / "utils" / "frames_vision.txt",
+        #             "a"
+        #     ) as f:
+        #         f.write(self.buffer[:msg_size].decode())
+        #         f.write("\n")
 
     def __receive_async(self, other_players: list) -> None:
         """

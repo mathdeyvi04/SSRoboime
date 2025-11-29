@@ -27,7 +27,7 @@ class BaseAgent(ABC):
         from cpp.environment.environment import Environment
 
         self.logger = Logger.get() # Todos os jogadores utilizarão o único
-        self.env = Environment(self.logger)
+        self.env = Environment(self.logger) # Enquanto não fizer ligação com Server, terá dados lixo
         self.scom = ServerComm(
             creation_options,
             self.env,

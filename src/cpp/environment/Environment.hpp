@@ -237,6 +237,21 @@ public:
             }
 
         }
+
+        /**
+         * @brief Responsável pela interpretação da mensagem de 'GS'.
+         */
+         void
+         parse_gyr(){} ///< Hop, lembre-se de viz aqui.
+
+         /**
+         * @brief Responsável pela interpretação da mensagem de 'GS'.
+         */
+         void
+         parse_vision(){
+
+         }
+
     };
 
     /**
@@ -269,7 +284,7 @@ public:
                         cursor.parse_gamestate();
                     }
                     else if(upper_tag[1] == 'Y'){
-
+                        ///< DEVEMOS VOLTAR AQUI FILHO
                     }
                     else{
                         ///< Tag Desconhecida
@@ -279,6 +294,11 @@ public:
                 }
 
                 case 'S': {
+                    cursor.parse_vision();
+
+
+
+
                     break;
                 }
 
