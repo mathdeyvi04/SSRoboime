@@ -71,11 +71,11 @@ public:
         size_t operator()(std::string_view sv) const { return std::hash<std::string_view>{}(sv); }
     };
     static const
-    std::unordered_map< std::string,
-                        std::array<PlayMode, 2>,
-                        Enabler_Stringview_Hash,
-                        std::equal_to<>
-                      > play_modes; ///< Vamos precisar definir essa princesinha em outro lugar.
+    std::unordered_map<std::string,
+                       std::array<PlayMode, 2>,
+                       Enabler_Stringview_Hash,
+                       std::equal_to<>
+                      >play_modes; ///< Vamos precisar definir essa princesinha em outro lugar.
 
     /* Atributos Públicos de Ambiente */
     ////< Observe que alguns tipos serão reduzidos devido ao escopo de possibilidades
@@ -88,10 +88,6 @@ public:
     PlayMode current_mode;
 
     /* Métodos Inerentes a Execução da Aplicação */
-
-
-
-
 
     /* ------------------ Parser de Mensagem do Servidor ----------------------- */
 
@@ -177,6 +173,8 @@ public:
 
         /**
          * @brief Responsável pela interpretação da mensagem de 'time'.
+         * @details
+         * Informará o instante de tempo do servidor.
          */
         void
         parse_time(){
@@ -193,6 +191,9 @@ public:
 
         /**
          * @brief Responsável pela interpretação da mensagem de 'GS'.
+         * @details
+         * Atualizará o instante de tempo da partida, o modo de jogo a cada ciclo e pontuações.
+         * Caso seja a primeira vez que receba, atualizará dados de número de uniforme, lado de campo.
          */
         void
         parse_gamestate(){
@@ -228,30 +229,186 @@ public:
                     }
 
                     default: {
-                        env->logger.warn("Flag Desconhecida Encontrada em 'GS': {} \n\t\t\t\t Buffer Neste momento: {}", lower_tag, buffer);
+                        env->logger.warn("[{}]Flag Desconhecida Encontrada em 'GS': {} \n\t\t\t\t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
                         break;
                     }
                 }
 
                 if(*this->buffer == ')'){ break; } ///< Se após encontrarmos um ')' houver outro ')', então chegamos ao final da lower_tag.
             }
-
         }
 
         /**
          * @brief Responsável pela interpretação da mensagem de 'GS'.
+         * @details
+         * Os números dados representam os incrementos e decrementos dos ângulos de rotação
+         * durante o ciclo, como uma espécie de velocidade. Em termos gerais, é o vetor
+         * velocidade angular no último ciclo em degraus por segundo do torso do robô.
+         */
+        void
+        parse_gyroscope(){
+
+            // Só há uma tag aqui. Logo, não é necessário loop e busca por tentativas.
+            this->advance(14); // Colocamos 13, pois nunca se sabe se virá um '-' para nos atrapalhar.
+
+            // Devemos usar Eigen
+            float value;
+            for(int i = 0; i < 3; i++){ this->get_value(value); }
+        }
+
+        /**
+         * @brief Responsável pela interpretação da mensagem de 'ACC'.
+         * @details
+         * Recebe o vetor aceleração linear do centro do torso. Há toda uma lógica de sentido aqui, mas acredito que ainda não é importante.
          */
          void
-         parse_gyr(){} ///< Hop, lembre-se de viz aqui.
+         parse_accelerometer(){
+
+            this->advance(13);
+            float value;
+            for(int i = 0; i < 3; i++){ this->get_value(value); }
+         }
+
 
          /**
-         * @brief Responsável pela interpretação da mensagem de 'GS'.
+         * @brief Responsável pela interpretação da mensagem de 'See'.
+         * @details
+         * Recebe diversas(MUITAS) informações a partir de pontos em coordenadas esféricas.
          */
          void
          parse_vision(){
 
+            std::string_view lower_tag;
+            while(True){
+
+                lower_tag = this->get_str();
+
+                switch(lower_tag[0]){
+
+                    case 'P': ///< Estamos vendo um jogador. Há outras lowers tags a serem verificadas.
+                        while(True){
+
+                            lower_tag = this->get_str();
+
+                            switch(lower_tag[0]){
+
+                                case 't': { ///< Informação de 'team' do jogador visto
+                                    this->get_str();
+                                    break;
+                                }
+
+                                case 'i': { ///< Saberemos o unum do jogador visto
+                                    uint8_t value;
+                                    this->get_value(value);
+                                    break;
+                                }
+
+                                // Após essas, qualquer informação dada será da parte do corpo dele.
+                                case 'h': {
+
+                                }
+                                case 'r': {
+
+                                }
+                                case 'l': {
+                                    // Vamos apenas pular as informações
+                                    this->advance(5);
+                                    float value;
+                                    for(int i = 0; i < 3; i++){ this->get_value(value); }
+                                    break;
+                                }
+
+                                default:
+                                    env->logger.warn("[{}] Flag Desconhecida dentro de 'See:P': {}. \n\t\t\t\t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
+                                    break;
+                            }
+
+                            if(*this->buffer == ')'){ this->advance(1); if(*this->buffer == ')'){ break; } } ///< Se após encontrarmos um ')' houver outro ')', então chegamos ao final da lower_tag.
+                        }
+                        break;
+
+                    case 'B': { ///< Obviamente, a bola.
+
+                    }
+                    // Landmarks
+                    case 'G': {
+
+                    }
+                    case 'F': {
+                        this->advance(5);
+                        float value;
+                        for(int i = 0; i < 3; i++){ this->get_value(value); }
+                        break;
+                    }
+
+                    case 'L': { ///< Linhas Vistas
+
+                        this->advance(5);
+                        // Precisamos pegar ambos pontos da linha
+                        float value;
+                        for(int i = 0; i < 3; i++){ this->get_value(value); }
+
+                        this->advance(6);
+                        for(int i = 0; i < 3; i++){ this->get_value(value); }
+
+                        break;
+                    }
+
+                    default:
+                        env->logger.warn("[{}] Flag Desconhecida dentro de 'See': {}. \n\t\t\t\t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
+                        break;
+                }
+
+                if(*this->buffer == ')'){ this->advance(1); if(*this->buffer == ')'){ break; } } ///< Se após encontrarmos um ')' houver outro ')', então chegamos ao final da lower_tag.
+
+            }
          }
 
+         /**
+         * @brief Responsável pela interpretação da mensagem de 'HJ'.
+         * @details
+         * Recebemos o nome abreviado da junta e o ângulo instantâneo do eixo em degraus.
+         */
+         void
+         parse_hingejoint(){
+
+            // Dado que será sempre o mesmo padrão. É possível:
+            this->advance(3);
+            std::string_view nome_da_junta = this->get_str();
+            this->advance(5);
+            float value;
+            this->get_value(value);
+         }
+
+        /**
+         * @brief Responsável pela interpretação da mensagem de 'FRP'.
+         * @details
+         * Estes sensores estão embaixo de cada pé, este representado por lf ou rf.
+         * O primeiro vetor representa o ponto de contato do pé, medido em relação ao centro do mesmo.
+         * O segundo vetor representa a força(kg m/s^2) total neste ponto.
+         */
+        void
+        parse_force_resistence(){
+
+            // Dado que será sempre o mesmo padrão, é possível:
+            this->advance(3);
+
+            this->advance(4);
+            // Começamos a pegar o vetor
+            float value;
+            for(int i = 0; i < 3; i++){ this->get_value(value); }
+
+            this->advance(4);
+            for(int i = 0; i < 3; i++){ this->get_value(value); }
+        }
+
+        /**
+         * @brief Responsável pela interpretação da mensagem de 'hear'. Bem mais Complexo
+         */
+        void
+        parse_hear(){
+            // sanha
+        }
     };
 
     /**
@@ -284,34 +441,34 @@ public:
                         cursor.parse_gamestate();
                     }
                     else if(upper_tag[1] == 'Y'){
-                        ///< DEVEMOS VOLTAR AQUI FILHO
+                        cursor.parse_gyroscope();
                     }
                     else{
                         ///< Tag Desconhecida
+                        this->logger.warn("[{}] Tag Superior Desconhecida: [{}]", this->unum, upper_tag);
                     }
-
-                    break;
-                }
-
-                case 'S': {
-                    cursor.parse_vision();
-
-
-
-
-                    break;
-                }
-
-                case 'H': {
                     break;
                 }
 
                 case 'A': {
+                    if(upper_tag[1] == 'C'){ cursor.parse_accelerometer(); }
+                    break;
+                }
+
+                case 'S': {
+                    if(upper_tag[1] == 'e'){ cursor.parse_vision(); }
+                    else{ this->logger.warn("[{}] Tag Superior Desconhecida: [{}]", this->unum, upper_tag); }
+                    break;
+                }
+
+                case 'H': {
+                    cursor.parse_hingejoint();
                     break;
                 }
 
                 default: {
                     ///< Tag Superior Desconhecida
+                    this->logger.warn("[{}] Tag Superior Desconhecida: [{}]", this->unum, upper_tag);
                     break;
                 }
             }
