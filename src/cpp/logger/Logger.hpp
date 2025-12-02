@@ -123,7 +123,6 @@ private:
      */
     void
     _init_file(){
-
         if(!fs::exists("logs")){ fs::create_directory("logs"); }
 
         auto now = std::chrono::system_clock::now();
@@ -148,17 +147,27 @@ private:
      */
     void
     log(const char* prefixo, std::string&& msg) {
+
+        // --- INÍCIO DA ADIÇÃO DO TIMESTAMP ---
+        auto now = std::chrono::system_clock::now();
+        auto in_time_t = std::chrono::system_clock::to_time_t(now);
+
+        std::stringstream ss_time;
+        // Formato: [YYYY-MM-DD HH:MM:SS]
+        ss_time << std::put_time(std::localtime(&in_time_t), "[%Y-%m-%d %H:%M:%S] ");
+        // --- FIM DA ADIÇÃO DO TIMESTAMP ---
+
         ///< Esse lock_guard trava enquanto estiver nesse escopo
         {
             std::lock_guard<std::mutex> lock(this->_mutex);
             // Constrói a string final na memória RAM
-            this->_current_buffer.emplace_back(prefixo + msg);
-        }
+            this->_current_buffer.emplace_back(ss_time.str() + prefixo + msg);
 
-        if( this->is_the_first ){ this->_init_file();
-                                  this->_worker = std::thread(&Logger::_worker_loop, this);
-                                  this->is_the_first = False;
-                                }
+            if( this->is_the_first ){ this->_init_file();
+                                      this->_worker = std::thread(&Logger::_worker_loop, this);
+                                      this->is_the_first = False;
+                                    }
+        }
 
         // Notifica a thread de escrita que há dados
         _cv.notify_one();
@@ -186,8 +195,6 @@ private:
                 lock,
                 [this](){ return !this->_current_buffer.empty() || !this->_is_running; }
             );
-
-
 
             if( this->_current_buffer.empty() && !this->_is_running ){ break; }
 

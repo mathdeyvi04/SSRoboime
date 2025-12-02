@@ -66,9 +66,9 @@ public:
     struct Enabler_Stringview_Hash {
         using is_transparent = void; ///< Sinaliza ao unordered_map que essa struct suporta tipos heterogêneos para pesquisa
         // Sobrecarga do operador para hashing de std::string
-        size_t operator()(const std::string& s) const { return std::hash<std::string>{}(s); }
+        ::size_t operator()(const std::string& s) const { return std::hash<std::string>{}(s); }
         // Sobrecarga do operador para hashing de std::string_view (para pesquisa)
-        size_t operator()(std::string_view sv) const { return std::hash<std::string_view>{}(sv); }
+        ::size_t operator()(std::string_view sv) const { return std::hash<std::string_view>{}(sv); }
     };
     static const
     std::unordered_map<std::string,
@@ -143,7 +143,7 @@ public:
             while(*this->buffer == ' ' || *this->buffer == '(' || *this->buffer == ')'){ this->buffer++; }
             const char* value_start = this->buffer;
             while(*this->buffer != ' ' && *this->buffer != ')'){ this->buffer++; }
-            return std::string_view(value_start, size_t(this->buffer++ - value_start));
+            return std::string_view(value_start, ::size_t(this->buffer++ - value_start));
         }
 
         /**
@@ -168,6 +168,14 @@ public:
          */
         bool
         advance(int n = 1){ if((this->buffer + n) > this->end){ return False; } this->buffer += n; return True; }
+
+        std::string
+        get(){
+            return std::string(std::string_view(this->buffer - 30, 60)); ///< Vamos pegar alguns endereços antes e alguns depois.
+        }
+
+        bool
+        is_valid(){ return this->buffer < this->end; }
 
         /* -- Métodos de Parsing -- */
 
@@ -229,7 +237,7 @@ public:
                     }
 
                     default: {
-                        env->logger.warn("[{}]Flag Desconhecida Encontrada em 'GS': {} \n\t\t\t\t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
+                        env->logger.warn("[{}]Flag Desconhecida Encontrada em 'GS': {} \t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
                         break;
                     }
                 }
@@ -319,7 +327,7 @@ public:
                                 }
 
                                 default:
-                                    env->logger.warn("[{}] Flag Desconhecida dentro de 'See:P': {}. \n\t\t\t\t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
+                                    env->logger.warn("[{}] Flag Desconhecida dentro de 'See:P': {}. \t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
                                     break;
                             }
 
@@ -355,7 +363,7 @@ public:
                     }
 
                     default:
-                        env->logger.warn("[{}] Flag Desconhecida dentro de 'See': {}. \n\t\t\t\t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
+                        env->logger.warn("[{}] Flag Desconhecida dentro de 'See': {}. \t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
                         break;
                 }
 
@@ -388,10 +396,11 @@ public:
          * O segundo vetor representa a força(kg m/s^2) total neste ponto.
          */
         void
-        parse_force_resistence(){
+        parse_force_resistance(){
 
             // Dado que será sempre o mesmo padrão, é possível:
             this->advance(3);
+            this->get_str();
 
             this->advance(4);
             // Começamos a pegar o vetor
@@ -457,7 +466,7 @@ public:
 
                 case 'S': {
                     if(upper_tag[1] == 'e'){ cursor.parse_vision(); }
-                    else{ this->logger.warn("[{}] Tag Superior Desconhecida: [{}]", this->unum, upper_tag); }
+                    else{ this->logger.warn("[{}] Tag Superior Desconhecida: [{}] \t Buffer neste momento: [{}]", this->unum, upper_tag, cursor.get()); }
                     break;
                 }
 
@@ -466,9 +475,15 @@ public:
                     break;
                 }
 
+                case 'F': {
+                    cursor.parse_force_resistance();
+                    break;
+                }
+
                 default: {
+                    if(!cursor.is_valid()){ return 2; } ///< Pode ser um erro de estar avançando mais que o limite.
                     ///< Tag Superior Desconhecida
-                    this->logger.warn("[{}] Tag Superior Desconhecida: [{}]", this->unum, upper_tag);
+                    this->logger.warn("[{}] Tag Superior Desconhecida: [{}] \t Buffer neste momento: [{}]", this->unum, upper_tag, cursor.get());
                     break;
                 }
             }
@@ -482,6 +497,7 @@ private:
      */
     void
     print_status() const {
+        return;
         printf("\n=== Environment State ===\n");
         printf("time_server    : %.3f\n", time_server);
         printf("time_match     : %.3f\n", time_match);

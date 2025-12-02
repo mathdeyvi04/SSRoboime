@@ -220,6 +220,7 @@ class Booting:
                     pickle.dump(python_cmd, f)
             else:
                 Printing.print_message("Abortando", "error")
+                print()
                 print(output.decode(), error.decode())
                 exit()
 

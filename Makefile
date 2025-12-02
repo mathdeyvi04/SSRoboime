@@ -32,6 +32,7 @@ docs:
 .PHONY: build
 build:
 	@echo ">>> Buildando aplicação..."
+	@python3 src/exec_booting.py
 	@# Atente-se à como referencia os arquivos, pois eles podem virar pastas.
 	@pyinstaller \
 	--add-data "./src/term/config_team_params.txt:term" \
