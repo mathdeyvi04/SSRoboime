@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['parsing_0',['Parsing',['../classEnvironment_1_1Parsing.html',1,'Environment']]],
-  ['printing_1',['Printing',['../classPrinting_1_1Printing.html',1,'Printing']]]
+  ['line_0',['Line',['../classRobotVision_1_1Line.html',1,'RobotVision']]],
+  ['logger_1',['Logger',['../classLogger.html',1,'']]]
 ];

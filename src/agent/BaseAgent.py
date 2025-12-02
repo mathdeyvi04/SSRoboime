@@ -2,7 +2,7 @@
 @file BaseAgent.py
 @brief Implementação da classe de jogador base, que deve ser comum a todos os agentes.
 """
-from abc import ABC  # para conseguirmos criar classes abstratas em Python
+from abc import ABC, abstractmethod  # para conseguirmos criar classes abstratas em Python
 from communication.ServerComm import ServerComm
 from pathlib import Path
 import pickle
@@ -58,5 +58,11 @@ class BaseAgent(ABC):
         """
 
         self.scom.commit_beam(self.init_position, 0)
+
+    @abstractmethod
+    def think_and_act(self) -> None:
+        """
+        @brief Organizaremos o tomar de decisões aqui, dependendo da função do robô.
+        """
 
 

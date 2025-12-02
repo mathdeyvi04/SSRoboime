@@ -74,6 +74,7 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classEnvironment-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Environment Class Reference</div></div>
@@ -89,60 +90,63 @@ Collaboration diagram for Environment:</div>
 <div class="dyncontent">
 <div class="center"><img src="classEnvironment__coll__graph.png" border="0" usemap="#aEnvironment_coll__map" alt="Collaboration graph"/></div>
 <map name="aEnvironment_coll__map" id="aEnvironment_coll__map">
-<area shape="rect" title="Responsável por representar o ambiente externo ao robô" alt="" coords="16,753,197,1003"/>
-<area shape="rect" href="classLogger.html" title="Singleton para logging assíncrono." alt="" coords="5,5,208,691"/>
-<area shape="poly" title=" " alt="" coords="109,691,109,737,104,737,104,691"/>
+<area shape="rect" title="Responsável por representar o ambiente externo ao robô" alt="" coords="5,753,235,1101"/>
+<area shape="rect" href="classLogger.html" title="Singleton para logging assíncrono." alt="" coords="19,5,221,691"/>
+<area shape="poly" title=" " alt="" coords="123,691,123,737,117,737,117,691"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEnvironment_1_1Enabler__Stringview__Hash.html">Enabler_Stringview_Hash</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment_1_1Parsing.html">Parsing</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Responsável por prover ferramentas de auxílio de parsing.  <a href="classEnvironment_1_1Parsing.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:aa46adbbc28751383aedd5194d64f5480" id="r_aa46adbbc28751383aedd5194d64f5480"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480">PlayMode</a> : int { <br />
-&#160;&#160;<a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a074acc35d624ad67dc2c7384a9f66a99">OUR_KICKOFF</a> = 0
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a2b3ea53288f0e920e6ee7dca743ac715">OUR_KICK_IN</a> = 1
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a018987840bf4060b0e113dee69ea8ae8">OUR_CORNER_KICK</a> = 2
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480ad990b5a39ee67aedc2c64990f16349dd">OUR_GOAL_KICK</a> = 3
+<tr class="memitem:a29d721bc173aaea80bc9ef177b4889b8" id="r_a29d721bc173aaea80bc9ef177b4889b8"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8">PlayMode</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a074acc35d624ad67dc2c7384a9f66a99">OUR_KICKOFF</a> = 0
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a2b3ea53288f0e920e6ee7dca743ac715">OUR_KICK_IN</a> = 1
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a018987840bf4060b0e113dee69ea8ae8">OUR_CORNER_KICK</a> = 2
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8ad990b5a39ee67aedc2c64990f16349dd">OUR_GOAL_KICK</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480af52c19c90352fafdabe262acaa50f012">OUR_FREE_KICK</a> = 4
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a5ffc2526a52f027ee5bd8c3f5a01fe12">OUR_PASS</a> = 5
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480ab142a622861ec8a0a5031a2c4981e7b0">OUR_DIR_FREE_KICK</a> = 6
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a2c55b2b29fb14448ae19d6b59d813ef4">OUR_GOAL</a> = 7
+&#160;&#160;<a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8af52c19c90352fafdabe262acaa50f012">OUR_FREE_KICK</a> = 4
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a5ffc2526a52f027ee5bd8c3f5a01fe12">OUR_PASS</a> = 5
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8ab142a622861ec8a0a5031a2c4981e7b0">OUR_DIR_FREE_KICK</a> = 6
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a2c55b2b29fb14448ae19d6b59d813ef4">OUR_GOAL</a> = 7
 , <br />
-&#160;&#160;<a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480aa6796edff2c4513e2cfd04322ebcdb4b">OUR_OFFSIDE</a> = 8
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a3a6ced82783bbfae2fe046ce025b2d51">THEIR_KICKOFF</a> = 9
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a25b76a4b888f65c80ce03e608d2a146d">THEIR_KICK_IN</a> = 10
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480acefa023bc7c88167ad91ad9336840517">THEIR_CORNER_KICK</a> = 11
+&#160;&#160;<a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8aa6796edff2c4513e2cfd04322ebcdb4b">OUR_OFFSIDE</a> = 8
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a3a6ced82783bbfae2fe046ce025b2d51">THEIR_KICKOFF</a> = 9
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a25b76a4b888f65c80ce03e608d2a146d">THEIR_KICK_IN</a> = 10
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8acefa023bc7c88167ad91ad9336840517">THEIR_CORNER_KICK</a> = 11
 , <br />
-&#160;&#160;<a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a8780cf32f5fc20ecbf83bc782676240b">THEIR_GOAL_KICK</a> = 12
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a41765edd8b7a74647d884aa501193188">THEIR_FREE_KICK</a> = 13
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a4116175f1cbb68ec82347796894cd0a6">THEIR_PASS</a> = 14
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480afcf1c8ca13c156f33894b89e96c3697e">THEIR_DIR_FREE_KICK</a> = 15
+&#160;&#160;<a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a8780cf32f5fc20ecbf83bc782676240b">THEIR_GOAL_KICK</a> = 12
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a41765edd8b7a74647d884aa501193188">THEIR_FREE_KICK</a> = 13
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a4116175f1cbb68ec82347796894cd0a6">THEIR_PASS</a> = 14
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8afcf1c8ca13c156f33894b89e96c3697e">THEIR_DIR_FREE_KICK</a> = 15
 , <br />
-&#160;&#160;<a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a3c1ddecaab5545090f787ef67b2353e4">THEIR_GOAL</a> = 16
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480af55a4425a80ccfcea3bde39dfcfb8177">THEIR_OFFSIDE</a> = 17
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a915f855078ca3eac8d14f374bef322a2">BEFORE_KICKOFF</a> = 18
-, <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480af8454a27e1df41397bf42444fe5aa45b">GAME_OVER</a> = 19
+&#160;&#160;<a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a3c1ddecaab5545090f787ef67b2353e4">THEIR_GOAL</a> = 16
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8af55a4425a80ccfcea3bde39dfcfb8177">THEIR_OFFSIDE</a> = 17
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a915f855078ca3eac8d14f374bef322a2">BEFORE_KICKOFF</a> = 18
+, <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8af8454a27e1df41397bf42444fe5aa45b">GAME_OVER</a> = 19
 , <br />
-&#160;&#160;<a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480a389cfe0c4b78248c7fff140487602d54">PLAY_ON</a> = 20
+&#160;&#160;<a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8a389cfe0c4b78248c7fff140487602d54">PLAY_ON</a> = 20
 <br />
  }</td></tr>
-<tr class="separator:aa46adbbc28751383aedd5194d64f5480"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2970bc9f37b22279f0ff17b675b8de1" id="r_ad2970bc9f37b22279f0ff17b675b8de1"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#ad2970bc9f37b22279f0ff17b675b8de1">PlayModeGroup</a> : int { <br />
-&#160;&#160;<a class="el" href="classEnvironment.html#ad2970bc9f37b22279f0ff17b675b8de1a1af26a02799359e1d912a126da04b69e">OUR_KICK</a> = 0
-, <a class="el" href="classEnvironment.html#ad2970bc9f37b22279f0ff17b675b8de1ab35e1bf66a19f869ad9578e001bf5095">THEIR_KICK</a> = 1
-, <a class="el" href="classEnvironment.html#ad2970bc9f37b22279f0ff17b675b8de1a952b1ab8720e4eece04e71aaf33bc1be">ACTIVE_BEAM</a> = 2
-, <a class="el" href="classEnvironment.html#ad2970bc9f37b22279f0ff17b675b8de1a14ff1f89b7a34dae85dd127707204b5a">PASSIVE_BEAM</a> = 3
+<tr class="memdesc:a29d721bc173aaea80bc9ef177b4889b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; Tentaremos utilizar o mínimo possível de memória  <a href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8">More...</a><br /></td></tr>
+<tr class="separator:a29d721bc173aaea80bc9ef177b4889b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3a4c613ea04c403a958221dbfa10d63" id="r_af3a4c613ea04c403a958221dbfa10d63"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#af3a4c613ea04c403a958221dbfa10d63">PlayModeGroup</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="classEnvironment.html#af3a4c613ea04c403a958221dbfa10d63a1af26a02799359e1d912a126da04b69e">OUR_KICK</a> = 0
+, <a class="el" href="classEnvironment.html#af3a4c613ea04c403a958221dbfa10d63ab35e1bf66a19f869ad9578e001bf5095">THEIR_KICK</a> = 1
+, <a class="el" href="classEnvironment.html#af3a4c613ea04c403a958221dbfa10d63a952b1ab8720e4eece04e71aaf33bc1be">ACTIVE_BEAM</a> = 2
+, <a class="el" href="classEnvironment.html#af3a4c613ea04c403a958221dbfa10d63a14ff1f89b7a34dae85dd127707204b5a">PASSIVE_BEAM</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="classEnvironment.html#ad2970bc9f37b22279f0ff17b675b8de1a03570470bad94692ce93e32700d2e1cb">OTHER</a> = 4
+&#160;&#160;<a class="el" href="classEnvironment.html#af3a4c613ea04c403a958221dbfa10d63a03570470bad94692ce93e32700d2e1cb">OTHER</a> = 4
 <br />
  }</td></tr>
-<tr class="separator:ad2970bc9f37b22279f0ff17b675b8de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:af3a4c613ea04c403a958221dbfa10d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -163,17 +167,26 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aca59bd8424243af4036a7363bf8514bd" id="r_aca59bd8424243af4036a7363bf8514bd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#aca59bd8424243af4036a7363bf8514bd">time_match</a></td></tr>
 <tr class="memdesc:aca59bd8424243af4036a7363bf8514bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instante de Tempo de Partida.  <br /></td></tr>
 <tr class="separator:aca59bd8424243af4036a7363bf8514bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a754e950665cae91cac85888b82019dae" id="r_a754e950665cae91cac85888b82019dae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a754e950665cae91cac85888b82019dae">goals_scored</a></td></tr>
-<tr class="memdesc:a754e950665cae91cac85888b82019dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança.  <br /></td></tr>
-<tr class="separator:a754e950665cae91cac85888b82019dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a577846720836f69b8b7bf9daed8e3856" id="r_a577846720836f69b8b7bf9daed8e3856"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a577846720836f69b8b7bf9daed8e3856">goals_conceded</a></td></tr>
-<tr class="memdesc:a577846720836f69b8b7bf9daed8e3856"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança.  <br /></td></tr>
-<tr class="separator:a577846720836f69b8b7bf9daed8e3856"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ade6cdb4cd66eb8b883131dd236f914" id="r_a6ade6cdb4cd66eb8b883131dd236f914"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a6ade6cdb4cd66eb8b883131dd236f914">unum</a></td></tr>
-<tr class="memdesc:a6ade6cdb4cd66eb8b883131dd236f914"><td class="mdescLeft">&#160;</td><td class="mdescRight">Número do Jogador.  <br /></td></tr>
-<tr class="separator:a6ade6cdb4cd66eb8b883131dd236f914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca5caa5fb4d11346ceddd9e0833d07a7" id="r_aca5caa5fb4d11346ceddd9e0833d07a7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#aca5caa5fb4d11346ceddd9e0833d07a7">goals_scored</a></td></tr>
+<tr class="memdesc:aca5caa5fb4d11346ceddd9e0833d07a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança.  <br /></td></tr>
+<tr class="separator:aca5caa5fb4d11346ceddd9e0833d07a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63b268337a40981548db9030299cb6e0" id="r_a63b268337a40981548db9030299cb6e0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a63b268337a40981548db9030299cb6e0">goals_conceded</a></td></tr>
+<tr class="memdesc:a63b268337a40981548db9030299cb6e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança.  <br /></td></tr>
+<tr class="separator:a63b268337a40981548db9030299cb6e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affc19de0716c489df04f2a085abcd54e" id="r_affc19de0716c489df04f2a085abcd54e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#affc19de0716c489df04f2a085abcd54e">unum</a></td></tr>
+<tr class="memdesc:affc19de0716c489df04f2a085abcd54e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Número do Jogador.  <br /></td></tr>
+<tr class="separator:affc19de0716c489df04f2a085abcd54e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e963780bb2ab24bf1b46c8e257bbffc" id="r_a2e963780bb2ab24bf1b46c8e257bbffc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a2e963780bb2ab24bf1b46c8e257bbffc">is_left</a></td></tr>
+<tr class="memdesc:a2e963780bb2ab24bf1b46c8e257bbffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">De qual lado estamos.  <br /></td></tr>
 <tr class="separator:a2e963780bb2ab24bf1b46c8e257bbffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c0413b3796965f90b213673d84bfa4d" id="r_a2c0413b3796965f90b213673d84bfa4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8">PlayMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a2c0413b3796965f90b213673d84bfa4d">current_mode</a></td></tr>
+<tr class="separator:a2c0413b3796965f90b213673d84bfa4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:adb10ed8de57f37ba31e9b2ddf6b9c3fc" id="r_adb10ed8de57f37ba31e9b2ddf6b9c3fc"><td class="memItemLeft" align="right" valign="top">static const std::unordered_map&lt; std::string, std::array&lt; <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8">PlayMode</a>, 2 &gt;, <a class="el" href="structEnvironment_1_1Enabler__Stringview__Hash.html">Enabler_Stringview_Hash</a>, std::equal_to&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#adb10ed8de57f37ba31e9b2ddf6b9c3fc">play_modes</a></td></tr>
+<tr class="memdesc:adb10ed8de57f37ba31e9b2ddf6b9c3fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vamos precisar definir essa princesinha em outro lugar.  <br /></td></tr>
+<tr class="separator:adb10ed8de57f37ba31e9b2ddf6b9c3fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -185,10 +198,10 @@ Private Member Functions</h2></td></tr>
 <div class="textblock"><p>Responsável por representar o ambiente externo ao robô </p>
 <p>Agrupará todos os métodos de interpretação do mundo. Focaremos em performance e eficiência no uso da memória. </p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00017">17</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00018">18</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="aa46adbbc28751383aedd5194d64f5480" name="aa46adbbc28751383aedd5194d64f5480"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa46adbbc28751383aedd5194d64f5480">&#9670;&#160;</a></span>PlayMode</h2>
+<a id="a29d721bc173aaea80bc9ef177b4889b8" name="a29d721bc173aaea80bc9ef177b4889b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29d721bc173aaea80bc9ef177b4889b8">&#9670;&#160;</a></span>PlayMode</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,7 +210,56 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum class <a class="el" href="classEnvironment.html#aa46adbbc28751383aedd5194d64f5480">Environment::PlayMode</a> : int</td>
+          <td class="memname">enum class <a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8">Environment::PlayMode</a> : uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>&lt; Tentaremos utilizar o mínimo possível de memória </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a074acc35d624ad67dc2c7384a9f66a99" name="a29d721bc173aaea80bc9ef177b4889b8a074acc35d624ad67dc2c7384a9f66a99"></a>OUR_KICKOFF&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a2b3ea53288f0e920e6ee7dca743ac715" name="a29d721bc173aaea80bc9ef177b4889b8a2b3ea53288f0e920e6ee7dca743ac715"></a>OUR_KICK_IN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a018987840bf4060b0e113dee69ea8ae8" name="a29d721bc173aaea80bc9ef177b4889b8a018987840bf4060b0e113dee69ea8ae8"></a>OUR_CORNER_KICK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8ad990b5a39ee67aedc2c64990f16349dd" name="a29d721bc173aaea80bc9ef177b4889b8ad990b5a39ee67aedc2c64990f16349dd"></a>OUR_GOAL_KICK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8af52c19c90352fafdabe262acaa50f012" name="a29d721bc173aaea80bc9ef177b4889b8af52c19c90352fafdabe262acaa50f012"></a>OUR_FREE_KICK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a5ffc2526a52f027ee5bd8c3f5a01fe12" name="a29d721bc173aaea80bc9ef177b4889b8a5ffc2526a52f027ee5bd8c3f5a01fe12"></a>OUR_PASS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8ab142a622861ec8a0a5031a2c4981e7b0" name="a29d721bc173aaea80bc9ef177b4889b8ab142a622861ec8a0a5031a2c4981e7b0"></a>OUR_DIR_FREE_KICK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a2c55b2b29fb14448ae19d6b59d813ef4" name="a29d721bc173aaea80bc9ef177b4889b8a2c55b2b29fb14448ae19d6b59d813ef4"></a>OUR_GOAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8aa6796edff2c4513e2cfd04322ebcdb4b" name="a29d721bc173aaea80bc9ef177b4889b8aa6796edff2c4513e2cfd04322ebcdb4b"></a>OUR_OFFSIDE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a3a6ced82783bbfae2fe046ce025b2d51" name="a29d721bc173aaea80bc9ef177b4889b8a3a6ced82783bbfae2fe046ce025b2d51"></a>THEIR_KICKOFF&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a25b76a4b888f65c80ce03e608d2a146d" name="a29d721bc173aaea80bc9ef177b4889b8a25b76a4b888f65c80ce03e608d2a146d"></a>THEIR_KICK_IN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8acefa023bc7c88167ad91ad9336840517" name="a29d721bc173aaea80bc9ef177b4889b8acefa023bc7c88167ad91ad9336840517"></a>THEIR_CORNER_KICK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a8780cf32f5fc20ecbf83bc782676240b" name="a29d721bc173aaea80bc9ef177b4889b8a8780cf32f5fc20ecbf83bc782676240b"></a>THEIR_GOAL_KICK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a41765edd8b7a74647d884aa501193188" name="a29d721bc173aaea80bc9ef177b4889b8a41765edd8b7a74647d884aa501193188"></a>THEIR_FREE_KICK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a4116175f1cbb68ec82347796894cd0a6" name="a29d721bc173aaea80bc9ef177b4889b8a4116175f1cbb68ec82347796894cd0a6"></a>THEIR_PASS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8afcf1c8ca13c156f33894b89e96c3697e" name="a29d721bc173aaea80bc9ef177b4889b8afcf1c8ca13c156f33894b89e96c3697e"></a>THEIR_DIR_FREE_KICK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a3c1ddecaab5545090f787ef67b2353e4" name="a29d721bc173aaea80bc9ef177b4889b8a3c1ddecaab5545090f787ef67b2353e4"></a>THEIR_GOAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8af55a4425a80ccfcea3bde39dfcfb8177" name="a29d721bc173aaea80bc9ef177b4889b8af55a4425a80ccfcea3bde39dfcfb8177"></a>THEIR_OFFSIDE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a915f855078ca3eac8d14f374bef322a2" name="a29d721bc173aaea80bc9ef177b4889b8a915f855078ca3eac8d14f374bef322a2"></a>BEFORE_KICKOFF&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8af8454a27e1df41397bf42444fe5aa45b" name="a29d721bc173aaea80bc9ef177b4889b8af8454a27e1df41397bf42444fe5aa45b"></a>GAME_OVER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29d721bc173aaea80bc9ef177b4889b8a389cfe0c4b78248c7fff140487602d54" name="a29d721bc173aaea80bc9ef177b4889b8a389cfe0c4b78248c7fff140487602d54"></a>PLAY_ON&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00031">31</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af3a4c613ea04c403a958221dbfa10d63" name="af3a4c613ea04c403a958221dbfa10d63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3a4c613ea04c403a958221dbfa10d63">&#9670;&#160;</a></span>PlayModeGroup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classEnvironment.html#af3a4c613ea04c403a958221dbfa10d63">Environment::PlayModeGroup</a> : uint8_t</td>
         </tr>
       </table>
   </td>
@@ -207,61 +269,14 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a074acc35d624ad67dc2c7384a9f66a99" name="aa46adbbc28751383aedd5194d64f5480a074acc35d624ad67dc2c7384a9f66a99"></a>OUR_KICKOFF&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a2b3ea53288f0e920e6ee7dca743ac715" name="aa46adbbc28751383aedd5194d64f5480a2b3ea53288f0e920e6ee7dca743ac715"></a>OUR_KICK_IN&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a018987840bf4060b0e113dee69ea8ae8" name="aa46adbbc28751383aedd5194d64f5480a018987840bf4060b0e113dee69ea8ae8"></a>OUR_CORNER_KICK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480ad990b5a39ee67aedc2c64990f16349dd" name="aa46adbbc28751383aedd5194d64f5480ad990b5a39ee67aedc2c64990f16349dd"></a>OUR_GOAL_KICK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480af52c19c90352fafdabe262acaa50f012" name="aa46adbbc28751383aedd5194d64f5480af52c19c90352fafdabe262acaa50f012"></a>OUR_FREE_KICK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a5ffc2526a52f027ee5bd8c3f5a01fe12" name="aa46adbbc28751383aedd5194d64f5480a5ffc2526a52f027ee5bd8c3f5a01fe12"></a>OUR_PASS&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480ab142a622861ec8a0a5031a2c4981e7b0" name="aa46adbbc28751383aedd5194d64f5480ab142a622861ec8a0a5031a2c4981e7b0"></a>OUR_DIR_FREE_KICK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a2c55b2b29fb14448ae19d6b59d813ef4" name="aa46adbbc28751383aedd5194d64f5480a2c55b2b29fb14448ae19d6b59d813ef4"></a>OUR_GOAL&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480aa6796edff2c4513e2cfd04322ebcdb4b" name="aa46adbbc28751383aedd5194d64f5480aa6796edff2c4513e2cfd04322ebcdb4b"></a>OUR_OFFSIDE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a3a6ced82783bbfae2fe046ce025b2d51" name="aa46adbbc28751383aedd5194d64f5480a3a6ced82783bbfae2fe046ce025b2d51"></a>THEIR_KICKOFF&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a25b76a4b888f65c80ce03e608d2a146d" name="aa46adbbc28751383aedd5194d64f5480a25b76a4b888f65c80ce03e608d2a146d"></a>THEIR_KICK_IN&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480acefa023bc7c88167ad91ad9336840517" name="aa46adbbc28751383aedd5194d64f5480acefa023bc7c88167ad91ad9336840517"></a>THEIR_CORNER_KICK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a8780cf32f5fc20ecbf83bc782676240b" name="aa46adbbc28751383aedd5194d64f5480a8780cf32f5fc20ecbf83bc782676240b"></a>THEIR_GOAL_KICK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a41765edd8b7a74647d884aa501193188" name="aa46adbbc28751383aedd5194d64f5480a41765edd8b7a74647d884aa501193188"></a>THEIR_FREE_KICK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a4116175f1cbb68ec82347796894cd0a6" name="aa46adbbc28751383aedd5194d64f5480a4116175f1cbb68ec82347796894cd0a6"></a>THEIR_PASS&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480afcf1c8ca13c156f33894b89e96c3697e" name="aa46adbbc28751383aedd5194d64f5480afcf1c8ca13c156f33894b89e96c3697e"></a>THEIR_DIR_FREE_KICK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a3c1ddecaab5545090f787ef67b2353e4" name="aa46adbbc28751383aedd5194d64f5480a3c1ddecaab5545090f787ef67b2353e4"></a>THEIR_GOAL&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480af55a4425a80ccfcea3bde39dfcfb8177" name="aa46adbbc28751383aedd5194d64f5480af55a4425a80ccfcea3bde39dfcfb8177"></a>THEIR_OFFSIDE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a915f855078ca3eac8d14f374bef322a2" name="aa46adbbc28751383aedd5194d64f5480a915f855078ca3eac8d14f374bef322a2"></a>BEFORE_KICKOFF&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480af8454a27e1df41397bf42444fe5aa45b" name="aa46adbbc28751383aedd5194d64f5480af8454a27e1df41397bf42444fe5aa45b"></a>GAME_OVER&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aa46adbbc28751383aedd5194d64f5480a389cfe0c4b78248c7fff140487602d54" name="aa46adbbc28751383aedd5194d64f5480a389cfe0c4b78248c7fff140487602d54"></a>PLAY_ON&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af3a4c613ea04c403a958221dbfa10d63a1af26a02799359e1d912a126da04b69e" name="af3a4c613ea04c403a958221dbfa10d63a1af26a02799359e1d912a126da04b69e"></a>OUR_KICK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af3a4c613ea04c403a958221dbfa10d63ab35e1bf66a19f869ad9578e001bf5095" name="af3a4c613ea04c403a958221dbfa10d63ab35e1bf66a19f869ad9578e001bf5095"></a>THEIR_KICK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af3a4c613ea04c403a958221dbfa10d63a952b1ab8720e4eece04e71aaf33bc1be" name="af3a4c613ea04c403a958221dbfa10d63a952b1ab8720e4eece04e71aaf33bc1be"></a>ACTIVE_BEAM&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af3a4c613ea04c403a958221dbfa10d63a14ff1f89b7a34dae85dd127707204b5a" name="af3a4c613ea04c403a958221dbfa10d63a14ff1f89b7a34dae85dd127707204b5a"></a>PASSIVE_BEAM&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af3a4c613ea04c403a958221dbfa10d63a03570470bad94692ce93e32700d2e1cb" name="af3a4c613ea04c403a958221dbfa10d63a03570470bad94692ce93e32700d2e1cb"></a>OTHER&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00037">37</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ad2970bc9f37b22279f0ff17b675b8de1" name="ad2970bc9f37b22279f0ff17b675b8de1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2970bc9f37b22279f0ff17b675b8de1">&#9670;&#160;</a></span>PlayModeGroup</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum class <a class="el" href="classEnvironment.html#ad2970bc9f37b22279f0ff17b675b8de1">Environment::PlayModeGroup</a> : int</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad2970bc9f37b22279f0ff17b675b8de1a1af26a02799359e1d912a126da04b69e" name="ad2970bc9f37b22279f0ff17b675b8de1a1af26a02799359e1d912a126da04b69e"></a>OUR_KICK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ad2970bc9f37b22279f0ff17b675b8de1ab35e1bf66a19f869ad9578e001bf5095" name="ad2970bc9f37b22279f0ff17b675b8de1ab35e1bf66a19f869ad9578e001bf5095"></a>THEIR_KICK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ad2970bc9f37b22279f0ff17b675b8de1a952b1ab8720e4eece04e71aaf33bc1be" name="ad2970bc9f37b22279f0ff17b675b8de1a952b1ab8720e4eece04e71aaf33bc1be"></a>ACTIVE_BEAM&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ad2970bc9f37b22279f0ff17b675b8de1a14ff1f89b7a34dae85dd127707204b5a" name="ad2970bc9f37b22279f0ff17b675b8de1a14ff1f89b7a34dae85dd127707204b5a"></a>PASSIVE_BEAM&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ad2970bc9f37b22279f0ff17b675b8de1a03570470bad94692ce93e32700d2e1cb" name="ad2970bc9f37b22279f0ff17b675b8de1a03570470bad94692ce93e32700d2e1cb"></a>OTHER&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00065">65</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00059">59</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
@@ -322,7 +337,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Apresentará os dados lidos do servidor. </p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00283">283</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00499">499</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
@@ -364,44 +379,60 @@ Private Member Functions</h2></td></tr>
 <p>&lt; Tag Desconhecida</p>
 <p>&lt; Tag Superior Desconhecida</p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00230">230</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00429">429</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a577846720836f69b8b7bf9daed8e3856" name="a577846720836f69b8b7bf9daed8e3856"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a577846720836f69b8b7bf9daed8e3856">&#9670;&#160;</a></span>goals_conceded</h2>
+<a id="a2c0413b3796965f90b213673d84bfa4d" name="a2c0413b3796965f90b213673d84bfa4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c0413b3796965f90b213673d84bfa4d">&#9670;&#160;</a></span>current_mode</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Environment::goals_conceded</td>
+          <td class="memname"><a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8">PlayMode</a> Environment::current_mode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00088">88</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a63b268337a40981548db9030299cb6e0" name="a63b268337a40981548db9030299cb6e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63b268337a40981548db9030299cb6e0">&#9670;&#160;</a></span>goals_conceded</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Environment::goals_conceded</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança. </p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00033">33</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00085">85</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a754e950665cae91cac85888b82019dae" name="a754e950665cae91cac85888b82019dae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a754e950665cae91cac85888b82019dae">&#9670;&#160;</a></span>goals_scored</h2>
+<a id="aca5caa5fb4d11346ceddd9e0833d07a7" name="aca5caa5fb4d11346ceddd9e0833d07a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca5caa5fb4d11346ceddd9e0833d07a7">&#9670;&#160;</a></span>goals_scored</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Environment::goals_scored</td>
+          <td class="memname">uint8_t Environment::goals_scored</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança. </p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00032">32</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00084">84</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
@@ -417,7 +448,9 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00035">35</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p>De qual lado estamos. </p>
+
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00087">87</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
@@ -433,7 +466,33 @@ Private Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00020">20</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00021">21</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+
+</div>
+</div>
+<a id="adb10ed8de57f37ba31e9b2ddf6b9c3fc" name="adb10ed8de57f37ba31e9b2ddf6b9c3fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb10ed8de57f37ba31e9b2ddf6b9c3fc">&#9670;&#160;</a></span>play_modes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::unordered_map&lt;std::string, std::array&lt;<a class="el" href="classEnvironment.html#a29d721bc173aaea80bc9ef177b4889b8">PlayMode</a>, 2&gt;, <a class="el" href="structEnvironment_1_1Enabler__Stringview__Hash.html">Enabler_Stringview_Hash</a>, std::equal_to&lt;&gt; &gt; Environment::play_modes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Vamos precisar definir essa princesinha em outro lugar. </p>
+
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00009">9</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
@@ -451,7 +510,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Instante de Tempo de Partida. </p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00031">31</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00083">83</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
@@ -469,25 +528,25 @@ Private Member Functions</h2></td></tr>
 
 <p>Instante de Tempo do Servidor, útil apenas para sincronização entre agentes. </p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00030">30</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00082">82</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a6ade6cdb4cd66eb8b883131dd236f914" name="a6ade6cdb4cd66eb8b883131dd236f914"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ade6cdb4cd66eb8b883131dd236f914">&#9670;&#160;</a></span>unum</h2>
+<a id="affc19de0716c489df04f2a085abcd54e" name="affc19de0716c489df04f2a085abcd54e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affc19de0716c489df04f2a085abcd54e">&#9670;&#160;</a></span>unum</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Environment::unum</td>
+          <td class="memname">uint8_t Environment::unum</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Número do Jogador. </p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00034">34</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00086">86</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>

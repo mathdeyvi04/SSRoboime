@@ -17,7 +17,6 @@ for p in players:
 for p in players:
     p.scom.receive()
 
-print("Em condições.")
 while True:
     for p in players:
         p.scom.send()

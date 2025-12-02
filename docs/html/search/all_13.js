@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['x_5fmax_0',['X_MAX',['../classRobotPositionManager_1_1RobotPositionManager.html#af0fed2a3317ee5aeb9882278651b10b5',1,'RobotPositionManager::RobotPositionManager']]],
-  ['x_5fmin_1',['X_MIN',['../classRobotPositionManager_1_1RobotPositionManager.html#a74528c5d057b75ed9daf768cf84544f4',1,'RobotPositionManager::RobotPositionManager']]]
+  ['warn_0',['warn',['../classLogger.html#a1257d98c1db0148bec3b6296db303f1d',1,'Logger::warn(std::string msg)'],['../classLogger.html#aa58a59957fb6b23924adee4782391edc',1,'Logger::warn(std::format_string&lt; Args... &gt; fmt, Args &amp;&amp;... args)']]],
+  ['width_1',['width',['../classRobotVision_1_1Elemento.html#addfcd820f475838e79887e33475f9e1d',1,'RobotVision.Elemento.width'],['../namespaceRobotVision.html#aaf74d4712ebd419c710c0cb013ee1662',1,'RobotVision.WIDTH']]]
 ];

@@ -83,20 +83,23 @@ $(function() {
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
 <code>#include &lt;charconv&gt;</code><br />
+<code>#include &lt;unordered_map&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Environment.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="Environment_8hpp__incl.png" border="0" usemap="#asrc_2cpp_2environment_2Environment_8hpp" alt=""/></div>
 <map name="asrc_2cpp_2environment_2Environment_8hpp" id="asrc_2cpp_2environment_2Environment_8hpp">
-<area shape="rect" title=" " alt="" coords="493,5,648,45"/>
+<area shape="rect" title=" " alt="" coords="568,5,723,45"/>
 <area shape="rect" href="Logger_8hpp.html" title=" " alt="" coords="422,93,573,119"/>
-<area shape="poly" title=" " alt="" coords="555,47,520,85,516,81,551,44"/>
+<area shape="poly" title=" " alt="" coords="611,48,533,89,530,84,609,43"/>
 <area shape="rect" title=" " alt="" coords="5,167,85,192"/>
-<area shape="poly" title=" " alt="" coords="506,48,99,165,97,160,505,43"/>
+<area shape="poly" title=" " alt="" coords="572,48,99,167,98,162,571,43"/>
 <area shape="rect" title=" " alt="" coords="597,93,694,119"/>
-<area shape="poly" title=" " alt="" coords="591,44,627,81,623,85,587,47"/>
+<area shape="poly" title=" " alt="" coords="648,46,648,79,643,79,643,46"/>
 <area shape="rect" title=" " alt="" coords="718,93,799,119"/>
-<area shape="poly" title=" " alt="" coords="617,43,719,85,717,90,615,48"/>
+<area shape="poly" title=" " alt="" coords="674,43,732,83,729,87,671,48"/>
+<area shape="rect" title=" " alt="" coords="823,93,947,119"/>
+<area shape="poly" title=" " alt="" coords="704,43,838,87,836,92,702,48"/>
 <area shape="poly" title=" " alt="" coords="422,120,277,140,99,169,98,164,276,135,422,114"/>
 <area shape="rect" title=" " alt="" coords="110,167,183,192"/>
 <area shape="poly" title=" " alt="" coords="437,121,198,169,197,164,436,116"/>
@@ -127,11 +130,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="Environment_8hpp__dep__incl.png" border="0" usemap="#asrc_2cpp_2environment_2Environment_8hppdep" alt=""/></div>
 <map name="asrc_2cpp_2environment_2Environment_8hppdep" id="asrc_2cpp_2environment_2Environment_8hppdep">
-<area shape="rect" title=" " alt="" coords="95,5,249,45"/>
-<area shape="rect" href="environment_2debug_8cc.html" title=" " alt="" coords="5,93,160,133"/>
-<area shape="poly" title=" " alt="" coords="144,57,104,95,101,91,140,53"/>
-<area shape="rect" href="environment_2module__main_8cpp.html" title=" " alt="" coords="184,93,339,133"/>
-<area shape="poly" title=" " alt="" coords="204,53,243,91,240,95,200,57"/>
+<area shape="rect" title=" " alt="" coords="184,5,339,45"/>
+<area shape="rect" href="Environment_8cpp.html" title=" " alt="" coords="5,93,160,133"/>
+<area shape="poly" title=" " alt="" coords="211,54,123,96,121,91,209,49"/>
+<area shape="rect" href="environment_2debug_8cc.html" title=" " alt="" coords="184,93,339,133"/>
+<area shape="poly" title=" " alt="" coords="264,59,264,93,259,93,259,59"/>
+<area shape="rect" href="environment_2module__main_8cpp.html" title=" " alt="" coords="363,93,517,133"/>
+<area shape="poly" title=" " alt="" coords="314,49,402,91,400,96,312,54"/>
 </map>
 </div>
 </div>
@@ -141,6 +146,8 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html">Environment</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Responsável por representar o ambiente externo ao robô  <a href="classEnvironment.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEnvironment_1_1Enabler__Stringview__Hash.html">Environment::Enabler_Stringview_Hash</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment_1_1Parsing.html">Environment::Parsing</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Responsável por prover ferramentas de auxílio de parsing.  <a href="classEnvironment_1_1Parsing.html#details">More...</a><br /></td></tr>
@@ -167,7 +174,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00009">9</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00010">10</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>
@@ -185,7 +192,7 @@ Macros</h2></td></tr>
 
 <p>&lt; std::from_chars </p>
 
-<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00008">8</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Environment_8hpp_source.html#l00009">9</a> of file <a class="el" href="Environment_8hpp_source.html">Environment.hpp</a>.</p>
 
 </div>
 </div>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['y_5fmax_0',['Y_MAX',['../classRobotPositionManager_1_1RobotPositionManager.html#a2ad295faf61e5e540d3069fb3c28d973',1,'RobotPositionManager::RobotPositionManager']]],
-  ['y_5fmin_1',['Y_MIN',['../classRobotPositionManager_1_1RobotPositionManager.html#a65524df759b2592775c5e87cc7361212',1,'RobotPositionManager::RobotPositionManager']]]
+  ['width_0',['width',['../classRobotVision_1_1Elemento.html#addfcd820f475838e79887e33475f9e1d',1,'RobotVision.Elemento.width'],['../namespaceRobotVision.html#aaf74d4712ebd419c710c0cb013ee1662',1,'RobotVision.WIDTH']]]
 ];

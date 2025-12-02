@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['logger_0',['logger',['../classBaseAgent_1_1BaseAgent.html#a79e7ca51f7a5edfd0c1dc58d0f464441',1,'BaseAgent.BaseAgent.logger'],['../classEnvironment.html#ab341b125ad19aa31c20d7d69e52ef7e8',1,'Environment::logger']]]
+  ['if_5fin_5fdebug_0',['IF_IN_DEBUG',['../classPrinting_1_1Printing.html#a3e57cd52a596e066d9f0ba1ce9c03f39',1,'Printing::Printing']]],
+  ['init_5fposition_1',['init_position',['../classBaseAgent_1_1BaseAgent.html#a3ff77764e0197e1d4adebcc6292e3ffa',1,'BaseAgent::BaseAgent']]],
+  ['initial_5fposition_2',['INITIAL_POSITION',['../classBaseAgent_1_1BaseAgent.html#a7929cd8a713dd15c39c82932de9e9740',1,'BaseAgent::BaseAgent']]],
+  ['is_5fleft_3',['is_left',['../classEnvironment.html#a2e963780bb2ab24bf1b46c8e257bbffc',1,'Environment']]],
+  ['is_5fthe_5ffirst_4',['is_the_first',['../classLogger.html#a4a9330ad42cd5304ea6cb1f94278a491',1,'Logger']]]
 ];

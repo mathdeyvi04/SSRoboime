@@ -6,5 +6,5 @@ boot = Booting()
 p = Agent(boot.options)
 
 while True:
-    p.scom.send()
+    p.think_and_act()
     p.scom.receive()

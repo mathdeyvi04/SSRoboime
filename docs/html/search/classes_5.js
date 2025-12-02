@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['robotpositionmanager_0',['RobotPositionManager',['../classRobotPositionManager_1_1RobotPositionManager.html',1,'RobotPositionManager']]]
+  ['marker_0',['Marker',['../classRobotVision_1_1Marker.html',1,'RobotVision']]]
 ];

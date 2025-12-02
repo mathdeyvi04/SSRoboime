@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['warn_0',['warn',['../classLogger.html#a1257d98c1db0148bec3b6296db303f1d',1,'Logger::warn(std::string msg)'],['../classLogger.html#aa58a59957fb6b23924adee4782391edc',1,'Logger::warn(std::format_string&lt; Args... &gt; fmt, Args &amp;&amp;... args)']]]
+  ['unum_0',['unum',['../classAgent_1_1Agent.html#a4a4dd5d299aac1d8d1e93f0d06a2af00',1,'Agent.Agent.unum'],['../classBaseAgent_1_1BaseAgent.html#a3b0d3be2b8bb88a7e508c7cb1fa0fc78',1,'BaseAgent.BaseAgent.unum'],['../classServerComm_1_1ServerComm.html#a677354d386da70d9ced7355feb458a42',1,'ServerComm.ServerComm.unum'],['../classEnvironment.html#affc19de0716c489df04f2a085abcd54e',1,'Environment::unum']]],
+  ['update_5ffrom_5fserver_1',['update_from_server',['../classEnvironment.html#ab5909bf7f4b37470b2260d15fb8cb352',1,'Environment']]],
+  ['update_5ftable_5fconfig_2',['update_table_config',['../classRobotPositionManager_1_1RobotPositionManager.html#af8be329626545d01b68af69689436540',1,'RobotPositionManager::RobotPositionManager']]]
 ];

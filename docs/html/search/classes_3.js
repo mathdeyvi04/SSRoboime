@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_0',['Logger',['../classLogger.html',1,'']]]
+  ['goal_0',['Goal',['../classRobotVision_1_1Goal.html',1,'RobotVision']]]
 ];

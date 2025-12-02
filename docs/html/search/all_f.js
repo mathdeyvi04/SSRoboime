@@ -1,15 +1,13 @@
 var searchData=
 [
-  ['salvar_5fconfig_0',['salvar_config',['../classRobotPositionManager_1_1RobotPositionManager.html#a1e5cf699d8e16774cefadcef3f51b851',1,'RobotPositionManager::RobotPositionManager']]],
-  ['save_5fconfig_5fpositions_1',['save_config_positions',['../classRobotPositionManager_1_1RobotPositionManager.html#a28bce82d7c30aa8226411d94b792704c',1,'RobotPositionManager::RobotPositionManager']]],
-  ['scom_2',['scom',['../classBaseAgent_1_1BaseAgent.html#a144d7d332f26886bc9885bce9c188f79',1,'BaseAgent::BaseAgent']]],
-  ['send_3',['send',['../classServerComm_1_1ServerComm.html#aa47f79379bf0c17d022877df51a52aea',1,'ServerComm::ServerComm']]],
-  ['send_5fimmediate_4',['send_immediate',['../classServerComm_1_1ServerComm.html#a1b9474476d8ee333cb18da1fd0fc0d5e',1,'ServerComm::ServerComm']]],
-  ['servercomm_5',['servercomm',['../classServerComm_1_1ServerComm.html',1,'ServerComm.ServerComm'],['../namespaceServerComm.html',1,'ServerComm']]],
-  ['servercomm_2epy_6',['ServerComm.py',['../ServerComm_8py.html',1,'']]],
-  ['show_5fspinner_7',['show_spinner',['../classBooting_1_1Booting.html#a214ddd277b683503d96ab383a8ab492f',1,'Booting::Booting']]],
-  ['size_8',['size',['../environment_2debug_8cc.html#a439227feff9d7f55384e8780cfc2eb82',1,'debug.cc']]],
-  ['size1_9',['size1',['../environment_2debug_8cc.html#af68f0dccfb25d93948b065a91f6b8860',1,'debug.cc']]],
-  ['skip_5funtil_5fchar_10',['skip_until_char',['../classEnvironment_1_1Parsing.html#aab7543cdd7f10d9370e07073127699de',1,'Environment::Parsing']]],
-  ['socket_11',['socket',['../classServerComm_1_1ServerComm.html#abe5f06e9acbe9fd206bf21fd24d26c26',1,'ServerComm::ServerComm']]]
+  ['receive_0',['receive',['../classServerComm_1_1ServerComm.html#a7f0a7e6253dddebe1a09f2da60b1bf93',1,'ServerComm::ServerComm']]],
+  ['robotpositionmanager_1',['robotpositionmanager',['../classRobotPositionManager_1_1RobotPositionManager.html',1,'RobotPositionManager.RobotPositionManager'],['../namespaceRobotPositionManager.html',1,'RobotPositionManager']]],
+  ['robotpositionmanager_2epy_2',['RobotPositionManager.py',['../RobotPositionManager_8py.html',1,'']]],
+  ['robotvision_3',['robotvision',['../classRobotVision_1_1RobotVision.html',1,'RobotVision.RobotVision'],['../namespaceRobotVision.html',1,'RobotVision']]],
+  ['robotvision_2epy_4',['RobotVision.py',['../RobotVision_8py.html',1,'']]],
+  ['root_5',['root',['../namespaceRobotPositionManager.html#a2b3533e65fd87f1dccf9b8ad08def62e',1,'RobotPositionManager']]],
+  ['run_5ffull_5fteam_6',['run_full_team',['../namespacerun__full__team.html',1,'']]],
+  ['run_5ffull_5fteam_2epy_7',['run_full_team.py',['../run__full__team_8py.html',1,'']]],
+  ['run_5fplayer_8',['run_player',['../namespacerun__player.html',1,'']]],
+  ['run_5fplayer_2epy_9',['run_player.py',['../run__player_8py.html',1,'']]]
 ];

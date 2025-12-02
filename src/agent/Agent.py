@@ -31,3 +31,5 @@ class Agent(BaseAgent):
 
         super().__init__(creation_options)
 
+    def think_and_act(self) -> None:
+        pass

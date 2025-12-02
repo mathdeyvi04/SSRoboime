@@ -127,7 +127,7 @@ public:
         bool
         skip_until_char(char caract){
             while(*this->buffer != caract){
-                if(this->buffer > this->end){ return False; }
+                if(this->buffer >= this->end){ return False; }
                 this->buffer++;
             }
             this->buffer++;
@@ -169,13 +169,31 @@ public:
         bool
         advance(int n = 1){ if((this->buffer + n) > this->end){ return False; } this->buffer += n; return True; }
 
+        /**
+         * @brief Usada somente em caso de erro, para não afetar performance.
+         * @return Objeto string do buffer.
+         */
         std::string
         get(){
             return std::string(std::string_view(this->buffer - 30, 60)); ///< Vamos pegar alguns endereços antes e alguns depois.
         }
 
-        bool
-        is_valid(){ return this->buffer < this->end; }
+        /**
+         * @brief Permitirá que pulemos um bloco inteiro de uma tag desconhecida.
+         */
+        void
+        skip_unknown(){
+            ///< Como já iniciamos após ter visto o '('.
+            uint8_t counter = 1;
+            while(
+                counter != 0
+            ){
+                counter += (*this->buffer == ')') * (- 1) + (*this->buffer == '(') * 1;
+                this->buffer++;
+            }
+        }
+
+
 
         /* -- Métodos de Parsing -- */
 
@@ -466,7 +484,7 @@ public:
 
                 case 'S': {
                     if(upper_tag[1] == 'e'){ cursor.parse_vision(); }
-                    else{ this->logger.warn("[{}] Tag Superior Desconhecida: [{}] \t Buffer neste momento: [{}]", this->unum, upper_tag, cursor.get()); }
+                    else{ this->logger.warn("[{}] Tag Superior Desconhecida: [{}] \t Buffer neste momento: [{}]", this->unum, upper_tag, cursor.get()); cursor.skip_unknown(); }
                     break;
                 }
 
@@ -481,9 +499,9 @@ public:
                 }
 
                 default: {
-                    if(!cursor.is_valid()){ return 2; } ///< Pode ser um erro de estar avançando mais que o limite.
                     ///< Tag Superior Desconhecida
                     this->logger.warn("[{}] Tag Superior Desconhecida: [{}] \t Buffer neste momento: [{}]", this->unum, upper_tag, cursor.get());
+                    cursor.skip_unknown();
                     break;
                 }
             }
