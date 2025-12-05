@@ -54,7 +54,6 @@ NB_MODULE(
             "Função responsável por atualizar o estado de ambiente a partir de mensagens do servidor."
         );
 
-
     nb::enum_<Environment::PlayMode>(m, "PlayMode")
             .value("OUR_KICKOFF", Environment::PlayMode::OUR_KICKOFF)
             .value("OUR_KICK_IN", Environment::PlayMode::OUR_KICK_IN)

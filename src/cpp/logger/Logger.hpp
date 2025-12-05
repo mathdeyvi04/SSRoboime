@@ -170,7 +170,7 @@ private:
         }
 
         // Notifica a thread de escrita que há dados
-        _cv.notify_one();
+        this->_cv.notify_one();
     }
 
     /**
@@ -181,10 +181,10 @@ private:
     _worker_loop() {
 
         while(
-            _is_running || !_current_buffer.empty()
+            this->_is_running || !this->_current_buffer.empty()
         ){
 
-            std::unique_lock<std::mutex> lock(_mutex);
+            std::unique_lock<std::mutex> lock(this->_mutex);
 
             ///< Espera até ter dados ou ser instruído a encerrar
             /*

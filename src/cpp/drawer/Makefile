@@ -1,4 +1,4 @@
-TARGET := logger.so
+TARGET := drawer.so
 
 # Flags padrão para criação de biblioteca compartilhada
 CXXFLAGS := -O3 -Wall -shared -std=c++20 -fPIC
