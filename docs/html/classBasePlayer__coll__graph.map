@@ -1,5 +1,0 @@
-<map id="BasePlayer" name="BasePlayer">
-<area shape="rect" id="Node000001" title=" " alt="" coords="49,540,201,620"/>
-<area shape="rect" id="Node000002" href="$classServerComm.html" title="Responsável pela implementação da comunicação com servidor rcssserver3d." alt="" coords="5,5,245,477"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,477,128,523,123,523,123,477"/>
-</map>

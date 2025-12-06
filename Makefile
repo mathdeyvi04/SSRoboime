@@ -8,3 +8,4 @@ docs:
 	@doxygen Doxyfile
 	@$(MAKE) -C docs/latex
 	@mv docs/latex/refman.pdf Documentation.pdf
+	@rm -r docs

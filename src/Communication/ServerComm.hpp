@@ -1,114 +1,102 @@
 #pragma once
-/// Responsável pela implementação da comunicação com servidor rcssserver3d
 
 #include "../Booting/booting_templates.hpp"
 
-// --- Bibliotecas da Standard Library (C++) ---
-#include <vector>       // Container dinâmico usado para buffers de leitura
-#include <string>       // Manipulação de strings para filas de mensagens
-#include <iostream>     /// Entrada e saída padrão (std::cerr, std::cout)
-#include <cstring>      // Manipulação de memória bruta (std::memcpy, std::memset)
-#include <cstdint>      // Tipos de inteiros com tamanho fixo (uint32_t)
-#include <thread>       // (Opcional) Para sleep_for se desejar substituir usleep
-#include <chrono>       // (Opcional) Para unidades de tempo
-#include <string_view>  // O std::string_view é apenas uma "janela" leve (ponteiro + tamanho)
+// --- Bibliotecas da Standard Library ---
+#include <vector>
+#include <string>
+#include <iostream>
+#include <cstring>
+#include <cstdint>
+#include <string_view>
 #include <format>
 
-// --- Bibliotecas de Sistema (POSIX/Linux) ---
-#include <sys/socket.h> // API principal de Sockets (socket, connect, recv, send)
-#include <arpa/inet.h>  // Conversão de endereços IP (sockaddr_in, inet_pton, htons)
-#include <netinet/tcp.h>// Definições específicas do protocolo TCP (TCP_NODELAY)
-#include <unistd.h>     // Chamadas de sistema Unix padrão (close, writev, usleep)
-#include <sys/uio.h>    // Estruturas para I/O vetorial (struct iovec para writev)
-#include <fcntl.h>      // Controle de descritores de arquivo (bloqueante/não-bloqueante)
-#include <sys/select.h> // Multiplexação de I/O síncrono (select)
+// --- Bibliotecas de Sistema (POSIX) ---
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <netinet/tcp.h>
+#include <unistd.h>
+#include <sys/uio.h>
+#include <fcntl.h>
+#include <sys/select.h>
 
+
+/**
+ * @class ServerComm
+ * @brief Gerencia a comunicação TCP de baixo nível com o servidor rcssserver3d.
+ * @details Implementa estratégias de buffering, leitura não-bloqueante segura (polling)
+ * e envio otimizado via writev.
+ */
 class ServerComm {
 private:
-    /// File descriptor do socket
+    /// Descritor de arquivo do socket
     int __sock_fd;
-
-    /// Buffer persistente para leitura de dados (evita realocações)
+    /// Buffer persistente para leitura (evita realocações frequentes)
     std::vector<char> __read_buffer;
-
-    /// Fila de mensagens a serem enviadas (buffer de escrita)
-    std::string __message_queue;
+    
+    // Pode ser que precisemos implementar um buffer de envio.
 
     /**
-     * @brief Garante o recebimento completo de N bytes.
-     * @return True se leu tudo, False se a conexão caiu ou erro fatal.
+     * @brief Tenta ler exatamente N bytes do socket.
+     * @param buffer Ponteiro para o destino dos dados.
+     * @param len Quantidade de bytes a serem lidos.
+     * @return True se leu todos os bytes com sucesso.
+     * @return False se houve erro, timeout ou fechamento da conexão (EOF).
      */
-    bool __recv_all(char* buffer, size_t len) {
+    bool __recv_all(
+        void* buffer,
+        size_t len
+    ) {
         size_t total_read = 0;
+        char* ptr = static_cast<char*>(buffer);
 
-        while (total_read < len) {
-            char* write_ptr = buffer + total_read;
-            size_t bytes_needed = len - total_read;
+        while(total_read < len){
+            ssize_t bytes = ::recv(
+                this->__sock_fd,
+                ptr + total_read,
+                len - total_read,
+                0
+            );
 
-            // recv retorna: >0 (bytes lidos), 0 (conexão fechada), -1 (erro)
-            ssize_t bytes = ::recv(this->__sock_fd, write_ptr, bytes_needed, 0);
-
-            if (bytes > 0) {
+            if(bytes > 0){
                 total_read += bytes;
             }
-            else if (bytes == 0) {
-                std::cerr << "Conexão fechada pelo servidor (EOF)." << std::endl;
-                return False;
+            else if(bytes == 0){
+                return False; // EOF (Servidor fechou)
             }
             else {
-                // Se bytes == -1, verificamos o erro
-                if (errno == EINTR) {
-                    continue; // Foi apenas interrompido por um sinal, tenta de novo
-                }
-                // Se for EAGAIN/EWOULDBLOCK, significa que o socket está não-bloqueante
-                // e não há dados agora. Se sua lógica exige bloqueio, isso é erro.
-                std::cerr << "Erro no recv. Errno: " << errno << std::endl;
-                return False;
+                if(errno == EINTR){ continue; }
+                // Timeout do socket (SO_RCVTIMEO) configurado no construtor
+                if(errno == EAGAIN || errno == EWOULDBLOCK){ return False; }
+                return False; // Erro fatal
             }
         }
         return True;
     }
 
-    /**
-     * @brief Configura o socket para modo bloqueante ou não-bloqueante.
-     * @param blocking True para bloqueante, False para não-bloqueante.
-     */
-    inline void __set_blocking_mode(bool blocking) {
-        int flags = fcntl(this->__sock_fd, F_GETFL, 0);
-        if(flags == -1){ return; }
-
-        if(blocking){
-            flags &= ~O_NONBLOCK;
-        } else {
-            flags |= O_NONBLOCK;
-        }
-
-        fcntl(this->__sock_fd, F_SETFL, flags);
-    }
-
 public:
-
     /**
-     * @brief Construtor que inicializa o socket e buffers.
+     * @brief Construtor: Inicializa socket, buffers e configurações de rede.
+     * @details Configura TCP_NODELAY para baixa latência e SO_RCVTIMEO para evitar deadlocks.
      */
     ServerComm() {
-        // Inicialização de variáveis membro
-        this->__sock_fd = -1;
-        this->__read_buffer.resize(4096); // Pré-aloca 4KB
-        this->__message_queue.reserve(4096); // Reserva espaço
+        // Ajuste para 64KB (mensagens de visão podem ser grandes)
+        this->__read_buffer.resize(65536);
+        
+        this->__sock_fd = socket(
+            AF_INET,
+            SOCK_STREAM,
+            0
+        );
 
-        // Criação do Socket TCP
-        this->__sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-
-        if(this->__sock_fd < 0){
-            std::cerr << "Erro fatal: Falha ao criar socket." << std::endl;
+        if(this->__sock_fd < 0) {
+            std::cerr << "Erro fatal: Socket falhou." << std::endl;
             exit(1);
         }
 
-        // Otimização de Performance: TCP_NODELAY
-        // desativa o Algoritmo de Nagle, que agrupa pequenos pacotes antes de enviar (reduz overhead, mas aumenta latência)
+        // 1. TCP_NODELAY (Performance: envia pacotes pequenos imediatamente)
         int flag = 1;
-        int result_opt = ::setsockopt(
+        setsockopt(
             this->__sock_fd,
             IPPROTO_TCP,
             TCP_NODELAY,
@@ -116,46 +104,229 @@ public:
             sizeof(int)
         );
 
-        if(result_opt < 0){
-             std::cerr << "Aviso: Falha ao definir TCP_NODELAY." << std::endl;
-        }
+        // 2. Timeout de Recebimento (Segurança: evita travamento eterno na leitura)
+        struct timeval tv = {2, 0}; // 2 segundos
+        setsockopt(
+            this->__sock_fd,
+            SOL_SOCKET,
+            SO_RCVTIMEO,
+            (const char*)&tv,
+            sizeof(tv)
+        );
 
-        // Configuração do Endereço
         struct sockaddr_in serv_addr;
-        std::memset(&serv_addr, 0, sizeof(serv_addr));
-
+        std::memset(
+            &serv_addr,
+            0,
+            sizeof(serv_addr)
+        );
         serv_addr.sin_family = AF_INET;
         serv_addr.sin_port = htons(AGENT_PORT);
-        inet_pton(AF_INET, AGENT_HOST, &serv_addr.sin_addr);
+        inet_pton(
+            AF_INET,
+            AGENT_HOST,
+            &serv_addr.sin_addr
+        );
 
-        // Tentativa de Conexão
+        // Tentativa de conexão com espera ativa simples
         while(
             connect(
                 this->__sock_fd,
                 (struct sockaddr*)&serv_addr,
                 sizeof(serv_addr)
             ) != 0
-        ) {
-
-            // Em produção, usar usleep para não travar CPU
-            usleep(500000); // 0.5s
+        ){
+            usleep(500000); // 0.5s wait
         }
     }
 
     /**
-     * @brief Destrutor para limpeza de recursos.
+     * @brief Destrutor: Garante o fechamento correto do socket.
      */
     ~ServerComm() {
-        if(this->__sock_fd >= 0){ close(this->__sock_fd); }
+        if(this->__sock_fd >= 0) close(this->__sock_fd);
     }
 
     /**
-     * @brief Realiza o protocolo de inicialização do agente no campo (Handshake).
-     * @param unum Número do uniforme do jogador (1-11).
+     * @brief Verifica se há dados prontos para leitura no Kernel.
+     * @details Utiliza select com timeout 0 (polling) para não bloquear a thread.
+     * @return True se houver bytes para ler, False caso contrário.
      */
-    void initialize_agent(int unum, std::vector<ServerComm*> other_players) {
+    bool is_readable() {
+        fd_set readfds;
+        FD_ZERO(&readfds);
+        FD_SET(
+            this->__sock_fd,
+            &readfds
+        );
+        struct timeval tv = {0, 0}; // Retorno imediato
 
-        // Montamos a mensagem de SCENE para carregar a física do robô
+        return select(
+            this->__sock_fd + 1,
+            &readfds,
+            NULL,
+            NULL,
+            &tv
+        ) > 0;
+    }
+
+    /**
+     * @brief Envia uma mensagem imediatamente utilizando Scatter/Gather I/O.
+     * @details Constrói o cabeçalho de 4 bytes e envia junto com o corpo em uma única syscall (ou loop de syscalls),
+     * garantindo integridade mesmo em caso de escritas parciais.
+     * @param msg A mensagem a ser enviada (string_view evita cópias).
+     * @return True se enviado com sucesso, False em caso de erro fatal.
+     */
+    bool send_immediate(
+        std::string_view msg
+    ) {
+        if(msg.empty()){ return True; }
+
+        uint32_t msg_len_host = static_cast<uint32_t>(msg.size());
+        uint32_t msg_len_net = htonl(msg_len_host);
+
+        struct iovec iov[2];
+        size_t total_to_send = 4 + msg_len_host;
+        size_t total_sent = 0;
+
+        char* header_ptr = reinterpret_cast<char*>(&msg_len_net);
+        const char* body_ptr = msg.data();
+
+        while(total_sent < total_to_send){
+            int iov_cnt = 0;
+
+            if(total_sent < 4){
+                // Parte 1: Cabeçalho ainda não foi totalmente enviado
+                iov[iov_cnt].iov_base = header_ptr + total_sent;
+                iov[iov_cnt].iov_len  = 4 - total_sent;
+                iov_cnt++;
+
+                // Parte 2: Corpo inteiro ainda precisa ir
+                iov[iov_cnt].iov_base = (void*)body_ptr;
+                iov[iov_cnt].iov_len  = msg_len_host;
+                iov_cnt++;
+            }
+            else{
+                // Parte 1 já foi, enviando apenas o restante do corpo
+                size_t body_offset = total_sent - 4;
+                iov[iov_cnt].iov_base = (void*)(body_ptr + body_offset);
+                iov[iov_cnt].iov_len  = msg_len_host - body_offset;
+                iov_cnt++;
+            }
+
+            ssize_t res = ::writev(
+                this->__sock_fd,
+                iov,
+                iov_cnt
+            );
+
+            if(res > 0){ total_sent += res; }
+            else if(res < 0){
+                if(errno == EINTR){ continue; }
+                if(errno == EAGAIN || errno == EWOULDBLOCK) {
+                    usleep(1000); // Backoff curto para não fritar CPU
+                    continue;
+                }
+                return False; // Erro real
+            }
+        }
+        return True;
+    }
+
+    /**
+     * @brief Lê uma mensagem completa do servidor.
+     * @details Implementa estratégia de "Drenagem": Lê todas as mensagens disponíveis
+     * e retorna apenas a mais recente para evitar lag acumulado.
+     * @return std::string_view apontando para o buffer interno contendo a mensagem. Vazio se erro/timeout.
+     */
+    std::string_view receive() {
+        uint32_t last_msg_size = 0;
+
+        while(True) {
+            uint32_t net_len = 0;
+
+            // Tenta ler o cabeçalho (4 bytes)
+            if(
+                !this->__recv_all(
+                    &net_len,
+                    4
+                )
+            ){ break; }
+
+            uint32_t msg_len = ntohl(net_len);
+
+            // Tenta ler o corpo da mensagem
+            if(
+                !this->__recv_all(
+                    this->__read_buffer.data(),
+                    msg_len
+                )
+            ){ break; }
+
+            last_msg_size = msg_len;
+
+            // Estratégia de Drenagem: Se não há mais dados pendentes no Kernel,
+            // paramos aqui e retornamos o que temos.
+            if(!this->is_readable()){ break; }
+        }
+
+        if(last_msg_size > 0){
+            this->__read_buffer[last_msg_size] = '\0'; // Null-terminate por segurança
+            return std::string_view(
+                this->__read_buffer.data(),
+                last_msg_size
+            );
+        }
+        return {};
+    }
+
+    /**
+     * @brief Aguarda resposta do servidor mantendo os outros agentes vivos (Keep-Alive).
+     * @details Realiza polling neste socket. Se não houver dados, envia (syn) para os parceiros
+     * e drena a leitura deles para evitar buffer overflow.
+     * @param other_players Lista de ponteiros para os comunicadores dos outros jogadores.
+     */
+    void receive_async(
+        const std::vector<ServerComm*>& other_players
+    ) {
+        // Se não houver ninguém, apenas lê (pode bloquear por até 2s no timeout configurado)
+        if(other_players.empty()){
+            this->receive();
+            return;
+        }
+
+        while(True){
+            // 1. Se EU tenho dados, leio e saio imediatamente.
+            if(this->is_readable()){
+                this->receive();
+                break;
+            }
+
+            // 2. Mantenho os outros vivos enquanto espero
+            for(auto* p : other_players){
+                p->send_immediate("(syn)");
+
+                // Drena buffer dos outros SE houver dados
+                if(p->is_readable()) {
+                    p->receive();
+                }
+            }
+
+            // Yield para a CPU (1ms) para evitar uso de 100% em busy wait
+            usleep(1000);
+        }
+    }
+
+    /**
+     * @brief Realiza o handshake inicial do agente (Scene, Init e Sincronização).
+     * @param unum Número do uniforme do jogador.
+     * @param other_players Referência para lista de outros jogadores para sincronização.
+     */
+    void initialize_agent(
+        int unum,
+        std::vector<ServerComm*>& other_players
+    ) {
+        // Scene: Define o modelo do corpo do robô
         this->send_immediate(
             std::format(
                 "(scene rsg/agent/nao/nao_hetero.rsg {})",
@@ -165,8 +336,9 @@ public:
                 (unum <= 8) ? 3 : 4
             )
         );
+        this->receive_async(other_players);
 
-        // Montamos a mensagem de INIT definindo o uniforme e o nome do time
+        // Init: Define time e número
         this->send_immediate(
             std::format(
                 "(init (unum {}) (teamname {}))",
@@ -174,105 +346,22 @@ public:
                 TEAM_NAME
             )
         );
-    }
+        this->receive_async(other_players);
 
-    ///< Espaço para definirmos `receive`, `receive_async` e continuarmos `initialize_agent`.
+        // Sync Loop: Garante que todos entrem no ciclo de simulação juntos
+        for(int i = 0; i < 3; ++i){
+            this->send_immediate("(syn)");
 
+            for(auto* p : other_players){
+                p->send_immediate("(syn)");
+            }
 
+            // Drena outros sem travar
+            for(auto* p : other_players) {
+                if(p->is_readable()){ p->receive(); }
+            }
 
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * @brief Envia uma mensagem instantânea usando Scatter/Gather I/O (writev).
-     * @param msg A string de dados a ser enviada.
-     * @details Usa writev para enviar Header+Body em uma única syscall sem cópia de memória.
-     */
-    void send_immediate(const std::string& msg) {
-        // Evitamos syscalls desnecessárias se a string estiver vazia
-        if (msg.empty()) {
-            return;
+            if(this->is_readable()){ this->receive(); }
         }
-
-        // Conversão do tamanho para Big Endian (Network Byte Order)
-        // O cast para uint32_t garante que estamos lidando com 4 bytes exatos
-        uint32_t msg_len = static_cast<uint32_t>(msg.size());
-        uint32_t net_len = htonl(msg_len);
-
-        // Preparamos o vetor de I/O para envio atômico
-        struct iovec iov[2];
-
-        // Parte 1: Cabeçalho de 4 bytes
-        iov[0].iov_base = &net_len;
-        iov[0].iov_len = 4; // Constante direta conforme solicitado
-
-        // Parte 2: Corpo da mensagem (ponteiro direto, zero-copy)
-        iov[1].iov_base = (void*)msg.data();
-        iov[1].iov_len = msg_len;
-
-        if(
-            writev(
-                this->__sock_fd,
-                iov,
-                2
-            ) < 0
-        ){
-            std::cerr << "[ERROR] Falha no writev: "
-                      << strerror(errno)
-                      << std::endl;
-        }
-    }
-
-    /**
-     * @brief Adiciona uma mensagem à fila de envio (bufferização).
-     * @param msg Mensagem em bytes/string.
-     */
-    void commit(const std::string& msg) {
-        this->__message_queue += msg;
-    }
-
-    /**
-     * @brief Envia todas as mensagens da fila de uma vez.
-     * @details Adiciona (syn) ao final automaticamente se o socket estiver livre para escrita.
-     */
-    void send() {
-        fd_set readfds;
-        FD_ZERO(&readfds);
-        FD_SET(this->__sock_fd, &readfds);
-        struct timeval tv = {0, 0};
-
-        // Se select retornar 0, o socket de leitura está vazio, podemos enviar.
-        if(
-            select(
-                this->__sock_fd + 1,
-                &readfds,
-                NULL,
-                NULL,
-                &tv
-            ) == 0
-        ) {
-            this->__message_queue += "(syn)";
-            this->send_immediate(this->__message_queue);
-        }
-        else {
-             // Aviso: socket de leitura cheio, pulando envio para priorizar leitura no prox ciclo
-             // std::cerr << "Warning: Read socket busy." << std::endl;
-        }
-        this->__message_queue.clear();
-    }
-
-    /**
-     * @brief Limpa a fila de mensagens sem enviar.
-     */
-    void clear_queue() {
-        this->__message_queue.clear();
     }
 };
