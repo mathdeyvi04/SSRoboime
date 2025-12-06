@@ -1,0 +1,10 @@
+<map id="src/Booting/booting_templates.hpp" name="src/Booting/booting_templates.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="25,5,173,45"/>
+<area shape="rect" id="Node000002" href="$BasePlayer_8hpp.html" title=" " alt="" coords="5,181,192,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,58,60,94,56,113,60,132,73,159,89,179,85,183,69,161,55,134,51,113,55,92,73,56"/>
+<area shape="rect" id="Node000004" href="$ServerComm_8hpp.html" title=" " alt="" coords="69,93,264,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="124,55,154,91,150,95,120,58"/>
+<area shape="rect" id="Node000003" href="$run__player_8cpp.html" title=" " alt="" coords="29,255,169,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="101,220,101,255,96,255,96,220"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="143,146,111,183,107,179,139,142"/>
+</map>

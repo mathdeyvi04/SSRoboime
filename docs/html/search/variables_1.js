@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['agents_5fin_5fthe_5fmatch_0',['AGENTS_IN_THE_MATCH',['../classBaseAgent_1_1BaseAgent.html#a5da08edf06ee87b467aed4e987c08d4d',1,'BaseAgent::BaseAgent']]]
+  ['agent_5fhost_0',['AGENT_HOST',['../booting__templates_8hpp.html#a953ae38fce8a61ed96bd14f7501f4fc8',1,'booting_templates.hpp']]],
+  ['agent_5fport_1',['AGENT_PORT',['../booting__templates_8hpp.html#ac7410ebd0c9e027afee961a52a8f85ec',1,'booting_templates.hpp']]]
 ];

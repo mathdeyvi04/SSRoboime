@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['environment_0',['Environment',['../classEnvironment.html#a29c4a5470fc47a3168a63a330ac6cd82',1,'Environment']]],
-  ['error_1',['error',['../classLogger.html#a5a5ae8bd2e452e9c844939fcaf5af790',1,'Logger::error(std::string msg)'],['../classLogger.html#a76f0aeef39fbede4d590e7d41b5b0e74',1,'Logger::error(std::format_string&lt; Args... &gt; fmt, Args &amp;&amp;... args)']]]
+  ['send_0',['send',['../classServerComm.html#aa06db8a2cd9b8d6ebc7007b9b33a6816',1,'ServerComm']]],
+  ['send_5fimmediate_1',['send_immediate',['../classServerComm.html#aa474fcb4fda1be071837ccb1ef572f0b',1,'ServerComm']]],
+  ['servercomm_2',['servercomm',['../classServerComm.html#aa0f25c4cae78711952f66fd850eb1ec1',1,'ServerComm::ServerComm()=default'],['../classServerComm.html#a8a555e235404be817a26a42e2dfb8476',1,'ServerComm::ServerComm(const std::string &amp;host, int port)']]]
 ];

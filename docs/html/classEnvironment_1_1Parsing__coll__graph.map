@@ -1,7 +1,0 @@
-<map id="Environment::Parsing" name="Environment::Parsing">
-<area shape="rect" id="Node000001" title="Responsável por prover ferramentas de auxílio de parsing." alt="" coords="5,1164,276,1573"/>
-<area shape="rect" id="Node000002" href="$classEnvironment.html" title="Responsável por representar o ambiente externo ao robô" alt="" coords="26,753,255,1101"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,1101,143,1148,138,1148,138,1101"/>
-<area shape="rect" id="Node000003" href="$classLogger.html" title="Singleton para logging assíncrono." alt="" coords="39,5,242,691"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="143,691,143,737,138,737,138,691"/>
-</map>

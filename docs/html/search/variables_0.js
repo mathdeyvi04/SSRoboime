@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['_5fcurrent_5fbuffer_0',['_current_buffer',['../classLogger.html#a611eeaff7a932fe1aa276c7100560266',1,'Logger']]],
-  ['_5fcv_1',['_cv',['../classLogger.html#a15a2b10ffcca5e26d5fcf925f098920f',1,'Logger']]],
-  ['_5ffile_5fstream_2',['_file_stream',['../classLogger.html#a0b49d2e6651876633b39d253b54626fe',1,'Logger']]],
-  ['_5fis_5frunning_3',['_is_running',['../classLogger.html#a5fd997336b3ae725f163a9984b1b087e',1,'Logger']]],
-  ['_5fmutex_4',['_mutex',['../classLogger.html#a5d465eee1496a20984653c0220f5dd9d',1,'Logger']]],
-  ['_5fworker_5',['_worker',['../classLogger.html#acd4df2ee8bc7f6ef457d1e29fc67b51f',1,'Logger']]],
-  ['_5fwrite_5fbuffer_6',['_write_buffer',['../classLogger.html#ad311717a6a7000c2312480af80e89342',1,'Logger']]]
+  ['_5f_5fheader_5fsize_0',['__HEADER_SIZE',['../classServerComm.html#a7fd3ae309dbcc6e86984a9af6cdb93d3',1,'ServerComm']]],
+  ['_5f_5fmessage_5fqueue_1',['__message_queue',['../classServerComm.html#aac6a373e78b15e42777501528a9a598a',1,'ServerComm']]],
+  ['_5f_5fread_5fbuffer_2',['__read_buffer',['../classServerComm.html#af02211fb1233a5c9a801c01e76e8614b',1,'ServerComm']]],
+  ['_5f_5fscom_3',['__scom',['../classBasePlayer.html#a61800864f2359c45712a591f5b250b25',1,'BasePlayer']]],
+  ['_5f_5fsock_5ffd_4',['__sock_fd',['../classServerComm.html#a30dd14c4709815fe89fecb0add86dcd9',1,'ServerComm']]]
 ];
