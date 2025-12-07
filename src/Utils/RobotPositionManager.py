@@ -3,10 +3,10 @@
 @brief Implementação de lógica organizadora de posições iniciais de partida.
 """
 import os
-import pickle
 import tkinter as tk
 from tkinter import ttk, simpledialog, messagebox
 from pathlib import Path
+import re
 
 class RobotPositionManager(tk.Tk):
     """
@@ -17,8 +17,7 @@ class RobotPositionManager(tk.Tk):
     Por ter esse objetivo, não faz sentido que haja essa função na lógica geral dos agentes.
     """
 
-    CONFIG_POSITION_PATH = Path(__file__).resolve().parents[1] / "agent" / "tactical_formation.pkl"
-
+    CONFIG_POSITION_PATH = Path(__file__).resolve().parents[1] / "Booting" / "booting_tactical_formation.hpp"
 
     def __init__(self):
         """
@@ -66,9 +65,48 @@ class RobotPositionManager(tk.Tk):
         """
 
         if os.path.exists(RobotPositionManager.CONFIG_POSITION_PATH):
-            # Caso exista, então devemos apenas restaurar
-            with open(RobotPositionManager.CONFIG_POSITION_PATH, "rb") as f:
-                return pickle.load(f)
+            conteudo_arquivo = None
+            with open(RobotPositionManager.CONFIG_POSITION_PATH, 'r') as f:
+                conteudo_arquivo = f.read()
+
+            dados_extraidos = {}
+
+            # 1. Regex para encontrar a declaração da variável completa
+            # Procura por: float Nome[...] = { CONTEUDO };
+            # (?P<nome>\w+) -> Captura o nome da variável
+            # (.*?)         -> Captura tudo dentro das chaves principais (flag DOTALL permite quebra de linha)
+            padrao_bloco = re.compile(
+                r"float\s+(?P<nome>\w+)\[\d+]\[\d+]\s*=\s*\{(.*?)};",
+                re.DOTALL
+            )
+
+            # 2. Regex para encontrar os pares de números dentro do conteúdo
+            # Procura por: { numero, numero }
+            # (-?[\d\.]+) -> Captura sinal opcional, digitos e ponto
+            # [fF]?       -> Ignora o sufixo 'f' ou 'F' do float C++ se existir
+            padrao_linha = re.compile(
+                r"\{\s*(-?[\d.]+)[fF]?\s*,\s*(-?[\d.]+)[fF]?\s*}"
+            )
+
+            # Itera sobre todas as variáveis encontradas no arquivo (caso haja mais de uma)
+            for match in padrao_bloco.finditer(conteudo_arquivo):
+                nome_variavel = match.group("nome")
+                corpo_matriz = match.group(2)
+
+                lista_final = []
+
+                # Itera sobre todas as linhas {x, y} encontradas dentro da variável
+                for linha_match in padrao_linha.finditer(corpo_matriz):
+                    try:
+                        val_x = float(linha_match.group(1))
+                        val_y = float(linha_match.group(2))
+                        lista_final.append([val_x, val_y])
+                    except ValueError:
+                        print(f"Erro ao converter valores na variável {nome_variavel}")
+
+                dados_extraidos[nome_variavel] = lista_final
+
+            return dados_extraidos
 
         # Logo, não existe
         return {"default": [(1, 2), (2, -3), (5, 4), (2, 2)], "default_1": [(1, 2), (2, 3), (5, 4), (2, 2)]}
@@ -76,16 +114,38 @@ class RobotPositionManager(tk.Tk):
     @staticmethod
     def save_config_positions(dados: dict[str, list[tuple]]) -> None:
         """
-        @brief Responsável por salvar uma estrutura de dados em arquivo binário
+        @brief Responsável por salvar uma estrutura de dados
         @param dados Estrutura de dados a ser salva
         """
+        # Header do arquivo (Includes e início do Namespace)
+        conteudo = [
+            "#pragma once",
+            "///< Este código somente será chamado uma vez",
+            "namespace TacticalFormation {",
+        ]
 
-        with open(
-            RobotPositionManager.CONFIG_POSITION_PATH,
-            "wb"
-        ) as f:
-            # Colocamos esse comentário já que estava dando erro no interpretador da IDE
-            pickle.dump(dados, f) # type: ignore
+        for nome_variavel, matriz in dados.items():
+            # Declaração da variável array
+            conteudo.append(f"\tfloat {nome_variavel}[11][2] = {{")
+
+            # Preenchimento das linhas da matriz
+            for linha in matriz:
+                x = linha[0]
+                y = linha[1]
+                # Formatação com 'f' para garantir float literal no C++ (ex: 10.5f)
+                conteudo.append(f"\t\t{{{x:}f, {y}f}},")
+
+            conteudo.append("    };")
+            conteudo.append("")  # Linha em branco para separar variáveis
+
+        # Fechamento do Namespace
+        conteudo.append("};")
+
+        # Escrita no arquivo
+        with open(RobotPositionManager.CONFIG_POSITION_PATH, "w", encoding="utf-8") as f:
+            f.write("\n".join(conteudo))
+
+
 
     def _field_to_canvas(self, fx_: float, fy_: float) -> tuple:
         """
@@ -216,7 +276,7 @@ class RobotPositionManager(tk.Tk):
         self.posicoes_atuais.append(new_pos)
         self.draw_player(*new_pos)
 
-    def on_double_click_in_configs(self, event: tk.Event) -> None:
+    def on_double_click_in_configs(self, _: tk.Event) -> None:
         """
         @brief Responsável por plotar a configuração de jogadores selecionada
         @param event Argumento Default de bind

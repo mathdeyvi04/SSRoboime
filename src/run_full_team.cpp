@@ -1,6 +1,9 @@
 #include "Agent/BasePlayer.hpp"
+#include <vector>
 
 int main() {
+
+    std::signal(SIGINT, ender);
 
     std::vector<BasePlayer> players;
     players.reserve(11);
@@ -12,9 +15,11 @@ int main() {
         players.emplace_back(i);
     }
 
-    usleep(50000000);
+    while(::is_running){
+        usleep(5*100*1000);
+    }
 
-
+    std::cout << "Encerrando corretamente." << std::flush;
 
     return 0;
 }

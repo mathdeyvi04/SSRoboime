@@ -76,13 +76,33 @@ private:
 
 public:
     /**
-     * @brief Construtor: Inicializa socket, buffers e configurações de rede.
+     * @brief Destrói o objeto e executa o encerramento gracioso (graceful shutdown) da conexão TCP.
+     * @details
+     * Implementa uma sequência robusta de finalização para prevenir erros de socket no lado do servidor
+     * (como 'Broken pipe' ou 'Connection reset by peer'), comuns em servidores assíncronos.
+     * 1. Shutdown de escrita (`SHUT_WR`): Envia um pacote TCP FIN, sinalizando logicamente que o cliente cessou o envio.
+     * 2. Modo Não-Bloqueante (`O_NONBLOCK`): Configura o socket para garantir que a leitura de limpeza não congele a thread.
+     * 3. Dreno do Buffer (`recv`): Consome dados residuais no buffer de entrada do kernel para evitar que o SO responda com RST ao fechar o socket.
+     * 4. Fechamento (`close`): Libera, por fim, o descritor de arquivo do sistema.
+     */
+    ~ServerComm() {
+        if(this->__sock_fd >= 0){
+            shutdown(this->__sock_fd, SHUT_WR);
+            int flags = fcntl(this->__sock_fd, F_GETFL, 0);
+            fcntl(this->__sock_fd, F_SETFL, flags | O_NONBLOCK);
+            recv(this->__sock_fd, this->__read_buffer.data(), 4096, 0);
+            close(this->__sock_fd);
+        }
+    }
+
+    /**
+     * @brief Inicializa socket, buffers e configurações de rede.
      * @details Configura TCP_NODELAY para baixa latência e SO_RCVTIMEO para evitar deadlocks.
      */
     ServerComm() {
         // Ajuste para 64KB (mensagens de visão podem ser grandes)
         this->__read_buffer.resize(65536);
-        
+
         this->__sock_fd = socket(
             AF_INET,
             SOCK_STREAM,
@@ -140,12 +160,6 @@ public:
         }
     }
 
-    /**
-     * @brief Destrutor: Garante o fechamento correto do socket.
-     */
-    ~ServerComm() {
-        if(this->__sock_fd >= 0) close(this->__sock_fd);
-    }
 
     /**
      * @brief Verifica se há dados prontos para leitura no Kernel.
