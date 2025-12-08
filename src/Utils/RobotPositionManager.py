@@ -1,6 +1,10 @@
 """
 @file RobotPositionManager.py
 @brief Implementação de lógica organizadora de posições iniciais de partida.
+@details
+Este módulo fornece uma interface gráfica (GUI) baseada em Tkinter para gerenciar
+formações táticas de robôs. Ele atua como uma ponte entre a configuração visual
+e o código C++ do projeto, lendo e escrevendo diretamente em arquivos .hpp.
 """
 import os
 import tkinter as tk
@@ -10,18 +14,26 @@ import re
 
 class RobotPositionManager(tk.Tk):
     """
-    @brief Responsável por permitir ao usuário a criação de diversas formações táticas.
+    @class RobotPositionManager
+    @brief Responsável por permitir ao usuário a criação e edição de diversas formações táticas.
     @details
-    Focada em diversão e customização, gerencia um binário que é a representação de
-    dicionário de listas que contém as 11 posições.
-    Por ter esse objetivo, não faz sentido que haja essa função na lógica geral dos agentes.
+    Esta classe gerencia um ciclo completo de leitura e escrita de arquivos de cabeçalho C++.
+    Focada em experiência do usuário (UX) e customização, ela abstrai a complexidade
+    de editar arrays de coordenadas manualmente no código.
+
+    A classe interpreta o arquivo `booting_tactical_formation.hpp` como um dicionário
+    de listas, onde cada chave é o nome da formação e o valor é a lista de 11 coordenadas (x, y).
     """
 
     CONFIG_POSITION_PATH = Path(__file__).resolve().parents[1] / "Booting" / "booting_tactical_formation.hpp"
 
     def __init__(self):
         """
-        @brief Construtor da Classe, inicializa variáveis importantes, como o próprio dicionário.
+        @brief Construtor da Classe. Inicializa a GUI, variáveis de estado e constantes do campo.
+        @details
+        Define as dimensões do campo de futebol simulado, escalas de conversão (pixels por metro)
+        e inicializa as estruturas de dados que armazenarão as posições dos jogadores.
+        Também carrega as configurações existentes do arquivo C++ ao iniciar.
         """
         # Iniciamos a interface
         super().__init__()
@@ -33,10 +45,10 @@ class RobotPositionManager(tk.Tk):
         self.nome_de_config_selecionada = None
 
         # --- Constantes do Campo ---
-        self.FIELD_WIDTH = 30
-        self.FIELD_HEIGHT = 20
-        self.GRID_SCALE = 25  # Pixels por unidade de campo
-        self.MAX_JOGADORES = 11
+        self.FIELD_WIDTH = 30   #: Largura total do campo em metros
+        self.FIELD_HEIGHT = 20  #: Altura total do campo em metros
+        self.GRID_SCALE = 25    #: Escala de conversão: Pixels por unidade de campo (metro)
+        self.MAX_JOGADORES = 11 #: Limite de robôs por time
         self.X_MIN = -self.FIELD_WIDTH / 2
         self.X_MAX = self.FIELD_WIDTH / 2
         self.Y_MIN = -self.FIELD_HEIGHT / 2
@@ -44,7 +56,7 @@ class RobotPositionManager(tk.Tk):
 
         # Variáveis de Estado
         self.posicoes_atuais = [] # Lista de tuplas do grid atual
-        self.marcadores_jogadores = [] # Lista para rastrearmos nossos jogadores
+        self.marcadores_jogadores = [] # Lista para rastrearmos nossos jogadores (IDs do Canvas)
 
         # Apenas variáveis que serão utilizadas posteriormente
         self.tv_configs = None # Para organizarmos a tabela de configurações
@@ -60,8 +72,16 @@ class RobotPositionManager(tk.Tk):
     @staticmethod
     def get_config_positions() -> dict[str, list[tuple]]:
         """
-        @brief Verificará existência do arquivo binário correspondente ao dicionário.
-        @return Caso exista, o retornará restaurado. Caso não, retornará um dicionário vazio.
+        @brief Lê e analisa o arquivo C++ para extrair as configurações de posição salvas.
+        @details
+        Realiza o parsing do arquivo `booting_tactical_formation.hpp`.
+        Utiliza Expressões Regulares (Regex) para identificar declarações de arrays C++
+        (ex: `float Nome[11][2] = { ... };`) e converte os valores textuais para
+        objetos Python (listas de tuplas).
+
+        @return dict[str, list[tuple]] Um dicionário onde as chaves são os nomes das variáveis C++
+                e os valores são listas de coordenadas (x, y).
+                Retorna um dicionário com valores padrão se o arquivo não existir.
         """
 
         if os.path.exists(RobotPositionManager.CONFIG_POSITION_PATH):
@@ -73,8 +93,6 @@ class RobotPositionManager(tk.Tk):
 
             # 1. Regex para encontrar a declaração da variável completa
             # Procura por: float Nome[...] = { CONTEUDO };
-            # (?P<nome>\w+) -> Captura o nome da variável
-            # (.*?)         -> Captura tudo dentro das chaves principais (flag DOTALL permite quebra de linha)
             padrao_bloco = re.compile(
                 r"float\s+(?P<nome>\w+)\[\d+]\[\d+]\s*=\s*\{(.*?)};",
                 re.DOTALL
@@ -82,8 +100,6 @@ class RobotPositionManager(tk.Tk):
 
             # 2. Regex para encontrar os pares de números dentro do conteúdo
             # Procura por: { numero, numero }
-            # (-?[\d\.]+) -> Captura sinal opcional, digitos e ponto
-            # [fF]?       -> Ignora o sufixo 'f' ou 'F' do float C++ se existir
             padrao_linha = re.compile(
                 r"\{\s*(-?[\d.]+)[fF]?\s*,\s*(-?[\d.]+)[fF]?\s*}"
             )
@@ -114,8 +130,13 @@ class RobotPositionManager(tk.Tk):
     @staticmethod
     def save_config_positions(dados: dict[str, list[tuple]]) -> None:
         """
-        @brief Responsável por salvar uma estrutura de dados
-        @param dados Estrutura de dados a ser salva
+        @brief Persiste a estrutura de dados Python de volta para o formato de arquivo C++.
+        @details
+        Reescreve completamente o arquivo `booting_tactical_formation.hpp`.
+        Gera o código C++ necessário, incluindo *guards* (`#pragma once`), declaração de *namespace*
+        e a formatação correta dos arrays de float (adicionando o sufixo 'f' para literais float).
+
+        @param dados Dicionário contendo as configurações de formação a serem salvas.
         """
         # Header do arquivo (Includes e início do Namespace)
         conteudo = [
@@ -145,14 +166,17 @@ class RobotPositionManager(tk.Tk):
         with open(RobotPositionManager.CONFIG_POSITION_PATH, "w", encoding="utf-8") as f:
             f.write("\n".join(conteudo))
 
-
-
     def _field_to_canvas(self, fx_: float, fy_: float) -> tuple:
         """
-        @brief Responsável por converter coordenadas do campo para pixels no canvas
-        @param fx_ Coordenada real em x
-        @param fy_ Coordenada real em y
-        @return Coordenadas corrigidas para o grid
+        @brief Converte coordenadas do mundo real (metros) para coordenadas da tela (pixels).
+        @details
+        Aplica a escala (`GRID_SCALE`) e ajusta a origem.
+        O eixo Y é invertido, pois no Canvas o (0,0) é no topo esquerdo,
+        enquanto no campo o Y cresce para cima.
+
+        @param fx_ Coordenada real em X (metros).
+        @param fy_ Coordenada real em Y (metros).
+        @return tuple (cx, cy) Coordenadas convertidas para o sistema do Canvas.
         """
         return (
             (fx_ - self.X_MIN) * self.GRID_SCALE,
@@ -161,10 +185,15 @@ class RobotPositionManager(tk.Tk):
 
     def _canvas_to_field(self, cx: int, cy: int) -> tuple:
         """
-        @brief Converterá o pixel clicado para o quadrado correspondente
-        @param cx Posição X do pixel
-        @param cy Posição Y do pixel
-        @return tupla de posições reais
+        @brief Converte coordenadas do clique (pixels) para o quadrado do grid mais próximo (metros).
+        @details
+        Realiza a operação inversa de `_field_to_canvas`, mas com uma etapa adicional de
+        arredondamento (snap-to-grid) para passos de 0.5 metros.
+        Também aplica *clamping* (limitação) para garantir que o resultado esteja dentro dos limites do campo.
+
+        @param cx Posição X do pixel clicado.
+        @param cy Posição Y do pixel clicado.
+        @return tuple (fx, fy) Coordenadas reais arredondadas e limitadas ao campo.
         """
 
         # Converte pixel X para coordenada de campo
@@ -186,7 +215,13 @@ class RobotPositionManager(tk.Tk):
     # -- Métodos de Interface
     def criar_widgets(self):
         """
-        @brief Disporá os widgets da interface de forma inteligente, provendo informações úteis.
+        @brief Instancia e posiciona todos os elementos visuais (Widgets) da janela.
+        @details
+        Constrói o layout dividido em:
+        1. **Frame Superior**: Contém a tabela (Treeview) de configurações salvas e os botões de ação (Novo, Salvar, Apagar, Limpar).
+        2. **Frame Inferior**: Contém o Canvas que desenha o campo de futebol interativo.
+
+        Também configura os *bindings* de eventos, como cliques simples e duplos.
         """
 
         upper_frame = ttk.Frame(self)
@@ -233,9 +268,14 @@ class RobotPositionManager(tk.Tk):
 
     def draw_player(self, field_x, field_y) -> None:
         """
-        @brief Desenharemos um jogador na posição especificada
-        @param field_x Posição real em X
-        @param field_y Posição real em Y
+        @brief Renderiza visualmente um jogador no Canvas.
+        @details
+        Desenha um círculo amarelo com borda preta na posição especificada.
+        Armazena o ID do objeto gráfico criado em `self.marcadores_jogadores`
+        para permitir a remoção futura via clique.
+
+        @param field_x Posição real em X (metros).
+        @param field_y Posição real em Y (metros).
         """
 
         # Converte as coordenadas do campo (ex: -14, 0) para pixels
@@ -251,8 +291,15 @@ class RobotPositionManager(tk.Tk):
     # -- Métodos de Interação
     def click_on_grid(self, event: tk.Event):
         """
-        @brief Responsável por identificar onde o usuário clicou e adicionar essa posição na lista
-        @param event Argumento default do bind
+        @brief Callback executado ao clicar no Canvas (Campo).
+        @details
+        Gerencia a lógica de inserção e remoção de jogadores:
+        1. Se clicar em cima de um jogador existente -> Remove-o.
+        2. Se clicar em um espaço vazio -> Adiciona um jogador (se não exceder o limite `MAX_JOGADORES`).
+
+        Utiliza `_canvas_to_field` para alinhar o clique à grade (snap).
+
+        @param event Objeto de evento do Tkinter contendo as coordenadas x, y do clique.
         """
 
         new_pos = self._canvas_to_field(event.x, event.y)
@@ -278,8 +325,12 @@ class RobotPositionManager(tk.Tk):
 
     def on_double_click_in_configs(self, _: tk.Event) -> None:
         """
-        @brief Responsável por plotar a configuração de jogadores selecionada
-        @param event Argumento Default de bind
+        @brief Callback executado ao clicar duas vezes em uma linha da tabela de configurações.
+        @details
+        Carrega a formação selecionada da memória para a área de edição (Canvas).
+        Limpa a grade atual e redesenha todos os jogadores da configuração escolhida.
+
+        @param _ Evento do Tkinter (ignorado).
         """
 
         item_selecionado = self.tv_configs.focus()
@@ -298,7 +349,11 @@ class RobotPositionManager(tk.Tk):
 
     def salvar_config(self) -> None:
         """
-        @brief Salvará uma configuração selecionada
+        @brief Salva a disposição atual dos jogadores no Canvas para a configuração selecionada.
+        @details
+        Pede confirmação ao usuário antes de sobrescrever a configuração.
+        Atualiza o dicionário `self.config_positions` e refaz a tabela visual.
+        **Nota**: A gravação em disco só ocorre no encerramento do programa (`destroy`).
         """
 
         item_selecionado = self.tv_configs.focus()
@@ -326,7 +381,14 @@ class RobotPositionManager(tk.Tk):
 
     def clear_grid(self) -> None:
         """
-        @brief Responsável por limpar as posições e a grade
+        @brief Reseta o visual do campo.
+        @details
+        1. Remove todos os elementos desenhados (jogadores e linhas).
+        2. Limpa a lista de referências de marcadores.
+        3. Redesenha as linhas do campo:
+           - Grade de 0.5 em 0.5 metros.
+           - Linhas principais (Eixos X e Y) em branco e mais grossas.
+           - Áreas dos gols (rectângulos) e círculo central.
         """
 
         self.canvas.delete("all")
@@ -391,7 +453,11 @@ class RobotPositionManager(tk.Tk):
 
     def nova_config(self) -> None:
         """
-        @brief Prepará uma nova configuração para ser criada
+        @brief Cria uma nova entrada de configuração vazia.
+        @details
+        Solicita ao usuário um nome único para a nova formação tática.
+        Se o nome for válido e não existente, inicializa uma entrada vazia no dicionário
+        e atualiza a interface.
         """
 
         nome = simpledialog.askstring("Nova Configuração", "Digite o nome desejado:")
@@ -414,7 +480,10 @@ class RobotPositionManager(tk.Tk):
 
     def apagar_config(self) -> None:
         """
-        @brief Apagará uma configuração selecionada
+        @brief Remove permanentemente a configuração selecionada da lista.
+        @details
+        Pede confirmação ao usuário antes de excluir. Se confirmado, remove a chave
+        do dicionário `config_positions`, limpa a grade atual e atualiza a tabela.
         """
 
         item_selecionado = self.tv_configs.focus()
@@ -438,7 +507,10 @@ class RobotPositionManager(tk.Tk):
 
     def update_table_config(self) -> None:
         """
-        @brief Responsável por atualizar e preencher tabela de configurações de posição
+        @brief Atualiza os dados exibidos na Treeview (Tabela) de configurações.
+        @details
+        Limpa todos os itens visuais da tabela e a repovoa iterando sobre
+        as chaves e valores atuais do dicionário `self.config_positions`.
         """
         for i in self.tv_configs.get_children():
             self.tv_configs.delete(i)
@@ -448,17 +520,15 @@ class RobotPositionManager(tk.Tk):
 
     # -- Métodos de Overload
     def destroy(self):
+        """
+        @brief Sobrescrita do método de destruição da janela (Ao fechar).
+        @details
+        Garante que as alterações feitas no dicionário `config_positions` sejam salvas
+        no arquivo C++ (`.hpp`) antes de encerrar a aplicação Tkinter.
+        """
         RobotPositionManager.save_config_positions(self.config_positions)
         super().destroy()
-
-
 
 if __name__ == '__main__':
     root = RobotPositionManager()
     root.mainloop()
-
-
-
-
-
-

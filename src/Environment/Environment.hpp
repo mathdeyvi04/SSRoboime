@@ -1,114 +1,177 @@
 #pragma once
 
-#include "../logger/Logger.hpp"
+#include "../Booting/booting_templates.hpp"
+#include "../Logger/Logger.hpp"
 #include <iostream>
 #include <string_view>
-#include <charconv> ///< std::from_chars
+#include <charconv> // std::from_chars
 #include <unordered_map>
 
-#define True true
-#define False false
-
 /**
- * @brief Responsável por representar o ambiente externo ao robô
+ * @class Environment
+ * @brief Responsável por representar o ambiente externo ao robô.
  * @details
- * Agrupará todos os métodos de interpretação do mundo.
- * Focaremos em performance e eficiência no uso da memória.
+ * Focaremos em performance (uso de std::string_view e ponteiros) e eficiência no uso da memória.
+ * Esta classe mantém o estado atual do jogo conforme percebido pelo agente.
  */
 class Environment {
 public:
 
-    Logger& logger;
     /**
-     * @brief Construtor da Classe
+     * @brief Referência ao sistema de log para debug e avisos.
+     */
+    Logger& logger;
+
+    /**
+     * @brief Construtor da Classe Environment.
+     * @param logger Referência para a instância de Logger a ser utilizada.
      */
     Environment(
         Logger& logger
     ) : logger(logger) {}
 
     /* -- Definição de Ferramentas que serão amplamente Usadas -- */
-    ///< Tentaremos utilizar o mínimo possível de memória
+
+    /**
+     * @enum PlayMode
+     * @brief Enumeração dos modos de jogo oficiais do servidor (RoboCup 3D).
+     * @details Mapeado para uint8_t para economizar memória.
+     */
     enum class PlayMode : uint8_t {
         // Ao nosso favor
-        OUR_KICKOFF = 0,
-        OUR_KICK_IN = 1,
-        OUR_CORNER_KICK = 2,
-        OUR_GOAL_KICK = 3,
-        OUR_FREE_KICK = 4,
-        OUR_PASS = 5,
-        OUR_DIR_FREE_KICK = 6,
-        OUR_GOAL = 7,
-        OUR_OFFSIDE = 8,
+        OUR_KICKOFF = 0,       ///< Tiro de saída nosso
+        OUR_KICK_IN = 1,       ///< Lateral nosso
+        OUR_CORNER_KICK = 2,   ///< Escanteio nosso
+        OUR_GOAL_KICK = 3,     ///< Tiro de meta nosso
+        OUR_FREE_KICK = 4,     ///< Tiro livre nosso
+        OUR_PASS = 5,          ///< (Obsoleto/Específico) Passe nosso
+        OUR_DIR_FREE_KICK = 6, ///< Tiro livre direto nosso
+        OUR_GOAL = 7,          ///< Gol nosso (após o gol)
+        OUR_OFFSIDE = 8,       ///< Impedimento nosso (cometemos)
 
         // Ao favor deles
-        THEIR_KICKOFF = 9,
-        THEIR_KICK_IN = 10,
-        THEIR_CORNER_KICK = 11,
-        THEIR_GOAL_KICK = 12,
-        THEIR_FREE_KICK = 13,
-        THEIR_PASS = 14,
-        THEIR_DIR_FREE_KICK = 15,
-        THEIR_GOAL = 16,
-        THEIR_OFFSIDE = 17,
+        THEIR_KICKOFF = 9,       ///< Tiro de saída deles
+        THEIR_KICK_IN = 10,      ///< Lateral deles
+        THEIR_CORNER_KICK = 11,  ///< Escanteio deles
+        THEIR_GOAL_KICK = 12,    ///< Tiro de meta deles
+        THEIR_FREE_KICK = 13,    ///< Tiro livre deles
+        THEIR_PASS = 14,         ///< (Obsoleto/Específico) Passe deles
+        THEIR_DIR_FREE_KICK = 15,///< Tiro livre direto deles
+        THEIR_GOAL = 16,         ///< Gol deles (sofremos gol)
+        THEIR_OFFSIDE = 17,      ///< Impedimento deles
 
         // Neutros
-        BEFORE_KICKOFF = 18,
-        GAME_OVER = 19,
-        PLAY_ON = 20
-    }; ///< Modos de Jogo Simplificados
+        BEFORE_KICKOFF = 18, ///< Antes do início da partida
+        GAME_OVER = 19,      ///< Fim de jogo
+        PLAY_ON = 20         ///< Jogo rolando normalmente
+    };
+
+    /**
+     * @enum PlayModeGroup
+     * @brief Categorização de alto nível dos modos de jogo para tomada de decisão.
+     */
     enum class PlayModeGroup : uint8_t {
-        OUR_KICK = 0,      // É nossa vez de chutar parado
-        THEIR_KICK = 1,    // É vez deles de chutar parado
-        ACTIVE_BEAM = 2,   // Podemos usar o comando beam (teleporte)
-        PASSIVE_BEAM = 3,  // Devemos esperar (beam passivo/goalie)
-        OTHER = 4          // Jogo rolando ou parado sem ação específica
-    }; ///< Agente precisará de uma informação mais geral para tomada de decisões
+        OUR_KICK = 0,      ///< É nossa vez de chutar parado (bola parada ativa)
+        THEIR_KICK = 1,    ///< É vez deles de chutar parado (bola parada passiva)
+        ACTIVE_BEAM = 2,   ///< Podemos usar o comando beam (posicionamento inicial)
+        PASSIVE_BEAM = 3,  ///< Devemos esperar (beam passivo ou goleiro antes do chute)
+        OTHER = 4          ///< Jogo rolando ou parado sem ação específica (PlayOn, GameOver)
+    };
+
+    /**
+     * @struct Enabler_Stringview_Hash
+     * @brief Functor de hash personalizado para permitir 'Heterogeneous Lookup'.
+     * @details Permite buscar chaves `std::string_view` em um mapa cujas chaves são `std::string`
+     * sem alocação temporária de memória.
+     */
     struct Enabler_Stringview_Hash {
-        using is_transparent = void; ///< Sinaliza ao unordered_map que essa struct suporta tipos heterogêneos para pesquisa
-        // Sobrecarga do operador para hashing de std::string
+        using is_transparent = void; ///< Sinaliza ao unordered_map que essa struct suporta tipos heterogêneos.
+
+        /**
+         * @brief Hash para chaves do tipo std::string.
+         */
         ::size_t operator()(const std::string& s) const { return std::hash<std::string>{}(s); }
-        // Sobrecarga do operador para hashing de std::string_view (para pesquisa)
+
+        /**
+         * @brief Hash para chaves de busca do tipo std::string_view.
+         */
         ::size_t operator()(std::string_view sv) const { return std::hash<std::string_view>{}(sv); }
     };
-    static const
-    std::unordered_map<std::string,
-                       std::array<PlayMode, 2>,
-                       Enabler_Stringview_Hash,
-                       std::equal_to<>
-                      >play_modes; ///< Vamos precisar definir essa princesinha em outro lugar.
+
+    /**
+     * @brief Tabela de conversão estática de strings do servidor para PlayMode.
+     * @details
+     * A chave é a string recebida (ex: "KickOff_Left").
+     * O valor é um array com dois PlayModes: índice 0 para quando somos Left, índice 1 para quando somos Right.
+     * Utiliza `inline static` (C++17) para inicialização no header.
+     */
+    inline static const std::unordered_map<
+        std::string,
+        std::array<PlayMode, 2>,
+        Enabler_Stringview_Hash,
+        std::equal_to<>
+    > play_modes = {
+        // --- Neutros (LEFT e RIGHT veem o mesmo modo) ---
+        {"BeforeKickOff", {Environment::PlayMode::BEFORE_KICKOFF, Environment::PlayMode::BEFORE_KICKOFF}},
+        {"GameOver",      {Environment::PlayMode::GAME_OVER,      Environment::PlayMode::GAME_OVER}},
+        {"PlayOn",        {Environment::PlayMode::PLAY_ON,        Environment::PlayMode::PLAY_ON}},
+
+        // --- LEFT Kick Events (LEFT é o nosso time, RIGHT é o time deles) ---
+        {"KickOff_Left",           {Environment::PlayMode::OUR_KICKOFF,      Environment::PlayMode::THEIR_KICKOFF}},
+        {"KickIn_Left",            {Environment::PlayMode::OUR_KICK_IN,      Environment::PlayMode::THEIR_KICK_IN}},
+        {"corner_kick_left",       {Environment::PlayMode::OUR_CORNER_KICK,  Environment::PlayMode::THEIR_CORNER_KICK}},
+        {"goal_kick_left",         {Environment::PlayMode::OUR_GOAL_KICK,    Environment::PlayMode::THEIR_GOAL_KICK}},
+        {"free_kick_left",         {Environment::PlayMode::OUR_FREE_KICK,    Environment::PlayMode::THEIR_FREE_KICK}},
+        {"pass_left",              {Environment::PlayMode::OUR_PASS,         Environment::PlayMode::THEIR_PASS}},
+        {"direct_free_kick_left",  {Environment::PlayMode::OUR_DIR_FREE_KICK, Environment::PlayMode::THEIR_DIR_FREE_KICK}},
+        {"Goal_Left",              {Environment::PlayMode::OUR_GOAL,         Environment::PlayMode::THEIR_GOAL}},
+        {"offside_left",           {Environment::PlayMode::OUR_OFFSIDE,      Environment::PlayMode::THEIR_OFFSIDE}},
+        // --- RIGHT Kick Events (RIGHT é o nosso time, LEFT é o time deles) ---
+        {"KickOff_Right",          {Environment::PlayMode::THEIR_KICKOFF,    Environment::PlayMode::OUR_KICKOFF}},
+        {"KickIn_Right",           {Environment::PlayMode::THEIR_KICK_IN,    Environment::PlayMode::OUR_KICK_IN}},
+        {"corner_kick_right",      {Environment::PlayMode::THEIR_CORNER_KICK, Environment::PlayMode::OUR_CORNER_KICK}},
+        {"goal_kick_right",        {Environment::PlayMode::THEIR_GOAL_KICK,  Environment::PlayMode::OUR_GOAL_KICK}},
+        {"free_kick_right",        {Environment::PlayMode::THEIR_FREE_KICK,  Environment::PlayMode::OUR_FREE_KICK}},
+        {"pass_right",             {Environment::PlayMode::THEIR_PASS,       Environment::PlayMode::OUR_PASS}},
+        {"direct_free_kick_right", {Environment::PlayMode::THEIR_DIR_FREE_KICK, Environment::PlayMode::OUR_DIR_FREE_KICK}},
+        {"Goal_Right",             {Environment::PlayMode::THEIR_GOAL,       Environment::PlayMode::OUR_GOAL}},
+        {"offside_right",          {Environment::PlayMode::THEIR_OFFSIDE,    Environment::PlayMode::OUR_OFFSIDE}}
+    };
 
     /* Atributos Públicos de Ambiente */
-    ////< Observe que alguns tipos serão reduzidos devido ao escopo de possibilidades
-    float time_server; ///< Instante de Tempo do Servidor, útil apenas para sincronização entre agentes
-    float time_match;  ///< Instante de Tempo de Partida
-    uint8_t goals_scored;  ///< Nossos Gols, pode ser útil para mudarmos de tática conforme o jogo avança
-    uint8_t goals_conceded;  ///< Gols adversários, pode ser útil para mudarmos de tática conforme o jogo avança
-    uint8_t unum; ///< Número do Jogador
-    bool is_left; ///< De qual lado estamos
-    PlayMode current_mode;
+
+    float time_server;       ///< Instante de Tempo do Servidor, útil apenas para sincronização entre agentes.
+    float time_match;        ///< Instante de Tempo de Partida (Game Time).
+    uint8_t goals_scored;    ///< Nossos Gols marcados.
+    uint8_t goals_conceded;  ///< Gols adversários sofridos.
+    uint8_t unum;            ///< Número do Jogador (Uniform Number).
+    bool is_left;            ///< Indica se estamos jogando no lado esquerdo do campo (true) ou direito (false).
+    PlayMode current_mode;   ///< Modo de jogo atual processado para nossa perspectiva.
 
     /* Métodos Inerentes a Execução da Aplicação */
 
     /* ------------------ Parser de Mensagem do Servidor ----------------------- */
 
     /**
+     * @class Parsing
      * @brief Responsável por prover ferramentas de auxílio de parsing.
      * @details
-     * Centralizará todas as funções inerentes ao parsing das mensagens.
+     * Centraliza a lógica de extração de dados da string bruta.
+     * Mantém o cursor de leitura para evitar cópias desnecessárias.
      */
     class Parsing {
     private:
-        const char* buffer = nullptr; ///< Permitirá-nos saber o ponto da mensagem que estamos
-        const char* end    = nullptr; ///< Permitirá-nos saber o ponto final
-        Environment* env   = nullptr; ///< Permitirá-nos modificar atributos
+        const char* buffer = nullptr; ///< Ponteiro atual na string de mensagem (cursor).
+        const char* end    = nullptr; ///< Ponteiro para o final da string de mensagem.
+        Environment* env   = nullptr; ///< Ponteiro para o ambiente onde os dados serão salvos.
 
     public:
         /* Métodos Simples de Cursor */
 
         /**
-         * @brief Construtor do Parsing dedica à interpretação.
-         * @param msg Mensagem bruta enviada pelo servidor.
-         * @return Atualização de todas as variáveis de ambiente.
+         * @brief Construtor do Parsing dedicado à interpretação.
+         * @param message Mensagem bruta (view) enviada pelo servidor.
+         * @param env Ponteiro para a classe Environment que será populada.
          */
         Parsing(
             std::string_view& message,
@@ -120,9 +183,9 @@ public:
         {}
 
         /**
-         * @brief Avançará até encontrar um determinado caractere de parada, pulando-o em seguida.
-         * @param caract Caractere de Parada.
-         * @return True, caso encontre corretamente. False, caso chegue ao final da mensagem.
+         * @brief Avança o cursor até encontrar um determinado caractere, pulando-o em seguida.
+         * @param caract Caractere de busca (ex: '(' ).
+         * @return True se encontrou o caractere dentro dos limites, False caso chegue ao final.
          */
         bool
         skip_until_char(char caract){
@@ -135,8 +198,9 @@ public:
         }
 
         /**
-         * @brief Ignorando eventuais ' ', '(' e ')', obterá a próxima string, encerrando apenas a encontrar ' '. Pulando este último caractere.
-         * @return String_view da string.
+         * @brief Obtém a próxima substring delimitada por espaços ou parênteses.
+         * @details Ignora ' ', '(' e ')' iniciais. A leitura para ao encontrar um delimitador, pulando-o em seguida.
+         * @return std::string_view apontando para a string encontrada.
          */
         std::string_view
         get_str(){
@@ -147,11 +211,10 @@ public:
         }
 
         /**
-         * @brief Fará a conversão de caracteres em inteiro ou float, dependendo do tipo de referência dado.
-         * @details
-         * Iniciará a leitura a partir do ponto que buffer se encontra. Encerrará ao encontrar ' ' ou ')', pulando este.
-         * @param [out] Variável que receberá o valor
-         * @return True, se não houve erro. False, caso contrário.
+         * @brief Converte a sequência de caracteres atual em um número (int ou float). Pulando o último caractere.
+         * @tparam T Tipo do dado a ser extraído (int, float, uint8_t, etc).
+         * @param[out] out Referência para a variável que receberá o valor.
+         * @return True se a conversão foi bem-sucedida, False caso contrário.
          */
         template<typename T>
         bool
@@ -162,16 +225,17 @@ public:
         }
 
         /**
-         * @brief Avançará o cursor uma determinada quantidade.
-         * @param n quantidade de avanços desejados
-         * @return False, se o avanço não foi permitido. True, caso contrário.
+         * @brief Avança o cursor manualmente uma quantidade fixa de caracteres.
+         * @param n Quantidade de bytes para avançar (padrão 1).
+         * @return True se o avanço for seguro (dentro do buffer), False se ultrapassar.
          */
         bool
         advance(int n = 1){ if((this->buffer + n) > this->end){ return False; } this->buffer += n; return True; }
 
         /**
-         * @brief Usada somente em caso de erro, para não afetar performance.
-         * @return Objeto string do buffer.
+         * @brief Obtém um trecho da string ao redor do cursor atual para debug.
+         * @details Usada somente em caso de erro, captura 30 chars antes e 30 depois.
+         * @return std::string contendo o contexto do buffer.
          */
         std::string
         get(){
@@ -179,7 +243,8 @@ public:
         }
 
         /**
-         * @brief Permitirá que pulemos um bloco inteiro de uma tag desconhecida.
+         * @brief Pula um bloco balanceado de parênteses de uma tag desconhecida.
+         * @details Mantém um contador de parênteses abertos e fechados para ignorar toda a estrutura hierárquica da tag atual.
          */
         void
         skip_unknown(){
@@ -196,9 +261,8 @@ public:
         /* -- Métodos de Parsing -- */
 
         /**
-         * @brief Responsável pela interpretação da mensagem de 'time'.
-         * @details
-         * Informará o instante de tempo do servidor.
+         * @brief Interpreta a mensagem de tempo do servidor ('time').
+         * @details Exemplo: (time (now 10.03)). Atualiza `env->time_server`.
          */
         void
         parse_time(){
@@ -214,10 +278,9 @@ public:
         }
 
         /**
-         * @brief Responsável pela interpretação da mensagem de 'GS'.
+         * @brief Interpreta a mensagem de GameState ('GS').
          * @details
-         * Atualizará o instante de tempo da partida, o modo de jogo a cada ciclo e pontuações.
-         * Caso seja a primeira vez que receba, atualizará dados de número de uniforme, lado de campo.
+         * Realiza o parsing de subtags como 'sl', 'sr', 'pm', 't', 'u'.
          */
         void
         parse_gamestate(){
@@ -228,12 +291,12 @@ public:
 
                 switch(lower_tag[0]){
 
-                    case 's': { ///< Poderá ser 'sl', 'sr'
+                    case 's': { ///< Poderá ser 'sl' (score left), 'sr' (score right)
                         this->get_value( (lower_tag[1] == 'l') ? env->goals_scored : env->goals_conceded );
                         break;
                     }
 
-                    case 'p': { ///< Há apenas 'pm'
+                    case 'p': { ///< Há apenas 'pm' (playmode)
                         // É garantido que já tenhamos tido is_left
                         lower_tag = this->get_str();
                         auto it = play_modes.find(lower_tag);
@@ -247,7 +310,7 @@ public:
                         break;
                     }
 
-                    case 'u': { ///< Há apenas o 'u'
+                    case 'u': { ///< Há apenas o 'u' (unum)
                         this->get_value(env->unum);
                         break;
                     }
@@ -263,11 +326,9 @@ public:
         }
 
         /**
-         * @brief Responsável pela interpretação da mensagem de 'GS'.
+         * @brief Interpreta a mensagem do Giroscópio ('GYR').
          * @details
-         * Os números dados representam os incrementos e decrementos dos ângulos de rotação
-         * durante o ciclo, como uma espécie de velocidade. Em termos gerais, é o vetor
-         * velocidade angular no último ciclo em degraus por segundo do torso do robô.
+         * Lê 3 valores float representando a velocidade angular (deg/s) nos eixos X, Y, Z.
          */
         void
         parse_gyroscope(){
@@ -281,23 +342,28 @@ public:
         }
 
         /**
-         * @brief Responsável pela interpretação da mensagem de 'ACC'.
+         * @brief Interpreta a mensagem do Acelerômetro ('ACC').
          * @details
-         * Recebe o vetor aceleração linear do centro do torso. Há toda uma lógica de sentido aqui, mas acredito que ainda não é importante.
+         * Lê 3 valores float representando a aceleração linear do torso.
          */
          void
          parse_accelerometer(){
 
             this->advance(13);
             float value;
-            for(int i = 0; i < 3; i++){ this->get_value(value); }
+            for(int i = 3; i < 3; i++){ this->get_value(value); }
          }
 
 
          /**
-         * @brief Responsável pela interpretação da mensagem de 'See'.
+         * @brief Interpreta a mensagem de Visão ('See').
          * @details
-         * Recebe diversas(MUITAS) informações a partir de pontos em coordenadas esféricas.
+         * Processa informações visuais complexas, incluindo:
+         * - Jogadores ('P'): time, número, partes do corpo.
+         * - Bola ('B').
+         * - Landmarks ('G', 'F').
+         * - Linhas ('L').
+         * Utiliza loops aninhados para lidar com a estrutura hierárquica da visão.
          */
          void
          parse_vision(){
@@ -389,9 +455,9 @@ public:
          }
 
          /**
-         * @brief Responsável pela interpretação da mensagem de 'HJ'.
+         * @brief Interpreta a mensagem de Juntas ('HJ').
          * @details
-         * Recebemos o nome abreviado da junta e o ângulo instantâneo do eixo em degraus.
+         * Recebe o nome abreviado da junta (ex: hj1) e o ângulo atual em graus.
          */
          void
          parse_hingejoint(){
@@ -405,11 +471,12 @@ public:
          }
 
         /**
-         * @brief Responsável pela interpretação da mensagem de 'FRP'.
+         * @brief Interpreta a mensagem de Sensores de Força ('FRP').
          * @details
-         * Estes sensores estão embaixo de cada pé, este representado por lf ou rf.
-         * O primeiro vetor representa o ponto de contato do pé, medido em relação ao centro do mesmo.
-         * O segundo vetor representa a força(kg m/s^2) total neste ponto.
+         * Sensores localizados nos pés (lf, rf).
+         * Lê:
+         * 1. Ponto de contato (vetor 3D) relativo ao centro do pé.
+         * 2. Força total (vetor 3D) em kg*m/s^2.
          */
         void
         parse_force_resistance(){
@@ -428,7 +495,8 @@ public:
         }
 
         /**
-         * @brief Responsável pela interpretação da mensagem de 'hear'. Bem mais Complexo
+         * @brief Interpreta a mensagem de Audição ('hear').
+         * @details Responsável por processar mensagens de áudio (do juiz ou outros jogadores).
          */
         void
         parse_hear(){
@@ -437,11 +505,13 @@ public:
     };
 
     /**
-     * @brief Interpretará as mensagens do servidor.
-     * @param msg Mensagem bruta enviada pelo servidor.
-     * @return Atualização de todas as variáveis de ambiente.
+     * @brief Responsável pela atualização do ambiente.
+     * @details
+     * Recebe a string bruta do servidor, instancia o parser e despacha para os métodos específicos
+     * baseados nas tags de nível superior ('time', 'GS', 'See', etc).
+     * @param msg Mensagem bruta (std::string_view) enviada pelo servidor.
      */
-    int
+    void
     update_from_server(
         std::string_view msg
     ){
@@ -452,7 +522,7 @@ public:
 
             if(
                 !cursor.skip_until_char('(')
-            ){ this->print_status(); return 0; }
+            ){ this->print_status(); return; }
 
             upper_tag = cursor.get_str(); ///< Vamos extrair uma tag
             switch(upper_tag[0]){
@@ -509,7 +579,8 @@ public:
 private:
 
     /**
-     * @brief Apresentará os dados lidos do servidor
+     * @brief Imprime o estado atual do ambiente no console (Debug).
+     * @details Atualmente retorna imediatamente (desabilitado). Útil para verificar parsing.
      */
     void
     print_status() const {
@@ -523,7 +594,3 @@ private:
         printf("playmode       : %d\n", static_cast<uint8_t>(current_mode));
     }
 };
-
-
-
-

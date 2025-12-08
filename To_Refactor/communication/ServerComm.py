@@ -235,7 +235,6 @@ class ServerComm:
         @param vector_position2d Sequência de dois valores, x e y finais do agente
         @param rotation Valor de rotação a ser dado ao robô
         """
-        assert len(vector_position2d) == 2, "O beam oficial permite apenas posições 2D."
         self.commit(
             f"(beam {vector_position2d[0]} {vector_position2d[1]} {rotation})".encode()
         )

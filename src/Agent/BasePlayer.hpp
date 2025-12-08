@@ -3,6 +3,8 @@
 #include "../Booting/booting_tactical_formation.hpp"
 #include "../Booting/booting_templates.hpp"
 #include "../Communication/ServerComm.hpp"
+#include "../Logger/Logger.hpp"
+#include "../Environment/Environment.hpp"
 #include <iostream>
 #include <vector>
 
@@ -11,13 +13,21 @@
  * @brief Representa a entidade básica de um jogador na simulação.
  */
 class BasePlayer {
-protected:
+public:  ///< Devemos modificar isso e tornar protegidos.
     /**
      * @brief Gerenciador de comunicação com o servidor rcssserver3d.
      * @details Instanciado automaticamente na criação do jogador. É responsável por
      * enviar comandos e receber estados do jogo via TCP.
      */
     ServerComm _scom;
+
+    /**
+     * @brief Representador do Ambiente
+     * @details Instanciado automaticamente na criação do jogador. É responsável por
+     * enviar representar todas as características do ambiente.
+     */
+    Environment _env;
+
 
     /**
      * @brief Lista estática compartilhada contendo ponteiros para os comunicadores de todos os jogadores.
@@ -29,13 +39,6 @@ protected:
 
 public:
     /**
-     * @brief Número do uniforme do jogador.
-     * @details Tipo `uint8_t` utilizado para otimização de memória, já que o valor varia apenas de 1 a 11.
-     */
-    uint8_t unum;
-
-public:
-    /**
      * @brief Construtor: Inicializa o jogador e estabelece conexão com o servidor.
      * @details Realiza a reserva de memória no vetor estático, cria a estrutura que
      * representará a lista de posições de cada jogador, define o número do uniforme,
@@ -44,23 +47,41 @@ public:
      */
     BasePlayer(
         uint8_t unum
-    ) {
+    ) :
+        _env(Logger::get())
+    {
         // Então é a primeira vez que estamos executando
         if(BasePlayer::_all_players_scom.capacity() < 11){
             // Otimização: Evita múltiplas realocações do vetor de ponteiros
             BasePlayer::_all_players_scom.reserve(11);
-
         }
-
-        this->unum = unum;
 
         // Inicializa a conexão passando a lista atual de parceiros para sincronia
         this->_scom.initialize_agent(
             unum,
-            BasePlayer::_all_players_scom
+            BasePlayer::_all_players_scom,
+            &this->_env
         );
 
         // Registra o comunicador deste jogador na lista estática para os próximos agentes
         BasePlayer::_all_players_scom.emplace_back(&this->_scom);
     }
+
+    /**
+     * @brief Comando de beam oficial do agente
+     * @param posx Posição X de beam
+     * @param posy Posição Y de beam
+     * @param rotation Valor de rotação a ser dado ao robô.
+     */
+    void commit_beam(float posx, float posy, float rotation) {
+        this->_scom.commit(
+            std::format(
+                "(beam {} {} {})",
+                TacticalFormation::Default[this->_env.unum - 1][0],
+                TacticalFormation::Default[this->_env.unum - 1][1],
+                0
+            )
+        );
+    }
+
 };

@@ -10,36 +10,37 @@ int main() {
 
     /* --- Testar Assincronicamente --- */
 
-    auto start = std::chrono::high_resolution_clock::now();
-
-    std::vector<std::thread> threads;
-    for (int i = 0; i < 10; ++i) { // 10 Threads
-        threads.emplace_back(tarefaPesada, i);
-    }
-
-    for (auto& t : threads) t.join();
-
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> diff = end - start;
-
-    std::cout << "10.000 logs escritos em: " << diff.count() << " s\n";
-
-    /* --- Testar Sincronicamente --- */
-//    std::cout << "Iniciando teste C++ (Single Thread / 10.000 logs)...\n";
-//
-//    // Ponto de início da medição
 //    auto start = std::chrono::high_resolution_clock::now();
 //
-//    // Loop sequencial na thread principal
-//    for (int i = 0; i < 10000; ++i) {
-//        Logger::get().info("SingleThread msg " + std::to_string(i));
+//    std::vector<std::thread> threads;
+//    threads.reserve(10);
+//    for (int i = 0; i < 10; ++i) { // 10 Threads
+//        threads.emplace_back(tarefaPesada, i);
 //    }
 //
-//    // Ponto final da medição (Tempo que a thread principal ficou ocupada)
+//    for (auto& t : threads) t.join();
+//
 //    auto end = std::chrono::high_resolution_clock::now();
 //    std::chrono::duration<double> diff = end - start;
 //
-//    std::cout << "Tempo de execucao (Main Thread): " << diff.count() << " segundos.\n";
+//    std::cout << "10.000 logs escritos em: " << diff.count() << " s\n";
+
+    /* --- Testar Sincronicamente --- */
+    std::cout << "Iniciando teste C++ (Single Thread / 10.000 logs)...\n";
+
+    // Ponto de início da medição
+    auto start = std::chrono::high_resolution_clock::now();
+
+    // Loop sequencial na thread principal
+    for (int i = 0; i < 1; ++i) {
+        Logger::get().info("SingleThread msg " + std::to_string(i));
+    }
+
+    // Ponto final da medição (Tempo que a thread principal ficou ocupada)
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff = end - start;
+
+    std::cout << "Tempo de execucao (Main Thread): " << diff.count() << " segundos.\n"  << std::flush;
 
     return 0;
 }

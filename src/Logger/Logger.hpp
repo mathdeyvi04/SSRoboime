@@ -38,7 +38,7 @@ public:
      * @details Recebe por valor para permitir std::move (otimização de r-values).
      */
     void
-    info(std::string msg){ this->log("[INFO]  ", std::move(msg)); }
+    info(std::string msg){ this->__log("[INFO]  ", std::move(msg)); }
 
     /**
      * @brief Adiciona log nível WARN.
@@ -46,7 +46,7 @@ public:
      * @details Recebe por valor para permitir std::move (otimização de r-values).
      */
     void
-    warn(std::string msg){ this->log("[WARN]  ", std::move(msg)); }
+    warn(std::string msg){ this->__log("[WARN]  ", std::move(msg)); }
 
     /**
      * @brief Adiciona log nível ERROR.
@@ -54,7 +54,7 @@ public:
      * @details Recebe por valor para permitir std::move (otimização de r-values).
      */
     void
-    error(std::string msg){ this->log("[ERROR] ", std::move(msg)); }
+    error(std::string msg){ this->__log("[ERROR] ", std::move(msg)); }
 
     /**
      * @brief Log INFO usando C++20 std::format (Alta Performance).
@@ -65,7 +65,7 @@ public:
     void info(std::format_string<Args...> fmt, Args&&... args) {
         // std::format gera a std::string final de forma otimizada.
         // std::forward garante que não haja cópias desnecessárias dos argumentos.
-        this->log("[INFO]  ", std::format(fmt, std::forward<Args>(args)...));
+        this->__log("[INFO]  ", std::format(fmt, std::forward<Args>(args)...));
     }
 
     /**
@@ -73,7 +73,7 @@ public:
      */
     template<typename... Args>
     void warn(std::format_string<Args...> fmt, Args&&... args) {
-        this->log("[WARN]  ", std::format(fmt, std::forward<Args>(args)...));
+        this->__log("[WARN]  ", std::format(fmt, std::forward<Args>(args)...));
     }
 
     /**
@@ -81,40 +81,40 @@ public:
      */
     template<typename... Args>
     void error(std::format_string<Args...> fmt, Args&&... args) {
-        this->log("[ERROR] ", std::format(fmt, std::forward<Args>(args)...));
+        this->__log("[ERROR] ", std::format(fmt, std::forward<Args>(args)...));
     }
 
 private:
     // Buffers para técnica de Double Buffering
-    std::vector<std::string> _current_buffer;
-    std::vector<std::string> _write_buffer;
-    
-    std::mutex _mutex;
-    std::condition_variable _cv;
-    std::thread _worker;
-    std::atomic<bool> _is_running;
-    std::atomic<bool> is_the_first = True;
-    std::ofstream _file_stream;
+    std::vector<std::string> __current_buffer;
+    std::vector<std::string> __write_buffer;
+
+    std::mutex __mutex;
+    std::condition_variable __cv;
+    std::thread __worker;
+    std::atomic<bool> __is_running;
+    std::atomic<bool> __is_the_first = True;
+    std::ofstream __file_stream;
 
     /**
      * @brief Construtor privado: Inicializa arquivo e thread.
      * @details Reservará 1000 slots para evitarmos realocações
      */
-    Logger() : _is_running(True) {
+    Logger() : __is_running(True) {
         // Reserva memória prévia para evitar realocações frequentes no vetor
-        this->_current_buffer.reserve(30);
-        this->_write_buffer.reserve(30);
+        this->__current_buffer.reserve(30);
+        this->__write_buffer.reserve(30);
     }
 
     /**
      * @brief Destrutor: Sinaliza parada e espera thread terminar.
      */
     ~Logger(){
-        this->_is_running = false;
-        this->_cv.notify_one(); ///< Informa a thread da condição de encerramento
+        this->__is_running = false;
+        this->__cv.notify_one(); ///< Informa a thread da condição de encerramento
 
-        if(this->_worker.joinable()){ this->_worker.join(); }
-        if(this->_file_stream.is_open()){ this->_file_stream.close(); }
+        if(this->__worker.joinable()){ this->__worker.join(); }
+        if(this->__file_stream.is_open()){ this->__file_stream.close(); }
     }
 
     /**
@@ -122,7 +122,7 @@ private:
      * @details Possui uma lógica para garantir que logs sejam únicos.
      */
     void
-    _init_file(){
+    __init_file(){
         if(!fs::exists("logs")){ fs::create_directory("logs"); }
 
         auto now = std::chrono::system_clock::now();
@@ -133,7 +133,7 @@ private:
 
         // std::ios::app não é necessário se o arquivo é único por execução
         // mas útil se reiniciarmos o logger no mesmo segundo -> Impossível?
-        this->_file_stream.open(ss.str(), std::ios::out | std::ios::app);
+        this->__file_stream.open(ss.str(), std::ios::out | std::ios::app);
 
         // Desabilita sincronização automática com stdio para performance
         std::ios_base::sync_with_stdio(false);
@@ -146,7 +146,7 @@ private:
      * Usa lock apenas para empurrar no vetor (operação de nanossegundos).
      */
     void
-    log(const char* prefixo, std::string&& msg) {
+    __log(const char* prefixo, std::string&& msg) {
 
         // --- INÍCIO DA ADIÇÃO DO TIMESTAMP ---
         auto now = std::chrono::system_clock::now();
@@ -159,18 +159,18 @@ private:
 
         ///< Esse lock_guard trava enquanto estiver nesse escopo
         {
-            std::lock_guard<std::mutex> lock(this->_mutex);
+            std::lock_guard<std::mutex> lock(this->__mutex);
             // Constrói a string final na memória RAM
-            this->_current_buffer.emplace_back(ss_time.str() + prefixo + msg);
+            this->__current_buffer.emplace_back(ss_time.str() + prefixo + msg);
 
-            if( this->is_the_first ){ this->_init_file();
-                                      this->_worker = std::thread(&Logger::_worker_loop, this);
-                                      this->is_the_first = False;
-                                    }
+            if( this->__is_the_first ){ this->__init_file();
+                                        this->__worker = std::thread(&Logger::__worker_loop, this);
+                                        this->__is_the_first = False;
+                                      }
         }
 
         // Notifica a thread de escrita que há dados
-        this->_cv.notify_one();
+        this->__cv.notify_one();
     }
 
     /**
@@ -178,42 +178,41 @@ private:
      * @details Função de alto nível
      */
     void
-    _worker_loop() {
+    __worker_loop() {
 
         while(
-            this->_is_running || !this->_current_buffer.empty()
+            this->__is_running || !this->__current_buffer.empty()
         ){
 
-            std::unique_lock<std::mutex> lock(this->_mutex);
+            std::unique_lock<std::mutex> lock(this->__mutex);
 
             ///< Espera até ter dados ou ser instruído a encerrar
             /*
             A thread fica bloqueada pelo sistema operacional, sem consumir CPU.
             Pesquise, isso é muito foda.
             */
-            _cv.wait(
+            __cv.wait(
                 lock,
-                [this](){ return !this->_current_buffer.empty() || !this->_is_running; }
+                [this](){ return !this->__current_buffer.empty() || !this->__is_running; }
             );
 
-            if( this->_current_buffer.empty() && !this->_is_running ){ break; }
+            if( this->__current_buffer.empty() && !this->__is_running ){ break; }
 
             // --- A MÁGICA DA PERFORMANCE (SWAP) ---
             // Trocamos o vetor cheio pelo vazio instantaneamente.
             // O Mutex é liberado log depois disso.
-            std::swap(this->_current_buffer, this->_write_buffer);
+            std::swap(this->__current_buffer, this->__write_buffer);
             lock.unlock();
 
             ///< Agora escrevemos no disco SEM bloquear quem quer adicionar logs
-            if(this->_file_stream.is_open()) {
-                for(const auto& line : this->_write_buffer){ this->_file_stream << line << "\n"; }
+            if(this->__file_stream.is_open()) {
+                for(const auto& line : this->__write_buffer){ this->__file_stream << line << "\n"; }
                 // Flush manual apenas após lote grande
-                this->_file_stream.flush();
+                this->__file_stream.flush();
             }
 
             // Limpa o buffer de escrita para ser reusado no próximo swap
-            this->_write_buffer.clear();
+            this->__write_buffer.clear();
         }
     }
 };
-

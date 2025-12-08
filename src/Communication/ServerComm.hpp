@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Booting/booting_templates.hpp"
+#include "../Environment/Environment.hpp"
 
 // --- Bibliotecas da Standard Library ---
 #include <vector>
@@ -20,7 +21,6 @@
 #include <fcntl.h>
 #include <sys/select.h>
 
-
 /**
  * @class ServerComm
  * @brief Gerencia a comunicação TCP de baixo nível com o servidor rcssserver3d.
@@ -31,10 +31,13 @@ class ServerComm {
 private:
     /// Descritor de arquivo do socket
     int __sock_fd;
-    /// Buffer persistente para leitura (evita realocações frequentes)
+    ///< Buffer persistente para leitura (evita realocações frequentes)
     std::vector<char> __read_buffer;
-    
-    // Pode ser que precisemos implementar um buffer de envio.
+    ///< Buffer persistente para acumular comandos antes do envio
+    std::string __send_buffer;
+    ///< Ponteiro para ambiente
+    Environment* __env = nullptr;
+
 
     /**
      * @brief Tenta ler exatamente N bytes do socket.
@@ -102,6 +105,7 @@ public:
     ServerComm() {
         // Ajuste para 64KB (mensagens de visão podem ser grandes)
         this->__read_buffer.resize(65536);
+        this->__send_buffer.reserve(4096);
 
         this->__sock_fd = socket(
             AF_INET,
@@ -156,7 +160,7 @@ public:
                 sizeof(serv_addr)
             ) != 0
         ){
-            usleep(500000); // 0.5s wait
+            usleep(500000); // 0.5s
         }
     }
 
@@ -251,9 +255,8 @@ public:
      * @brief Lê uma mensagem completa do servidor.
      * @details Implementa estratégia de "Drenagem": Lê todas as mensagens disponíveis
      * e retorna apenas a mais recente para evitar lag acumulado.
-     * @return std::string_view apontando para o buffer interno contendo a mensagem. Vazio se erro/timeout.
      */
-    std::string_view receive() {
+    void receive() {
         uint32_t last_msg_size = 0;
 
         while(True) {
@@ -286,12 +289,14 @@ public:
 
         if(last_msg_size > 0){
             this->__read_buffer[last_msg_size] = '\0'; // Null-terminate por segurança
-            return std::string_view(
-                this->__read_buffer.data(),
-                last_msg_size
+            this->__env->update_from_server(
+                std::string_view(
+                    this->__read_buffer.data(),
+                    last_msg_size
+                )
             );
         }
-        return {};
+        return;
     }
 
     /**
@@ -338,8 +343,13 @@ public:
      */
     void initialize_agent(
         int unum,
-        std::vector<ServerComm*>& other_players
+        std::vector<ServerComm*>& other_players,
+        Environment* env
     ) {
+
+        // Trazemos o ambiente ao ServerComm
+        this->__env = env;
+
         // Scene: Define o modelo do corpo do robô
         this->send_immediate(
             std::format(
@@ -377,5 +387,33 @@ public:
 
             if(this->is_readable()){ this->receive(); }
         }
+    }
+
+    /**
+     * @brief Adiciona uma mensagem ao buffer de envio (sem enviar ainda).
+     * @param msg Comando parcial a ser agendado (ex: "(he1 10)").
+     */
+    void commit(std::string_view msg) {
+        this->__send_buffer += msg;
+    }
+
+    /**
+     * @brief Finaliza o ciclo de comandos, adiciona (syn) e envia tudo.
+     * @details Concatena o buffer atual com o terminador de ciclo e despacha
+     * usando a função send_immediate para garantir a atomicidade do pacote TCP.
+     * Limpa o buffer após o envio.
+     * @return True se enviado com sucesso.
+     */
+    bool send() {
+        // Adiciona o comando de sincronização mandatório do RCSSServer3D
+        this->__send_buffer += "(syn)";
+
+        // Envia o pacote completo
+        bool result = this->send_immediate(this->__send_buffer);
+
+        // Limpa o buffer para o próximo ciclo, mantendo a capacidade reservada
+        this->__send_buffer.clear();
+
+        return result;
     }
 };

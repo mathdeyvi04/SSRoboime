@@ -17,10 +17,10 @@
  */
 class Drawer {
 private:
-    int socket_fd;                        ///< Descritor do socket UDP.
-    struct sockaddr_in dest_addr;         ///< Estrutura de endereço do destino (RoboViz).
-    std::vector<unsigned char> buffer;    ///< Buffer persistente para acumular comandos.
-    std::mutex mutex;                     ///< Mutex para garantir thread-safety.
+    int __socket_fd;                        ///< Descritor do socket UDP.
+    struct sockaddr_in __dest_addr;         ///< Estrutura de endereço do destino (RoboViz).
+    std::vector<unsigned char> __buffer;    ///< Buffer persistente para acumular comandos.
+    std::mutex __mutex;                     ///< Mutex para garantir thread-safety.
 
     /**
      * @brief Construtor Privado (Singleton).
@@ -30,26 +30,26 @@ private:
         std::string ip = "127.0.0.1";
         int port = 32769;
 
-        this->socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
-        if (this->socket_fd < 0) {
+        this->__socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
+        if (this->__socket_fd < 0) {
             std::cerr << "[Drawer] Erro critico: Falha ao criar socket." << std::endl;
         }
 
-        std::memset(&this->dest_addr, 0, sizeof(this->dest_addr));
-        this->dest_addr.sin_family = AF_INET;
-        this->dest_addr.sin_port = htons(port);
-        inet_pton(AF_INET, ip.c_str(), &this->dest_addr.sin_addr);
+        std::memset(&this->__dest_addr, 0, sizeof(this->__dest_addr));
+        this->__dest_addr.sin_family = AF_INET;
+        this->__dest_addr.sin_port = htons(port);
+        inet_pton(AF_INET, ip.c_str(), &this->__dest_addr.sin_addr);
 
         // Reserva 65KB (tamanho máximo seguro de um pacote UDP)
-        this->buffer.reserve(65536);
+        this->__buffer.reserve(65536);
     }
 
     /**
      * @brief Destrutor. Fecha o socket se estiver aberto.
      */
     ~Drawer() {
-        if (this->socket_fd >= 0) {
-            close(this->socket_fd);
+        if (this->__socket_fd >= 0) {
+            close(this->__socket_fd);
         }
     }
 
@@ -57,8 +57,8 @@ private:
      * @brief Escreve um byte único no buffer.
      * @param value O valor (0-255) a ser escrito.
      */
-    inline void write_byte(unsigned char value) {
-        this->buffer.push_back(value);
+    inline void __write_byte(unsigned char value) {
+        this->__buffer.push_back(value);
     }
 
     /**
@@ -66,18 +66,18 @@ private:
      * @details Otimização: Usa resize + memcpy para evitar múltiplos push_back.
      * @param value O valor float a ser convertido.
      */
-    inline void write_float_val(float value) {
+    inline void __write_float_val(float value) {
         char temp[16]; // Buffer pequeno na stack é rápido
 
         // Formata o float. O padrão %f garante casas decimais suficientes.
         std::snprintf(temp, sizeof(temp), "%f", value);
 
         // Otimização: Em vez de loop, expandimos o vetor e copiamos memória direta.
-        size_t current_size = this->buffer.size();
-        this->buffer.resize(current_size + 6);
+        size_t current_size = this->__buffer.size();
+        this->__buffer.resize(current_size + 6);
 
         // Copia estritamente os primeiros 6 caracteres para o buffer
-        std::memcpy(this->buffer.data() + current_size, temp, 6);
+        std::memcpy(this->__buffer.data() + current_size, temp, 6);
     }
 
     /**
@@ -86,15 +86,15 @@ private:
      * @param g Componente Verde.
      * @param b Componente Azul.
      */
-    inline void write_color(float r, float g, float b) {
+    inline void __write_color(float r, float g, float b) {
         // Clamping manual para segurança (garante 0-255)
         if (r < 0.0f) r = 0.0f; else if (r > 1.0f) r = 1.0f;
         if (g < 0.0f) g = 0.0f; else if (g > 1.0f) g = 1.0f;
         if (b < 0.0f) b = 0.0f; else if (b > 1.0f) b = 1.0f;
 
-        this->buffer.push_back(static_cast<unsigned char>(r * 255.0f));
-        this->buffer.push_back(static_cast<unsigned char>(g * 255.0f));
-        this->buffer.push_back(static_cast<unsigned char>(b * 255.0f));
+        this->__buffer.push_back(static_cast<unsigned char>(r * 255.0f));
+        this->__buffer.push_back(static_cast<unsigned char>(g * 255.0f));
+        this->__buffer.push_back(static_cast<unsigned char>(b * 255.0f));
     }
 
     /**
@@ -104,11 +104,11 @@ private:
      * @param b Componente Azul.
      * @param a Componente Alpha (Transparência).
      */
-    inline void write_color_alpha(float r, float g, float b, float a) {
-        this->write_color(r, g, b);
+    inline void __write_color_alpha(float r, float g, float b, float a) {
+        this->__write_color(r, g, b);
 
         if (a < 0.0f) a = 0.0f; else if (a > 1.0f) a = 1.0f;
-        this->buffer.push_back(static_cast<unsigned char>(a * 255.0f));
+        this->__buffer.push_back(static_cast<unsigned char>(a * 255.0f));
     }
 
     /**
@@ -116,11 +116,11 @@ private:
      * @details Otimização: Usa insert iterador para cópia em bloco.
      * @param str A string a ser escrita.
      */
-    inline void write_string(const std::string& str) {
+    inline void __write_string(const std::string& str) {
         if (!str.empty()) {
-            this->buffer.insert(this->buffer.end(), str.begin(), str.end());
+            this->__buffer.insert(this->__buffer.end(), str.begin(), str.end());
         }
-        this->buffer.push_back(0); // Null terminator obrigatório
+        this->__buffer.push_back(0); // Null terminator obrigatório
     }
 
 public:
@@ -141,8 +141,8 @@ public:
      * @brief Limpa o buffer local sem enviar os dados.
      */
     void clear() {
-        std::lock_guard<std::mutex> lock(this->mutex);
-        this->buffer.clear();
+        std::lock_guard<std::mutex> lock(this->__mutex);
+        this->__buffer.clear();
     }
 
     /**
@@ -150,33 +150,33 @@ public:
      * @return True se enviou bytes com sucesso, False se o buffer estava vazio ou houve erro.
      */
     bool flush() {
-        std::lock_guard<std::mutex> lock(this->mutex);
-        if(this->buffer.empty()){ return false; }
+        std::lock_guard<std::mutex> lock(this->__mutex);
+        if(this->__buffer.empty()){ return false; }
 
         ssize_t sent = sendto(
-            this->socket_fd,
-            this->buffer.data(),
-            this->buffer.size(),
+            this->__socket_fd,
+            this->__buffer.data(),
+            this->__buffer.size(),
             0,
-            (struct sockaddr*)&this->dest_addr,
-            sizeof(this->dest_addr)
+            (struct sockaddr*)&this->__dest_addr,
+            sizeof(this->__dest_addr)
         );
 
-        this->buffer.clear();
+        this->__buffer.clear();
         return sent > 0;
     }
 
-    ///< --- Comandos de Desenho (API Pública) ---
+    // --- Comandos de Desenho (API Pública) ---
 
     /**
      * @brief Envia o comando para renderizar os desenhos de um conjunto específico.
      * @param set Nome do conjunto (layer) a ser atualizado no visualizador.
      */
     void swap_buffers(const std::string& set) {
-        std::lock_guard<std::mutex> lock(this->mutex);
-        this->write_byte(0);
-        this->write_byte(0);
-        this->write_string(set);
+        std::lock_guard<std::mutex> lock(this->__mutex);
+        this->__write_byte(0);
+        this->__write_byte(0);
+        this->__write_string(set);
     }
 
     /**
@@ -200,14 +200,14 @@ public:
         float r, float g, float b,
         const std::string& set
     ) {
-        std::lock_guard<std::mutex> lock(this->mutex);
-        this->write_byte(1); // Cmd Principal
-        this->write_byte(1); // Sub Cmd (Line)
-        this->write_float_val(x1); this->write_float_val(y1); this->write_float_val(z1);
-        this->write_float_val(x2); this->write_float_val(y2); this->write_float_val(z2);
-        this->write_float_val(thickness);
-        this->write_color(r, g, b);
-        this->write_string(set);
+        std::lock_guard<std::mutex> lock(this->__mutex);
+        this->__write_byte(1); // Cmd Principal
+        this->__write_byte(1); // Sub Cmd (Line)
+        this->__write_float_val(x1); this->__write_float_val(y1); this->__write_float_val(z1);
+        this->__write_float_val(x2); this->__write_float_val(y2); this->__write_float_val(z2);
+        this->__write_float_val(thickness);
+        this->__write_color(r, g, b);
+        this->__write_string(set);
     }
 
     /**
@@ -228,14 +228,14 @@ public:
         float r, float g, float b,
         const std::string& set
     ) {
-        std::lock_guard<std::mutex> lock(this->mutex);
-        this->write_byte(1);
-        this->write_byte(0); // Sub Cmd (Circle)
-        this->write_float_val(x); this->write_float_val(y);
-        this->write_float_val(radius);
-        this->write_float_val(thickness);
-        this->write_color(r, g, b);
-        this->write_string(set);
+        std::lock_guard<std::mutex> lock(this->__mutex);
+        this->__write_byte(1);
+        this->__write_byte(0); // Sub Cmd (Circle)
+        this->__write_float_val(x); this->__write_float_val(y);
+        this->__write_float_val(radius);
+        this->__write_float_val(thickness);
+        this->__write_color(r, g, b);
+        this->__write_string(set);
     }
 
     /**
@@ -251,13 +251,13 @@ public:
      */
     void draw_sphere(float x, float y, float z, float radius,
                      float r, float g, float b, const std::string& set) {
-        std::lock_guard<std::mutex> lock(this->mutex);
-        this->write_byte(1);
-        this->write_byte(3); // Sub Cmd (Sphere)
-        this->write_float_val(x); this->write_float_val(y); this->write_float_val(z);
-        this->write_float_val(radius);
-        this->write_color(r, g, b);
-        this->write_string(set);
+        std::lock_guard<std::mutex> lock(this->__mutex);
+        this->__write_byte(1);
+        this->__write_byte(3); // Sub Cmd (Sphere)
+        this->__write_float_val(x); this->__write_float_val(y); this->__write_float_val(z);
+        this->__write_float_val(radius);
+        this->__write_color(r, g, b);
+        this->__write_string(set);
     }
 
     /**
@@ -273,13 +273,13 @@ public:
      */
     void draw_point(float x, float y, float z, float size,
                     float r, float g, float b, const std::string& set) {
-        std::lock_guard<std::mutex> lock(this->mutex);
-        this->write_byte(1);
-        this->write_byte(2); // Sub Cmd (Point)
-        this->write_float_val(x); this->write_float_val(y); this->write_float_val(z);
-        this->write_float_val(size);
-        this->write_color(r, g, b);
-        this->write_string(set);
+        std::lock_guard<std::mutex> lock(this->__mutex);
+        this->__write_byte(1);
+        this->__write_byte(2); // Sub Cmd (Point)
+        this->__write_float_val(x); this->__write_float_val(y); this->__write_float_val(z);
+        this->__write_float_val(size);
+        this->__write_color(r, g, b);
+        this->__write_string(set);
     }
 
     /**
@@ -292,16 +292,16 @@ public:
      * @param set Nome do conjunto.
      */
     void draw_polygon(const std::vector<float>& verts, float r, float g, float b, float a, const std::string& set) {
-        std::lock_guard<std::mutex> lock(this->mutex);
+        std::lock_guard<std::mutex> lock(this->__mutex);
         unsigned char num_verts = static_cast<unsigned char>(verts.size() / 3);
 
-        this->write_byte(1);
-        this->write_byte(4); // Sub Cmd (Polygon)
-        this->write_byte(num_verts);
-        this->write_color_alpha(r, g, b, a);
+        this->__write_byte(1);
+        this->__write_byte(4); // Sub Cmd (Polygon)
+        this->__write_byte(num_verts);
+        this->__write_color_alpha(r, g, b, a);
 
-        for(float v : verts){ this->write_float_val(v); }
-        this->write_string(set);
+        for(float v : verts){ this->__write_float_val(v); }
+        this->__write_string(set);
     }
 
     /**
@@ -317,12 +317,12 @@ public:
      */
     void draw_annotation(const std::string& text, float x, float y, float z,
                          float r, float g, float b, const std::string& set) {
-        std::lock_guard<std::mutex> lock(this->mutex);
-        this->write_byte(2); // Cmd Principal (Annotation)
-        this->write_byte(0); // Sub Cmd
-        this->write_float_val(x); this->write_float_val(y); this->write_float_val(z);
-        this->write_color(r, g, b);
-        this->write_string(text);
-        this->write_string(set);
+        std::lock_guard<std::mutex> lock(this->__mutex);
+        this->__write_byte(2); // Cmd Principal (Annotation)
+        this->__write_byte(0); // Sub Cmd
+        this->__write_float_val(x); this->__write_float_val(y); this->__write_float_val(z);
+        this->__write_color(r, g, b);
+        this->__write_string(text);
+        this->__write_string(set);
     }
 };

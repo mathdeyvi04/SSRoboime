@@ -9,14 +9,29 @@ int main() {
     players.reserve(11);
     for(
         int i = 1;
-        i <= 11;
+        i <= 2;
         i++
     ){
         players.emplace_back(i);
     }
 
+    for(auto& p : players){
+        p.commit_beam(0, 0, 0);
+        p._scom.send();
+    }
+
+    for(auto& p : players){
+        p._scom.receive();
+    }
+
     while(::is_running){
-        usleep(5*100*1000);
+        for(auto& p : players){
+            p._scom.send();
+        }
+
+        for(auto& p : players){
+            p._scom.receive();
+        }
     }
 
     std::cout << "Encerrando corretamente." << std::flush;

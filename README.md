@@ -30,6 +30,12 @@ um debugger de verdade e não mais `print` como um amador.
 
 Sendo assim, deixo registrado a necessidade de utilização do `debugger python` e `gdb`.
 
+### Utilização de Heap
+
+Sabe-se que utilizar o Heap pode ser perigoso no contexto de velocidade. Entretanto, tenha em
+mente que, ao alocar o máximo possível de memória que será utilizada logo no período de inicialização
+dos agentes, não teremos nenhuma desvantagem associada ao Heap.
+
 # Linhas de Desenvolvimento
 
 Ao chegarmos no ponto de mínimo, afinal conseguimos inicializar e alocar nossos agentes em campo,
