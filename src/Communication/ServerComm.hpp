@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cstring>
 #include <cstdint>
+#include <cstdio>
 #include <string_view>
 #include <format>
 
@@ -20,6 +21,10 @@
 #include <sys/uio.h>
 #include <fcntl.h>
 #include <sys/select.h>
+
+#ifdef ENABLE_DEBUG_VISION
+#include <sys/un.h>
+#endif
 
 /**
  * @class ServerComm
@@ -38,6 +43,10 @@ private:
     ///< Ponteiro para ambiente
     Environment* __env = nullptr;
 
+#ifdef ENABLE_DEBUG_VISION
+    int __sock_fd_debug_vision;
+    struct sockaddr_un __debug_vision_addr{};
+#endif
 
     /**
      * @brief Tenta ler exatamente N bytes do socket.
@@ -89,13 +98,17 @@ public:
      * 4. Fechamento (`close`): Libera, por fim, o descritor de arquivo do sistema.
      */
     ~ServerComm() {
-        if(this->__sock_fd >= 0){
+        if(this->__sock_fd != -1){
             shutdown(this->__sock_fd, SHUT_WR);
             int flags = fcntl(this->__sock_fd, F_GETFL, 0);
             fcntl(this->__sock_fd, F_SETFL, flags | O_NONBLOCK);
             recv(this->__sock_fd, this->__read_buffer.data(), 4096, 0);
             close(this->__sock_fd);
         }
+
+#ifdef ENABLE_DEBUG_VISION
+        if(this->__sock_fd_debug_vision != -1){ close(this->__sock_fd_debug_vision); }
+#endif
     }
 
     /**
@@ -289,12 +302,31 @@ public:
 
         if(last_msg_size > 0){
             this->__read_buffer[last_msg_size] = '\0'; // Null-terminate por segurança
-            this->__env->update_from_server(
-                std::string_view(
-                    this->__read_buffer.data(),
-                    last_msg_size
-                )
+            std::string_view msg(
+                this->__read_buffer.data(),
+                last_msg_size
             );
+            this->__env->update_from_server(
+                msg
+            );
+
+#ifdef ENABLE_DEBUG_VISION
+            if(this->__sock_fd_debug_vision != -1){
+                if(
+                    msg.find("(See") != std::string_view::npos
+                ){
+
+                    sendto(
+                        this->__sock_fd_debug_vision,
+                        msg.data(),
+                        msg.size(),
+                        0,
+                        (struct sockaddr*)&this->__debug_vision_addr,
+                        sizeof(this->__debug_vision_addr)
+                    );
+                }
+            }
+#endif
         }
         return;
     }
@@ -346,9 +378,23 @@ public:
         std::vector<ServerComm*>& other_players,
         Environment* env
     ) {
+#ifdef ENABLE_DEBUG_VISION
+        this->__sock_fd_debug_vision = socket(AF_UNIX, SOCK_DGRAM, 0);
 
+        if(this->__sock_fd_debug_vision != -1){
+            this->__debug_vision_addr.sun_family = AF_UNIX;
+
+            std::snprintf(
+                this->__debug_vision_addr.sun_path,
+                sizeof(this->__debug_vision_addr.sun_path),
+                "/tmp/debug_vision_agent_%d.sock",
+                unum // Somente estava disponível neste escopo
+            );
+        }
+#endif
         // Trazemos o ambiente ao ServerComm
         this->__env = env;
+        this->__env->unum = unum;
 
         // Scene: Define o modelo do corpo do robô
         this->send_immediate(

@@ -1,6 +1,8 @@
 #include "Agent/BasePlayer.hpp"
 #include <vector>
 
+///< Verifique o is_left do Environment
+
 int main() {
 
     std::signal(SIGINT, ender);
@@ -9,7 +11,7 @@ int main() {
     players.reserve(11);
     for(
         int i = 1;
-        i <= 2;
+        i <= 11;
         i++
     ){
         players.emplace_back(i);

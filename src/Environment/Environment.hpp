@@ -280,7 +280,7 @@ public:
         /**
          * @brief Interpreta a mensagem de GameState ('GS').
          * @details
-         * Realiza o parsing de subtags como 'sl', 'sr', 'pm', 't', 'u'.
+         * Realiza o parsing de subtags como 'sl', 'sr', 'pm', 't', 'u', 'team'.
          */
         void
         parse_gamestate(){
@@ -304,9 +304,9 @@ public:
                         break;
                     }
 
-                    case 't': { ///< Há 'time' e 'team'
-                        if(lower_tag[1] == 'i'){ this->get_value(env->time_match); }
-                        else{ env->is_left = this->get_str()[0] == 'l'; }
+                    case 't': { ///< Há 't' e 'team'.
+                        if(lower_tag.size() == 1){ this->get_value(env->time_match); } // Então é 't'
+                        else if(lower_tag[1] == 'i'){ env->is_left = this->get_str()[0] == 'l'; } // Então é 'team'
                         break;
                     }
 
