@@ -239,7 +239,7 @@ public:
          */
         std::string
         get(){
-            return std::string(std::string_view(this->buffer - 30, 60)); ///< Vamos pegar alguns endereços antes e alguns depois.
+            return std::string(std::string_view(this->buffer - 20, 40)); ///< Vamos pegar alguns endereços antes e alguns depois.
         }
 
         /**
@@ -273,7 +273,7 @@ public:
             ' (now 10.03)'
             */
             this->advance(5); ///< Vamos ter fé que nunca será diferente.
-            this->get_value(env->time_server);
+            this->get_value(this->env->time_server);
             this->advance(); ///< Sairemos da tag 'time'
         }
 
@@ -292,7 +292,7 @@ public:
                 switch(lower_tag[0]){
 
                     case 's': { ///< Poderá ser 'sl' (score left), 'sr' (score right)
-                        this->get_value( (lower_tag[1] == 'l') ? env->goals_scored : env->goals_conceded );
+                        this->get_value( (lower_tag[1] == 'l') ? this->env->goals_scored : this->env->goals_conceded );
                         break;
                     }
 
@@ -300,23 +300,23 @@ public:
                         // É garantido que já tenhamos tido is_left
                         lower_tag = this->get_str();
                         auto it = play_modes.find(lower_tag);
-                        if( it != play_modes.end() ){ env->current_mode = it->second[env->is_left]; }
+                        if( it != play_modes.end() ){ this->env->current_mode = it->second[this->env->is_left]; }
                         break;
                     }
 
                     case 't': { ///< Há 't' e 'team'.
-                        if(lower_tag.size() == 1){ this->get_value(env->time_match); } // Então é 't'
-                        else if(lower_tag[1] == 'i'){ env->is_left = this->get_str()[0] == 'l'; } // Então é 'team'
+                        if(lower_tag.size() == 1){ this->get_value(this->env->time_match); } // Então é 't'
+                        else if(lower_tag[1] == 'e'){ env->is_left = this->get_str()[0] == 'l'; } // Então é 'team'
                         break;
                     }
 
                     case 'u': { ///< Há apenas o 'u' (unum)
-                        this->get_value(env->unum);
+                        this->get_value(this->env->unum);
                         break;
                     }
 
                     default: {
-                        env->logger.warn("[{}]Flag Desconhecida Encontrada em 'GS': {} \t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
+                        this->env->logger.warn("[{}]Flag Desconhecida Encontrada em 'GS': {} \t Buffer Neste momento: {}", this->env->unum, lower_tag, this->get());
                         break;
                     }
                 }
@@ -409,7 +409,7 @@ public:
                                 }
 
                                 default:
-                                    env->logger.warn("[{}] Flag Desconhecida dentro de 'See:P': {}. \t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
+                                    this->env->logger.warn("[{}] Flag Desconhecida dentro de 'See:P': {}. \t Buffer Neste momento: {}", this->env->unum, lower_tag, this->buffer);
                                     break;
                             }
 
@@ -425,6 +425,22 @@ public:
 
                     }
                     case 'F': {
+                        if(lower_tag == "F1R"){
+                            this->advance(5);
+                            float value;
+                            for(int i = 0; i < 3; i++){
+                                this->get_value(value);
+                                if(i == 0 && see_only_when_i_want){
+                                    printf(
+                                        "\n%d-%f",
+                                        this->env->unum,
+                                        value
+                                    );
+                                    std::fflush;
+                                }
+                            }
+                            break;
+                        }
                         this->advance(5);
                         float value;
                         for(int i = 0; i < 3; i++){ this->get_value(value); }
@@ -445,7 +461,7 @@ public:
                     }
 
                     default:
-                        env->logger.warn("[{}] Flag Desconhecida dentro de 'See': {}. \t Buffer Neste momento: {}", env->unum, lower_tag, this->buffer);
+                        this->env->logger.warn("[{}] Flag Desconhecida dentro de 'See': {}. \t Buffer Neste momento: {}", this->env->unum, lower_tag, this->buffer);
                         break;
                 }
 

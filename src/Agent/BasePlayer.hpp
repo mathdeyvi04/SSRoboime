@@ -73,15 +73,28 @@ public:
      * @param posy Posição Y de beam
      * @param rotation Valor de rotação a ser dado ao robô.
      */
-    void commit_beam(float posx, float posy, float rotation) {
+    void commit_beam(float posx, float posy, float rotation, bool init_beam = False) {
+        std::cout << std::format(
+                "\n{} -> (beam {} {} {})",
+                this->_env.unum,
+                (init_beam) ? TacticalFormation::Default[this->_env.unum - 1][0] :
+                              posx,
+                (init_beam) ? TacticalFormation::Default[this->_env.unum - 1][1] :
+                              posy,
+                (init_beam) ? 0 :
+                              rotation
+            ) << std::flush;
+
         this->_scom.commit(
             std::format(
                 "(beam {} {} {})",
-                TacticalFormation::Default[this->_env.unum - 1][0],
-                TacticalFormation::Default[this->_env.unum - 1][1],
-                0
+                (init_beam) ? TacticalFormation::Default[this->_env.unum - 1][0] :
+                              posx,
+                (init_beam) ? TacticalFormation::Default[this->_env.unum - 1][1] :
+                              posy,
+                (init_beam) ? 0 :
+                              rotation
             )
         );
     }
-
 };

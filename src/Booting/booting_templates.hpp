@@ -16,6 +16,9 @@ inline constexpr bool DEBUG_MODE = False;
 
 ///< Para tratarmos o encerramento brusco.
 std::atomic<bool> is_running(True);
+
+bool see_only_when_i_want = false;
+
 /**
  * @brief Exclusivo para fazermos o encerramento do socket de forma robusta.
  */
