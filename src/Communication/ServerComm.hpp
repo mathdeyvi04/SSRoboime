@@ -372,6 +372,7 @@ public:
      * @brief Realiza o handshake inicial do agente (Scene, Init e Sincronização).
      * @param unum Número do uniforme do jogador.
      * @param other_players Referência para lista de outros jogadores para sincronização.
+     * @param env Ponteiro para Ambiente do Jogador
      */
     void initialize_agent(
         int unum,
