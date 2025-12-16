@@ -1,14 +1,14 @@
 #pragma once
 
 #include <cmath>
-
+#include <cstdio>
 class FieldNoise {
 public:
 
     /**
      * @brief Log Prob de uma distância real d, dada uma distância ruidosa r.
      */
-    static double log_prob_r(double d, double r){
+    static double log_prob_r(double d, double r) {
         return log_prob_normal_distribution(
             0,
             0.0965,
@@ -20,7 +20,7 @@ public:
     /**
      * @brief Log Prob de um ângulo horizontal real h, dada um ângulo ruidoso phi.
      */
-    static double log_prob_h(double h, double phi){
+    static double log_prob_h(double h, double phi) {
         return log_prob_normal_distribution(
             0,
             0.1225,
@@ -32,13 +32,39 @@ public:
     /**
      * @brief Log Prob de um ângulo vertical real v, dada um ângulo ruidoso theta.
      */
-    static double log_prob_v(double v, double theta){
+    static double log_prob_v(double v, double theta) {
         return log_prob_normal_distribution(
             0,
             0.1480,
             theta - 0.005 - v,
             theta + 0.005 - v
         );
+    }
+
+    static double get_expected_value(double value, double (*func)(double, double)) {
+        static double inc = 0.1;
+        static double window_size = 10;
+
+        double value_min = value - (window_size / 2);
+        double value_max = value + (window_size / 2);
+
+        double num = 0.0;
+        double den = 0.0;
+        double ref_log_p = func(value, value);
+        for(
+            double possible_value = value_min;
+            possible_value <= value_max;
+            possible_value += inc
+        ){
+
+            double p_shifted = std::exp(func(possible_value, value));
+            printf("\nPara %lf, a possibilidade é que seja %lf", possible_value, p_shifted);
+
+            num += possible_value * p_shifted;
+            den += p_shifted;
+        }
+
+        return num / den;
     }
 
 private:
@@ -96,7 +122,7 @@ private:
         double erfc1 = std::erfc(abs_z1);
         double erfc2 = std::erfc(abs_z2);
 
-        double diff = std::fabs(erfc1 - erfc2);
+        diff = std::fabs(erfc1 - erfc2);
 
         // Se o double conseguiu representar a diferença (> 1e-308), retornamos.
         if (diff > std::numeric_limits<double>::min()) {

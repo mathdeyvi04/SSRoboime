@@ -2,6 +2,7 @@
 
 #include "../Booting/booting_templates.hpp"
 #include "../Logger/Logger.hpp"
+#include "Tools/Localization/Localization.hpp"
 #include <iostream>
 #include <string_view>
 #include <charconv> // std::from_chars
@@ -21,6 +22,11 @@ public:
      * @brief Referência ao sistema de log para debug e avisos.
      */
     Logger& logger;
+
+    /**
+     * @brief Instância Gerenciadora de Localização
+     */
+     Localization loc;
 
     /**
      * @brief Construtor da Classe Environment.
@@ -425,25 +431,15 @@ public:
 
                     }
                     case 'F': {
-                        if(lower_tag == "F1R"){
-                            this->advance(5);
-                            float value;
-                            for(int i = 0; i < 3; i++){
-                                this->get_value(value);
-                                if(i == 0 && see_only_when_i_want){
-                                    printf(
-                                        "\n%d-%f",
-                                        this->env->unum,
-                                        value
-                                    );
-                                    std::fflush;
-                                }
-                            }
-                            break;
-                        }
+                        // Lower_tag já indica a tag do landmark
+
                         this->advance(5);
-                        float value;
-                        for(int i = 0; i < 3; i++){ this->get_value(value); }
+                        float value[3];
+                        for(int i = 0; i < 3; i++){ this->get_value(value[i]); }
+
+                        // De posse desses dados
+                        env->loc.update_visible_landmark(lower_tag, value);
+
                         break;
                     }
 

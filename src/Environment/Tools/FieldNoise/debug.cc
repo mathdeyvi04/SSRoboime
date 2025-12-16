@@ -102,7 +102,6 @@ double log_prob_normal_custom(double mean, double std, double interval1, double 
     return max_val + std::log(1.0 - std::exp(diff_exp)) + LOG_05;
 }
 
-
 static double log_prob_hybrid(double mean, double std, double interval1, double interval2) {
 
     // Constantes Matemáticas Estáticas
@@ -172,41 +171,44 @@ static double log_prob_hybrid(double mean, double std, double interval1, double 
 }
 
 int main() {
-    std::ofstream file("benchmark_data.txt");
-    file << "x_pos,naive,hybrid,custom\n";
+//    // Teste de Benchmark
+//    std::ofstream file("benchmark_data.txt");
+//    file << "x_pos,naive,hybrid,custom\n";
+//
+//    // Configurações de Erro de Distância Por Exemplo
+//    double mean = 0.0;
+//    double std_dev = 0.1480;
+//
+//    // Vamos testar x indo de 0 até 12 (onde a precisão quebra)
+//    // Para cada x, calculamos a chance de cair entre x e x+0.5
+//    for (double x = 0.0; x <= 12.0; x += 0.1) {
+//
+//        // Intervalo: De x até x + 0.5
+//        // Para garantir a ordem correta na subtração interna (maior - menor área),
+//        // passamos o intervalo mais "distante" primeiro ou seguimos a lógica da função.
+//
+//        double val_start = x;
+//        double val_end = x + 0.5;
+//
+//        // 1. Naive
+//        double y_naive = log_prob_naive(mean, std_dev, val_end, val_start);
+//
+//        // 2. Hybrid
+//        double y_hybrid = log_prob_hybrid(mean, std_dev, val_end, val_start);
+//
+//        // 3. Custom
+//        double y_custom = log_prob_normal_custom(mean, std_dev, val_end, val_start);
+//
+//        // Salvando
+//        file << std::fixed << std::setprecision(16)
+//             << x << ","
+//             << y_naive << ","
+//             << y_hybrid << ","
+//             << y_custom << "\n";
+//    }
+//
+//    file.close();
 
-    // Configurações de Erro de Distância Por Exemplo
-    double mean = 0.0;
-    double std_dev = 0.1480;
-
-    // Vamos testar x indo de 0 até 12 (onde a precisão quebra)
-    // Para cada x, calculamos a chance de cair entre x e x+0.5
-    for (double x = 0.0; x <= 12.0; x += 0.1) {
-
-        // Intervalo: De x até x + 0.5
-        // Para garantir a ordem correta na subtração interna (maior - menor área),
-        // passamos o intervalo mais "distante" primeiro ou seguimos a lógica da função.
-
-        double val_start = x;
-        double val_end = x + 0.5;
-
-        // 1. Naive
-        double y_naive = log_prob_naive(mean, std_dev, val_end, val_start);
-
-        // 2. Hybrid
-        double y_hybrid = log_prob_hybrid(mean, std_dev, val_end, val_start);
-
-        // 3. Custom
-        double y_custom = log_prob_normal_custom(mean, std_dev, val_end, val_start);
-
-        // Salvando
-        file << std::fixed << std::setprecision(16)
-             << x << ","
-             << y_naive << ","
-             << y_hybrid << ","
-             << y_custom << "\n";
-    }
-
-    file.close();
+    printf("\n- %lf", FieldNoise::get_expected_value(30, FieldNoise::log_prob_r));
     return 0;
 }
