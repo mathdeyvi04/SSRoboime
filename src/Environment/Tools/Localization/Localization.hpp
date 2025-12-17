@@ -14,15 +14,14 @@
 class Localization {
 public:
 
-    // -- Atributos Inerentes à Localização
+    // -- Atributos Inerentes à Localização Pensada pelo Robô
     std::array<float, 3> my_position = {99, 99, 99};
-
 
     struct Landmark {
     public:
         char tag[3];
         float fixed_position[3];
-        float sph_position[3];
+        float sph_position[3]; //< Será alterável conforme o agente atualizá-los
 
         Landmark(
             const char (&name)[4],
@@ -105,9 +104,6 @@ public:
             return False;
         }
 
-        // Então temos garantia de que há mais de dois pontos.
-        // Dependendo da distância, pode haver muito ruído na medida
-        // Logo, se torna necessário sermos capazes de obter o valor esperado da medida
 
 
 

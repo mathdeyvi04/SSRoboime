@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cmath>
-#include <cstdio>
+
 class FieldNoise {
 public:
 
@@ -41,34 +41,12 @@ public:
         );
     }
 
-    static double get_expected_value(double value, double (*func)(double, double)) {
-        static double inc = 0.1;
-        static double window_size = 10;
-
-        double value_min = value - (window_size / 2);
-        double value_max = value + (window_size / 2);
-
-        double num = 0.0;
-        double den = 0.0;
-        double ref_log_p = func(value, value);
-        for(
-            double possible_value = value_min;
-            possible_value <= value_max;
-            possible_value += inc
-        ){
-
-            double p_shifted = std::exp(func(possible_value, value));
-            printf("\nPara %lf, a possibilidade é que seja %lf", possible_value, p_shifted);
-
-            num += possible_value * p_shifted;
-            den += p_shifted;
-        }
-
-        return num / den;
-    }
-
 private:
-    /// Não será necessário instâncias
+
+    // Para realizarmos posteriores testes
+    friend class UnitTest;
+
+    // Não será necessário instâncias
     FieldNoise(){};
 
     /**
@@ -150,8 +128,3 @@ private:
         return -(z_closer_norm * z_closer_norm) - LOG_SQRT_PI + std::log(delta_z_norm);
     }
 };
-
-
-
-
-
