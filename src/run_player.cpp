@@ -5,8 +5,7 @@ int main() {
     BasePlayer p = BasePlayer(1);
 
     while(True){
-        p._scom.send();
-        p._scom.receive();
+        p.think_send_and_receive();
     }
 
     return 0;

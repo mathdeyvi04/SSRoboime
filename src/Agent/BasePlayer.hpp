@@ -13,7 +13,7 @@
  * @brief Representa a entidade básica de um jogador na simulação.
  */
 class BasePlayer {
-public:  ///< Devemos modificar isso e tornar protegidos.
+private:  ///< Devemos modificar isso e tornar protegidos.
     /**
      * @brief Gerenciador de comunicação com o servidor rcssserver3d.
      * @details Instanciado automaticamente na criação do jogador. É responsável por
@@ -86,5 +86,13 @@ public:
                               rotation
             )
         );
+    }
+
+    void think_send_and_receive() {
+
+        /* Lógica insana de funcionamento */
+
+        this->_scom.send();
+        this->_scom.receive();
     }
 };

@@ -8,7 +8,7 @@ gdb_player:
 	@g++ -g -O0 -std=c++20 src/run_player.cpp; gdb ./a.out; rm a.out;
 
 debug_vision:
-	@g++ -g -O0 -std=c++20 src/run_full_team.cpp -DENABLE_DEBUG_VISION; gdb ./a.out; rm a.out;
+	@g++ -g -O0 -std=c++20 src/run_player.cpp -DENABLE_DEBUG_VISION; gdb ./a.out; rm a.out;
 
 .PHONY: docs
 docs:

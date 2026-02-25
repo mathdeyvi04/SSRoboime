@@ -1,0 +1,12 @@
+# Pastas de Ambiente
+.idea
+venv
+
+
+
+
+
+# Arquivos de build, compilação e temporários
+a.out
+m
+__pycache__

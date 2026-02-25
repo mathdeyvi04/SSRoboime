@@ -534,7 +534,7 @@ public:
 
             if(
                 !cursor.skip_until_char('(')
-            ){ this->print_status(); return; }
+            ){ this->print_status(); break; }
 
             upper_tag = cursor.get_str(); ///< Vamos extrair uma tag
             switch(upper_tag[0]){
@@ -586,6 +586,9 @@ public:
                 }
             }
         }
+
+        // Podemos rodar as atualizações logo aqui
+        loc.update_pose();
     }
 
 private:
